@@ -7,4 +7,4 @@ Built with React
 
 ## API
 
-Built with Node and Express
+Built with Node, Express and mongo
