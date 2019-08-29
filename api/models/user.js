@@ -10,11 +10,11 @@ const userSchema = new Schema({
 });
 
 // Una vez guardado el user, se encriptara
-userSchema.pre('save', function(next){ç
+userSchema.pre('save', function(next){
     const user = this;
 
     bcrypt.genSalt(10, function(err, salt){
-        // OJO CON EL "10" BUSCAR SU FUNCION
+        // la funcion del "10" es el numero de complejidad de encryptacion, esto puede ser mayor pero tomara mucho mas recursos y tardara mas en dar respuesta
         if(err) {return next(err);}
 
         bcrypt.hash(user.password, salt, null, function(err, hash){

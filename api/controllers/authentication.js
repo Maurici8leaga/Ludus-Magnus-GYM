@@ -1,4 +1,12 @@
+const jwt = require('jwt-simple'); // <-- esto ayudara a crear los token
 const User = require('../models/user');
+const config = require('../config'); // <- dentro se encuentra el string de seguridad
+
+function tokenForUser(user){
+    const timestamp = new Date().getTime();
+        // para poder obtener la fecha de la creacion del usuario
+    return jwt.encode({ sub: user.id, iat: timestamp}, config.secret);
+}
 
 exports.signup = function(req, res, next){
 
@@ -28,7 +36,7 @@ exports.signup = function(req, res, next){
             if(err) {return next(err);}
 
             // se responde que el usuario fue creado
-            res.json(user);
+            res.json({ token: tokenForUser(user)});
         });
     });
 }
