@@ -28,6 +28,17 @@ userSchema.pre('save', function(next){
     });
 });
 
+// Este sera el proceso de "descriptacion" en la cual no se desencripta solo se compara el password creado por 1ra vez con el password ingresado del usuario 
+userSchema.methods.comparePassword = function(candidatePassword, callback){
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
+        // el "bcrypt" en conjunto con el compare, busca el "SALT" y el "HASH" creado 1ra vez este lo compara con el password que esta siendo recien ingresado y un SALT de seguridad
+                // el "compare" va a tomar estos 2 y va a verificar que ambas password creadas coincidan y si es asi entonces corre el Match
+        if(err) {return callback(err);}
+
+        callback(null, isMatch);
+    });
+}
+
 // Se debe crear el class del model
 const ModelClass = mongoose.model('user', userSchema);
         // se le pasara este Schema al mongoose para que sepa que existe un nuevo Schema
