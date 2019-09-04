@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // configuracion MGDB
 mongoose.connect('mongodb://localhost:27017/gymAuth', { useNewUrlParser: true } );
@@ -12,11 +13,12 @@ mongoose.connect('mongodb://localhost:27017/gymAuth', { useNewUrlParser: true } 
 
 // middleware
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({type: '*/*'}));
 router(app);
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const server = http.createServer(app);
                         //este "app" podria cambiar OJO 
 server.listen(port);
