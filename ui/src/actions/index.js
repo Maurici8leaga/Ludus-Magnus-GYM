@@ -1,9 +1,15 @@
 import {
     SIGN_IN,
-    SIGN_OUT,
+    SIGN_UP,
+    SIGN_ERROR,
     CHANGE_MUSCULO,
     CHANGE_EJERCICIO
 } from './types';
+import axios from 'axios';
+
+// export default signUp = ({email, password}) => dispatch => {
+
+// };
 
 export const signIn = (userId) => {
     return {
@@ -12,9 +18,9 @@ export const signIn = (userId) => {
     };
 };
 
-export const signOut = () => {
+export const signError = () => {
     return {
-        type: SIGN_OUT
+        type: SIGN_ERROR
     };
 };
 

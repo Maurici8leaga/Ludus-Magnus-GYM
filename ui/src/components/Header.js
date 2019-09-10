@@ -2,10 +2,14 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Google from './Google';
-import { signIn, signOut } from '../actions';
+import { signIn, signError } from '../actions';
 
 
 class Header extends Component {
+
+    renderAuth(){
+        // AQUI IRA EL RENDER DEL SIGNIN SIGNOUT Y SIGNUP QUE SE REMPLAZARA POR EL GOOGLE
+    }
     
     renderEjercicios(){
         if(this.props.isSignedIn){
@@ -40,4 +44,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {signIn , signOut}) (Header);
+export default connect(mapStateToProps, {signIn , signError}) (Header);
