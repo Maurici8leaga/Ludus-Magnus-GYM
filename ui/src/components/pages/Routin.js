@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {changeEjercicio} from '../../actions';
+import { compose } from 'redux';
+import requireAuth from '../requireAuth';
 
 class Routin extends Component {
 
@@ -34,4 +36,7 @@ const mapStateToProps = ({ musculos }) => {
 }
 
 
-export default connect(mapStateToProps, {changeEjercicio})(Routin);
+export default compose (
+    connect(mapStateToProps, {changeEjercicio}),
+    requireAuth()
+)(Routin);

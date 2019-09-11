@@ -22,7 +22,7 @@ const store = createStore(
 const App = () => {
     return(
         <div className="ui container">
-            <Provider store ={createStore(reducers, {})}>
+            <Provider store ={store}>
                 <BrowserRouter>
                     <div>
                         <Header/>

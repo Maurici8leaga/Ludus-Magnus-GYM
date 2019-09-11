@@ -1,15 +1,22 @@
 import {
     SIGN_IN,
-    SIGN_UP,
     SIGN_ERROR,
     CHANGE_MUSCULO,
     CHANGE_EJERCICIO
 } from './types';
 import axios from 'axios';
 
-// export default signUp = ({email, password}) => dispatch => {
-
-// };
+export const signUp = (formProps, callback) => async dispatch => {
+    try{
+        const response = await axios.post('http://localhost:3001/signup', formProps);
+            // esto mandara la creacion de la cuenta al API creada en el puerto 3001, "formProps" hace referencia al email y password
+        
+        dispatch({type: SIGN_IN, payload: response.data.token});
+        callback();
+    } catch(e) {
+        dispatch({type: SIGN_ERROR, payload: 'Email en uso'});
+    }
+};
 
 export const signIn = (userId) => {
     return {
