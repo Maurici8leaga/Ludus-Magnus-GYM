@@ -8,7 +8,7 @@ class SignUp extends Component{
 
     onSubmit = (formProps) => {
             // "formProps" en el se pasara el email y el password del user creado
-        this.props.signup(formProps, () => {
+        this.props.signUp(formProps, () => {
             this.props.history.push('/routinesType');
             // una vez que sea creado success sera renderizado al route "/routinesType"
         });
@@ -21,13 +21,13 @@ class SignUp extends Component{
             <form className="form" onSubmit={handleSubmit(this.onSubmit)}>
                 <div className="field">
                     <label>Email</label>
-                    <input type="text" name="email" readonly="" placeholder="prueba@gmail.com"/>>
+                    <input type="text" name="email" readOnly="" placeholder="prueba@gmail.com"/>>
                 </div>
                 <div className="field">
                     <label>Password</label>
-                    <input type="password" name="password" readonly="" autoComplete= "none"/>>
+                    <input type="password" name="password" readOnly="" autoComplete= "none"/>>
                 </div>
-                <div className="ui error message">{this.props.ErrorMessage}</div>
+                <div>{this.props.ErrorMessage}</div>
                 <button className="ui button" type="submit">Sign Up</button>
             </form>
         );
@@ -35,8 +35,7 @@ class SignUp extends Component{
 }
 
 function mapStatetoProps (state){
-    return{ ErrorMessage: state.authReducer.ErrorMessage };
-                    // OJO EL "authReducer" si da error puede que halla que cambiarlo al "auth"
+    return{ ErrorMessage: state.auth.ErrorMessage };
 }
 
 export default compose(

@@ -1,14 +1,26 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import Google from './Google';
-import { signIn, signError } from '../actions';
+import { signIn, signError} from '../actions';
 
 
 class Header extends Component {
 
     renderAuth(){
-        // AQUI IRA EL RENDER DEL SIGNIN SIGNOUT Y SIGNUP QUE SE REMPLAZARA POR EL GOOGLE
+        if(this.props.isSignedIn){
+            return(
+                <div>
+                    <Link to="/signout">Sign Out</Link>
+                </div>
+            )
+        }else {
+            return(
+                <div>
+                    <Link to="/signup">Sign Up</Link>
+                    <Link to="/signin">Sign In</Link>
+                </div>
+            )
+        }
     }
     
     renderEjercicios(){
@@ -32,7 +44,7 @@ class Header extends Component {
             <div className="ui menu">
                 <div>{this.renderEjercicios()}</div>
                <div className="right menu" align="center">
-                    <Google/>
+                    {this.renderAuth()}
                </div>
             </div>
         );    
@@ -44,4 +56,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {signIn , signError}) (Header);
+export default connect(mapStateToProps, {signIn, signError}) (Header);

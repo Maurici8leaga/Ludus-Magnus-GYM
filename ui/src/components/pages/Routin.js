@@ -35,8 +35,8 @@ const mapStateToProps = ({ musculos }) => {
     return { selectedMusculo: musculos.selectedMusculo }
 }
 
-
-export default compose (
+// aqui falta incorporar el compose para unirlo con el "requireAuth"
+export default compose(
     connect(mapStateToProps, {changeEjercicio}),
-    requireAuth()
+    requireAuth
 )(Routin);
