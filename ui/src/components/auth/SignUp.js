@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {reduxForm} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 import { compose } from 'redux';
 import {connect} from 'react-redux';
 import * as actions from '../../actions';
@@ -18,14 +18,16 @@ class SignUp extends Component{
 
         const {handleSubmit} = this.props;
         return(
+
             <form className="form" onSubmit={handleSubmit(this.onSubmit)}>
                 <div className="field">
                     <label>Email</label>
-                    <input type="text" name="email" readOnly="" placeholder="prueba@gmail.com"/>>
+                    <Field type="text" component="input" name="email"  autoComplete="none" placeholder="prueba@gym.com"/>
+                    {/* Es importante usar "Field" aca ya que con el redux nos da la facilidad de crear este form sin necesidad de crear un state para este componente, ya que este "Field" se conecta con los actions y reducers de nuestra app */}
                 </div>
                 <div className="field">
                     <label>Password</label>
-                    <input type="password" name="password" readOnly="" autoComplete= "none"/>>
+                    <Field type="password" component="input" name="password"  autoComplete= "none" placeholder="password"/>
                 </div>
                 <div>{this.props.ErrorMessage}</div>
                 <button className="ui button" type="submit">Sign Up</button>

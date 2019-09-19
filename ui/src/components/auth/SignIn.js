@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {reduxForm} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 import { compose } from 'redux';
 import {connect} from 'react-redux';
 import * as actions from '../../actions';
@@ -21,11 +21,11 @@ class SignIn extends Component{
             <form className="form" onSubmit={handleSubmit(this.onSubmit)}>
                 <div className="field">
                     <label>Email</label>
-                    <input type="text" name="email" readOnly="" placeholder="prueba@gmail.com"/>>
+                    <Field type="text" component="input" name="email" placeholder="prueba@gmail.com" autoComplete= "none"/>
                 </div>
                 <div className="field">
                     <label>Password</label>
-                    <input type="password" name="password" readOnly="" autoComplete= "none"/>>
+                    <Field type="password" component="input" name="password"  placeholder="password" autoComplete= "none"/>
                 </div>
                 <div>{this.props.ErrorMessage}</div>
                 <button className="ui button" type="submit">Sign In</button>
