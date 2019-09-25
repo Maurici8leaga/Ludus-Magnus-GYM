@@ -18,13 +18,19 @@ exports.signup = function(req, res, next){
 
     const email= req.body.email;
     const password= req.body.password;
+    const name= req.body.name;
+    const lastname= req.body.lastname;
+
+    if(!name || !lastname){
+        return req.status(422).send({ error: 'Debes colocar Nombre y Apellido'})
+    }
 
     if(!email || !password){
         return res.status(422).send({ error: 'Debes colocar email y password'});
     }
 
     // veremos si un usario tiene un email existente
-    User.findOne({ email: email} , function(err, existingUser){
+    User.findOne({ email } , function(err, existingUser){
         if(err) {return next(err);}
     
     // si el el email del usuario existe, regresa un error
@@ -34,8 +40,10 @@ exports.signup = function(req, res, next){
         }
     // si el email del usuario no existe, se crea y se guarda en la "data-base"
         const user = new User ({
-            email: email,
-            password: password
+            email,
+            password,
+            name,
+            lastname
         });
 
         user.save(function(err){

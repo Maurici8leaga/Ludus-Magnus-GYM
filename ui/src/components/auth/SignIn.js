@@ -19,6 +19,7 @@ class SignIn extends Component{
         const {handleSubmit} = this.props;
         return(
             <form className="form" onSubmit={handleSubmit(this.onSubmit)}>
+                <h3>Sign In</h3>
                 <div className="field">
                     <label>Email</label>
                     <Field type="text" component="input" name="email" placeholder="prueba@gmail.com" autoComplete= "none"/>

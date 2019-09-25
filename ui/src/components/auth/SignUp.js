@@ -20,11 +20,23 @@ class SignUp extends Component{
         return(
 
             <form className="form" onSubmit={handleSubmit(this.onSubmit)}>
+                <h3>Sign Up</h3>
+                <div className="field">
+                    <label>Nombre</label>
+                    <Field type="text" component="input" name="name" autoComplete="none" placeholder="Nombre"/>
+                </div>
+
+                <div className="field">
+                    <label>Apellido</label>
+                    <Field type="text" component="input" name="lastname" autoComplete="none" placeholder="Apellido"/>
+                </div>
+
                 <div className="field">
                     <label>Email</label>
                     <Field type="text" component="input" name="email"  autoComplete="none" placeholder="prueba@gym.com"/>
                     {/* Es importante usar "Field" aca ya que con el redux nos da la facilidad de crear este form sin necesidad de crear un state para este componente, ya que este "Field" se conecta con los actions y reducers de nuestra app */}
                 </div>
+
                 <div className="field">
                     <label>Password</label>
                     <Field type="password" component="input" name="password"  autoComplete= "none" placeholder="password"/>

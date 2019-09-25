@@ -6,7 +6,9 @@ const bcrypt = require('bcrypt-nodejs');
 const userSchema = new Schema({
     email: {type: String, unique: true, lowercase: true},
     // tipo de correo unico y con solo minuscula
-    password: String
+    password: String,
+    name: String,
+    lastname: String
 });
 
 // Una vez guardado el user, se encriptara
