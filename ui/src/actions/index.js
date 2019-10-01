@@ -12,9 +12,9 @@ export const signUp = (formProps, callback) => async dispatch => {
             // esto mandara la creacion de la cuenta al API creada en el puerto 3001, "formProps" hace referencia al email y password
         
         dispatch({type: SIGN_IN, payload: response.data.token});
-        localStorage.getItem('token', response.data.token);
+        localStorage.setItem('token', response.data.token);
         callback();
-    } catch(e) {
+        } catch(e) {
         dispatch({type: SIGN_ERROR, payload: 'Email en uso'});
     }
 };
@@ -34,9 +34,9 @@ export const signIn = (formProps, callback) => async dispatch => {
         const response = await axios.post('http://localhost:3001/signin', formProps);
          
         dispatch({ type: SIGN_IN, payload: response.data.token});
-        localStorage.getItem('token', response.data.token);
+        localStorage.setItem('token', response.data.token);
         callback();
-    } catch(e){
+        } catch(e){
         dispatch({ type: SIGN_ERROR, payload: 'Usuario Invalido'});
     }
 };

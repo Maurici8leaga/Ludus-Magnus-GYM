@@ -1,8 +1,8 @@
 import { SIGN_IN, SIGN_ERROR } from '../actions/types';
 
 const INITIAL_STATE = {
-    isSignedIn: '',
-    ErrorMessage: ''
+    isSignedIn: 'null',
+    ErrorMessage: 'null'
 };
 
 export default (state = INITIAL_STATE, action) => {

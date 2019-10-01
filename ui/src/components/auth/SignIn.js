@@ -26,7 +26,7 @@ class SignIn extends Component {
 
           <div className="two column">
 
-            <div className="ui card">
+            <div className="ui centered card">
 
               <div className="content">
                 <h3 className="ui dividing header">Sign In</h3>

@@ -10,14 +10,21 @@ class Header extends Component {
         if(this.props.isSignedIn){
             return(
                 <div>
-                    <Link to="/signout">Sign Out</Link>
+                    <Link to="/signout" className="item">
+                        <i className="window close icon"/>
+                    </Link>
                 </div>
             )
         }else {
             return(
                 <div>
-                    <Link to="/signup">Sign Up</Link>
-                    <Link to="/signin">Sign In</Link>
+                    <div className="ui button">
+                        <Link to="/signup">Sign Up</Link>
+                    </div>
+
+                    <div className="ui button">
+                        <Link to="/signin">Sign In</Link>
+                    </div>
                 </div>
             )
         }
@@ -44,8 +51,10 @@ class Header extends Component {
             <div className="ui menu">
                 <div>{this.renderEjercicios()}</div>
                <div className="right menu" align="center">
-                    {this.renderAuth()}
-               </div>
+                   <div>
+                        {this.renderAuth()}
+                   </div>
+               </div> 
             </div>
         );    
     }
