@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { signIn, signError} from '../actions';
+import './Header.scss';
 
 
 class Header extends Component {
@@ -10,7 +11,7 @@ class Header extends Component {
         if(this.props.isSignedIn){
             return(
                 <div>
-                    <Link to="/signout" className="item">
+                    <Link to="/signout" className="button-icon">
                         <i className="window close icon"/>
                     </Link>
                 </div>
@@ -18,11 +19,11 @@ class Header extends Component {
         }else {
             return(
                 <div>
-                    <div className="ui button">
+                    <div className="button-Sign-Up-In">
                         <Link to="/signup">Sign Up</Link>
                     </div>
 
-                    <div className="ui button">
+                    <div className="button-Sign-Up-In">
                         <Link to="/signin">Sign In</Link>
                     </div>
                 </div>
