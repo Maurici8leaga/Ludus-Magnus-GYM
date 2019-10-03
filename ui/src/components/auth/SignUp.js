@@ -21,7 +21,7 @@ class SignUp extends Component{
 
             <form className="ui form" onSubmit={handleSubmit(this.onSubmit)}>
 
-                <h3 className="ui dividing header" >Sign Up</h3>
+                <h3 className="ui dividing header">Sign Up</h3>
                 <div className="field">
                     <div className="two fields">
                        <div className="field">

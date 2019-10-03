@@ -12,7 +12,7 @@ class Header extends Component {
             return(
                 <div>
                     <Link to="/signout" className="button-icon">
-                        <i className="window close icon"/>
+                        <i className="window close outline icon"/>
                     </Link>
                 </div>
             )
@@ -34,13 +34,13 @@ class Header extends Component {
     renderEjercicios(){
         if(this.props.isSignedIn){
             return(
-                <Link to="/routinesType" className="item">
+                <Link to="/routinesType" className="button-icon">
                     <i className="trophy icon"></i>
                 </Link>
             );
         } else {
             return(
-                <div className="ui disabled button">
+                <div className="button-icon-disable">
                     <i className="trophy icon"></i>                      
                 </div>
             );
