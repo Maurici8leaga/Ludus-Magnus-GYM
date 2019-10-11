@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {changeEjercicio} from '../../actions';
 import { compose } from 'redux';
 import requireAuth from '../requireAuth';
+import './RoutinesType.scss';
 
 class Routin extends Component {
 
@@ -18,14 +19,16 @@ class Routin extends Component {
         const { selectedMusculo } = this.props;
 
         return (
-            <div className="ui container" align="center">
-                <h1>{selectedMusculo}</h1>
+            <div className="ui container">
+
+                <h1 className="intro">{selectedMusculo}</h1>
                 
-                <li className="ui vertical buttons">
-                    <button className="fluid ui basic button" onClick={this.buttonState('MAQUINA')}>MAQUINA</button>
-                    <button className="fluid ui basic button" onClick={this.buttonState('MANCUERNA')}>MANCUERNA</button>
-                    <button className="fluid ui basic button" onClick={this.buttonState('SIN PESAS')}>SIN PESAS</button>
-                </li>
+                <div className="button-container2">
+                    <div className="button-div" onClick={this.buttonState('MAQUINA')}>MAQUINA</div>
+                    <div className="button-div" onClick={this.buttonState('MANCUERNA')}>MANCUERNA</div>
+                    <div className="button-div" onClick={this.buttonState('SIN PESAS')}>SIN PESAS</div>
+                </div>
+
             </div>
         );
     }

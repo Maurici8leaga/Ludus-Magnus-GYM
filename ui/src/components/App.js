@@ -9,7 +9,7 @@ import RoutinesType from './pages/RoutinesType';
 import Video from './pages/Video';
 import Header from './Header';
 import SignIn from './auth/SignIn';
-import SignOut from './auth/SignOut';
+// import SignOut from './auth/SignOut';
 import SignUp from './auth/SignUp';
 import reducers from '../reducers';
 
@@ -30,7 +30,7 @@ class App extends Component {
                             <Switch>
                                 <Route path="/" exact component={Intro}/>
                                 <Route path="/signin" exact component={SignIn}/>
-                                <Route path="/signout" exact component={SignOut}/>
+                                {/* <Route path="/signout" exact component={SignOut}/> */}
                                 <Route path="/signup" exact component={SignUp}/>
                                 <Route path="/routinesType" exact component={RoutinesType}/>
                                 <Route path="/routinesType/routin" exact component={Routin}/>

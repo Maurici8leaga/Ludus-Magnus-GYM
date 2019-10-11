@@ -1,5 +1,24 @@
 body{
-    background-image: url("https://wallpapercave.com/wp/wp2639533.jpg");
-    background-color: black;
-    color: white;
+    background-image: url("https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701968365-1200x800.jpg");
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: black;
+}
+
+h1{
+    font-size: 6rem;
+    margin-top: 5em;
+    margin-bottom: 1em;
+    padding: 0em 0em;
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #f1941e80;
+    text-transform: none;
+    line-height: 1.28571429em;
+    text-align: center;
+    &:first-child{
+        margin-top: 1em;
+    }
 }

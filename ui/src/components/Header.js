@@ -1,69 +1,78 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import { signIn, signError} from '../actions';
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signIn, signError, signOut } from '../actions';
+import { compose } from 'redux';
 import './Header.scss';
 
 
 class Header extends Component {
 
-    renderAuth(){
-        if(this.props.isSignedIn){
-            return(
-                <div>
-                    <Link to="/signout" className="button-icon">
-                        <i className="window close outline icon"/>
-                    </Link>
-                </div>
-            )
-        }else {
-            return(
-                <div>
-                    <div className="button-Sign-Up-In">
-                        <Link to="/signup">Sign Up</Link>
-                    </div>
 
-                    <div className="button-Sign-Up-In">
-                        <Link to="/signin">Sign In</Link>
-                    </div>
-                </div>
-            )
-        }
-    }
-    
-    renderEjercicios(){
-        if(this.props.isSignedIn){
-            return(
-                <Link to="/routinesType" className="button-icon">
-                    <i className="trophy icon"></i>
-                </Link>
-            );
-        } else {
-            return(
-                <div className="button-icon-disable">
-                    <i className="trophy icon"></i>                      
-                </div>
-            );
-        }
-    }
+  renderAuth() {
 
-    render (){
-        return (
-            <div className="ui menu">
-                <div>{this.renderEjercicios()}</div>
-               <div className="right menu" align="center">
-                   <div>
-                        {this.renderAuth()}
-                   </div>
-               </div> 
-            </div>
-        );    
+    const { signOut, isSignedIn, history } = this.props;
+
+    if (isSignedIn) {
+      return (
+        <div>
+          <a href="javascript:void(0)" onClick={() => signOut(history, '/signin')} className="button-icon">
+            <i className="window close outline icon" />
+          </a>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <div className="button-Sign-Up-In">
+            <Link to="/signup">Sign Up</Link>
+          </div>
+
+          <div className="button-Sign-Up-In">
+            <Link to="/signin">Sign In</Link>
+          </div>
+        </div>
+      )
     }
+  }
+
+  renderEjercicios() {
+    if (this.props.isSignedIn) {
+      return (
+        <Link to="/routinesType" className="button-icon">
+          <i className="trophy icon"></i>
+        </Link>
+      );
+    } else {
+      return (
+        <div className="button-icon-disable">
+          <i className="trophy icon"></i>
+        </div>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <div className="ui menu">
+        <div>{this.renderEjercicios()}</div>
+        <div className="right menu" align="center">
+          <div>
+            {this.renderAuth()}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
-    return { isSignedIn: state.auth.isSignedIn };
+  return { isSignedIn: state.auth.isSignedIn };
 }
 
 
-export default connect(mapStateToProps, {signIn, signError}) (Header);
+export default
+  compose(
+    connect(mapStateToProps, { signIn, signError, signOut }),
+    withRouter
+  )(Header);

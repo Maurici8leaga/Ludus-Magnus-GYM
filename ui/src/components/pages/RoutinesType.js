@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeMusculo } from '../../actions';
+import './RoutinesType.scss';
 
 class RoutinesType extends Component {
 
@@ -13,20 +14,28 @@ class RoutinesType extends Component {
 
     render() {
         return (
-            <div className="ui container" align="center">
-                <h1>TIPOS DE RUTINA</h1>
-                <li className="ui vertical buttons">
-                    <button className="fluid ui basic button" onClick={this.buttonState('BICEP')}>BICEP</button>
-                    <button className="fluid ui basic button" onClick={this.buttonState('TRICEP')}>TRICEP</button>
-                    <button className="fluid ui basic button" onClick={this.buttonState('PECHO')}>PECHO</button>
-                    <button className="fluid ui basic button" onClick={this.buttonState('HOMBRO')}>HOMBRO</button>
-                    <button className="fluid ui basic button" onClick={this.buttonState('ESPALDA')}>ESPALDA</button>
-                    <button className="fluid ui basic button" onClick={this.buttonState('PIERNA')}>PIERNA</button>
-                    <button className="fluid ui basic button" onClick={this.buttonState('ABDOMINAL')}>ABDOMINAL</button>
-                </li>
-            </div>
-        );
+            <div className="ui container">
 
+                <h1 className="intro">TIPOS DE RUTINA</h1>
+
+                <div className="button-container">
+                    <div className="button-div" onClick={this.buttonState('BICEP')}> BICEP </div>
+                    <div className="button-div" onClick={this.buttonState('TRICEP')}>TRICEP</div>
+                </div>
+                <div className="button-container">
+                    <div className="button-div" onClick={this.buttonState('PECHO')}>PECHO</div>
+                    <div className="button-div" onClick={this.buttonState('HOMBRO')}>HOMBRO</div>
+                </div>
+                <div className="button-container">
+                    <div className="button-div" onClick={this.buttonState('ESPALDA')}>ESPALDA</div>
+                    <div className="button-div" onClick={this.buttonState('PIERNA')}>PIERNA</div>
+                </div>
+                <div className="button-container">
+                    <div className="button-div" onClick={this.buttonState('ABDOMINAL')}>ABDOMINAL</div>
+                </div>
+
+            </div>    
+        );
     }
 }
 

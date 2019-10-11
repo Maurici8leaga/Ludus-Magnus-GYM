@@ -20,6 +20,7 @@ class SignIn extends Component {
     return (
       <form className="ui form" onSubmit={handleSubmit(this.onSubmit)}>
 
+        <h1 className="intro" align="center">MONSTER GYM</h1>
 
         <div className="ui grid">
 

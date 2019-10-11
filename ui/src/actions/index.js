@@ -19,9 +19,9 @@ export const signUp = (formProps, callback) => async dispatch => {
     }
 };
 
-export const singOut = () => {
+export const signOut = (history, path) => {
     localStorage.removeItem('token');
-
+    history.push(path);
     return{
         type: SIGN_IN,
         payload:''
