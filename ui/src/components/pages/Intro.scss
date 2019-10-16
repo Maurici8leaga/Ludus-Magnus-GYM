@@ -4,6 +4,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    background-attachment: fixed;
+    // <---- importante para que la imagen se adapte a toda la PANTALLA
     color: black;
 }
 

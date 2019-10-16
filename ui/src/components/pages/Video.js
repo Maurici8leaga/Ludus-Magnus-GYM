@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Youtube from '../../apis/Youtube';
 import VideoList from '../videoTools/VideoList';
 import VideoDetail from '../videoTools/VideoDetail';
+import './RoutinesType.scss';
 
 class Video extends Component {
     state = { videos: [], selectedVideo: null};
@@ -35,8 +36,10 @@ class Video extends Component {
         const { selectedMusculo, selectedEjercicio } = this.props;
         return(
             <div className="ui container">
-                <h1 align="center">Rutina de {selectedMusculo} - {selectedEjercicio}</h1>
+
+                <h1 className="intro">Rutina de {selectedMusculo} - {selectedEjercicio}</h1>
                 {/* <Barra onFormSubmit={this.onTermSubmit}/> */}
+
                 <div className="ui grid">
                     <div className="ui row">
                         <div className="eleven wide column">
