@@ -1,85 +1,138 @@
-import React, {Component} from 'react';
-import {reduxForm, Field} from 'redux-form';
+import React, { Component } from 'react';
+import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-class SignUp extends Component{
+class SignUp extends Component {
 
-    onSubmit = (formProps) => {
-            // "formProps" en el se pasara el email y el password del user creado
-        this.props.signUp(formProps, () => {
-            this.props.history.push('/routinesType');
-            // una vez que sea creado success sera renderizado al route "/routinesType"
-        });
-    }
+  state = { gender: '' }
 
-    render(){
 
-        const {handleSubmit} = this.props;
-        return(
+  handleChangeGender = (e) => {
+    this.setState({ gender: e.target.value });
+  }
 
-            <form className="ui form" onSubmit={handleSubmit(this.onSubmit)}>
+  onSubmit = (formProps) => {
+    
+    // --> Otra forma de pasar el value de "sex" sin usar ReduxForm --->>>
+    // formProps.sex = this.state.gender;
+    // El "gender" al ser un state aparte de los otros components que estan siendo manejados por ReduxForm, este se le debe
+    // crear una propiedad al "formProps" para que se pueda enviar al data-base
 
-                <h1 className="intro">MONSTER GYM</h1>
-            
-                <div className="ui grid">
-                    <div className=" eight column">
-                        <div className="ui centered card">
 
-                            <div className="content">
-                                <h3 className="ui dividing header">Sign Up</h3>
+    // "formProps" en el se pasara el email y el password del user creado
+    this.props.signUp(formProps, () => {
+      this.props.history.push('/routinesType');
+      // una vez que sea creado success sera renderizado al route "/routinesType"
+    });
+  }
 
-                                <div className="field">
-                                    <div className="two fields">
-                                    <div className="field">
-                                            <label>Nombre</label>
-                                            <Field type="text" component="input" name="name" autoComplete="none" placeholder="Nombre"/>
-                                        </div>
+  render() {
 
-                                        <div className="field">
-                                            <label>Apellido</label>
-                                            <Field type="text" component="input" name="lastname" autoComplete="none" placeholder="Apellido"/>
-                                        </div>
-                                    </div>
-                                
-                                    <div className="field">
-                                        <label>Email</label>
-                                        <div className="ui left icon input">
-                                            <Field type="text" component="input" name="email"  autoComplete="none" placeholder="prueba@gym.com"/>
-                                            {/* Es importante usar "Field" aca ya que con el redux nos da la facilidad de crear este form sin necesidad de crear un state para este componente, ya que este "Field" se conecta con los actions y reducers de nuestra app */}
-                                            <i className="user icon"></i>
-                                        </div>
-                                    </div>
+    const { handleSubmit } = this.props;
+    return (
 
-                                    <div className="field">
-                                        <label>Password</label>
-                                        <div className="ui left icon input">
-                                            <Field type="password" component="input" name="password"  autoComplete= "none" placeholder="password"/>
-                                            <i className="lock icon"></i>
-                                        </div>
-                                    </div>
-                                    <div>{this.props.ErrorMessage}</div>
-                                    <button className="ui orange submit button" type="submit">Sign Up</button>
+      <form className="ui form" onSubmit={handleSubmit(this.onSubmit)}>
 
-                                </div>
-                            </div>
+        <h1 className="intro">MONSTER GYM</h1>
 
-                        </div>
+        <div className="ui grid">
+          <div className=" eight column">
+            <div className="ui centered card">
+
+              <div className="content">
+                <h3 className="ui dividing header">Sign Up</h3>
+
+                <div className="field">
+
+                  <div className="two fields">
+                    <div className="field">
+                      <label>Nombre</label>
+                      <Field type="text" component="input" name="name" autoComplete="none" placeholder="Nombre" />
                     </div>
+
+                    <div className="field">
+                      <label>Apellido</label>
+                      <Field type="text" component="input" name="lastname" autoComplete="none" placeholder="Apellido" />
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <Field type="number" component="input" name="age" autoComplete="none" placeholder="Edad" />
+                    <div className="ui basic label">
+                      Años
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <Field className="ui dropdown" component="select" name="sex" value={this.state.gender} onChange={this.handleChangeGender}>
+                      <option value="" disabled>Sexo</option>
+                      <option value="H">Hombre</option>
+                      <option value="M">Mujer</option>
+                    </Field>
+                  </div>
+
+                  <div className="Field">
+                    <div className="tree fields">
+
+                      <div className="field">
+                        <Field type="number" component="input" name="weight" autoComplete="none" placeholder="Peso" />
+                        <div className="ui basic label">
+                          Kg
+                        </div>
+                      </div>
+
+
+                      <div className="field">
+                        <Field type="number" component="input" name="height" autoComplete="none" placeholder="Altura" />
+                        <div className="ui basic label">
+                          m
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label>Email</label>
+                    <div className="ui left icon input">
+                      <Field type="text" component="input" name="email" autoComplete="none" placeholder="prueba@gym.com" />
+                      {/* Es importante usar "Field" aca ya que con el redux nos da la facilidad de crear este form sin necesidad de crear un state para este componente, ya que este "Field" se conecta con los actions y reducers de nuestra app */}
+                      <i className="user icon"></i>
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label>Password</label>
+                    <div className="ui left icon input">
+                      <Field type="password" component="input" name="password" autoComplete="none" placeholder="password" />
+                      <i className="lock icon"></i>
+                    </div>
+                  </div>
+                  <div>{this.props.ErrorMessage}</div>
+                  <button className="ui orange submit button" type="submit">Sign Up</button>
+
                 </div>
-            </form>
-        );
-    }
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    );
+  }
 }
 
-function mapStatetoProps (state){
-    return{ ErrorMessage: state.auth.ErrorMessage };
+function mapStatetoProps(state) {
+  return { ErrorMessage: state.auth.ErrorMessage };
 }
 
 export default compose(
-        // "compose" nos ayuda a poder conectar varios HOC de una manera mas DRY
-    connect(mapStatetoProps, actions),
-    reduxForm({form: 'signup'})
+  // "compose" nos ayuda a poder conectar varios HOC de una manera mas DRY
+  connect(mapStatetoProps, actions),
+  reduxForm({ form: 'signup' })
 )(SignUp);
 

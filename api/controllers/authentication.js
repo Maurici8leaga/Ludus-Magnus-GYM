@@ -20,6 +20,22 @@ exports.signup = function(req, res, next){
     const password= req.body.password;
     const name= req.body.name;
     const lastname= req.body.lastname;
+    const age = req.body.age;
+    const height = req.body.height;
+    const weight = req.body.weight;
+    const sex = req.body.sex;
+
+    if(!sex){
+        return req.status(422).send({ error: 'Debes colocar tu sexo'})
+    }
+
+    if(!age){
+        return req.status(422).send({ error: 'Debes colocar tu edad'})
+    }
+
+    if(!height || !weight){
+        return req.status(422).send({ error: 'Debes colocar Peso y Altura'})
+    }
 
     if(!name || !lastname){
         return req.status(422).send({ error: 'Debes colocar Nombre y Apellido'})
@@ -43,7 +59,11 @@ exports.signup = function(req, res, next){
             email,
             password,
             name,
-            lastname
+            lastname,
+            age,
+            height,
+            weight,
+            sex
         });
 
         user.save(function(err){

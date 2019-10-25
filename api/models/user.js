@@ -8,7 +8,11 @@ const userSchema = new Schema({
     // tipo de correo unico y con solo minuscula
     password: String,
     name: String,
-    lastname: String
+    lastname: String,
+    age: Number,
+    height: Number,
+    weight: Number,
+    sex: String
 });
 
 // Una vez guardado el user, se encriptara
