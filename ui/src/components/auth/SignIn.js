@@ -18,19 +18,16 @@ class SignIn extends Component {
 
     const { handleSubmit } = this.props;
     return (
-      <form className="ui form" onSubmit={handleSubmit(this.onSubmit)}>
+      <form className="ui inverted form" onSubmit={handleSubmit(this.onSubmit)}>
 
         <h1 className="intro" align="center">MONSTER GYM</h1>
 
-        <div className="ui grid">
-
-
-          <div className="two column">
-
-            <div className="ui centered card">
+        <div className="ui two column centered grid">
+          <div className="ui equal width grid">
+            <div className="grey column">
 
               <div className="content">
-                <h3 className="ui dividing header">Sign In</h3>
+                <h3 className="ui inverted dividing header">Sign In</h3>
 
                 <div className="field">
                   <label>Email</label>
@@ -50,17 +47,14 @@ class SignIn extends Component {
 
                 <div>{this.props.ErrorMessage}</div>
 
-                <button className="ui orange submit button" type="submit">Sign In</button>
+                <button className="orange fluid ui button" type="submit">Sign In</button>
+
               </div>
 
-
-
             </div>
-
-
-
           </div>
         </div>
+
       </form>
     );
   }
