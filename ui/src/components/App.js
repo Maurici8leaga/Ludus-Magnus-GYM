@@ -11,6 +11,7 @@ import Header from './Header';
 import SignIn from './auth/SignIn';
 // import SignOut from './auth/SignOut';
 import SignUp from './auth/SignUp';
+import Profile from './pages/Profile';
 import reducers from '../reducers';
 
 const store = createStore(
@@ -32,6 +33,7 @@ class App extends Component {
                                 <Route path="/signin" exact component={SignIn}/>
                                 {/* <Route path="/signout" exact component={SignOut}/> */}
                                 <Route path="/signup" exact component={SignUp}/>
+                                <Route path="/profile" exact component={Profile}/>
                                 <Route path="/routinesType" exact component={RoutinesType}/>
                                 <Route path="/routinesType/routin" exact component={Routin}/>
                                 <Route path="/routinesType/routin/video" exact component={Video}/>
