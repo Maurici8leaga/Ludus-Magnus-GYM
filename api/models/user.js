@@ -4,15 +4,40 @@ const bcrypt = require('bcrypt-nodejs');
 
 // Definiendo el model
 const userSchema = new Schema({
-    email: {type: String, unique: true, lowercase: true},
-    // tipo de correo unico y con solo minuscula
-    password: String,
-    name: String,
-    lastname: String,
-    age: Number,
-    height: Number,
-    weight: Number,
-    sex: String
+    email: {
+        type: String, 
+        unique: true, 
+        lowercase: true
+            // tipo de correo unico y con solo minuscula
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
+    },
+    age:{ 
+        type: Number,
+        required: true
+    },
+    height: {
+        type: Number,
+        required: true
+    },
+    weight: {
+        type: Number,
+        required: true
+    },
+    sex: {
+        type: String,
+        required: true
+    }
 });
 
 // Una vez guardado el user, se encriptara

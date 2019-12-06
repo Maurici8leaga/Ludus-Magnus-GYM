@@ -3,9 +3,15 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
-const router = require('./router');
+const passport = require('passport');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const { authRouter } = require('./routers/auth');
+const {routerProfile} = require('../api/routers/profile');
+// const Authentication = require('../api/controllers/authentication');
+// const requireSignin = passport.authenticate('local', {session: false});
+const requireAuth = passport.authenticate('jwt', {session: false});
+
 
 // configuracion MGDB
 mongoose.connect('mongodb://localhost:27017/gymAuth', { useNewUrlParser: true } );
@@ -15,7 +21,8 @@ mongoose.connect('mongodb://localhost:27017/gymAuth', { useNewUrlParser: true } 
 app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json({type: '*/*'}));
-router(app);
+app.use('/api', authRouter);
+app.use('/api/profile', requireAuth, routerProfile);
 
 
 const port = process.env.PORT || 3001;

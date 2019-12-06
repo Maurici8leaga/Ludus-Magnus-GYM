@@ -8,7 +8,7 @@ import axios from 'axios';
 
 export const signUp = (formProps, callback) => async dispatch => {
     try{
-        const response = await axios.post('http://localhost:3001/signup', formProps);
+        const response = await axios.post('http://localhost:3001/api/signup', formProps);
             // esto mandara la creacion de la cuenta al API creada en el puerto 3001, "formProps" hace referencia al email y password
         
         dispatch({type: SIGN_IN, payload: response.data.token});
@@ -31,7 +31,7 @@ export const signOut = (history, path) => {
 export const signIn = (formProps, callback) => async dispatch => {
 
     try{
-        const response = await axios.post('http://localhost:3001/signin', formProps);
+        const response = await axios.post('http://localhost:3001/api/signin', formProps);
          
         dispatch({ type: SIGN_IN, payload: response.data.token});
         localStorage.setItem('token', response.data.token);

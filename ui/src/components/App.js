@@ -29,14 +29,14 @@ class App extends Component {
                         <div>
                             <Header/>
                             <Switch>
-                                <Route path="/" exact component={Intro}/>
-                                <Route path="/signin" exact component={SignIn}/>
+                                <Route path="/api" exact component={Intro}/>
+                                <Route path="/api/signin" exact component={SignIn}/>
                                 {/* <Route path="/signout" exact component={SignOut}/> */}
-                                <Route path="/signup" exact component={SignUp}/>
-                                <Route path="/profile" exact component={Profile}/>
-                                <Route path="/routinesType" exact component={RoutinesType}/>
-                                <Route path="/routinesType/routin" exact component={Routin}/>
-                                <Route path="/routinesType/routin/video" exact component={Video}/>
+                                <Route path="/api/signup" exact component={SignUp}/>
+                                <Route path="/api/profile" exact component={Profile}/>
+                                <Route path="/api/routinesType" exact component={RoutinesType}/>
+                                <Route path="/api/routinesType/routin" exact component={Routin}/>
+                                <Route path="/api/routinesType/routin/video" exact component={Video}/>
                             </Switch>
                         </div>
                     </BrowserRouter>

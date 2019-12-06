@@ -9,8 +9,8 @@ class SignIn extends Component {
   onSubmit = (formProps) => {
     // "formProps" en el se pasara el email y el password del user creado
     this.props.signIn(formProps, () => {
-      this.props.history.push('/routinesType');
-      // una vez que sea creado success sera renderizado al route "/routinesType"
+      this.props.history.push('/api/routinesType');
+      // una vez que sea creado success sera renderizado al route "/api/routinesType"
     });
   }
 

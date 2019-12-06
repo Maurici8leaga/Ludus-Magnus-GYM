@@ -11,7 +11,7 @@ class Routin extends Component {
         const { history, changeEjercicio } = this.props
 
         changeEjercicio(ejercicio);
-        history.push('/routinesType/routin/video');
+        history.push('/api/routinesType/routin/video');
     }
 
 

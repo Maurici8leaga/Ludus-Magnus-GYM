@@ -16,14 +16,7 @@ exports.signin = function(req, res, next){
 
 exports.signup = function(req, res, next){
 
-    const email= req.body.email;
-    const password= req.body.password;
-    const name= req.body.name;
-    const lastname= req.body.lastname;
-    const age = req.body.age;
-    const height = req.body.height;
-    const weight = req.body.weight;
-    const sex = req.body.sex;
+    const {email, password, name, lastname, age, height, weight, sex} = req.body;
 
     if(!sex){
         return req.status(422).send({ error: 'Debes colocar tu sexo'})
@@ -49,7 +42,7 @@ exports.signup = function(req, res, next){
     User.findOne({ email } , function(err, existingUser){
         if(err) {return next(err);}
     
-    // si el el email del usuario existe, regresa un error
+    // si  el email del usuario existe, regresa un error
         if(existingUser) {
             return res.status(422).send({ error: 'El email ya existe'});
                     // se envia el mensaje del error con un status 422 en el cual no ejecuta la solicitud

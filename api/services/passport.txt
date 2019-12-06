@@ -31,8 +31,7 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 
 // opciones de configuracion para el Jwt Strategy
 const jwtOptions = {
-                                    // este "authorization-token-user" es el token que va ir en el header IMPORTANTE OJO
-    jwtFromRequest: ExtractJwt.fromHeader('authorization-token-user'),
+    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
         // lo que hace este "jwtFromRequest" es que cada vez que se solicite y se quiera el passport cuando se entre este debe fijarse en el encabezado de autorizacion del token
     secretOrKey: config.secret 
     // esto extraera nuestra string de seguridad
