@@ -9,7 +9,7 @@ class RoutinesType extends Component {
         const { history, changeMusculo } = this.props;
 
         changeMusculo(musculo);
-        history.push('/api/routinesType/routin');
+        history.push('/routinesType/routin');
     }
 
     render() {

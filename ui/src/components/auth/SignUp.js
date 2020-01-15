@@ -1,39 +1,40 @@
-import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { compose } from 'redux';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import PropTypes from 'prop-types';
+import {signUp} from '../../actions/index';
 
-class SignUp extends Component {
+const SignUp = ({signUp, isSignedIn}) => {
 
-  state = { gender: '' }
+  const [formData, SetFormData] = useState({
+    name: '',
+    lastname: '',
+    age: '',
+    sex: '',
+    weight: '',
+    height: '',
+    email: '',
+    password: ''
+  });
 
+  const {name, lastname, age, sex, weight, height, email, password} = formData;
 
-  handleChangeGender = (e) => {
-    this.setState({ gender: e.target.value });
+  const onChange = e => SetFormData({...formData, [e.target.name] : e.target.value});
+
+  const onSubmit = async e => {    
+    e.preventDefault();
+    signUp(formData);
+    // aqui se coloca "formData" ya que el contiene los state de los datos del usuario, si no se coloca dara un error 422
+    console.log('SUBMIT --->', formData);  
   }
 
-  onSubmit = (formProps) => {
-    
-    // --> Otra forma de pasar el value de "sex" sin usar ReduxForm --->>>
-    // formProps.sex = this.state.gender;
-    // El "gender" al ser un state aparte de los otros components que estan siendo manejados por ReduxForm, este se le debe
-    // crear una propiedad al "formProps" para que se pueda enviar al data-base
-
-
-    // "formProps" en el se pasara el email y el password del user creado
-    this.props.signUp(formProps, () => {
-      this.props.history.push('/api/routinesType');
-      // una vez que sea creado success sera renderizado al route "/api/routinesType"
-    });
+  if(isSignedIn){ 
+    return <Redirect to='/routinesType' />; 
   }
 
-  render() {
-
-    const { handleSubmit } = this.props;
     return (
 
-      <form className="ui inverted form" onSubmit={handleSubmit(this.onSubmit)}>
+      <form className="ui inverted form" onSubmit={e => onSubmit(e)}>
 
         <h1 className="intro">MONSTER GYM</h1>
 
@@ -48,11 +49,11 @@ class SignUp extends Component {
                   <label>Nombre</label>
                   <div className="two fields">
                     <div className="field">
-                      <Field type="text" component="input" name="name" autoComplete="none" placeholder="Nombre" />
+                      <input type="text" name="name" autoComplete="none" placeholder="Nombre" value={name} onChange={e=> onChange(e)} required/>
                     </div>
 
                     <div className="field">
-                      <Field type="text" component="input" name="lastname" autoComplete="none" placeholder="Apellido" />
+                      <input type="text" name="lastname" autoComplete="none" placeholder="Apellido" value={lastname} onChange={e=> onChange(e)} required/>
                     </div>
                   </div>
                 </div>
@@ -61,27 +62,27 @@ class SignUp extends Component {
                   <div className="four wide field">
                     <label>Años</label>
                                   {/* el "min = 0" hace que solo sean numeros positivos en el input, y "step" es para que el numero aumente 1 a 1*/}
-                    <Field type="number" min="0" step="1" component="input" name="age" autoComplete="none" placeholder="Edad" />
+                    <input type="number" min="0" step="1"  name="age" autoComplete="none" placeholder="Edad" value={age} onChange={e=> onChange(e)} required/>
                   </div>
 
                   <div className="four wide field">
                     <label>Sexo</label>
-                    <Field className="ui dropdown" component="select" name="sex" value={this.state.gender} onChange={this.handleChangeGender} placeholder="sexo">
-                      <option value="" disabled>Selecciona</option>
-                      <option value="H">Hombre</option>
-                      <option value="M">Mujer</option>
-                    </Field>
+                    <select className="ui dropdown" name="sex" value={sex} onChange={e => onChange(e)} required>
+                      <option value="" >Selecciona un Genero</option>
+                      <option value="Hombre">Hombre</option>
+                      <option value="Mujer">Mujer</option>
+                    </select>
                   </div>
 
                   <div className="four wide field">
                     <label>Peso</label>
-                    <Field type="number" min="0" step="0.1" component="input" name="weight" autoComplete="none" placeholder="Kg" />
+                    <input type="number" min="0" step="0.1" name="weight" autoComplete="none" placeholder="Kg" value={weight} onChange={e=> onChange(e)} required/>
                   </div>
 
 
                   <div className="four wide field">
                     <label>Altura</label>
-                    <Field type="number" min="0" step="0.1" component="input" name="height" autoComplete="none" placeholder="metros" />
+                    <input type="number" min="0" step="0.1" name="height" autoComplete="none" placeholder="metros" value={height} onChange={e=> onChange(e)} required/>
                   </div>
                 
                 </div>
@@ -89,7 +90,7 @@ class SignUp extends Component {
                 <div className="field">
                   <label>Email</label>
                   <div className="ui left icon input">
-                    <Field type="text" component="input" name="email" autoComplete="none" placeholder="prueba@gym.com" />
+                    <input type="text" name="email" autoComplete="none" placeholder="prueba@gym.com" value={email} onChange={e=> onChange(e)} required/>
                       {/* Es importante usar "Field" aca ya que con el redux nos da la facilidad de crear este form sin necesidad de crear un state para este componente, ya que este "Field" se conecta con los actions y reducers de nuestra app */}
                     <i className="user icon"></i>
                   </div>
@@ -98,13 +99,13 @@ class SignUp extends Component {
                 <div className="field">
                   <label>Password</label>
                   <div className="ui left icon input">
-                    <Field type="password" component="input" name="password" autoComplete="none" placeholder="password" />
+                    <input type="password" name="password" autoComplete="none" placeholder="password" value={password} onChange={e=> onChange(e)} required/>
                     <i className="lock icon"></i>
                   </div>
                 </div>
 
-                <div>{this.props.ErrorMessage}</div>
-                <button className="orange fluid ui button" type="submit">Sign Up</button>
+                {/* <div>{ErrorMessage}</div> */}
+                <button className="orange fluid ui button" type="submit" value="Register">Sign Up</button>
 
               
 
@@ -116,15 +117,17 @@ class SignUp extends Component {
       </form>
     );
   }
-}
 
-function mapStatetoProps(state) {
-  return { ErrorMessage: state.auth.ErrorMessage };
-}
+  SignUp.propTypes = {
+    signUp: PropTypes.func.isRequired,
+    isSignedIn: PropTypes.bool
+  }
+  
 
-export default compose(
-  // "compose" nos ayuda a poder conectar varios HOC de una manera mas DRY
-  connect(mapStatetoProps, actions),
-  reduxForm({ form: 'signup' })
-)(SignUp);
+const mapStatetoProps = state => ({
+  isSignedIn: state.auth.isSignedIn,
+  // ErrorMessage: state.auth.ErrorMessage
+}, console.log('LOGIN ¿? --->', state.auth.isSignedIn)
+);
 
+export default connect(mapStatetoProps, {signUp}) (SignUp);

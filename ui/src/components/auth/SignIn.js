@@ -1,24 +1,36 @@
-import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { compose } from 'redux';
+import React, { useState } from 'react';
+import {Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import PropTypes from 'prop-types';
+import { signIn } from '../../actions/index';
 
-class SignIn extends Component {
+const SignIn = ({signIn, isSignedIn }) => {
 
-  onSubmit = (formProps) => {
-    // "formProps" en el se pasara el email y el password del user creado
-    this.props.signIn(formProps, () => {
-      this.props.history.push('/api/routinesType');
-      // una vez que sea creado success sera renderizado al route "/api/routinesType"
-    });
+  const [formData, setFormData] = useState({
+      email:'',
+      password: '',
+  });
+
+  const {email, password} = formData;
+
+                                      // el "[e.target.name]" va a permitir cambiar el valor del state del name del input (podria ser email , password etc)
+                                                    // el "e.target.value" va a ser el estate actualizado
+  const onChange = e => setFormData({...formData, [e.target.name] : e.target.value});
+    // con esto estamos indicando que al llamar "onChange" va a cambiar el state del "setFormData"
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    signIn(formData);
+    console.log('SUBMIT --->', formData);
   }
 
-  render() {
+  if(isSignedIn){
+    return <Redirect to='/routinesType'/>;
+  }
 
-    const { handleSubmit } = this.props;
     return (
-      <form className="ui inverted form" onSubmit={handleSubmit(this.onSubmit)}>
+      <form className="ui inverted form" onSubmit={e => onSubmit(e)}>
+                                    {/* cuando el usuario realice el "onSubmit" este ejecutara la llamada de 'e' que es el evento que se encuentra dentro del "onSubmit"*/}
 
         <h1 className="intro" align="center">MONSTER GYM</h1>
 
@@ -32,7 +44,7 @@ class SignIn extends Component {
                 <div className="field">
                   <label>Email</label>
                   <div className="ui left icon input">
-                    <Field type="text" component="input" name="email" placeholder="prueba@gmail.com" autoComplete="none" />
+                    <input type="text" component="input" name="email" placeholder="prueba@gmail.com" value={email} onChange={e=> onChange(e)} required autoComplete="none" />
                     <i className="user icon"></i>
                   </div>
                 </div>
@@ -40,17 +52,23 @@ class SignIn extends Component {
                 <div className="field">
                   <label>Password</label>
                   <div className="ui left icon input">
-                    <Field type="password" component="input" name="password" placeholder="password" autoComplete="none" />
+                    <input type="password" component="input" name="password" placeholder="password" value={password} onChange={e=> onChange(e)} required autoComplete="none" />
                     <i className="lock icon"></i>
                   </div>
                 </div>
 
-                <div>{this.props.ErrorMessage}</div>
+                {/* <div>{ErrorMessage}</div> */}
 
-                <button className="orange fluid ui button" type="submit">Sign In</button>
+                <div>
+                  <input className="orange fluid ui button" type="submit" value="Login" />
+                </div>
+
+                {/* <div>
+                  Don't have an account? <Redirect  className="button" to="/signup">Sign Up</Redirect>
+                </div> */}
+                {/* buscar la manera de crear esto <----- de otra forma ya que da error si se deja como esta */}
 
               </div>
-
             </div>
           </div>
         </div>
@@ -58,15 +76,17 @@ class SignIn extends Component {
       </form>
     );
   }
+
+SignIn.propTypes = {
+  signIn: PropTypes.func.isRequired,
+  isSignedIn: PropTypes.bool
 }
 
-function mapStatetoProps(state) {
-  return { ErrorMessage: state.auth.ErrorMessage };
-}
+const mapStatetoProps = state =>({
+    isSignedIn: state.auth.isSignedIn,
+    // ErrorMessage: state.auth.ErrorMessage
+},console.log('LOGIN ¿? --->', state.auth.isSignedIn))
 
-export default compose(
-  // "compose" nos ayuda a poder conectar varios HOC de una manera mas DRY
-  connect(mapStatetoProps, actions),
-  reduxForm({ form: 'signin' })
-)(SignIn);
+export default connect(mapStatetoProps, {signIn}) (SignIn);
+                                  // se pasa solo "signIn" porque el es la funcion, el isSignedIn es mas condicion de estado
 

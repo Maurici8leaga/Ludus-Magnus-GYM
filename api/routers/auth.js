@@ -9,4 +9,5 @@ const authRouter = express.Router();
     // aca solo se le coloca "/signIn o Up" ya que en el "index.js" tiene puesto el "/api"
 authRouter.post('/signin', requireSignin, Authentication.signin);
 authRouter.post('/signup', Authentication.signup);
+
 module.exports = { authRouter }

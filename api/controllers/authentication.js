@@ -16,22 +16,23 @@ exports.signin = function(req, res, next){
 
 exports.signup = function(req, res, next){
 
-    const {email, password, name, lastname, age, height, weight, sex} = req.body;
+    const {email, password, name, lastname, age, height, sex, weight} = req.body;
 
     if(!sex){
-        return req.status(422).send({ error: 'Debes colocar tu sexo'})
+        console.log(sex);
+        return res.status(422).send({ error: 'Debes colocar tu sexo'})
     }
 
     if(!age){
-        return req.status(422).send({ error: 'Debes colocar tu edad'})
+        return res.status(422).send({ error: 'Debes colocar tu edad'})
     }
 
     if(!height || !weight){
-        return req.status(422).send({ error: 'Debes colocar Peso y Altura'})
+        return res.status(422).send({ error: 'Debes colocar Peso y Altura'})
     }
 
     if(!name || !lastname){
-        return req.status(422).send({ error: 'Debes colocar Nombre y Apellido'})
+        return res.status(422).send({ error: 'Debes colocar Nombre y Apellido'})
     }
 
     if(!email || !password){

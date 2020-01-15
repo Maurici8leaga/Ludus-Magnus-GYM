@@ -1,24 +1,22 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
-import reduxThunk from 'redux-thunk';
 import Intro from './pages/Intro';
 import Routin from './pages/Routin';
 import RoutinesType from './pages/RoutinesType';
+import RequireAuth from './RequireAuth';
 import Video from './pages/Video';
 import Header from './Header';
 import SignIn from './auth/SignIn';
-// import SignOut from './auth/SignOut';
 import SignUp from './auth/SignUp';
 import Profile from './pages/Profile';
-import reducers from '../reducers';
+import store from './store';
+import setAuthToken from './interceptor/setAuthToken';
 
-const store = createStore(
-    reducers,
-    {auth: {isSignedIn: localStorage.getItem('token')}},
-    applyMiddleware(reduxThunk)
-);
+if(localStorage.token){
+    setAuthToken(localStorage.token);
+    console.log('TOKEN ---->', localStorage.token);
+}
 
 class App extends Component {
     render(){
@@ -29,14 +27,14 @@ class App extends Component {
                         <div>
                             <Header/>
                             <Switch>
-                                <Route path="/api" exact component={Intro}/>
-                                <Route path="/api/signin" exact component={SignIn}/>
-                                {/* <Route path="/signout" exact component={SignOut}/> */}
-                                <Route path="/api/signup" exact component={SignUp}/>
-                                <Route path="/api/profile" exact component={Profile}/>
-                                <Route path="/api/routinesType" exact component={RoutinesType}/>
-                                <Route path="/api/routinesType/routin" exact component={Routin}/>
-                                <Route path="/api/routinesType/routin/video" exact component={Video}/>
+                                {/* NOTA LAS RUTAS DEL FRONTEND DEBEN SER DISTINTAS AL DEL BACKEND PARA NO CONFUNDIRSE */}
+                                <Route path="/" exact component={Intro}/>
+                                <Route path="/signin" exact component={SignIn}/>
+                                <Route path="/signup" exact component={SignUp}/>
+                                <Route path="/profile" exact component={Profile}/>
+                                <Route path="/routinesType" exact component={RoutinesType}/>
+                                <Route path="/routinesType/routin" exact component={Routin}/>
+                                <Route path="/routinesType/routin/video" exact component={Video}/>
                             </Switch>
                         </div>
                     </BrowserRouter>

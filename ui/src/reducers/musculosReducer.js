@@ -5,9 +5,12 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-    switch(action.type){
+
+    const {type, payload} = action;
+
+    switch(type){
         case CHANGE_MUSCULO:
-            return {...state, selectedMusculo: action.payload};
+            return {...state, selectedMusculo: payload};
         default:
             return state;
     }

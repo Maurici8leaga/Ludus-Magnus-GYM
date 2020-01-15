@@ -16,20 +16,23 @@ class Header extends Component {
     if (isSignedIn) {
       return (
         <div>
-          <a href="javascript:void(0)" onClick={() => signOut(history, '/api/signin')} className="button-icon">
+          <a href="javascript:void(0)" onClick={() => signOut(history, '/signin')} className="button-icon">
             <i className="window close outline icon" />
           </a>
+          <Link to="/profile">
+            <i className="user icon"/>
+          </Link>
         </div>
       )
     } else {
       return (
         <div>
           <div className="button-Sign-Up-In">
-            <Link to="/api/signup">Sign Up</Link>
+            <Link to="/signup">Sign Up</Link>
           </div>
 
           <div className="button-Sign-Up-In">
-            <Link to="/api/signin">Sign In</Link>
+            <Link to="/signin">Sign In</Link>
           </div>
         </div>
       )
@@ -39,7 +42,7 @@ class Header extends Component {
   renderEjercicios() {
     if (this.props.isSignedIn) {
       return (
-        <Link to="/api/routinesType" className="button-icon">
+        <Link to="/routinesType" className="button-icon">
           <i className="trophy icon"></i>
         </Link>
       );

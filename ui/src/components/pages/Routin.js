@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {changeEjercicio} from '../../actions';
-import { compose } from 'redux';
-import requireAuth from '../requireAuth';
 import './RoutinesType.scss';
 
 class Routin extends Component {
@@ -11,7 +9,7 @@ class Routin extends Component {
         const { history, changeEjercicio } = this.props
 
         changeEjercicio(ejercicio);
-        history.push('/api/routinesType/routin/video');
+        history.push('/routinesType/routin/video');
     }
 
 
@@ -39,7 +37,4 @@ const mapStateToProps = ({ musculos }) => {
 }
 
 // aqui falta incorporar el compose para unirlo con el "requireAuth"
-export default compose(
-    connect(mapStateToProps, {changeEjercicio}),
-    requireAuth
-)(Routin);
+export default connect(mapStateToProps, {changeEjercicio})(Routin);
