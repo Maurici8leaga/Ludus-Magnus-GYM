@@ -29,6 +29,8 @@ const SignUp = ({signUp, isSignedIn}) => {
   }
 
   if(isSignedIn){ 
+    console.log('LOGIN ¿OJO? --->', isSignedIn);
+
     return <Redirect to='/routinesType' />; 
   }
 
@@ -127,7 +129,6 @@ const SignUp = ({signUp, isSignedIn}) => {
 const mapStatetoProps = state => ({
   isSignedIn: state.auth.isSignedIn,
   // ErrorMessage: state.auth.ErrorMessage
-}, console.log('LOGIN ¿? --->', state.auth.isSignedIn)
-);
+});
 
 export default connect(mapStatetoProps, {signUp}) (SignUp);

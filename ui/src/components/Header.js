@@ -11,14 +11,14 @@ class Header extends Component {
 
   renderAuth() {
 
-    const { signOut, isSignedIn, history } = this.props;
+    const { signOut, isSignedIn } = this.props;
 
     if (isSignedIn) {
       return (
         <div>
-          <a href="javascript:void(0)" onClick={() => signOut(history, '/signin')} className="button-icon">
+          <Link  to='/signin' onClick={() => signOut()} className="button-icon">
             <i className="window close outline icon" />
-          </a>
+          </Link>
           <Link to="/profile">
             <i className="user icon"/>
           </Link>
@@ -34,6 +34,8 @@ class Header extends Component {
           <div className="button-Sign-Up-In">
             <Link to="/signin">Sign In</Link>
           </div>
+
+          {console.log('LOGIN ¿OJO? --->', isSignedIn)}
         </div>
       )
     }

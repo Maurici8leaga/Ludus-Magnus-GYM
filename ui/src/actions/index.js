@@ -4,7 +4,9 @@ import {
     SIGN_ERROR,
     CHANGE_MUSCULO,
     CHANGE_EJERCICIO,
-    LOGOUT
+    GET_PROFILE,
+    LOGOUT,
+    CLEAR_PROFILE
 } from './types';
 import axios from 'axios';
 
@@ -23,12 +25,13 @@ export const signUp = ({email, password, name, lastname, age, height, sex, weigh
         // localStorage.setItem('token', response.data);
         //     // "setItem" es un metodo para actualizar o crear una clave, en este casi el "token" es el contenido que se quiere crear o actualizar, y "response.data.token" es el valor que va a llevar
         // callback();
+        dispatch({ type: GET_PROFILE });
         } catch(e) {
         dispatch({type: SIGN_ERROR, payload: 'Email en uso'});
     }
 };
 
-export const signIn = ({email, password, callback}) => async dispatch => {
+export const signIn = ({email, password}) => async dispatch => {
 
     const KeyValue = { headers: { 'Content-Type': 'application/json' }};
 
@@ -40,6 +43,7 @@ export const signIn = ({email, password, callback}) => async dispatch => {
          
         dispatch({ type: SIGN_IN, payload: response.data});
         // callback();
+        dispatch({ type: GET_PROFILE });
         } catch(e){
         dispatch({ type: SIGN_ERROR, payload: 'Usuario Invalido, password o email incorrecto'});
     }
@@ -66,5 +70,6 @@ export const changeEjercicio = (ejercicio) => {
 };
 
 export const signOut = () => dispatch => {
+    dispatch({ type: CLEAR_PROFILE });
     dispatch({ type: LOGOUT });
 };

@@ -15,6 +15,7 @@ import setAuthToken from './interceptor/setAuthToken';
 
 if(localStorage.token){
     setAuthToken(localStorage.token);
+    // <--- de esta forma el "setAuthToken" actualiza el token del axios. El token que tendra sera el ultimo usuario en logearse
     console.log('TOKEN ---->', localStorage.token);
 }
 
@@ -31,10 +32,10 @@ class App extends Component {
                                 <Route path="/" exact component={Intro}/>
                                 <Route path="/signin" exact component={SignIn}/>
                                 <Route path="/signup" exact component={SignUp}/>
-                                <Route path="/profile" exact component={Profile}/>
-                                <Route path="/routinesType" exact component={RoutinesType}/>
-                                <Route path="/routinesType/routin" exact component={Routin}/>
-                                <Route path="/routinesType/routin/video" exact component={Video}/>
+                                <RequireAuth path="/profile" exact component={Profile}/>
+                                <RequireAuth path="/routinesType" exact component={RoutinesType}/>
+                                <RequireAuth path="/routinesType/routin" exact component={Routin}/>
+                                <RequireAuth path="/routinesType/routin/video" exact component={Video}/>
                             </Switch>
                         </div>
                     </BrowserRouter>

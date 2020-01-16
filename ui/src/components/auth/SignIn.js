@@ -25,6 +25,8 @@ const SignIn = ({signIn, isSignedIn }) => {
   }
 
   if(isSignedIn){
+    console.log('LOGIN ¿OJO? --->', isSignedIn);
+
     return <Redirect to='/routinesType'/>;
   }
 
@@ -85,7 +87,7 @@ SignIn.propTypes = {
 const mapStatetoProps = state =>({
     isSignedIn: state.auth.isSignedIn,
     // ErrorMessage: state.auth.ErrorMessage
-},console.log('LOGIN ¿? --->', state.auth.isSignedIn))
+});
 
 export default connect(mapStatetoProps, {signIn}) (SignIn);
                                   // se pasa solo "signIn" porque el es la funcion, el isSignedIn es mas condicion de estado
