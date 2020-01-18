@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {getProfile} from '../../actions/profile';
 
-const Profile = ({getProfile, profile, auth : {user}}) => {
+const Profile = ({getProfile, profile}) => {
 
 
     useEffect(() => {
         getProfile();
-        console.log('Profile --->', profile);
-        console.log('user -->', user);
+        // console.log('Profile --->', profile);
     }, []);
+    
+    console.log('Profile --->', profile);
 
+    // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" para evitar que me muestre un profile vacio
+    if (!profile || !profile._id) return null;
 
+    const { _id, name, lastname, age, height, weight } = profile;  
+    
     return(
             <div className="ui centered grid">
                 <div className="ui items">
@@ -33,12 +38,12 @@ const Profile = ({getProfile, profile, auth : {user}}) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr key={profile._id}>
-                                    <td>{profile.name}</td>
-                                    <td>{profile.lastname}</td>
-                                    <td>{profile.age}</td>
-                                    <td>{profile.height}</td>
-                                    <td>{profile.weight}</td>
+                                <tr key={_id}>
+                                    <td>{name}</td>
+                                    <td>{lastname}</td>
+                                    <td>{age}</td>
+                                    <td>{height}</td>
+                                    <td>{weight}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -50,13 +55,14 @@ const Profile = ({getProfile, profile, auth : {user}}) => {
 
 Profile.propTypes = {
     getProfile:PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired
+    ProfileUser: PropTypes.object
+    // ProfileUser es mi objeto en donde tengo contenido la info del user, IMPORTANTE!!! COMPRENDER ESTO!!!
+    // NO se le coloca "isRequired" ya que la data no se obtine en el primer momento, tiene que buscarse en el servidor y luego traerla, se le quita el "isRequired" para no causar problemas
 }
 
 const mapStateToProps = state => ({
-    auth: state.auth,
-    profile: state.profile
+    profile: state.profile.ProfileUser
+    // se coloca "profile" para el nombre del prop de manera de no tener REDUDANCIA con el OBJETO que esta anidado dentro de mi reducer, para diferenciarlo se llaman distinto
 });
 
 export default connect (mapStateToProps, {getProfile})(Profile);

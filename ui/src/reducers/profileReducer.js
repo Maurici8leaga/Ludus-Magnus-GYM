@@ -1,7 +1,7 @@
 import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from '../../src/actions/types';
 
 const INITIAL_STATE = {
-    profile : null,
+    ProfileUser : {},
     repos: [],
     error: {}
 };
@@ -13,7 +13,7 @@ export default (state = INITIAL_STATE, action) => {
         case GET_PROFILE:
             return{
                 ...state,
-                profile: payload,
+                ProfileUser: payload,
             }
         case PROFILE_ERROR:
             return{
@@ -23,7 +23,7 @@ export default (state = INITIAL_STATE, action) => {
         case CLEAR_PROFILE:
             return{
                 ...state,
-                profile: null,
+                ProfileUser: null,
                 repos: []
             }
         default:
