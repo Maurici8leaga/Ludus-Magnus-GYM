@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signIn, signError, signOut } from '../actions';
+import { signIn, signOut } from '../actions';
 import { compose } from 'redux';
 import './Header.scss';
 
@@ -78,6 +78,6 @@ const mapStateToProps = (state) => {
 
 export default
   compose(
-    connect(mapStateToProps, { signIn, signError, signOut }),
+    connect(mapStateToProps, { signIn, signOut }),
     withRouter
   )(Header);

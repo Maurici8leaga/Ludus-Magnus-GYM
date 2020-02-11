@@ -1,11 +1,11 @@
-import { SIGN_IN, SIGN_UP, SIGN_ERROR, LOGOUT } from '../actions/types';
+import { SIGN_IN, SIGN_UP, SIGN_IN_ERROR, SIGN_UP_ERROR, LOGOUT } from '../actions/types';
 import setAuthToken from '../../src/components/interceptor/setAuthToken';
 
 const INITIAL_STATE = {
     token: localStorage.getItem('token'),
     isSignedIn: null,
     user: null,
-    ErrorMessage: ''
+    // ErrorMessage: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -20,10 +20,11 @@ export default (state = INITIAL_STATE, action) => {
             setAuthToken(payload.token);
             // hay que actualizar el token de esta forma, ya que si no te carga siempre el ultimo token pero no te actualizara al nuevo ingresado
             return {...state, ...payload, isSignedIn: true, user: payload };
-        case SIGN_ERROR:
+        case SIGN_IN_ERROR:
+        case SIGN_UP_ERROR:
         case LOGOUT:
             localStorage.removeItem('token');
-            return {...state,token: null, isSignedIn: false, ErrorMessage: payload}
+            return {...state,token: null, isSignedIn: false}
         default:
             return state;
     }

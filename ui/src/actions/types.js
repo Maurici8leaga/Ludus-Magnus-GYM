@@ -1,9 +1,12 @@
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_UP = 'SIGN_UP';
-export const SIGN_ERROR = 'SIGN_ERROR';
+export const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
+export const SIGN_UP_ERROR = 'SIGN_UP_ERROR';
 export const CHANGE_MUSCULO = 'CHANGE_MUSCLE';
 export const CHANGE_EJERCICIO = 'CHANGE_EJERCICIO';
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+export const MESSAGE_ALERT = 'MESSAGE_ALERT';
+export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
