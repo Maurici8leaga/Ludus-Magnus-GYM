@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 const Alert = ({ alert }) =>
     alert !== null && alert.length > 0 && alert.map(message => (
-        // ELNOMBRE DE ESTA FUNCION "message" es fundamental ya que asi se podra tener acceso al ID, MSG, ETC del message
-        <div key={message.id} className='ui negative message'>
+        // EL NOMBRE DE ESTA FUNCION "message" es fundamental ya que asi se podra tener acceso al ID, MSG, ETC del message
+        <div key={message.id} className='ui yellow message'>
             {message.msg}
         </div>
     ));

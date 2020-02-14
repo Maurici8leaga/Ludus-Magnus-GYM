@@ -12,7 +12,7 @@ import {
 import { messageAlert } from './messageAlert';
 import axios from 'axios';
 
-export const signUp = ({ email, password, name, lastname, age, height, sex, weight }) => async dispatch => {
+export const signUp = ({ email, password, name, lastname, age, height, sex, weight }, user) => async dispatch => {
 
     const KeyValue = { headers: { 'Content-Type': 'application/json' } };
 
@@ -26,15 +26,16 @@ export const signUp = ({ email, password, name, lastname, age, height, sex, weig
         dispatch({ type: SIGN_UP, payload: response.data });
         // localStorage.setItem('token', response.data);
         //     // "setItem" es un metodo para actualizar o crear una clave, en este casi el "token" es el contenido que se quiere crear o actualizar, y "response.data.token" es el valor que va a llevar
-        // callback();
+        dispatch(messageAlert('Perfil creado correctamente'));
         dispatch({ type: GET_PROFILE });
-    } catch (e) {
-        const errors = e.response.data.errors;
+    } catch (err) {
+        const error = err.response.data.error;
 
-        if (errors) {
-            errors.forEach(e => dispatch(messageAlert(e.msg)));
+        if(err){
+            dispatch(messageAlert(error.msg))
         }
 
+            // FALTA MEJORAR TODOS LOS ALERT DE ERROR
         dispatch({ type: SIGN_UP_ERROR });
     }
 };
@@ -50,17 +51,12 @@ export const signIn = ({ email, password }) => async dispatch => {
         const response = await axios.post('http://localhost:3001/api/signin', body, KeyValue);
 
         dispatch({ type: SIGN_IN, payload: response.data });
-        // callback();
         dispatch({ type: GET_PROFILE });
     } catch (err) {
-        // const err = error.response.data.err;
 
-        // if(err){
-        //     // error.forEach(error => dispatch(messageAlert(error)));
-        //     err.forEach(err => dispatch(messageAlert(err)));
-        // }
-
-        dispatch(messageAlert(err));
+        if(err){
+            dispatch(messageAlert('Error al iniciar Sesion, Email o Password incorrecto. Verifique intentelo de nuevo'))
+        }
 
         dispatch({ type: SIGN_IN_ERROR });
     }

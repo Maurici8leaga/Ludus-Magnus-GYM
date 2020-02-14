@@ -25,9 +25,9 @@ class App extends Component {
             <div className="ui container">
                 <Provider store={store}>
                     <BrowserRouter>
-                        <Alert />
                         <div>
                             <Header />
+                            <Alert />
                             <Switch>
                                 {/* NOTA LAS RUTAS DEL FRONTEND DEBEN SER DISTINTAS AL DEL BACKEND PARA NO CONFUNDIRSE */}
                                 <Route path="/" exact component={Intro} />
