@@ -84,7 +84,7 @@ const SignUp = ({signUp, isSignedIn}) => {
 
                   <div className="four wide field">
                     <label>Altura</label>
-                    <input type="number" min="0" max="3" step="0.1" name="height" autoComplete="none" placeholder="metros" value={height} onChange={e=> onChange(e)} required/>
+                    <input type="number" min="0" max="3" step="0.01" name="height" autoComplete="none" placeholder="metros" value={height} onChange={e=> onChange(e)} required/>
                   </div>
                 
                 </div>

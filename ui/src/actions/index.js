@@ -52,6 +52,7 @@ export const signIn = ({ email, password }) => async dispatch => {
 
         dispatch({ type: SIGN_IN, payload: response.data });
         dispatch({ type: GET_PROFILE });
+        dispatch(messageAlert(`Hola! Bienvenido ${email} Sesion Iniciada Correctamente`))
     } catch (err) {
 
         if(err){
@@ -80,4 +81,5 @@ export const changeEjercicio = (ejercicio) => {
 export const signOut = () => dispatch => {
     dispatch({ type: CLEAR_PROFILE });
     dispatch({ type: LOGOUT });
+    dispatch(messageAlert('Adios!, sesion cerrada'));
 };
