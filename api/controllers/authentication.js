@@ -64,12 +64,11 @@ exports.signup = function (req, res, next) {
         user.save(function (err) {
             if (err) { 
                 return next(err);
-            }else {
-                // res.send({ msg: 'Usuario creado exitosamente!' })
+            }else {                
                 // se responde que el usuario fue creado
                 res.json({ token: tokenForUser(user), msg: 'Usuario creado exitosamente!' });
-                                            //al colocar "msg" dentro de este json igual se envia el mensaje y aparece el alertmessage. si se intenta enviar enviar por fuera de este json
-                                            // ocurre un crach en el server 
+                                            //Se debe colocar "msg" dentro de este "res.json" ya que en express solo se puede enviar un "res.send o un res.json" .
+                                            // si se intenta enviar enviar por fuera de este json ocurre un crach en el server .
             }
 
         });
