@@ -4,7 +4,7 @@ const passportService = require('../services/passport');
 const passport = require('passport');
 const routerProfile = express.Router();
 const User = require('../models/user');
-// OJO AQUI FALTA SOLUCINAR EL TEMA DEL OBJECT "err" HAY QUE CAMBIARLO AQUI Y EN EL ACTIONS DE ESTE MISMO
+
 routerProfile.get('/me', async function(req, res){
     try{
         const ProfileUser = await User.findOne({_id: req.user.id}).select('-password');
