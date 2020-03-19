@@ -8,6 +8,12 @@ const CommentSchema = new Schema({
         ref: 'user'
         // este "ref" hace referencia a la coleccion a la cual hacemos referencia, donde "user" se encuentra los datos del usuario
     },
+    videoID: {
+        type: Schema.Types.ObjectId,
+        // hace referencia a un "ref" ¿? enfocado a un users?¿
+        ref: 'videos'
+        // este "ref" hace referencia a la coleccion a la cual hacemos referencia, donde "user" se encuentra los datos del usuario
+    },
     name: {
         type: String
     },
