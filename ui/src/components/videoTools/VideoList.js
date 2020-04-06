@@ -3,7 +3,7 @@ import VideoItem from '../videoTools/VideoItem';
 
 const VideoList = ({videos, onVideoSelect}) => {
     const renderedList = videos.map((video) => {
-        return <VideoItem key={video.id.videoId} onVideoSelect={onVideoSelect} video={video}/>;
+        return <VideoItem key={video.youtubeID} onVideoSelect={onVideoSelect} video={video}/>;
     })
     
     return (

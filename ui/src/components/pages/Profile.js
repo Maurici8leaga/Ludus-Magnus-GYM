@@ -11,7 +11,7 @@ const Profile = ({getProfile, profile}) => {
         // console.log('Profile --->', profile);
     }, [getProfile]);
     // hay que agregar este "getProfiles" ya que "useEffect" pide que se agregue esta dependencia o que se quite la matriz de la dependencia.
-    console.log('Profile --->', profile);
+    // console.log('Profile --->', profile);
 
     // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" para evitar que me muestre un profile vacio
     if (!profile || !profile._id) return null;

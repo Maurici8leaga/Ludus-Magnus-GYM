@@ -7,7 +7,8 @@ const VideoDetail = ({video}) =>{
         );
     }
 
-    const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
+    const videoSrc = `https://www.youtube.com/embed/${video.youtubeID}`
+                                                    // "youtubeId" va a ser el id de mis videos especificados
 
     return(
         <div>
@@ -15,8 +16,8 @@ const VideoDetail = ({video}) =>{
                 <iframe title="video player" src={videoSrc}/>
             </div>
             <div className="ui segment">
-                <h4 className="ui header">{video.snippet.title}</h4>
-                <p>{video.snippet.description}</p>
+                <h4 className="ui header">{video.title}</h4>
+                <p>{video.description}</p>
             </div>
         </div>
     );

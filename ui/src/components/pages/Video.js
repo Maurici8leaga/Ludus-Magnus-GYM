@@ -1,65 +1,52 @@
-import React, {Component} from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Youtube from '../../apis/Youtube';
-import VideoList from '../videoTools/VideoList';
-import VideoDetail from '../videoTools/VideoDetail';
-import './RoutinesType.scss';
+import { getVideoById } from '../../actions/videos';
+import './scss/RoutinesType.scss';
 
-class Video extends Component {
-    state = { videos: [], selectedVideo: null};
+const Video = ({ getVideoById, match, muscleId}) => {
 
-
-    componentDidMount(){
-        const { selectedMusculo, selectedEjercicio } = this.props;
-
-        this.onTermSubmit(`${selectedMusculo} + ' ' ${selectedEjercicio}`);
-    }
-
-    onTermSubmit = async (term) =>{
-        const response = await Youtube.get('/search', {
-            params:{
-                q: term
-            }
-        });
-        this.setState({
-            videos: response.data.items,
-            selectedVideo: response.data.items[0]
-        });
-    };
+    useEffect(() => {
+        getVideoById(match.params.id);
+        console.log(muscleId, '<- este es muscleId')
+    }, [getVideoById]);
 
 
-    onVideoSelect = video => {
-        this.setState({selectedVideo: video});
-    };
+    const {title, description, youtubeID, category, modo} = muscleId;
 
-    render(){
-        const { selectedMusculo, selectedEjercicio } = this.props;
-        return(
-            <div className="ui container">
+    const search = `https://www.youtube.com/embed/${youtubeID}`;
+    // esta variable hara el request al link de youtube y podras acceder al video OJO se debe colocar "/embed" AJURO si no no agarra el video
 
-                <h1 className="intro">Rutina de {selectedMusculo} - {selectedEjercicio}</h1>
-                {/* <Barra onFormSubmit={this.onTermSubmit}/> */}
+    return (
+        <div className="ui container">
 
-                <div className="ui grid">
-                    <div className="ui row">
-                        <div className="eleven wide column">
-                            <VideoDetail video={this.state.selectedVideo}/>
+            <h1 className="intro">Rutina de {category} con {modo} </h1>
+
+            <div className="ui grid">
+                <div className="ui row">
+                    <div className="eleven wide column">
+                        <div className="ui embed">
+                            <iframe title="video player" src={search} />
+                                                    {/* src permitira hacer el request al youtube para reproducir el video */}
                         </div>
-                        <div className="five wide column">
-                            <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
+                        <div className="ui segment">
+                            <h4 className="ui header">{title}</h4>
+                            <p>{description}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        );    
-    }
+        </div>
+    );
 }
 
-const mapStateToProps = ({ musculos, ejercicios }) => {
-    return { 
-        selectedMusculo: musculos.selectedMusculo,
-        selectedEjercicio: ejercicios.selectedEjercicio
-    }
+Video.prototype = {
+    getVideoById: PropTypes.func.isRequired,
+    videoId: PropTypes.object
 }
 
-export default connect(mapStateToProps) (Video);
+const mapStateToProps = state => ({
+    muscleId: state.video.videoId
+});
+
+export default connect(mapStateToProps, {getVideoById})(Video);

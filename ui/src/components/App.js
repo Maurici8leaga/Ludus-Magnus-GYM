@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Intro from './pages/Intro';
-import Routin from './pages/Routin';
 import RoutinesType from './pages/RoutinesType';
-import RequireAuth from './RequireAuth';
+import RequireAuth from './requireAuth';
 import Video from './pages/Video';
 import Header from './Header';
 import SignIn from './auth/SignIn';
 import SignUp from './auth/SignUp';
 import Profile from './pages/Profile';
+import VideoListByMuscle from './pages/VideoListByMuscle';
 import Alert from '../components/extras/Alert';
 import store from './store';
 import setAuthToken from './interceptor/setAuthToken';
@@ -35,8 +35,8 @@ class App extends Component {
                                 <Route path="/signup" exact component={SignUp} />
                                 <RequireAuth path="/profile" exact component={Profile} />
                                 <RequireAuth path="/routinesType" exact component={RoutinesType} />
-                                <RequireAuth path="/routinesType/routin" exact component={Routin} />
-                                <RequireAuth path="/routinesType/routin/video" exact component={Video} />
+                                <RequireAuth path="/exercises/:muscle" exact component={VideoListByMuscle} />
+                                <RequireAuth path="/video/execise/:id" exact component={Video} />
                             </Switch>
                         </div>
                     </BrowserRouter>

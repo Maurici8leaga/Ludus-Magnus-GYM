@@ -1,42 +1,44 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { changeMusculo } from '../../actions';
-import './RoutinesType.scss';
+import './scss/RoutinesType.scss';
 
-class RoutinesType extends Component {
+const RoutinesType = ({ history }) => {
+                    // se debe colocar "history" aqui como props para poder tener acceso a el y hacer el redireccionamiento 
 
-    buttonState = (musculo) => () => {
-        const { history, changeMusculo } = this.props;
+    const [muscle, setMuscle] = useState('');
 
-        changeMusculo(musculo);
-        history.push('/routinesType/routin');
+    const lista = ['bicep', 'tricep','hombro', 'pecho', 'espalda', 'abdominal'];
+    // esta sera la lista de los posibles ejercicios que el usuario puede acceder
+    
+    const buttonMuscle = (muscle) => {
+        setMuscle({...muscle});
+        // al ejecutar la funcion de "click" este permitira que cuando se seleccione, este "setMuscle" tome y almacene en el state "muscle"
+        history.push(`/exercises/${muscle}`);
     }
 
-    render() {
-        return (
-            <div className="ui container">
+    const muscleList = () => (
+        // el JSX siempre debe ir en parentesis!
+        <ul>
+            <h1 className="ui title">Tipo de rutina </h1>
 
-                <h1 className="intro">TIPOS DE RUTINA</h1>
+            {/* hacemos una lista dinamica */}
+            {lista.map((lista, index) => (
+                                // "index" en este caso es llamado de manera que pueda usarse como key, de manera que cada elemento del li sea unico
+                <div className="ui container"  onClick={() => buttonMuscle(lista)} value={muscle}  key={`${index} ${lista}`}>
+                                                                    {/* colocamos el "value" que va hacer el state o muscle seleccionado */}
+                    <div className="button-container">
+                        <div className="button-div">
+                            {lista}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </ul>
+    );
 
-                <div className="button-container">
-                    <div className="button-div" onClick={this.buttonState('BICEP')}> BICEP </div>
-                    <div className="button-div" onClick={this.buttonState('TRICEP')}>TRICEP</div>
-                </div>
-                <div className="button-container">
-                    <div className="button-div" onClick={this.buttonState('PECHO')}>PECHO</div>
-                    <div className="button-div" onClick={this.buttonState('HOMBRO')}>HOMBRO</div>
-                </div>
-                <div className="button-container">
-                    <div className="button-div" onClick={this.buttonState('ESPALDA')}>ESPALDA</div>
-                    <div className="button-div" onClick={this.buttonState('PIERNA')}>PIERNA</div>
-                </div>
-                <div className="button-container">
-                    <div className="button-div" onClick={this.buttonState('ABDOMINAL')}>ABDOMINAL</div>
-                </div>
+    return muscleList();
+    // solo llamamos la funcion "muscleList" ya que todo esta dentro de ella.. no se puede colocar la funcion dentro de return de esa forma, habria que hacerlo de otra manera
 
-            </div>    
-        );
-    }
-}
+};
 
-export default connect(null, { changeMusculo })(RoutinesType);
+export default connect(null)(RoutinesType);
