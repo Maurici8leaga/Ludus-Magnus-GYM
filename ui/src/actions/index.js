@@ -62,20 +62,6 @@ export const signIn = ({ email, password }) => async dispatch => {
 };
 
 
-// export const changeMusculo = (musculo) => {
-//     return {
-//         type: CHANGE_MUSCULO,
-//         payload: musculo
-//     };
-// };
-
-// export const changeEjercicio = (ejercicio) => {
-//     return {
-//         type: CHANGE_EJERCICIO,
-//         payload: ejercicio
-//     };
-// };
-
 export const signOut = () => dispatch => {
     dispatch({ type: CLEAR_PROFILE });
     dispatch({ type: LOGOUT });

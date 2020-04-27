@@ -16,7 +16,6 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history}) => {
     }, [getListVideos]);
 
 
-    // if (!video || !video._id) return null;
     return (
         <div className="ui container">
 

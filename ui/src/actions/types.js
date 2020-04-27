@@ -11,3 +11,6 @@ export const LOGOUT = 'LOGOUT';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const MESSAGE_ALERT = 'MESSAGE_ALERT';
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const UPDATE_LIKES = 'UPDATE_LIKES';

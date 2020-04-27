@@ -1,23 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getVideoById } from '../../actions/videos';
+import CommentBox from '../pages/microComponent/CommentBox';
+import CommentItem from '../pages/microComponent/CommentItem';
+import { like, dislike, deleteComment } from '../../actions/videos';
 import './scss/RoutinesType.scss';
 
-const Video = ({ getVideoById, match, muscleId}) => {
+const Video = ({ getVideoById, match, video, like, dislike, deleteComment }) => {
+
+    const [currentVideo, setCurrentVideo] = useState(video);
 
     useEffect(() => {
         getVideoById(match.params.id);
-        console.log(muscleId, '<- este es muscleId')
-    }, [getVideoById]);
+    }, [getVideoById, match.params.id]);
+    
+    const  refresh = (_id, idVideo) => {
+        // comment = comment.splice(comment.indexOf(comment), 1);
+        deleteComment(_id, idVideo);
+        setCurrentVideo({...currentVideo});
+        console.log(currentVideo, 'este es currents')
+    };
 
-
-    const {title, description, youtubeID, category, modo} = muscleId;
+    const { title, description, youtubeID, category, modo, _id, comment, likes} = video;
 
     const search = `https://www.youtube.com/embed/${youtubeID}`;
     // esta variable hara el request al link de youtube y podras acceder al video OJO se debe colocar "/embed" AJURO si no no agarra el video
 
-    return (
+    return comment !== undefined && likes !== undefined && (
         <div className="ui container">
 
             <h1 className="intro">Rutina de {category} con {modo} </h1>
@@ -25,14 +35,43 @@ const Video = ({ getVideoById, match, muscleId}) => {
             <div className="ui grid">
                 <div className="ui row">
                     <div className="eleven wide column">
-                        <div className="ui embed">
-                            <iframe title="video player" src={search} />
-                                                    {/* src permitira hacer el request al youtube para reproducir el video */}
-                        </div>
-                        <div className="ui segment">
-                            <h4 className="ui header">{title}</h4>
-                            <p>{description}</p>
-                        </div>
+                            <div className="ui embed">
+                                <iframe title="video player" src={search} />
+                                {/* src permitira hacer el request al youtube para reproducir el video */}
+                            </div>
+                            <div className="ui segment">
+                                <h4 className="ui header">{title}</h4>
+                                <p>{description}</p>
+                            </div>
+                            <div className="ui fluid three item menu">
+                                <button className="ui basic button" type="button" onClick={e => like(_id)}>
+                                    <i className="thumbs up outline icon" />
+                                                        Like
+                                    <span>
+                                        {likes.length > 0 && (<span>  {likes.length}</span>)}
+                                    </span>
+                                </button>
+
+                                <button className=" ui basic button" type="button" onClick={e => dislike(_id)}>
+                                    <i className="thumbs down outline icon" />
+                                                        Dislike
+                                </button>
+
+                                <button className="ui basic button">
+                                    <i className="comment alternate outline icon" />
+                                                        Comentar
+                                </button>
+                            </div>
+                            <hr />
+                            <div>
+                                {/* se debe colocar este siguiente dentro de un div porque si no da error */}
+                                {comment.map((comments, index) => (
+                                    <CommentItem key={index} comments={comments} idVideo={_id} value={currentVideo} refresh={refresh}/>
+                                    // se pasa "commens" como props AJURO para que pueda tener acceso a la data del comment en el otro component
+                                ))}
+                            </div>
+                            {/* se debe colocar este conditional ya que sin el el "map" da error por ende este permite que si en tal caso llega a existir un commentario, lo muestre si no, no muestre nada */}
+                            <CommentBox idVideo={_id} />
                     </div>
                 </div>
             </div>
@@ -40,13 +79,18 @@ const Video = ({ getVideoById, match, muscleId}) => {
     );
 }
 
-Video.prototype = {
+Video.propTypes = {
     getVideoById: PropTypes.func.isRequired,
+    like: PropTypes.func.isRequired,
+    dislike: PropTypes.func.isRequired,
     videoId: PropTypes.object
 }
 
 const mapStateToProps = state => ({
-    muscleId: state.video.videoId
+    video: state.video.videoId
 });
 
-export default connect(mapStateToProps, {getVideoById})(Video);
+export default connect(mapStateToProps, { getVideoById, like, dislike, deleteComment })(Video);
+
+//                                     <CommentItem key={index} comments={comments} idVideo={_id} value={currentVideo} deleteComment={refresh} />
+

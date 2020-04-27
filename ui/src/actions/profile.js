@@ -5,7 +5,6 @@ export const getProfile = () => async dispatch => {
     try {
         const res = await axios.get('http://localhost:3001/api/profile/me');
 
-        console.log('GET PROFILE -->',res.data);
         dispatch({
             type: GET_PROFILE,
             payload: res.data

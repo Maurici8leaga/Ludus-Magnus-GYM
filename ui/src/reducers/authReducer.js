@@ -5,7 +5,6 @@ const INITIAL_STATE = {
     token: localStorage.getItem('token'),
     isSignedIn: null,
     user: null,
-    // ErrorMessage: ''
 };
 
 export default (state = INITIAL_STATE, action) => {

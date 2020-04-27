@@ -11,7 +11,6 @@ const ListVideo = ({ history, video:{category, modo, profesor, duracion, imagen,
     const buttonMuscle = (video) => {
         setVideo({ ...video });
         history.push(`/video/execise/${video}`);
-        console.log(video, '<- este es el id');
     }
     
     return (
