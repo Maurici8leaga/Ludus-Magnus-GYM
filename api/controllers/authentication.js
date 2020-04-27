@@ -12,7 +12,8 @@ function tokenForUser(user) {
 
 exports.signin = function (req, res, next) {
     // ya que el usuario ya tiene su password del email de autenticada, entonces hay que darle un token
-    res.send({ token: tokenForUser(req.user) });
+    res.send({ token: tokenForUser(req.user), user: req.user});
+            // en este "res.send" hay que mandar el TOKEN y el USER si no se podra tener los datos del user en el front
     // el "user" de aqui se almacena el email del user ya que se guarda en el memoria de el y podemos acceder
 }
 
@@ -66,7 +67,9 @@ exports.signup = function (req, res, next) {
                 return next(err);
             }else {                
                 // se responde que el usuario fue creado
-                res.json({ token: tokenForUser(user), msg: 'Usuario creado exitosamente!' });
+                                    // en este caso no se coloca "req.user" porque esta definiendose anteriormente que sera "user" por eso se coloca "user"
+                res.json({ token: tokenForUser(user), user: user , msg: 'Usuario creado exitosamente!' });
+                            // en este "res.json" hay que mandar el TOKEN y el USER si no se podra tener los datos del user en el front
                                             //Se debe colocar "msg" dentro de este "res.json" ya que en express solo se puede enviar un "res.send o un res.json" .
                                             // si se intenta enviar enviar por fuera de este json ocurre un crach en el server .
             }

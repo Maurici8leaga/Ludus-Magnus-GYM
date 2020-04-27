@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt-nodejs');
 
 // Definiendo el model
 const userSchema = new Schema({
+    alumno:{
+        type: mongoose.Schema.Types.ObjectId
+        // colocamos este "mongoose.SchemaTypes.ObjectId" para poder conectar esta Schema con el Schema del user
+    },
     email: {
         type: String,
         unique: true,
