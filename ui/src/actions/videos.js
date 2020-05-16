@@ -83,8 +83,13 @@ export const deleteComment = (idVideo, commentId) => async dispatch => {
         dispatch({
             type: DELETE_COMMENT,
             payload: commentId
-                // necesitamos aqui que el payload sea "commentId" para saber cual vamos a eliminar en el state y del UI 
-        })
+            // necesitamos aqui que el payload sea "commentId" para saber cual vamos a eliminar en el state y del UI 
+        });
+
+        dispatch({
+            type: GET_VIDEOBYID,
+            payload: res.data
+        });
 
         dispatch(messageAlert('Comentario Eliminado'));
 
@@ -108,10 +113,10 @@ export const like = (idVideo) => async dispatch => {
 
         dispatch({
             type: UPDATE_LIKES,
-            payload: {idVideo, likes: res.data}
+            payload: { idVideo, likes: res.data }
             // en este payload se le pasa el "idVideo" ya que no es un objeto con data solamente, si no que te tambien tiene el ID del del video
             // y luego se le especifica que "likes" sera un array, y tendra una lista en ese array de los likes que le den
-        });     
+        });
     } catch (error) {
         if (error) {
             dispatch(messageAlert(error.msg))
@@ -132,9 +137,9 @@ export const dislike = (idVideo) => async dispatch => {
 
         dispatch({
             type: UPDATE_LIKES,
-            payload: {idVideo, likes: res.data}
+            payload: { idVideo, likes: res.data }
         });
-        
+
     } catch (error) {
         if (error) {
             dispatch(messageAlert(error.msg))

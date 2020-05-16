@@ -12,10 +12,13 @@ import Profile from './pages/Profile';
 import VideoListByMuscle from './pages/VideoListByMuscle';
 import Alert from '../components/extras/Alert';
 import store from './store';
-import setAuthToken from './interceptor/setAuthToken';
+import { SIGN_IN } from '../actions/types';
 
-if (localStorage.token) {
-    setAuthToken(localStorage.token);
+if (localStorage.getItem('session')) {
+    const payload = JSON.parse(localStorage.getItem('session'));
+    if (typeof payload === 'object'){
+        store.dispatch({ type: SIGN_IN, payload });
+    }
     // <--- de esta forma el "setAuthToken" actualiza el token del axios. El token que tendra sera el ultimo usuario en logearse
 }
 

@@ -1,19 +1,19 @@
 import React from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+const RequireAuth = ({ component: Component, auth: { isSignedIn }, ...rest }) => {
+    return (<Route {...rest} render={props => !isSignedIn ? (<Redirect to='/signin' />) : (<Component {...props} />)} />)
+};
 
-const RequireAuth = ({ component: Component, auth: {isSignedIn}, ...rest}) => (
+RequireAuth.propTypes = {
+    auth: PropTypes.object.isRequired,
+    setSession: PropTypes.func
+}
 
-    <Route {...rest} render={props => !isSignedIn ? (<Redirect to='/signin'/>) : (<Component {...props}/>)} />);
+const mapStateToprops = state => ({
+    auth: state.auth
+});
 
-    RequireAuth.propTypes ={
-        auth: PropTypes.object.isRequired
-    }
-
-    const mapStateToprops = state => ({
-        auth: state.auth
-    })
-
-    export default connect(mapStateToprops)(RequireAuth);
+export default connect(mapStateToprops)(RequireAuth);

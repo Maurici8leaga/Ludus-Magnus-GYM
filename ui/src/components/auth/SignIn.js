@@ -25,8 +25,6 @@ const SignIn = ({ signIn, isSignedIn }) => {
   }
 
   if (isSignedIn) {
-    console.log('LOGIN ¿OJO? --->', isSignedIn);
-
     return <Redirect to='/routinesType' />;
   }
 
