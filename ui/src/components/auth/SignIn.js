@@ -21,12 +21,9 @@ const SignIn = ({ signIn, isSignedIn }) => {
   const onSubmit = async e => {
     e.preventDefault();
     signIn(formData);
-    console.log('SUBMIT --->', formData);
   }
 
   if (isSignedIn) {
-    console.log('LOGIN ¿OJO? --->', isSignedIn);
-
     return <Redirect to='/routinesType' />;
   }
 

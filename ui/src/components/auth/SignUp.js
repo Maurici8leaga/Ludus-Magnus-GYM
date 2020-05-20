@@ -25,12 +25,9 @@ const SignUp = ({signUp, isSignedIn}) => {
     e.preventDefault();
     signUp(formData);
     // aqui se coloca "formData" ya que el contiene los state de los datos del usuario, si no se coloca dara un error 422
-    console.log('SUBMIT --->', formData);  
   }
 
   if(isSignedIn){ 
-    console.log('LOGIN ¿OJO? --->', isSignedIn);
-
     return <Redirect to='/routinesType' />; 
   }
 

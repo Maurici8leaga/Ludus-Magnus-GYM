@@ -13,7 +13,8 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history}) => {
         getListVideos(match.params.muscle);
         // dentro de esta funcion hay que colocar "match.params" + "el nombre que del estado o objeto donde este el musculo en este caso"
         // de manera que al hacer el request este agregue los params al URL
-    }, [getListVideos]);
+    }, [getListVideos, match.params.muscle]);
+    // debe colocarse dentro del [] el "getListVideos" y el "match.params.muscle" para que no de muestre el alerta de error constantemente
 
 
     return (

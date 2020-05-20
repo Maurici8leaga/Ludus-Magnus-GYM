@@ -4,23 +4,20 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { deleteComment } from '../../../actions/videos';
 
-const CommentItem = ({ idVideo, comments, refresh, auth , currentVideo}) => {
+const CommentItem = ({ idVideo, comments, removeComment, auth }) => {
 
     const { text, name, lastname, date, alumno, _id } = comments;
-
-    // function refresh (idVideo, value) {
-    //     deleteComment(idVideo, currentVideo);
-    //     console.log(value, _id ,'este es el value');
-    // }
 
     return (
         <div className="ui comments">
             <div className="comment">
-                <a className="avatar">
-                    <img src="https://www.vippng.com/png/detail/416-4161690_empty-profile-picture-blank-avatar-image-circle.png" />
-                </a>
+                <span className="avatar">
+                {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
+                    <img alt='avatar' src="https://www.vippng.com/png/detail/416-4161690_empty-profile-picture-blank-avatar-image-circle.png" />
+                    {/* los tag img deben tener un "alt" prop ya que sin el dara problemas con los browser*/}
+                </span>
                 <div className="content">
-                    <p className="author">{name} {' '}{ lastname}</p>
+                    <p className="author">{name} {' '}{lastname}</p>
                     <div className="text">
                         {text}
                     </div>
@@ -28,7 +25,7 @@ const CommentItem = ({ idVideo, comments, refresh, auth , currentVideo}) => {
                         <Moment format="DD/MM/YYYY">{date}</Moment>
                     </div>
                     {alumno === auth.user._id ? (
-                        <button onClick={e => refresh(idVideo, _id)} type='button' className="ui red button" value={currentVideo}>
+                        <button onClick={e => removeComment(idVideo, _id)} type='button' className="ui red button">
                             {/* colocamos dentro del "refresh" el "idVideo" para eliminarlo del video y "_id" para eliminarlo del usuario */}
                             <i className="trash alternate outline icon" />
                         </button>
@@ -42,7 +39,7 @@ const CommentItem = ({ idVideo, comments, refresh, auth , currentVideo}) => {
 CommentItem.proptype = {
     idVideo: PropTypes.string.isRequired,
     comments: PropTypes.object.isRequired,
-    deleteComment: PropTypes.func.isRequired,
+    removeComment: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired
 }
 
@@ -52,5 +49,3 @@ const mapStatetoProps = state => ({
 })
 
 export default connect(mapStatetoProps, { deleteComment })(CommentItem);
-
-{/* <button onClick={e => refresh(idVideo, _id)} type='button' className="ui red button" value={currentVideo}> */}

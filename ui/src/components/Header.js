@@ -35,7 +35,6 @@ class Header extends Component {
             <Link to="/signin">Sign In</Link>
           </div>
 
-          {console.log('LOGIN ¿OJO? --->', isSignedIn)}
         </div>
       )
     }

@@ -24,7 +24,7 @@ const Profile = ({getProfile, profile}) => {
                     <div className="item">
 
                         <div className="image">
-                            <img src="http://alerta.mapbiomas.org/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"/>>
+                            <img alt="avatar" src="http://alerta.mapbiomas.org/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"/>>
                         </div>
 
                         <table className="ui single line table">

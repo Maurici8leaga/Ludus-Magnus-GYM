@@ -6,7 +6,8 @@ import '../../videoTools/VideoItem.css';
 const ListVideo = ({ history, video:{category, modo, profesor, duracion, imagen, idioma, _id} }) => {
                     // "video" viene como props del otro component VideoList.. gracias a el podemos tener acceso a las propiedades y lo mismo con "history"
 
-    const [video, setVideo] = useState('');
+    const [, setVideo] = useState('');
+    // se deja en blaco el primer state ya que no es usado
 
     const buttonMuscle = (video) => {
         setVideo({ ...video });
@@ -21,7 +22,7 @@ const ListVideo = ({ history, video:{category, modo, profesor, duracion, imagen,
                     {modo} - {category}
                 </div>
                 <div className="image">
-                    <img src={imagen} />
+                    <img alt="portada" src={imagen} />
                 </div>
                 <div className="">
                     <ul>
