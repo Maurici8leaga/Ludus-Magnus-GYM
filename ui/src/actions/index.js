@@ -10,10 +10,13 @@ import {
 import { messageAlert } from './messageAlert';
 import axios from 'axios';
 
+export const setSession = (payload) => dispatch => {
+    dispatch({ type: SIGN_IN, payload });
+};
+
 export const signUp = ({ email, password, name, lastname, age, height, sex, weight }, user) => async dispatch => {
 
     const KeyValue = { headers: { 'Content-Type': 'application/json' } };
-
     const body = JSON.stringify({ email, password, name, lastname, age, height, sex, weight });
     // El "stringify" su funcion es convertir de un objeto a un string, en nuestro caso pasar la informacion agregada por el usuario pasara a reemplazarla en un string de JSON
 

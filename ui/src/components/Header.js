@@ -34,7 +34,6 @@ class Header extends Component {
           <div className="button-Sign-Up-In">
             <Link to="/signin">Sign In</Link>
           </div>
-
         </div>
       )
     }
