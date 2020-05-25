@@ -118,6 +118,13 @@ export const like = (idVideo) => async dispatch => {
             // en este payload se le pasa el "idVideo" ya que no es un objeto con data solamente, si no que te tambien tiene el ID del del video
             // y luego se le especifica que "likes" sera un array, y tendra una lista en ese array de los likes que le den
         });
+
+        dispatch({
+            type: GET_VIDEOBYID,
+            payload: res.data
+        });
+        // se usa este 2do dispatch de manera de cuando se ejecute el accionts este refresque la pag y pueda actualizar el numero de likes
+
     } catch (error) {
         if (error) {
             dispatch(messageAlert(error.msg))
@@ -140,6 +147,13 @@ export const dislike = (idVideo) => async dispatch => {
             type: UPDATE_LIKES,
             payload: { idVideo, likes: res.data }
         });
+
+        dispatch({
+            type: GET_VIDEOBYID,
+            payload: res.data
+        });
+        // se usa este 2do dispatch de manera de cuando se ejecute el accionts este refresque la pag y pueda actualizar el numero de likes
+
 
     } catch (error) {
         if (error) {

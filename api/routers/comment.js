@@ -90,7 +90,8 @@ routerComment.put('/like/:id', async (req, res) => {
         videoId.likes.unshift({ alumno: req.user.id });
         // esto lo que hara es que si el usuario no le habia dado like, entonces el "unshift" empujara de primero en orden el like para que quede registrado
         await videoId.save();
-        res.json(videoId.likes);
+        res.json(videoId);
+        // se coloca solo "videoId" ya que el es un objecto, y en el front necesitamos este objecto para refrescar los likes
 
     } catch (error) {
         console.log(error.msg);
@@ -119,8 +120,8 @@ routerComment.put('/dislike/:id', async (req, res) => {
         //  el numero "1" indica que se removera 1 solo elemento si este se coloca en 0 NO SE ELIMINARA NINGUNO
 
         await videoId.save();
-        res.json(videoId.likes);
-
+        res.json(videoId);
+        // se coloca solo "videoId" ya que el es un objecto, y en el front necesitamos este objecto para refrescar los dislikes
 
     } catch (error) {
         console.log(error.msg);

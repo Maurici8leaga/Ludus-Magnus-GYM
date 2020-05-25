@@ -49,7 +49,7 @@ const Video = ({ getVideoById, match, video, like, dislike, deleteComment }) => 
                             <button className=" ui basic button" type="button" onClick={e => dislike(_id)}>
                                 <i className="thumbs down outline icon" />
                                                         Dislike
-                                </button>
+                            </button>
 
                             <button className="ui basic button">
                                 <i className="comment alternate outline icon" />

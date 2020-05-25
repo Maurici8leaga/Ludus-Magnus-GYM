@@ -10,10 +10,6 @@ import {
 import { messageAlert } from './messageAlert';
 import axios from 'axios';
 
-export const setSession = (payload) => dispatch => {
-    dispatch({ type: SIGN_IN, payload });
-};
-
 export const signUp = ({ email, password, name, lastname, age, height, sex, weight }, user) => async dispatch => {
 
     const KeyValue = { headers: { 'Content-Type': 'application/json' } };
