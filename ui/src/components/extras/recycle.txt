@@ -1,0 +1,47 @@
+export function TextareaAutoSize(e) {
+
+  // con esto vamos hacer que el textarea sea dinamico en tamaño, los valores que tienen son de una FORMULA asi que lo que unico que va a variar son
+  // el numero de row, minRow y maxRow el resto debe quedar asi
+  const textareaLineHeight = 24;
+
+  const previousRows = e.target.rows;
+  e.target.rows = minRows; // reset number of rows in textarea
+
+  const currentRows = ~~(e.target.scrollHeight / textareaLineHeight);
+  // aqui el simbolo ~~ es un dobdle tilde operator sirve para convertir el resultado en un numero entero para que de un numero de lineas enteras
+
+  if (currentRows === previousRows) {
+    e.target.rows = currentRows;
+  }
+
+  if (currentRows >= maxRows) {
+    e.target.rows = maxRows;
+    e.target.scrollTop = e.target.scrollHeight;
+    // de esta forma cuando se tenga que expandir este aumente segun la cantidad de texto 
+  }
+
+// LO SIGUIENTE ES LO MISMO QUE ARRIBA PERO LA DIFERENCIA ES QUE EN EL STATE SE HACE CON OBJETOS ANIDADOS, POR ENDE CAMBIARIAN CIERTAS COSAS Y ASI SERIA
+
+  // const [state, setState] = useState({text:'', row: 1, minRows: 1, maxRows: 10})
+
+  // const handleChange = e => {
+  //     const textareaLineHeight = 24;
+
+  //     const previousRows = e.target.rows;
+  //     e.target.rows = state.minRows; // reset number of rows in textarea
+
+  //     const currentRows = ~~(e.target.scrollHeight / textareaLineHeight);
+
+  //     if (currentRows === previousRows) {
+  //         e.target.rows = currentRows;
+  //     }
+
+  //     if (currentRows >= state.maxRows) {
+  //         e.target.rows = state.maxRows;
+  //         e.target.scrollTop = e.target.scrollHeight;
+  //     }
+
+  //     setState({...state, text: e.target.value, row: currentRows < state.maxRows ? currentRows : state.maxRows});
+  // }
+
+}

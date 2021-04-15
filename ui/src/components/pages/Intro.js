@@ -1,12 +1,21 @@
 import React from 'react';
-import './scss/Intro.scss';
+import { Link } from 'react-router-dom';
+import '../scss/index.scss';
 
 const Intro = () => {
     return (
-        <div className="intro" align="center">
-            <h1 className="intro">MONSTER GYM</h1>
-            <div className="ui fluid image">
-                {/* <img src="https://wallpapercave.com/wp/wp2639533.jpg" alt=''/> */}
+        <div className="pantalla">
+            <div className="wrap-page">
+                <div className="pantalla-interna">
+                    <h1 className="title-big">Ludus Magnus</h1>
+                    <p className="title-small">
+                        Comienza tu rutina ya mismo y transforma tu cuerpo como siempre lo soñaste
+                    </p>
+                    <div className="buttons">
+                        <Link to="/signin" className="boton -primary">Comenzar</Link>
+                        <Link to="/signup" className="boton -positive">Registrarme</Link>
+                    </div>
+                </div>
             </div>
         </div>
     );

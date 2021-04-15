@@ -14,7 +14,7 @@ export const getListVideos = (muscle) => async dispatch => {
         })
     } catch (error) {
         if (error) {
-            dispatch(messageAlert(error.msg))
+            dispatch(messageAlert(error.msg, 'message-negative'))
         }
 
         dispatch({
@@ -36,7 +36,7 @@ export const getVideoById = id => async dispatch => {
 
     } catch (error) {
         if (error) {
-            dispatch(messageAlert(error.msg))
+            dispatch(messageAlert(error.msg, 'message-negative'))
         }
 
         dispatch({
@@ -60,11 +60,11 @@ export const addComment = (idVideo, formData) => async dispatch => {
             payload: res.data
         })
 
-        dispatch(messageAlert('Comentario creado'));
+        dispatch(messageAlert('Comentario creado', 'message-positive'));
 
     } catch (error) {
         if (error) {
-            dispatch(messageAlert(error.msg))
+            dispatch(messageAlert(error.msg, 'message-negative'))
         }
 
         dispatch({
@@ -92,11 +92,11 @@ export const deleteComment = (idVideo, commentId) => async dispatch => {
         });
         // este ultimo dispatch lo que hara es llamar de nuevo el videoById de manera de refrescar la pag y aparezca el video sin el comentario borrado
 
-        dispatch(messageAlert('Comentario Eliminado'));
+        dispatch(messageAlert('Comentario eliminado', 'message-positive'));
 
     } catch (error) {
         if (error) {
-            dispatch(messageAlert(error.msg))
+            dispatch(messageAlert(error.msg, 'message-negative'))
         }
 
         dispatch({
@@ -127,7 +127,7 @@ export const like = (idVideo) => async dispatch => {
 
     } catch (error) {
         if (error) {
-            dispatch(messageAlert(error.msg))
+            dispatch(messageAlert(error.msg, 'message-negative'))
         }
 
         dispatch({
@@ -157,7 +157,7 @@ export const dislike = (idVideo) => async dispatch => {
 
     } catch (error) {
         if (error) {
-            dispatch(messageAlert(error.msg))
+            dispatch(messageAlert(error.msg, 'message-negative'))
         }
 
         dispatch({

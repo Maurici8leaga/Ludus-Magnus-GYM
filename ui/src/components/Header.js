@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
 import { compose } from 'redux';
-import './Header.scss';
+import '../components/scss/index.scss';
 
 
 class Header extends Component {
@@ -15,26 +15,28 @@ class Header extends Component {
 
     if (isSignedIn) {
       return (
-        <div>
-          <Link  to='/signin' onClick={() => signOut()} className="button-icon">
-            <i className="window close outline icon" />
+        <h2>
+          <Link to="/profile" className="links-scss">
+            <i className="fas fa-user-circle"></i>
           </Link>
-          <Link to="/profile">
-            <i className="user icon"/>
+          <Link to='/signin' onClick={() => signOut()} className="links-scss">
+            <i className="fas fa-times"></i>          
           </Link>
-        </div>
+        </h2>
       )
     } else {
       return (
-        <div>
-          <div className="button-Sign-Up-In">
-            <Link to="/signup">Sign Up</Link>
-          </div>
+        <h4>
+          <ul>
+            <li >
+              <Link to="/signup" className="links-scss">Registrarme</Link>
+            </li>
 
-          <div className="button-Sign-Up-In">
-            <Link to="/signin">Sign In</Link>
-          </div>
-        </div>
+            <li >
+              <Link to="/signin" className="links-scss" >Socios</Link>
+            </li>
+          </ul>
+        </h4>
       )
     }
   }
@@ -42,29 +44,32 @@ class Header extends Component {
   renderEjercicios() {
     if (this.props.isSignedIn) {
       return (
-        <Link to="/routinesType" className="button-icon">
-          <i className="trophy icon"></i>
-        </Link>
+        <h1>
+          <Link to="/routinesType" className="links-scss">
+            <i className="fas fa-dumbbell"></i> Ludus Magnus
+          </Link>
+        </h1>
       );
     } else {
       return (
-        <div className="button-icon-disable">
-          <i className="trophy icon"></i>
-        </div>
+        <h1 className="button-icon-disable">
+          <i className="fas fa-dumbbell"></i> Ludus Magnus
+          {/* el texto debe ir fuera el "icon" de manera que el css que tenga el icon no se mescle con el del texto */}
+        </h1>
       );
     }
   }
 
   render() {
     return (
-      <div className="ui menu">
-        <div>{this.renderEjercicios()}</div>
-        <div className="right menu" align="center">
-          <div>
-            {this.renderAuth()}
-          </div>
+      <nav className="header fondo-claro">
+        <div>
+          {this.renderEjercicios()}
         </div>
-      </div>
+        <div>
+          {this.renderAuth()}
+        </div>
+      </nav>
     );
   }
 }

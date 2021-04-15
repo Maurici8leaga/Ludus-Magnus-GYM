@@ -25,13 +25,13 @@ export const signUp = ({ email, password, name, lastname, age, height, sex, weig
         // el JSON.stringify debe ir ya que localStorage no almacena un objeto, el stringify lo convierte en string para que pueda ser almacenado
 
         dispatch({ type: SIGN_UP, payload: response.data });
-        dispatch(messageAlert('Perfil creado correctamente'));
+        dispatch(messageAlert('Usuario creado, Bienvenido al club', 'message-positive'));
         dispatch({ type: GET_PROFILE });
     } catch (err) {
         const error = err.response.data.error;
 
         if (err) {
-            dispatch(messageAlert(error.msg))
+            dispatch(messageAlert(error.msg, 'message-negative'))
         }
 
         // FALTA MEJORAR TODOS LOS ALERT DE ERROR
@@ -55,11 +55,12 @@ export const signIn = ({ email, password }) => async dispatch => {
 
         dispatch({ type: SIGN_IN, payload: response.data });
         dispatch({ type: GET_PROFILE });
-        dispatch(messageAlert(`Hola! Bienvenido ${email} Sesion Iniciada Correctamente`))
+        dispatch(messageAlert(`Bienvenido ${email}`, 'message-positive'))
+                                            // este ultimo "message-positive" es para indicar la propiedad que esta en el Alert que el tipo de mesaje sera esa clase
     } catch (err) {
 
         if (err) {
-            dispatch(messageAlert('Error al iniciar Sesion, Email o Password incorrecto. Verifique intentelo de nuevo'))
+            dispatch(messageAlert('Email o Password incorrecto. Verifique intentelo de nuevo', 'message-negative'))
         }
 
         dispatch({ type: SIGN_IN_ERROR });
@@ -70,5 +71,5 @@ export const signIn = ({ email, password }) => async dispatch => {
 export const signOut = () => dispatch => {
     dispatch({ type: CLEAR_PROFILE });
     dispatch({ type: LOGOUT });
-    dispatch(messageAlert('Adios!, sesion cerrada'));
+    dispatch(messageAlert('Adios!, cerrando sesion', 'message-positive'));
 };

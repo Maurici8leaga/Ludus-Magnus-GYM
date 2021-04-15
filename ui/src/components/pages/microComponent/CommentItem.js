@@ -6,28 +6,32 @@ import { deleteComment } from '../../../actions/videos';
 
 const CommentItem = ({ idVideo, comments, removeComment, auth }) => {
 
-    const { text, name, lastname, date, alumno, _id } = comments;
-
+    const { text, name, lastname, date, alumno, _id, comment } = comments;
     return (
-        <div className="ui comments">
-            <div className="comment">
-                <span className="avatar">
-                {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
-                    <img alt='avatar' src="https://www.vippng.com/png/detail/416-4161690_empty-profile-picture-blank-avatar-image-circle.png" />
-                    {/* los tag img deben tener un "alt" prop ya que sin el dara problemas con los browser*/}
-                </span>
-                <div className="content">
-                    <p className="author">{name} {' '}{lastname}</p>
-                    <div className="text">
-                        {text}
-                    </div>
-                    <div className="metadata">
+        <div className="container-commentBox">
+            <div className="Header-ProfilePicture-Name">
+                <div className="container-profilePicture">
+                    <span>
+                        {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
+                        <img className="profilePicture" alt='avatar' src="https://www.vippng.com/png/detail/416-4161690_empty-profile-picture-blank-avatar-image-circle.png" />
+                        {/* los tag img deben tener un "alt" prop ya que sin el dara problemas con los browser*/}
+                    </span>
+                </div>
+                <p className="title-Comment">{name} {' '}{lastname}</p>
+            </div>
+
+            <div className="data-Comment">
+                <div>
+                    {text}
+                </div>
+                <div className="Header-dates-deleteButton">
+                    <div className="dates">
                         <Moment format="DD/MM/YYYY">{date}</Moment>
                     </div>
                     {alumno === auth.user._id ? (
-                        <button onClick={e => removeComment(idVideo, _id)} type='button' className="ui red button">
+                        <button onClick={e => removeComment(idVideo, _id)} type='button' className="boton -negative-delete">
                             {/* colocamos dentro del "refresh" el "idVideo" para eliminarlo del video y "_id" para eliminarlo del usuario */}
-                            <i className="trash alternate outline icon" />
+                            <i className="far fa-trash-alt"></i>
                         </button>
                     ) : null}
                 </div>

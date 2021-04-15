@@ -10,7 +10,6 @@ import SignIn from './auth/SignIn';
 import SignUp from './auth/SignUp';
 import Profile from './pages/Profile';
 import VideoListByMuscle from './pages/VideoListByMuscle';
-import Alert from '../components/extras/Alert';
 import store from './store';
 import { SIGN_IN } from '../actions/types';
 
@@ -29,12 +28,11 @@ if (localStorage.getItem('session')) {
 class App extends Component {
     render() {
         return (
-            <div className="ui container">
+            <div>
                 <Provider store={store}>
                     <BrowserRouter>
                         <div>
                             <Header />
-                            <Alert />
                             <Switch>
                                 {/* NOTA LAS RUTAS DEL FRONTEND DEBEN SER DISTINTAS AL DEL BACKEND PARA NO CONFUNDIRSE */}
                                 <Route path="/" exact component={Intro} />

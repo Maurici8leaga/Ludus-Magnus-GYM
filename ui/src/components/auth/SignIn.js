@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { signIn } from '../../actions/index';
+import Alert from '../extras/Alert';
 
 const SignIn = ({ signIn, isSignedIn }) => {
 
@@ -28,52 +29,39 @@ const SignIn = ({ signIn, isSignedIn }) => {
   }
 
   return (
-    <form className="ui inverted form" onSubmit={e => onSubmit(e)}>
-      {/* cuando el usuario realice el "onSubmit" este ejecutara la llamada de 'e' que es el evento que se encuentra dentro del "onSubmit"*/}
 
-      <h1 className="intro" align="center">MONSTER GYM</h1>
+    <div className="pantalla">
 
-      <div className="ui two column centered grid">
-        <div className="ui equal width grid">
-          <div className="grey column">
+      <div className="wrap-page">
 
-            <div className="content">
-              <h3 className="ui inverted dividing header">Sign In</h3>
+        <Alert />
 
-              <div className="field">
-                <label>Email</label>
-                <div className="ui left icon input">
-                  <input type="text" component="input" name="email" placeholder="prueba@gmail.com" pattern=".+@gym.com" title=" Coloque su email seguido del @gym.com " value={email} onChange={e => onChange(e)} required autoComplete="none" />
-                                                                              {/* este "pattern" nos permite estipular el patron del correo, de manera que solo se admita el que se solicita */}
-                  <i className="user icon"></i>
-                </div>
-              </div>
+        <div className="container-signin">
 
-              <div className="field">
-                <label>Password</label>
-                <div className="ui left icon input">
-                  <input type="password" component="input" name="password" placeholder="password" value={password} onChange={e => onChange(e)} required autoComplete="none" />
-                  <i className="lock icon"></i>
-                </div>
-              </div>
+          <h1 className="grande texto-secundary"> Iniciar Sesion</h1>
 
-              {/* <div>{ErrorMessage}</div> */}
+          <form className="form" onSubmit={e => onSubmit(e)}>
+            {/* cuando el usuario realice el "onSubmit" este ejecutara la llamada de 'e' que es el evento que se encuentra dentro del "onSubmit"*/}
 
-              <div>
-                <input className="orange fluid ui button" type="submit" value="Login" />
-              </div>
-
-              {/* <div>
-                  Don't have an account? <Redirect  className="button" to="/signup">Sign Up</Redirect>
-                </div> */}
-              {/* buscar la manera de crear esto <----- de otra forma ya que da error si se deja como esta */}
-
+            <div className="form-input-individual">
+              <input type="text" component="input" name="email" placeholder="Email" pattern=".+@gym.com" title=" Coloque su email" value={email} onChange={e => onChange(e)} required autoComplete="none" />
+              {/* este "pattern" nos permite estipular el patron del correo, de manera que solo se admita el que se solicita */}
             </div>
-          </div>
+
+            <div className="form-input-individual">
+              <input type="password" component="input" name="password" placeholder="Contraseña" title="Coloque su contraseña" value={password} onChange={e => onChange(e)} required autoComplete="none" />
+            </div>
+
+            <button className="boton -primary-long" type="submit" value="Login">COMENZAR ENTRENAMIENTO</button>
+
+            <p className="title-p-small">
+              No tienes cuenta, pero quieres ser parte del club? <Link to="/signup" className="links-scss"> Crear usuario</Link>
+            </p>
+
+          </form>
         </div>
       </div>
-
-    </form>
+    </div>
   );
 }
 

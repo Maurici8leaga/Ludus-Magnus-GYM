@@ -1,0 +1,74 @@
+.form{
+  &-input-doble {
+      margin: 1.2rem 0;
+      width: 50%;
+    //   se le coloca 50% de manera que entre los 2 inputs sumen 100% 
+      padding-right: 1rem;
+  }
+
+  &-group-2{
+      display: flex;
+          //   se necesitan este "display" " y el "flex-direction" para que se puedan poner uno al lado del otro los inputs
+      flex-direction: row;
+      -webkit-box-orient: horizontal;
+          //   estos "webkit" ayudaran a mantener los input uno al lado del otro
+      -webkit-box-direction: normal;
+  }
+
+  &-input-genero{
+      margin: 1.2rem 0;
+      width: 40%;
+    //   en este width se tiene que dividir el % ya que ambos van a estar uno al lado del otro y juntos deben sumar 100%
+      padding-right: 1rem;
+  }
+
+  &-input-data{
+      label{
+        color: white;
+      }
+      margin: 1.2rem 0;
+      width: 20%;
+    //   este 20% es porque sera compartido con otros 3 inputs mas y los 3 sumaran 60%
+      padding-right: 1rem;
+      margin-top: -0.4rem;
+    //   este margin top en negativo hace que se nivele los inputs con el resto de manera que esten alineados
+  }
+
+  &-group-4{
+      display: flex;
+    //   se necesitan este "display" " y el "flex-direction" para que se puedan poner uno al lado del otro los inputs
+      flex-direction: row;
+      -webkit-box-orient: horizontal;
+    //   estos "webkit" ayudaran a mantener los input uno al lado del otro
+      -webkit-box-direction: normal;
+  }
+
+  &-input-individual{
+      margin: 1.2rem 0;
+      margin-bottom: 2rem;
+      width: 100%;
+      padding-right: 1rem;
+  }
+
+  &-comment{
+    width: 100%;
+    margin: 25px;
+    padding: 0px;
+    flex-direction: row;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='number'],
+  select{
+    //   de esta forma podemos configurar todos los inputs de manera que tengan las mismas caracteristicas y puedan ser iguales
+      display: block;
+      width: 100%;
+      padding: 0.4rem;
+      font-size: 1.2rem;
+      border: 1px solid #ccc;
+      height: 38px;
+    //   ESTE HEIGHT TIENE QUE  IR, sin el los inputs number son mucho mas pequeños que el resto
+  }
+}

@@ -1,0 +1,781 @@
+// Container
+.container{
+    max-width: $max-width;
+    // este  max-width viene de config.scss
+    margin: auto;
+    // de manera que todo quede en el medio de a pag
+    overflow: hidden;
+    // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
+    padding: 0 2rem;
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+
+    &-signup{
+        max-width: 900px;
+        margin: auto;
+        // de manera que todo quede en el medio de a pag
+        overflow: hidden;
+        // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
+        padding: 0 2rem;
+        margin-top: 10rem;
+        margin-bottom: 3rem;
+    }
+
+    &-signin{
+        max-width: 600px;
+        margin: auto;
+        // de manera que todo quede en el medio de a pag
+        overflow: hidden;
+        // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
+        padding: 0 2rem;
+        margin-top: 10rem;
+        margin-bottom: 3rem;
+    }
+
+    &-muscle{
+        max-width: 1600px;
+        margin: 0;
+        // de manera que todo quede en el medio de a pag
+        overflow: hidden;
+        // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
+        padding: 0;
+        margin-top: 0rem;
+        // se deja en 0 para header no haga distancia con la img de los titulo
+        margin-bottom: 0rem;
+    }
+
+    &-video{
+        max-width: 1600px;
+        margin: 0;
+        // de manera que todo quede en el medio de a pag
+        overflow: hidden;
+        // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
+        padding: 0;
+        margin-top: 5rem;
+        // se deja en 0 para header no haga distancia con la img de los titulo
+        margin-bottom: 0rem;
+        background-color: rgb(34, 33, 32);
+        color: #fff;
+    
+    }
+
+    &-description{
+        margin: 10px;
+        padding: 5px 200px 5px 200px;
+        text-align: justify;
+    }
+
+    &-description-texto{
+        margin: 0px;
+        padding: 0px 30px 0px 30px;
+    }
+
+    &-commentBox{
+        margin: 10px;
+        padding: 0px;
+        text-align: justify;
+    }
+
+    &-profilePicture{
+        max-width: 85px;
+        margin: 0;
+        padding: 0px;
+    }
+
+    &-Ncomments{
+        margin: 0px;
+        margin-left: 45px;
+        margin-bottom: 10px;
+        padding: 0px;
+        text-align: justify;
+    }
+}
+
+// Image's & pictures profile
+
+.Image-container{
+    position: relative;
+    display: flex;
+    padding: 0;
+    margin-bottom: 0rem;
+    color: white;
+    margin: 0;
+    border-style: none;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+    &-muscleTipe{
+        filter: brightness(90%);
+        // este filter sirve para jugar con el color de la img, en este caso con el brillo, mientras mas cercano a 0 mas oscuro superar al 100 distorciona el color original
+        background-image: url('../img/lockerRoom.png');
+        background-repeat: no-repeat;
+        // de esta forma colocamos para que no se repita la img y quede centrada
+        background-position: center;  
+        background-size: cover; 
+        // IMPORTANTE USAR ESTO, permite que la imagen encaje perfectamente con el div en que esta    
+    }
+
+    &-exerciseTipe{
+        filter: brightness(90%); 
+        background-image: url('../img/salon\ exercise.jpg');
+        background-repeat: no-repeat;
+        background-position: center;  
+        background-size: cover; 
+    }
+}
+
+.profilePicture{
+    border-radius: 50%;
+}
+
+
+// Titulos , Header y textos / estilos
+
+.Title-container{
+    align-items: center;
+    display: block;
+    margin: 0rem;
+    margin-bottom: 0rem;
+    padding: 25%;
+    padding-left: 25%;
+    border-style: none;
+}
+
+.title-big{
+    filter: brightness(100%); 
+        // en este caso se usa el brightness para resaltar mas las letras que la img de fondo
+    font-size: 4rem;
+    line-height: 1.2;
+    // este es como un extra separador con los elementos que esten debajo de este class
+    margin-bottom: 1rem;
+}
+
+.highlight-title{
+    filter: brightness(100%); 
+    font-size: 5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-family: 'Prata', serif;
+}
+
+.highlight-title2{
+    filter: brightness(100%); 
+    font-size: 1.5rem;
+    // tamaño de las letras
+    margin-bottom: 1rem;
+    // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
+    margin-left: 4rem;
+    font-family: 'Prata', serif;
+    color: $positive-color;
+}
+
+.grande{
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.title-small{
+    font-size: 1.5rem;
+    // tamaño de las letras
+    margin-bottom: 1rem;
+    // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
+}
+
+.title-p-small{
+    filter: brightness(100%); 
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.title{
+
+    &-Comment{
+        font-size: 1.2rem;
+        font-weight: bolder;    
+        margin: 15px;
+        padding: 10px;
+    }
+
+    &-Description{
+        font-size: 1.2rem;
+        font-weight: bolder;    
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
+.texto-secundary{
+    color: #fff;
+}
+
+.texto-positive{
+    color: $positive-color;
+}
+
+.Title-menu{
+    font-size: 70px;
+    padding-left: 5%;
+    color: $claro-color;
+    position: absolute;
+    // sin este position, las letras no pudieran estar encima de la imagen
+    z-index: 999;
+    top: 50%;
+    text-align: center;
+    align-content: center;
+    width: 25%;
+    margin: 0;
+    transition: padding-left .6s ease-out;   
+    &:hover{
+        padding-left: 10%;
+        color: $positive-color;
+        text-decoration:  $positive-color;
+        cursor: pointer;
+    }
+}
+
+.Header{
+
+    &-Title-Video{
+        display: flex;
+        padding: 0px;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-ProfilePicture-Name{
+        display: flex;
+        padding: 0px;
+        width: 100%;
+        align-items: center;
+    }
+
+    &-dates-deleteButton{
+        display: flex;
+        padding: 0px;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-ProfilePicture-CommentForm{
+        display: flex;
+        padding: 0px;
+        width: 100%;
+        align-items: center;
+        box-shadow: black;
+    }
+
+    &-Comment-Cancel-button{
+        width: 100%;
+        display: flex;
+        padding: 0px;
+        padding-right: 35px;
+        margin: 0px;
+        margin-top: -40px;
+        margin-bottom: -35px;
+        justify-content: flex-end;
+    }
+}
+
+.textarea-style{
+    font-size: 1rem;
+    width: 100%;
+    margin: 0px;
+    margin-bottom: -2px;
+    padding: 0px;
+    height: auto;
+    line-height: 24px; //este line-hei tiene que ser 24px ya que pertenece a una formula y no debe alterarse para que se pueda ejecutar bien
+    background: none;
+    border: none;
+    color:white;
+    outline: none;
+    overflow: auto; 
+    resize: none;
+}
+
+.LookeLikeTextArea{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+
+    &:empty::before{
+        content: attr(placeholder);
+        color: #ccc;
+    }
+}
+
+
+
+
+// backgrounds & images 
+.img-profile{
+    border-radius: 50%;
+    padding-right: 1.5rem;
+}
+
+.fondo{
+    &-primary{
+    // este & es un placeholder que permite que cuando se coloque "fondo" y tenga una sub capa "-primary" aplique los siguientes ajustes
+      @include set-background($primary-color)
+      // este "set-background viene del file config donde esta el mixin
+    }
+
+    &-claro{
+        @include set-background($claro-color)
+    }
+
+    &-oscuro{
+        @include set-background($oscuro-color)
+    }
+
+    &-positive{
+        @include set-background($positive-color)
+    }
+
+    &-negative{
+        @include set-background($negative-color)
+    }
+}
+
+.img-exercise{
+    width: 100%;
+    padding: 0%;
+    margin: 0rem;
+    position: relative;
+    display: initial;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    // coloca SIEMPRE este MARGIN BOTTOM despues del margin general para no tener problemas;
+    box-shadow: 10px 5px 8px rgba(0, 0, 0, 0.2);
+            // 1er) para el horizontal 2do) para vertical 3ro) para el difuminado (mientras mayor sea el numero mas claro o transparente sera el efecto) 
+    // este box le da la sombra con stylo al div de la img
+}
+
+.wrap-img{
+    // este wrap se necesita para poder hacer el efecto de hover sobre la img
+    position: relative;
+    height: auto;
+    width: auto;
+}
+
+// buttons
+.boton{
+    display: inline-block;
+    // esto es para que esten alineados uno al lado del otro ambos botones
+    background-color: $claro-color;
+    color: #333;
+    padding: 0.5rem 1.8rem;
+    // la separacion que tendra por fuera del elemento, en este caso el boton
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    // este sera la distancia que tendra un boton con el otro lateralmente
+    outline: none;
+    transition: all 0.2s ease-in;
+    // esto hara que el efecto de light dure 0.2s cuando el pointer este encima del botom y desaparezca dandole un estilo slow
+
+    &.-primary{
+        @include  set-background($primary-color);
+        // aplicamos esto para establecer el fondo del bottom 
+
+        &-long{
+            @include  set-background($primary-color);
+            width: 97.4%;
+            &:hover{
+                background: lighten($primary-color, 5%);
+            }    
+        }
+
+        &:hover{
+            background: lighten($primary-color, 5%);
+            // de esta forma establecemos un efecto de lighten cuando el pointer este encima del bottom, "primary" sera el color y "5%" sera la luminicencia
+        }
+    }
+
+    &.-oscuro{
+        @include set-background($oscuro-color);
+        &:hover{
+            background: lighten($oscuro-color, 5%);
+        }
+    }
+
+    &.-positive{
+        @include set-background($positive-color);
+        color: white;
+        &:hover{
+            background: lighten($positive-color, 5%);
+        }
+    }
+
+    &.-negative{
+        @include set-background($negative-color);
+
+        &-long{
+            @include set-background($negative-color);
+            width: 97.4%;
+
+            &:hover{
+                background: lighten($negative-color, 5%);
+            }    
+        }
+
+        &:hover{
+            background: lighten($negative-color, 5%);
+        }
+
+        &-delete{
+            background-color: transparent;
+            color: $negative-color;
+
+            &:hover{
+                color: lighten($negative-color, 5)
+            }
+        }
+    }
+
+    &.-claro{
+        @include set-background($claro-color);
+        &:hover{
+            background: lighten($claro-color, 5%);
+        }
+
+    }
+}
+
+.like-dislike-button{
+    text-decoration: none;
+    color: white;
+    background: none;
+    border-style: none;
+    padding: 10px;
+    font-size: 1.2rem;
+    outline: 0;
+    // este outline sirve para quitarle el color de borde cuando se preciona el boton 
+    // NO  ESTA BIEN USARLO YA QUE EL NO ES APTO PARA LAS PERSONAS QUE TIENEN PROBLEMA DE VISIBILIDAD
+
+   &:hover{
+       cursor: pointer;
+       color: $positive-color;
+   }
+
+    &:focus{
+        // focus es un statement que se ejecuta una vez clickeado el botton
+
+        // solo se deja aca el color ya que el resto es sobre escrito por principal statement, lo unico que cambia es el color de focus
+        color: $positive-color;
+    }
+    
+}
+
+// Lista dinamicas
+.lista-ul{
+    width: 100%;
+    display: grid;
+    // se coloca grid de manera que se queden en forma de cuadriculas
+    grid-template-columns: 29.1% 29.1% 29.1%;
+    // este se debe colocar para darle el tamaño a cada item, tratar de repartir el 100% entre los 3 elementos por filam en este caso
+    grid-gap: 20px;
+    // esto es el espacio que tiene al rededor de cada item, izq, dere, arriba y abajo
+    padding: 10px 0px;
+    // en este padding el primer elemento es para el top el segundo para el right, 3ro bottom, 4to left en tal caso de llegar a poner
+    flex-direction: row;
+    // se debe colocar row, de manera poder tener filas los elementos
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch;
+    text-align: center;
+    overflow-y: auto;
+    background-color: rgb(34, 33, 32);
+}
+
+.lista{
+    padding: 50px 50px;
+    max-width: 300px;
+}
+
+.lista-menu-muscle{
+    max-width: 1450px;
+    max-height: 500px;
+    width: 100%;
+    padding: 0;
+    margin: 0rem;
+    display: flex;
+    position: relative;
+    margin-right: 0rem;
+    padding-bottom: -10px;
+    line-height: 1px;
+}
+
+
+// .musculo-item{
+//     text-align: center;
+//     padding: 30px 30px;
+//     // en este padding el primer elemento es para el top el segundo para el right, 3ro bottom, 4to left en tal caso de llegar a poner
+//     font-size: 30px;
+//     height: auto;
+//     transition: font-size 0.5s;
+//     // este transition hara que cuando el cursor este sobr el elemento va hacer que el tamaño de la letra cambie de tamaño
+//     &:hover{
+//         cursor: pointer;
+//         color: lighten($positive-color, 10%);
+//         font-size: 35px;
+//     }
+
+// }
+
+
+
+// .menu-videos{
+//     display: block;
+//     // margin-left: ;
+//     // margin-right: auto;
+
+//     .img-video{
+//         display: block;
+//         // margin-left: auto;
+//         // margin-right: auto;
+//         width: 100%;
+//         transform: scale(1);
+//         // este sera la escala de la imagen al inicio el 1 indica que es  el maximo tamaño de la img
+//         -webkit-transform: scale(1);
+//         -ms-transition: all 1s ease-in-out;
+//         // este transition se debe colocar para que este en conjunto con el "hover" se aplique y ejecute el efecto deseado, el "ease-in-ou" es el efect de la imagen a encoger 
+//     }
+
+//     .info-video{
+//         display: block;
+//         text-align: left;
+//         width: 100%;
+//         transform: translate(0px);
+//         // este transform con su 0px es para que no aparezca el texto al inicio y en conjunto con el "hover" aparrezca
+//         -ms-transition: all 500ms ease-in-out;
+//         // este sera el transition que tendra el texto cuando el cursor este encima del elemento, "ease-in-out" es el efecto de encoger y agrandar
+//         opacity: 0;
+//         // se le coloca 0 para que luego pase a 1 en el "hover"
+//         transition: transform opacity 1s;
+//     }
+
+//     &:hover{
+//         cursor: pointer;
+//         border: 1px solid $positive-color;
+//         .img-video{
+//             transform:scale(0.9);
+//             // aqui se cambia la escala de manera que la imagen se encoja un poco y ayude al efecto del transition
+//         }
+//         .info-video{
+//             transform: translate(0px, -10px);
+//             // aca el traslate pasara el texto de ser 0px a -10px se coloca el signo de (-) porque esta oculto
+//             opacity: 1;
+//         }
+//     }
+// }
+
+// Menus
+
+.menu-grid{
+    width: 100%;
+    display: grid;
+    // se coloca grid de manera que se queden en forma de cuadriculas
+    grid-template-columns: 50% 50%;
+    // este se debe colocar para darle el tamaño a cada item, tratar de repartir el 100% entre los 2 elementos por filam en este caso
+    grid-gap: 0px;
+    // esto es el espacio que tiene al rededor de cada item, izq, dere, arriba y abajo
+    padding: 0px 0px;
+    // en este padding el primer elemento es para el top el segundo para el right, 3ro bottom, 4to left en tal caso de llegar a poner
+    flex-direction: row;
+    // se debe colocar row, de manera poder tener filas los elementos
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.menu-muscle{
+    position: relative;
+    display: flex;
+    padding: 0;
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+    margin: 0rem;
+    margin-right: 0rem;
+    border-style: none;
+    width: 100%;
+
+    &-details{
+        position: relative;
+        display: flex;
+        padding: 0%;
+        margin-bottom: 0rem;
+        margin: 0rem;
+        border-style: none;
+        width: 100%;
+    }    
+}    
+
+
+// Alerts
+.alert{
+    position: absolute;
+    //  es importante para los ALERT que vayan en el position "fixed" o "absolute" , ademas debe colocarse ajuro los siguientes tambien, left o right, bottom o top
+    top: 5rem;
+    left: 31rem;
+    padding: 0.8rem;
+    margin: 1rem;
+    width: 37.8rem;
+    opacity: 0.9;
+    background: $claro-color;
+    color: #333;
+
+    &.message-positive {
+        @include set-background($positive-color);
+        color: white;
+    }
+
+    &.message-negative {
+        @include set-background($negative-color);
+    }
+}
+
+.wrap-page{
+// este wrap es necesario porque involucra todo el fondo de la pag, sobre todo con la img
+    height: 100%;
+    // al colocar esto, todo se pone en el medio de la pagina 
+    width: 100%;
+    position: absolute;
+    // se coloca absolute ya que este debe cubrir la imagen completa de toda la portada
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    // la funcion de esto es oscurecer un poco la imagen de fondo de manera de que las letras se puedan ver mejor
+}
+
+// info/ data / dates
+
+.info-muscle{
+    position: absolute;
+    // para que cubra toda la imagen
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 25px;
+    // se le agrega este margin menos del anterior div de manera que tenga las mismas dimensiones de sombra que la img
+    background: rgba(2, 2, 2, 0.44);
+    color: #fff;
+    opacity: 0;
+    transition: opacity .2s, visibility .2s;
+    border-radius: 50px;
+    // se le coloca el mismo que el div anterior para que sea igual que la img
+    font-size: 1.2rem;
+
+    &:hover{
+        visibility: visible;
+        // de esta forma cuando halla un hover aparezca la info
+        opacity: 1;
+    }
+}
+
+.info-align{
+    margin-top: 50px;
+    // solo se le coloca este de manera que la info quede centrada en la img
+}
+
+.data-Comment{
+    margin-right: 20px;
+    margin-left: 110px;
+}
+
+.dates{
+    font-size: 1rem;
+    color: grey
+}
+
+
+// Animations
+.arrow{
+    font-size: 35px;
+    // IMPORTANTE, si se quiere agrandar un icon, usar esto
+    height: 120px;
+    width: 10px;
+    bottom: 90px;
+    left: 50%;
+    padding: 0rem;
+    position: absolute;
+    transition: height .5s ease-out;
+    &:hover{
+        height: 100px;
+        cursor: pointer;
+    }
+    .links-scss{
+        color: $positive-color;
+        cursor: pointer;
+    }
+}
+
+
+.rayita{
+    height: 1px;
+    background-color: $positive-color;
+    border: none;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+
+    &:focus{
+        background-color: black;
+    }
+}
+
+.rayita1{
+    height: 30px;
+    border-style: solid;
+    border-color: $positive-color;
+    border-width: 1px 0 0 0 ;
+    border-radius: 20px;
+}
+
+.rayita2{
+    display: block;
+    height: 30px;
+    margin-top: -10px;
+    border-style: solid;
+    border-color: $positive-color;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
+}
+
+// Videos, iframes, media player
+
+iframe{
+    // width: 100% !important ;
+    // height: auto !important ;
+}
+
+.screen1{
+    height: 60vh;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.screen2{
+    position: relative;
+    padding-bottom: 20%;
+    height: 60vh; //este height tiene que ir si o si porque si no queda muy chiquito el video
+}
+
+
+.screen2 iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
