@@ -10,6 +10,7 @@ const { authRouter } = require('./routers/auth');
 const {routerProfile} = require('../api/routers/profile');
 const {routerVideo} = require('./routers/videos');
 const {routerComment} = require('./routers/comment');
+const {routerPicture} = require('../api/routers/picture');
 // const Authentication = require('../api/controllers/authentication');
 // const requireSignin = passport.authenticate('local', {session: false});
 const requireAuth = passport.authenticate('jwt', {session: false});
@@ -25,6 +26,7 @@ app.use(cors());
 app.use(bodyParser.json({type: '*/*'}));
 app.use('/api', authRouter);
 app.use('/api/profile', requireAuth, routerProfile);
+app.use('/api/profile', requireAuth, routerPicture);
 app.use('/api/videoList', requireAuth, routerVideo);
 app.use('/api/video', requireAuth, routerComment);
 // aqui debe ir el app.use con su require de manera que el endpoint pueda llamarse

@@ -7,6 +7,7 @@ import CommentBox from '../pages/microComponent/CommentBox';
 import CommentItem from '../pages/microComponent/CommentItem';
 import { like, dislike, deleteComment } from '../../actions/videos';
 import { loadToTop } from '../extras/helpers';
+import Alert from '../extras/Alert';
 
 const Video = ({ getVideoById, match, video, like, dislike, deleteComment }) => {
 
@@ -25,6 +26,7 @@ const Video = ({ getVideoById, match, video, like, dislike, deleteComment }) => 
 
     return comment !== undefined && likes !== undefined && (
         <div className="container-video">
+            <Alert/>
 
             {/* <h1 className="grande texto-positive">Rutina de {category} con {modo} </h1> */}
 
@@ -35,7 +37,7 @@ const Video = ({ getVideoById, match, video, like, dislike, deleteComment }) => 
                             url={search}
                             width='100%'
                             height='100%'
-                            controls="true" //este control tiene que ir para que aparezca la barra de menu de youtube y se pueda adelantar el video o pausar o mutear
+                            controls = {true} //este control tiene que ir para que aparezca la barra de menu de youtube y se pueda adelantar el video o pausar o mutear
                         />
                         {/* url permitira hacer el request al youtube para poder reproducir el video */}
                     </div>
