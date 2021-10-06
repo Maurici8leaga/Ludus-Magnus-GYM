@@ -22,12 +22,10 @@ In the muscles section you can choose between the following; Biceps, Triceps, Ab
 
 ![Screen Shot 2021-10-06 at 16 44 08](https://user-images.githubusercontent.com/47537254/136277564-9b511847-e285-4978-9b56-4ce395cf9ac0.png)
 
-##Getting start
+##Get Started
 
-The first thing to do is open in your browser and write the following in the URL;
-http://localhost:3000/
 
-Once this is done you will have to open the terminal of your code editor of your choice and once there you will have to make sure to enter the folder called "gym", to enter it you must write "cd gym".
+The first thing to do is open the terminal of your code editor of your choice and once there you will have to make sure to enter the folder called "gym", to enter it you must write "cd gym".
 
 ```sh
    cd ..
@@ -37,24 +35,25 @@ Once this is done you will have to open the terminal of your code editor of your
 To continue we will divide the following steps into 2 sections, npm ui and npm api;
 
 
--- NPM API
+###API
 
 In this folder is our Backend, once we enter and execute the following command it will only run the code on the side of the BackEnd. To get started in the user interface section, you will need to type the following command;
 
 ```sh
-   cd ui
+   cd api
    npm run start
 ````
 
--- NPM UI
+###UI
 
 In this folder is our FrontEnd, therefore once the following command is executed, it will only run the code on the frontEnd side.To get start in the ui section you will have to write the following command;
 
 ```sh
-   cd api
+   cd ui
    npm run dev
 ````
-After completing these steps, you will be able to use the page normally.
+After completing these steps, now you will be able to use the page normally, for that you have to open your browser and write the following in the URL;
+http://localhost:3000/
 
 
 
