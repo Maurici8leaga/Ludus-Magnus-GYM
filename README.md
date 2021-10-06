@@ -34,7 +34,7 @@ Once this is done you will have to open the terminal of your code editor of your
    cd gym
 ````
 
-Para continuar dividiremos los siguientes pasos en 2 secciones, npm ui y npm api;
+To continue we will divide the following steps into 2 sections, npm ui and npm api;
 
 
 -- NPM API
@@ -48,7 +48,7 @@ In this folder is our Backend, once we enter and execute the following command i
 
 -- NPM UI
 
-EnIn this folder is our FrontEnd, therefore once the following command is executed, it will only run the code on the frontEnd side.To get start in the ui section you will have to write the following command;
+In this folder is our FrontEnd, therefore once the following command is executed, it will only run the code on the frontEnd side.To get start in the ui section you will have to write the following command;
 
 ```sh
    cd api
