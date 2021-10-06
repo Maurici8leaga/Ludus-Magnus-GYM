@@ -23,6 +23,33 @@ Con respecto a los ejercicios podras escoger entre los siguientes; Bicep, Tricep
 
 ![Screen Shot 2021-10-06 at 16 44 08](https://user-images.githubusercontent.com/47537254/136277564-9b511847-e285-4978-9b56-4ce395cf9ac0.png)
 
+##Getting start
+
+Lo primero hacer es abrir en tu browser y colocar en el URL lo siguiente;
+http://localhost:3000/
+
+Una vez realizado esto tendras que abrir en el terminal de tu code editor de tu preferencia y una vez ahi tendras que asegurar entrar a la carpeta llamada "gym", para entrar a ella deberas realizar " cd gym ".
+
+![Screen Shot 2021-10-06 at 17 44 50](https://user-images.githubusercontent.com/47537254/136280489-2d0b70b8-47d4-4cf8-a957-903c1767fb25.png)
+
+Para continuar dividiremos los siguientes pasos en 2 secciones, npm ui y npm api;
+
+
+-- NPM API
+
+En esta carpeta se encuentra lo que es nuestro Backend, por ende un avez ejecutado el siguiente comando solo correra el codigo del lado del BackEnd, Para poder comenzar en la seccion del ui tendras que realizar el siguiente comando;
+
+![Screen Shot 2021-10-06 at 17 52 05](https://user-images.githubusercontent.com/47537254/136281393-dfd184ec-727d-46f4-a2d4-e23a20cb3a91.png)
+
+Una vez realidado empezara a ejecutarse en el browser la app.
+
+-- NPM UI
+
+En esta carpeta se encuentra lo que es nuestro FrontEnd, por ende una vez ejecutado el siguiente comando solo correra el codigo del lado del frontEnd, Para poder comenzar en la seccion del ui tendras que realizar el siguiente comando;
+
+![Screen Shot 2021-10-06 at 17 49 58](https://user-images.githubusercontent.com/47537254/136281166-a23be7e9-0f1e-410c-b014-8b7774104595.png)
+
+Una vez realizado estos pasos ya podras usar la pagina con normalidad.
 
 
 
