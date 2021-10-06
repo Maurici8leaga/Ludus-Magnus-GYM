@@ -41,7 +41,7 @@ In this folder is our Backend, once we enter and execute the following command i
 
 ```sh
    cd api
-   npm run start
+   npm run dev
 ````
 
 ###UI
@@ -50,7 +50,7 @@ In this folder is our FrontEnd, therefore once the following command is executed
 
 ```sh
    cd ui
-   npm run dev
+   npm run start
 ````
 After completing these steps, now you will be able to use the page normally, for that you have to open your browser and write the following in the URL;
 http://localhost:3000/
