@@ -23,7 +23,7 @@ mongoose.connect('mongodb://localhost:27017/gymAuth', { useNewUrlParser: true } 
 // middleware
 app.use(morgan('combined'));
 app.use(cors());
-app.use(bodyParser.json({type: '*/*'}));
+app.use(bodyParser.json());
 app.use('/api', authRouter);
 app.use('/api/profile', requireAuth, routerProfile);
 app.use('/api/profile', requireAuth, routerPicture);

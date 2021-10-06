@@ -10,4 +10,6 @@ const PictureSchema = new Schema(
         // esto le indica al database que guarde y actualice automaticamente el tiempo de cada entrada que tenga
 });
 
-module.exports = Picture = mongoose.model('picture', PictureSchema);
+const ModelClass = mongoose.model('picture', PictureSchema);
+
+module.exports = ModelClass;
