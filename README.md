@@ -1,9 +1,8 @@
 # Ludus Magnus GYM 
 
-Ludus Magnus es un apagina diseñada con la finalidad de incentivar y instruir al usuario atraves de videos de rutinas de ejercicios por profesores con experiencia, en el cual es usuario podra tener con una seccion de perfil en el cual podras plasmar tu progreso con respecto a tu peso y rutinas, guardar los videos favoritos y en cada video tendra la libertad de poder comentar o realizar preguntas a los profesores o otros usuarios sobre los ejercicios.
+Ludus Magnus is a page designed with the purpose of encouraging and instructing the user through videos of exercise routines by experienced teachers, in which the user will have a profile section in which they can view their progress regarding their weight and routines, save your favorite videos and in each video you will have the freedom to comment or ask questions to teachers or other users about the exercises.
 
-
-Con respecto a los ejercicios podras escoger entre los siguientes; Bicep, Tricep, Abdominal, Espalda, Hombro, Pecho, Pierna y Yoga. Una vez seleccionado tu musculo podras escoger que tipo de ejercicios quieres hacer; Maquinas, Mancuernas o estilo libre y adicional tendras la libertad de escoger el grado de dificultad segun como te sientas preparado.
+In the muscles section you can choose between the following; Biceps, Triceps, Abdominal, Back, Shoulder, Chest, Leg and Yoga. Once you have selected the muscle, you can choose what type of exercises you want to exercise; With machines, dumbbells or freestyle and additional, you will have the freedom to choose the difficulty according to how you feel prepared.
 
 ![Screen Shot 2021-10-06 at 16 42 25](https://user-images.githubusercontent.com/47537254/136277315-76ba2ddf-68ae-4316-aae8-23faa1858a02.png)
 
@@ -25,31 +24,37 @@ Con respecto a los ejercicios podras escoger entre los siguientes; Bicep, Tricep
 
 ##Getting start
 
-Lo primero hacer es abrir en tu browser y colocar en el URL lo siguiente;
+The first thing to do is open in your browser and write the following in the URL;
 http://localhost:3000/
 
-Una vez realizado esto tendras que abrir en el terminal de tu code editor de tu preferencia y una vez ahi tendras que asegurar entrar a la carpeta llamada "gym", para entrar a ella deberas realizar " cd gym ".
+Once this is done you will have to open the terminal of your code editor of your choice and once there you will have to make sure to enter the folder called "gym", to enter it you must write "cd gym".
 
-![Screen Shot 2021-10-06 at 17 44 50](https://user-images.githubusercontent.com/47537254/136280489-2d0b70b8-47d4-4cf8-a957-903c1767fb25.png)
+```sh
+   cd ..
+   cd gym
+````
 
 Para continuar dividiremos los siguientes pasos en 2 secciones, npm ui y npm api;
 
 
 -- NPM API
 
-En esta carpeta se encuentra lo que es nuestro Backend, por ende un avez ejecutado el siguiente comando solo correra el codigo del lado del BackEnd, Para poder comenzar en la seccion del ui tendras que realizar el siguiente comando;
+In this folder is our Backend, once we enter and execute the following command it will only run the code on the side of the BackEnd. To get started in the user interface section, you will need to type the following command;
 
-![Screen Shot 2021-10-06 at 17 52 05](https://user-images.githubusercontent.com/47537254/136281393-dfd184ec-727d-46f4-a2d4-e23a20cb3a91.png)
-
-Una vez realidado empezara a ejecutarse en el browser la app.
+```sh
+   cd ui
+   npm run start
+````
 
 -- NPM UI
 
-En esta carpeta se encuentra lo que es nuestro FrontEnd, por ende una vez ejecutado el siguiente comando solo correra el codigo del lado del frontEnd, Para poder comenzar en la seccion del ui tendras que realizar el siguiente comando;
+EnIn this folder is our FrontEnd, therefore once the following command is executed, it will only run the code on the frontEnd side.To get start in the ui section you will have to write the following command;
 
-![Screen Shot 2021-10-06 at 17 49 58](https://user-images.githubusercontent.com/47537254/136281166-a23be7e9-0f1e-410c-b014-8b7774104595.png)
-
-Una vez realizado estos pasos ya podras usar la pagina con normalidad.
+```sh
+   cd api
+   npm run dev
+````
+After completing these steps, you will be able to use the page normally.
 
 
 
