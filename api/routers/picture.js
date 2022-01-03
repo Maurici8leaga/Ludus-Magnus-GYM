@@ -3,7 +3,7 @@ const multer = require('multer');
 const routerPicture = express.Router();
 const path = require("path");
 const fs = require('fs');
-const Picture = require('../models/Picture');
+const PictureModal = require('../models/Picture');
 
 
 // storage ingine
@@ -25,32 +25,38 @@ const upload = multer({
 
 routerPicture.use('/profile', express.static('upload/images'));
 
-routerPicture.post("/upload", upload.single('profile'), (req, res, next) => {
+// Endpoint for choose the image profile 
+routerPicture.get('/', (req, res) => {
+    PictureModal.find({}, (err, items) => {
+        if(err) {
+            console.log('This is the error; ', err);
+            res.status(500).send('An error ocurred');
+        } else{
+            res.render('PictureProfile', {items: items});
+        }
+    });
+});
 
-    console.log('ESTO ES REQ.FILE', req.file);
-    //si pones "profile" en el postman en el key debe ir igual
-    // try{
-    //     var objImg = { 
-    //         img: { data: fs.readFileSync(path.join(req.filedname + '/upload ' + file.originalname)), contentType: 'image/jpeg' }
-    //     }
+// endpoint to save de img into db
+routerPicture.post("/upload", upload.single('picture-profile'), (req, res, next) => {
+        // si se coloca aca 'picture-profile' en el key debe ir igual
 
-    //     console.log(objImg, 'ESTO ES OBJIMG'); 
-
-        // Picture.create(objImg, (err, item) => {
-        //     if(err) {
-        //         console.log('ALGO PASO MAL', err)
-        //     } else {
-        //         item.save();
-        //         res.json({message : 'New image added to the db!'})
-        //         console.log(objImg, 'ESTO ES OBJIMG');
-        //         //este sera la respuesta de retorno al usuario
-        //     }
-        // })
-    // } catch (error) {
-    //     console.log('algo salio mal', error);
-    // }
-
-
+        const name = `picture_${Date.now()}`;
+        
+        const objImg = {
+            url: `/${name}.jpeg`,
+            contentType: 'image/jpeg'
+        }
+        
+        PictureModal.create(objImg, (err, item) => {
+            if (err){
+                console.log('This is the error', err);
+            } else {
+                item.save();
+                res.json({message: 'A new picture had been add to db', item});
+                console.log('se ha guardado una img' , item)
+            }
+        })
 });
 
 function errHandler(err, req, res, next){

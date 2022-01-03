@@ -41,6 +41,10 @@ const userSchema = new Schema({
     sex: {
         type: String,
         required: true
+    },
+    avatar: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'picture'
     }
 });
 
