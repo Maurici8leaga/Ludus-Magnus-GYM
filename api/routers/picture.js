@@ -4,6 +4,7 @@ const routerPicture = express.Router();
 const path = require("path");
 const fs = require('fs');
 const PictureModal = require('../models/Picture');
+const User = require('../models/user');
 
 
 // storage ingine
@@ -18,50 +19,48 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-        // indicamos que se almacene en donde dice la variable storage, que es el mismo lugar donde se guardo el primer file en hexadecimal
+    // indicamos que se almacene en donde dice la variable storage, que es el mismo lugar donde se guardo el primer file en hexadecimal
     limits: { fileSize: 100000 }
-        // esto permitira colocar un limite a los bits de cada imagen , si supera esto dara error
+    // esto permitira colocar un limite a los bits de cada imagen , si supera esto dara error
 })
 
-routerPicture.use('/profile', express.static('upload/images'));
-
-// Endpoint for choose the image profile 
-routerPicture.get('/', (req, res) => {
-    PictureModal.find({}, (err, items) => {
-        if(err) {
-            console.log('This is the error; ', err);
-            res.status(500).send('An error ocurred');
-        } else{
-            res.render('PictureProfile', {items: items});
-        }
-    });
-});
 
 // endpoint to save de img into db
-routerPicture.post("/upload", upload.single('picture-profile'), (req, res, next) => {
-        // si se coloca aca 'picture-profile' en el key debe ir igual
+routerPicture.post("/upload", upload.single('picture-profile'), async function (req, res, next) {
+    // si se coloca aca 'picture-profile' en el key debe ir igual, ademas este sera el nombre inicial de las img
+    try {
 
         const name = `picture_${Date.now()}`;
-        
+        // colocamos esto para poder diferenciar el nombre de cada img de manera hacerlo dinamica
+
         const objImg = {
+            // en este caso como vamos a contener las img en un folder solo debemos colocar el url y el contentype 
             url: `/${name}.jpeg`,
             contentType: 'image/jpeg'
         }
-        
-        PictureModal.create(objImg, (err, item) => {
-            if (err){
-                console.log('This is the error', err);
-            } else {
-                item.save();
-                res.json({message: 'A new picture had been add to db', item});
-                console.log('se ha guardado una img' , item)
-            }
-        })
+
+        const user = await User.findById(req.user.id).select('-password');
+        //se colcar "User" porque de esta es la mongoose collection y "user" es el models
+        const picture = await PictureModal.create(objImg);
+        // con create se crea la imagen
+        const avatarId = picture._id;
+        const userId = user._id;
+        // para el findOneAndUpdate se necesita los id's en este caso de picture y de user logiado
+        const userUpdate = await User.findOneAndUpdate({ _id: userId }, { avatar: avatarId });
+        // se coloca "_id" y "userId" porque en el es donde va a ver la relacion
+        // se coloca avatar porque es el elemento que se va agregar al objt user
+        // de esta forma se relaciona el user que esta siendo logiando con el picture que esta siendo subida
+        res.json({ message: 'A new picture had been add to db', picture });
+        // en este caso solo pasamos "picture" porque es lo que necesitamos para este endpoint
+
+    } catch (error) {
+        console.log('This is the error->', error);
+    }
 });
 
-function errHandler(err, req, res, next){
+function errHandler(err, req, res, next) {
     // esto lo recomienda multer de manera de tener un control en tal caso de llegar a tener un error
-    if (err instanceof multer.MulterError){
+    if (err instanceof multer.MulterError) {
         res.json({
             success: 0,
             message: err.message
