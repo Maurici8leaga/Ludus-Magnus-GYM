@@ -13,6 +13,7 @@ import axios from 'axios';
 export const signUp = ({ email, password, name, lastname, age, height, sex, weight }, user) => async dispatch => {
 
     const KeyValue = { headers: { 'Content-Type': 'application/json' } };
+    // en cada post debe llevar un headers en este caso el type es 'application/json' porque es texto de un form
     const body = JSON.stringify({ email, password, name, lastname, age, height, sex, weight });
     // El "stringify" su funcion es convertir de un objeto a un string, en nuestro caso pasar la informacion agregada por el usuario pasara a reemplazarla en un string de JSON
 

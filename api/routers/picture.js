@@ -46,12 +46,15 @@ routerPicture.post("/upload", upload.single('picture-profile'), async function (
         const avatarId = picture._id;
         const userId = user._id;
         // para el findOneAndUpdate se necesita los id's en este caso de picture y de user logiado
-        const userUpdate = await User.findOneAndUpdate({ _id: userId }, { avatar: avatarId });
+        const userUpdate = await User.findOneAndUpdate({ _id: userId }, { avatar: avatarId }, {new: true});
         // se coloca "_id" y "userId" porque en el es donde va a ver la relacion
         // se coloca avatar porque es el elemento que se va agregar al objt user
         // de esta forma se relaciona el user que esta siendo logiando con el picture que esta siendo subida
+
+
         res.json({ message: 'A new picture had been add to db', picture });
         // en este caso solo pasamos "picture" porque es lo que necesitamos para este endpoint
+        res.json(userUpdate);
 
     } catch (error) {
         console.log('This is the error->', error);

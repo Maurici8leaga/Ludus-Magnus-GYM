@@ -20,7 +20,9 @@ const SignIn = ({ signIn, isSignedIn }) => {
   // con esto estamos indicando que al llamar "onChange" va a cambiar el state del "setFormData"
 
   const onSubmit = async e => {
+    // onSubmit es solo para FORMS 
     e.preventDefault();
+    // este es un metodo para prevenir que el browser ejecute un action por defecto de un elemento seleccionado. ES usado cuando hay un FORMS
     signIn(formData);
   }
 
@@ -66,6 +68,7 @@ const SignIn = ({ signIn, isSignedIn }) => {
 }
 
 SignIn.propTypes = {
+  // los React.propTypes son validadores que pueden ser usados para estar seguros que la información recibida sea válida y si no va a mandar un advertencias al terminal
   signIn: PropTypes.func.isRequired,
   isSignedIn: PropTypes.bool
 }
@@ -76,5 +79,5 @@ const mapStatetoProps = state => ({
 });
 
 export default connect(mapStatetoProps, { signIn })(SignIn);
-                                  // se pasa solo "signIn" porque el es la funcion, el isSignedIn es mas condicion de estado
+                // se pasa solo "signIn" porque el es la funcion del actions y estamos conectando todos los actions con conect, el isSignedIn es mas condicion de estado
 
