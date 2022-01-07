@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { UPLOAD_AVATAR } from './types';
+import { UPLOAD_AVATAR, UPDATE_PROFILE } from './types';
 import { messageAlert } from './messageAlert';
 
 // add a picture profile
@@ -12,10 +12,14 @@ export const uploadAvatar = (formData) => async dispatch => {
         
         const res = await axios.post('http://localhost:3001/api/profile/upload',formData , KeyValue );
         
+        const response = await axios.get('http://localhost:3001/api/profile/me');
+        // con este request despues de enviar la picture este actualizara el user 
+
         dispatch({
-            type: UPLOAD_AVATAR,
-            payload: res.data
-        });
+            // aca se coloca este dispatch para una vez que se envie la foto se solucita el refresh del userprofileavata
+                type: UPDATE_PROFILE,
+                payload: response.data
+            })
 
         dispatch(messageAlert('Picture profile added successfully', 'message-positive'));
 

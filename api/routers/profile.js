@@ -7,8 +7,11 @@ const User = require('../models/user');
 
 routerProfile.get('/me', async function(req, res){
     try{
-        const ProfileUser = await User.findOne({_id: req.user.id}).select('-password');
-                // aca realizamos el llamado de toda la informacion almacenada del usuario, de manera poder acceder a ella y mostrarla cuando se acceda al profile
+            // Hacemos request de la info del usuario y ademas hacemos un refresh al user de esta forma si tiene un cambio se habra act 
+        const ProfileUser = await User.findOne({_id: req.user.id}).populate('avatar').select('-password');
+                //lo que hace populate aqui es remplazar la ruta que se le especifique que es en este caso user y picture 
+                // para que la apropiedad del user llamada avatar en vez de que aparezca el objectId aparezca la documentacion completa
+
         if(!ProfileUser){
             return res.status(400).json({ error: {msg: 'No hay profile para este usuario'}});
         }
