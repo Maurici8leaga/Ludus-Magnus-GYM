@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { UPLOAD_AVATAR, UPDATE_PROFILE } from './types';
+import {  UPDATE_PROFILE } from './types';
 import { messageAlert } from './messageAlert';
 
 // add a picture profile

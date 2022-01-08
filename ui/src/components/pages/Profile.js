@@ -23,6 +23,8 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
             // append el inserta un grupo de objects , en este caso el picture , si no existe ninguno lo crea
             // el 1er element es el key o name del value o file en este caso 'picture-profile', por eso debe ser llamado tal como se puso en el back
             // 2do element es el value o el archivo a almacenar
+            buttonSubmit(formData);
+            // se coloca el buttonSubmit aca para que apenas sea seleccionada la foto se envie en un solo boton
         }
     }
 
@@ -30,21 +32,34 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
         uploadAvatar(formData);
     }
 
+    
     // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" para evitar que me muestre un profile vacio
     if (!profile || !profile._id) return null;
+    
+    const { _id, name, lastname, age, height, weight, avatar } = profile;
+    
+    const avatarImage = () => {
+        // esta funcion que es condicional tiene que ir afuera del component ya que cuando los usuarios no tiene avatar y entran al profile
+        // ocurre un error ya que retorna undefined, entonce se crea este condicional para que cuando no tenga avatar no colpase pag y pueda carga subir su picture
+        const {avatar} = profile;
 
-    const { _id, name, lastname, age, height, weight } = profile;
-    console.log('ESTO ES PROFILE.AVATAR', profile);
+        // Avatar default
+        let avatarUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
+        // colocamos let en vez de const ya que let tiene mayor scope que const este puede ser llamado mas adentro de otros elementos
 
-    // const url = (url) => {
-    //     if(profile.avatar == null){
-    //         return  url = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
-    //     }else{
-    //         return url = `http://localhost:3001/api/avatar${profile.avatar.url}`;
-    //     }
+        // Avatar picture custom
+        if(typeof avatar === 'object' ) {
+            // typeof es un operator que indica dentro de un string lo que es el operador en este caso 'avatar' = 'object'. Entonces el condicional se indica si es exactamente eso retorna lo siguiente
+              avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
+            return(
+                <img className="img-profile" alt="avatar" src={avatarUrl} />
+            );
+        }
+        return (
+            <img className="img-profile" alt="avatar" src={avatarUrl} />
+        );
 
-    // }
-
+    }
 
     return (
         <div className="container-Profile-background">
@@ -61,13 +76,11 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
 
                     <div className="profile">
                         <div>
-                            <img className="img-profile" alt="avatar" src={''} />
+                                {avatarImage()}
+                                {/* hay que hacer el llamado de la funcion con () porque si no da error*/}
                             <div>
                                 <>
-                                    <input type='file' name='fileInput' onChange={onChange} />
-                                </>
-                                <>
-                                    <button onClick={buttonSubmit}>Submit</button>
+                                    <input type='file' name='fileInput' onChange={onChange} required />
                                 </>
 
                             </div>

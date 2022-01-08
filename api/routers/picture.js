@@ -7,40 +7,48 @@ const PictureModal = require('../models/Picture');
 const User = require('../models/user');
 
 
-
 // storage ingine
 const storage = multer.diskStorage({
 
     destination: './upload/images',
     filename: (req, file, cb) => {
-        console.log('ESTO ES FILENAME DENTRO', req.user);
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-        // este callback el 1er element es "null" es para cuando de error, luego le sigue el "fieldname" + la fecha con mili seg + path.extname sera el formato o extension en este caso jpeg etc
-        // esto se hace ya que si se maneja el mismo fieldname va a crear una coincidencia con el archivo interno y se duplicara
+        // este callback el 1er element es "null" es para cuando de error, luego con lo siguiente son los elementos que multer le pondra al nombre
+        // osea va a poner como NOMBRE FINAL DEL FILE la suma de "file.fieldname"+la fecha+ la extencion del documento en este caso jpeg
     }
 })
 
 const upload = multer({
     storage: storage,
     // indicamos que se almacene en donde dice la variable storage, que es el mismo lugar donde se guardo el primer file en hexadecimal
-    limits: { fileSize: 100000 }
+    limits: { fileSize: 100000 },
     // esto permitira colocar un limite a los bits de cada imagen , si supera esto dara error
+    fileFilter: function(req, file, cb){
+        // filter friltrara los file para que solo acepte el que se le indica
+        if (path.extname(file.originalname) !== '.jpeg')
+        {
+            return cb(null, false);
+        } else {
+            cb(null, true);
+        }
+    }
 })
 
-
 // endpoint to save de img into db
-routerPicture.post("/upload", upload.single('picture-profile'), async function (req, res, next) {
+routerPicture.post("/upload", upload.single(`picture-profile`), async function (req, res, next) {
     // si se coloca aca 'picture-profile' en el key debe ir igual, ademas este sera el nombre inicial de las img
     try {
 
-        const name = `picture-profile_${Date.now()}`;
-        // colocamos esto para poder diferenciar el nombre de cada img de manera hacerlo dinamica
-        console.log('ESTO ES DENTRO DE ROUTER PICTURE', req.user)
+        if (!req.file) {
+            // se crea este conditional para que cuando un file no sea aceptado por el filter de multer este devuelva un msj diciendo que solo se admite el indicado y no colapse la pag
+            return res.status(400).send('Invalid file type, only upload .jpg or .jpeg files');
+          }
 
         const objImg = {
             // en este caso como vamos a contener las img en un folder solo debemos colocar el url y el contentype 
-            url: `/${name}.jpeg`,
-            contentType: 'image/jpeg'
+            url: `/${req.file.filename}`,
+                // aqui se coloca el nombre del file.filename (que viene de multer) que multer creo , entonces lo colocamos asi para que halla coincidencia en el folder con el del mongo y no tener problemas en request de la img en el front
+            contentType: `${req.file.mimetype}`
         }
 
         const user = await User.findById(req.user.id).select('-password');

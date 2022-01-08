@@ -46,7 +46,7 @@ const SignIn = ({ signIn, isSignedIn }) => {
             {/* cuando el usuario realice el "onSubmit" este ejecutara la llamada de 'e' que es el evento que se encuentra dentro del "onSubmit"*/}
 
             <div className="form-input-individual">
-              <input type="text" component="input" name="email" placeholder="Email" pattern=".+@gym.com" title=" Coloque su email" value={email} onChange={e => onChange(e)} required autoComplete="none" />
+              <input type="text" component="input" name="email" placeholder="Email"  title=" Coloque su email" value={email} onChange={e => onChange(e)} required autoComplete="none" />
               {/* este "pattern" nos permite estipular el patron del correo, de manera que solo se admita el que se solicita */}
             </div>
 
