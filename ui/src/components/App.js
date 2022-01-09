@@ -9,6 +9,7 @@ import Header from './Header';
 import SignIn from './auth/SignIn';
 import SignUp from './auth/SignUp';
 import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
 import VideoListByMuscle from './pages/VideoListByMuscle';
 import store from './store';
 import { SIGN_IN } from '../actions/types';
@@ -39,6 +40,7 @@ class App extends Component {
                                 <Route path="/signin" exact component={SignIn} />
                                 <Route path="/signup" exact component={SignUp} />
                                 <RequireAuth path="/profile" exact component={Profile} />
+                                <RequireAuth path="/profile/edit" exact component={EditProfile} />
                                 <RequireAuth path="/routinesType" exact component={RoutinesType} />
                                 <RequireAuth path="/exercises/:muscle" exact component={VideoListByMuscle} />
                                 <RequireAuth path="/video/execise/:id" exact component={Video} />

@@ -101,11 +101,19 @@
         &-background{
             position: relative;
             height: 100vh;
-            background-image: url('../img/texture.jpg');
+            background-image: url('../img/people_workingOut.jpeg');
             color: #fff;
             background-repeat: no-repeat;
             background-position: center;  
             background-size: cover;     
+            
+            &-blur{
+                // de esta forma se hace para que la img quede opaca
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(8px);
+                width: 100%;
+            }
         }
     }
 }
@@ -161,7 +169,10 @@
     border-style: none;
 
     &-Profile{
-        padding: 0 2rem;
+        align-content: center;
+        position: absolute;
+        top: 30px;
+        padding: 0 25rem;
         margin-top: 5rem;
         margin-bottom: 3rem;
     }
@@ -193,6 +204,17 @@
     margin-left: 4rem;
     font-family: 'Prata', serif;
     color: $positive-color;
+    
+    &-ultraCenter{
+        filter: brightness(100%); 
+        font-size: 1.5rem;
+        // tamaño de las letras
+        margin-bottom: 1rem;
+        // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
+        margin-left: 9rem;
+        font-family: 'Prata', serif;
+        color: $positive-color;
+        }
 }
 
 .grande{

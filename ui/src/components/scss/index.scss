@@ -1,6 +1,7 @@
 @import './config.scss';
 @import './utilities.scss';
 @import './form.scss';
+@import './cardProfile.scss';
 
 *{
     font-family: 'Lato', sans-serif;
@@ -97,17 +98,4 @@ img{
         // este tambien ayuda a centrar las lentras en el medio de la pagina
         text-align: center;
     }
-}
-
-// Profiles page
-.profile{
-    display: grid;
-    // se coloca grid porque este permite crear un estilo de tabla 
-    grid-template-columns: 2fr 4fr 1fr;
-    // este permite separar en un cuadro 3 fragmentos que se encuentran en el div
-    align-items: center;
-    padding: 1rem;
-    line-height: 1.8;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
 }

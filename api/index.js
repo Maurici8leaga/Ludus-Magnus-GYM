@@ -12,6 +12,7 @@ const {routerVideo} = require('./routers/videos');
 const {routerComment} = require('./routers/comment');
 const {routerPicture} = require('../api/routers/picture');
 const {routerPictureStatic} = require('../api/routers/pictureStatic');
+const {routerEditProfile} = require('../api/routers/editProfile');
 // const Authentication = require('../api/controllers/authentication');
 // const requireSignin = passport.authenticate('local', {session: false});
 const requireAuth = passport.authenticate('jwt', {session: false});
@@ -27,6 +28,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', authRouter);
 app.use('/api/profile', requireAuth, routerProfile);
+app.use('/api/profile', requireAuth, routerEditProfile);
 app.use('/api/profile', requireAuth, routerPicture);
 app.use('/api/avatar',  routerPictureStatic);
 // esta ruta no debe llevar "requireAuth" ya que se necesita acceder a las img que se contiene

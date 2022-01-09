@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfile } from '../../actions/profile';
 import { uploadAvatar } from '../../actions/avatar';
+import { Link } from 'react-router-dom';
 import Alert from '../extras/Alert';
+import { loadToTop } from '../extras/helpers';
 
 const Profile = ({ getProfile, uploadAvatar, profile }) => {
     // getProfile y uploadAvatar son actions que estan siendo pasados como props aqui porque estan siendo conectados por conect!!
 
     useEffect(() => {
         getProfile();
+        loadToTop();
     }, [getProfile]);
     // hay que agregar este "getProfiles" ya que "useEffect" pide que se agregue esta dependencia o que se quite la matriz de la dependencia.
 
@@ -32,76 +35,82 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
         uploadAvatar(formData);
     }
 
-    
+
     // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" para evitar que me muestre un profile vacio
     if (!profile || !profile._id) return null;
-    
+
     const { _id, name, lastname, age, height, weight, avatar } = profile;
-    
+
     const avatarImage = () => {
         // esta funcion que es condicional tiene que ir afuera del component ya que cuando los usuarios no tiene avatar y entran al profile
         // ocurre un error ya que retorna undefined, entonce se crea este condicional para que cuando no tenga avatar no colpase pag y pueda carga subir su picture
-        const {avatar} = profile;
+        const { avatar } = profile;
 
         // Avatar default
         let avatarUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
         // colocamos let en vez de const ya que let tiene mayor scope que const este puede ser llamado mas adentro de otros elementos
 
         // Avatar picture custom
-        if(typeof avatar === 'object' ) {
+        if (typeof avatar === 'object') {
             // typeof es un operator que indica dentro de un string lo que es el operador en este caso 'avatar' = 'object'. Entonces el condicional se indica si es exactamente eso retorna lo siguiente
-              avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
-            return(
-                <img className="img-profile" alt="avatar" src={avatarUrl} />
+            avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
+            return (
+                <img className="image" alt="avatar" src={avatarUrl} />
             );
         }
         return (
-            <img className="img-profile" alt="avatar" src={avatarUrl} />
+            <img className="image" alt="avatar" src={avatarUrl} />
         );
 
     }
 
     return (
         <div className="container-Profile-background">
-            <Alert />
-
-            <div className="container-Profile">
+            <div className="container-Profile-background-blur">
+                <Alert/>
 
                 <div className="Title-container-Profile">
-                    <h1 className="grande">Perfil</h1>
-                    <p className="title-small">Aca puedes ver tu informacion actual</p>
+                    <h1 className="highlight-title texto-secundary">Perfil</h1>
+                    <h3 className="highlight-title2-ultraCenter">Esta es tu informacion actual</h3>
                 </div>
 
-                <div>
+                <div className="frame">
+                    <div className="center">
 
-                    <div className="profile">
-                        <div>
+                        <div className="profile">
+                            <div className="image">
                                 {avatarImage()}
-                                {/* hay que hacer el llamado de la funcion con () porque si no da error*/}
-                            <div>
-                                <>
-                                    <input type='file' name='fileInput' onChange={onChange} required />
-                                </>
+                            </div>
 
+                            <div className="name">{name}  {lastname}</div>
+
+                            <div className="actions">
+                                <label className="btn-small">
+                                    {/* metemos el input dentro de un label para atraves del label el input pueda tomar el stye que queremos */}
+                                    <input type="file" name='fileButton' onChange={onChange} required></input>
+                                    <i className="fas fa-camera"></i>
+                                </label>
+                                <Link to="/profile/edit" className="btn"> Editar Perfil</Link>
                             </div>
                         </div>
 
-                        <div>
-                            <h2>{name} {lastname}</h2>
-                            <ul>
-                                <li> <i className="far fa-clock"></i> Edad</li>
-                                <li > <i className="fas fa-ruler-vertical"></i> Altura</li>
-                                <li> <i className="fas fa-balance-scale"></i> Peso</li>
-                            </ul>
-                            <button className="boton -positive"> Editar Perfil <i className="fas fa-pencil-alt"></i> </button>
+                        <div className="stats">
+                            <div className="box">
+                                <span className="value">{age} Años</span>
+                                <span className="value"> <i className="fas fa-clock"></i> Edad </span>
+                            </div>
+
+                            <div className="box">
+                                <span className="value">{height} m</span>
+                                <span className="value"> <i className="fas fa-ruler-vertical"> Altura</i> </span>
+                            </div>
+
+                            <div className="box">
+                                <span className="value">{weight} Kg</span>
+                                <span className="value"> <i className="fas fa-balance-scale"> Peso </i> </span>
+                            </div>
+
                         </div>
-
-
-                        <ul>
-                            <li> {age} Años</li>
-                            <li> {height} m</li>
-                            <li> {weight} kg</li>
-                        </ul>
 
                     </div>
                 </div>

@@ -1,0 +1,146 @@
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 52.8%;
+  width: 50%;
+  height: 400px;
+  margin-top: -150px;
+  margin-left: -400px;
+  color: $positive-color;
+}
+
+.center {
+  position: absolute;
+  top: 50px;
+  left: 35px;
+	height: 300px;
+	width: 90%;
+    background-image: url('../img/texture.jpg');
+	border-radius: 30px;
+	overflow: hidden;
+	box-shadow: 10px 12px 10px 0 rgba(0,0,0,0.3);
+}
+
+.profile{
+
+    display: grid;
+    // se coloca grid porque este permite crear un estilo de tabla 
+    grid-template-columns: 2fr 4fr 1fr;
+    // este permite separar en un cuadro 3 fragmentos que se encuentran en el div
+    align-items: center;
+    padding: 1rem;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+
+	float: left;
+	width: 80%;
+	height: 100%;
+	text-align: center;
+    cursor: default;
+	
+	.image {
+		position: relative;
+		width: 100%;
+		height: 70%;
+		margin: 15px auto 0 auto;
+        object-fit: cover;
+        // este object-fit es perfcto para adaptar img al tamaño de su container
+		
+		img {
+			display: block;
+			border-radius: 50%;
+			background: #F5E8DF;
+		}
+				
+	}
+	
+	.name {
+		font-size: 23px;
+		font-weight: 600;
+		margin-top: -15px;
+	}
+		
+	.actions {
+        margin: 33px 0px 33px;
+		
+		.btn {
+			display: block;
+			width: 120px;
+			height: 30px;
+			margin: 0 auto 10px auto;
+			background: none;
+			border: 1px solid $positive-color;
+			border-radius: 15px;
+			font-size: 15px;
+			font-weight: 600;
+			box-sizing: border-box;
+			transition: all .3s ease-in-out;
+			color: $positive-color;
+            cursor: default;
+            &:hover {
+                background: $positive-color;
+                color: $claro-color;
+            }
+			
+			&-small{
+				display: block;
+				width: 60px;
+				height: 30px;
+				margin: 0 auto 10px auto;
+				background: none;
+				border: 1px solid $positive-color;
+				border-radius: 15px;
+				font-size: 15px;
+				font-weight: 600;
+				box-sizing: border-box;
+				transition: all .3s ease-in-out;
+				color: $positive-color;
+
+                &:hover {
+                    background: $positive-color;
+                    color: $claro-color;
+                }
+            }
+			
+		}
+	}
+	
+}
+
+.stats {
+	float: right;
+    cursor: default;
+	
+	.box {
+		box-sizing: border-box;
+		width: 120px;
+		height: 99px;
+		background: #F5E8DF;
+		text-align: center;
+		padding-top: 20px;
+		transition: all .4s ease-in-out;
+		
+		&:hover {
+			background: $positive-color;
+            color: $claro-color;
+		}
+		
+		&:nth-child(2) {
+			margin: 1px 0;
+		}
+		
+	}
+		
+	.value {
+		font-size: 20px;
+		font-weight: 600;
+	}
+		
+}
+
+// Input para cam en card
+input[type="file"] {
+    display: none;
+}
