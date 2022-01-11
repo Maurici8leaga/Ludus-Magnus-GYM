@@ -27,9 +27,10 @@ app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', authRouter);
-app.use('/api/profile', requireAuth, routerProfile);
-app.use('/api/profile', requireAuth, routerEditProfile);
+app.use('/api/profile', requireAuth, routerProfile, routerEditProfile);
+// <- si quito este no me da el get de profile
 app.use('/api/profile', requireAuth, routerPicture);
+// si quito este no me deja subir la foto del profile
 app.use('/api/avatar',  routerPictureStatic);
 // esta ruta no debe llevar "requireAuth" ya que se necesita acceder a las img que se contiene
 app.use('/api/videoList', requireAuth, routerVideo);

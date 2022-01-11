@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfile } from '../../actions/profile';
 import { uploadAvatar } from '../../actions/avatar';
 import { Link } from 'react-router-dom';
 import Alert from '../extras/Alert';
+import EditProfile from '../pages/microComponent/modal/EditProfile';
 import { loadToTop } from '../extras/helpers';
 
 const Profile = ({ getProfile, uploadAvatar, profile }) => {
     // getProfile y uploadAvatar son actions que estan siendo pasados como props aqui porque estan siendo conectados por conect!!
+
+
+    const [Open, SetOpen] = useState(false);
 
     useEffect(() => {
         getProfile();
@@ -90,7 +94,13 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
                                     <input type="file" name='fileButton' onChange={onChange} required></input>
                                     <i className="fas fa-camera"></i>
                                 </label>
-                                <Link to="/profile/edit" className="btn"> Editar Perfil</Link>
+                                {/* <Link to="/profile/edit" className="btn"> Editar Perfil</Link> */}
+                                <div className="btn">
+                                    
+                                    <EditProfile  onClose={() => SetOpen(false)} profile={profile} Open={Open}/>
+                                    <button onClick={() => SetOpen(true)}> Editar Profile</button>
+                                </div>
+                                {/* aqui debera ir el modal de editProfile */}
                             </div>
                         </div>
 
