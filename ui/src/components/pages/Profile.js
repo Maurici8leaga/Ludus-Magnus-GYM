@@ -5,14 +5,16 @@ import { getProfile } from '../../actions/profile';
 import { uploadAvatar } from '../../actions/avatar';
 import { Link } from 'react-router-dom';
 import Alert from '../extras/Alert';
-import EditProfile from '../pages/microComponent/modal/EditProfile';
+import EditProfile from './microComponent/modal/EditProfile';
 import { loadToTop } from '../extras/helpers';
 
 const Profile = ({ getProfile, uploadAvatar, profile }) => {
     // getProfile y uploadAvatar son actions que estan siendo pasados como props aqui porque estan siendo conectados por conect!!
 
 
-    const [Open, SetOpen] = useState(false);
+    const [open, setOpen] = useState(false);
+    // este state es solo para abrir y cerrar el modal
+    // los state deben estar en minuscula
 
     useEffect(() => {
         getProfile();
@@ -96,11 +98,14 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
                                 </label>
                                 {/* <Link to="/profile/edit" className="btn"> Editar Perfil</Link> */}
                                 <div className="btn">
-                                    
-                                    <EditProfile  onClose={() => SetOpen(false)} profile={profile} Open={Open}/>
-                                    <button onClick={() => SetOpen(true)}> Editar Profile</button>
+
+                                    <button onClick={() => setOpen(true)}> Editar Profile</button>
+                                    {open ? (
+                                        <EditProfile closeUp={() => setOpen(false)} profile={profile} />
+                                        // se le pasa como prop esta funcion "closeUp" y "profile" como prop tambien para que pueda tener acceso a los datos del user en el child component y la funcion para que pueda cerrar el modal
+                                    ) : null}
+                                    {/* se le pone esta conditional para que solo se abra el modal cuando se desee y NO DE ERROR  */}
                                 </div>
-                                {/* aqui debera ir el modal de editProfile */}
                             </div>
                         </div>
 

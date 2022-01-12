@@ -49,11 +49,12 @@ export const getVideoById = id => async dispatch => {
 // Add comment
 export const addComment = (idVideo, formData) => async dispatch => {
 
-    const KeyValue = { headers: { 'Content-Type': 'application/json' } };
+    const keyValue = { headers: { 'Content-Type': 'application/json' } };
+    // "'Content-Type'" OJO DEBE IR EN MINUSCULA
 
     try {
 
-        const res = await axios.post(`http://localhost:3001/api/video/comment/${idVideo}`, formData, KeyValue);
+        const res = await axios.post(`http://localhost:3001/api/video/comment/${idVideo}`, formData, keyValue);
 
         dispatch({
             type: ADD_COMMENT,

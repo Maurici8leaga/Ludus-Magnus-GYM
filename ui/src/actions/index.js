@@ -12,13 +12,13 @@ import axios from 'axios';
 
 export const signUp = ({ email, password, name, lastname, age, height, sex, weight }, user) => async dispatch => {
 
-    const KeyValue = { headers: { 'Content-Type': 'application/json' } };
+    const keyValue = { headers: { 'Content-Type': 'application/json' } };
     // en cada post debe llevar un headers en este caso el type es 'application/json' porque es texto de un form
     const body = JSON.stringify({ email, password, name, lastname, age, height, sex, weight });
     // El "stringify" su funcion es convertir de un objeto a un string, en nuestro caso pasar la informacion agregada por el usuario pasara a reemplazarla en un string de JSON
 
     try {
-        const response = await axios.post('http://localhost:3001/api/signup', body, KeyValue);
+        const response = await axios.post('http://localhost:3001/api/signup', body, keyValue);
         // esto mandara la creacion de la cuenta al API creada en el puerto 3001, "body" hace referencia al email y password
 
         localStorage.setItem('session', JSON.stringify(response.data));
@@ -42,13 +42,14 @@ export const signUp = ({ email, password, name, lastname, age, height, sex, weig
 
 export const signIn = ({ email, password }) => async dispatch => {
 
-    const KeyValue = { headers: { 'Content-Type': 'application/json' } };
+    const keyValue = { headers: { 'Content-Type': 'application/json' } };
+        // "'Content-Type'" OJO DEBE IR EN MINUSCULA
 
     const body = JSON.stringify({ email, password });
     // El "stringify" su funcion es convertir de un objeto a un string, en nuestro caso pasar la informacion agregada por el usuario pasara a reemplazarla en un string de JSON
 
     try {
-        const response = await axios.post('http://localhost:3001/api/signin', body, KeyValue);
+        const response = await axios.post('http://localhost:3001/api/signin', body, keyValue);
 
         localStorage.setItem('session', JSON.stringify(response.data));
         //"setItem" es un metodo para actualizar o crear una clave, en este el "session" es el contenido que se quiere crear o actualizar, y "response.data" es el valor que va a llevar

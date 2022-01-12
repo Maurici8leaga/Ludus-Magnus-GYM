@@ -8,13 +8,13 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
     const {type, payload} = action;
-
+    
     switch(type){
         case GET_PROFILE:
-        case UPDATE_PROFILE:
-            return{
-                ...state,
-                ProfileUser: payload,
+            case UPDATE_PROFILE:
+                return{
+                    ...state,
+                    ProfileUser: payload,
             }
         case PROFILE_ERROR:
             return{

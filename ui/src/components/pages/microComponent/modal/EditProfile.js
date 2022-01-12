@@ -1,52 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
-import { getProfile, updateProfile } from '../../../../actions/profile';
+import { updateProfile } from '../../../../actions/profile';
 
 
-const EditProfile = ({ getProfile, updateProfile, profile, Open, onClose }) => {
+const EditProfile = ({ updateProfile, profile, closeUp }) => {
     // los action y los props deben ir aca!!
 
-    const {name, lastname, weight, height} = profile;
-
-    if (!Open) {
-        return null
-    };
+    const { name, lastname, weight, height } = profile;
 
 
-    // const [infoEdit, SetinfoEdit] = useState({
-    //     // creamos un state demanera de asi poder cambiar los valores de los inputs
-    //     name: '',
-    //     lastname: '',
-    //     height: '',
-    //     weight: ''
-    // });
+    const [infoEdit, setinfoEdit] = useState({
+        // creamos un state demanera de asi poder cambiar los valores de los inputs
+        name,
+        lastname,
+        height,
+        weight
+    });
 
-    // useEffect(() => {
-    //     getProfile();
 
-    //     SetinfoEdit({
-    //         // aca vamos a indicar que si la propiedad tiene un valor muestrala, si no dejala en ''
-    //         name: profile.name ? profile.name : '',
-    //         lastname: profile.lastname ? profile.lastname : '',
-    //         height: profile.height ? profile.height : '',
-    //         weight: profile.weight ? profile.weight : ''        
-    //     });
 
-    //     console.log('ESTE ES profile EN EDIT PROFILE', profile)
+    const onChange = e => setinfoEdit({ ...infoEdit, [e.target.name]: e.target.value });
 
-    // }, [getProfile]);
-
-    // const { name, lastname, height, weight } = infoEdit;
-    // // declaramos estas propiedas se almacenaran dentro de infoEdit y este sera enviado al back
-
-    // const onChange = e => SetinfoEdit({ ...infoEdit, [e.target.name]: e.target.value });
-
-    // const onSubmit = e => {
-    //     e.preventDefault();
-    //     updateProfile(infoEdit);
-    // }
+    const onSubmit = event => {
+        event.preventDefault();
+        updateProfile(infoEdit);
+        // se coloca "infoEdit" dentro del actions para que se pueda asi enviar al actions y al backend de resto no se mandaria nada
+        closeUp(false);
+        // para cerrar el modal una vez haciendo submit
+    }
 
 
     return (
@@ -57,39 +39,41 @@ const EditProfile = ({ getProfile, updateProfile, profile, Open, onClose }) => {
                     <h4 className="modal-title">Edita tu informacion</h4>
                 </div>
                 <div className="modal-body">
-                <form className="form" >
-                    {/* <Link to="/profile" className="links-scss">
-                        <i className="far fa-window-close"></i>
-                    </Link> */}
-                    <div>
+                    <form className="form" onSubmit={onSubmit}>
+                        <div>
 
-                        <ul>
-                            <li>
-                                <p>Nombre</p>
-                                <input className="form-input-individual" type="text" name="name" placeholder="Nombre" value={name} title="Nombre" />
-                            </li>
-                            <li>
-                                <p>Apellido</p>
-                                <input className="form-input-individual" type="text" name="lastname" placeholder="Apellido" value={lastname} />
-                            </li>
-                            <li>
-                                <p>Peso</p>
-                                <input className="form-input-individual" type="number" name="weight" placeholder="Kg" value={weight} />
-                            </li>
-                            <li>
-                                <p>Altura</p>
-                                <input className="form-input-individual" type="number" name="height" placeholder="Metros" value={height} />
-                            </li>
+                            <div className="form-input-individual">
+                                <label>Nombre</label>
+                                <input className="form-input-individual" type="text" name="name" placeholder="Nombre" value={infoEdit.name} title="Nombre" onChange={e => onChange(e)} />
+                            </div>
 
-                        </ul>
+                            <div className="form-input-individual">
+                                <label>Apellido</label>
+                                <input className="form-input-individual" type="text" name="lastname" placeholder="Apellido" value={infoEdit.lastname} onChange={e => onChange(e)} />
+                            </div>
 
-                        {/* <button className="boton -primary-long" type="submit" value="Save"> Save </button> */}
-                    </div>
-                </form>
+                            <div className="form-input-individual">
+                                <label>Peso</label>
+                                <input className="form-input-individual" type="number" name="weight" placeholder="Kg" value={infoEdit.weight} onChange={e => onChange(e)} />
+                            </div>
 
-                </div>
-                <div className="modal-footer">
-                    <button className="button" onClick={() => onClose(false)}>Save</button>
+                            <div className="form-input-individual">
+                                <label>Altura</label>
+                                <input className="form-input-individual" type="number" name="height" placeholder="Metros" value={infoEdit.height} onChange={e => onChange(e)} />
+                            </div>
+
+
+                            <div className="modal-footer">
+                                {/* IMPORTANTE PARA LOS BOTONES DENTRO DE UN FORM */}
+                                <button className="button" type="submit"  > Save </button>
+                                    {/* debe haber un boton designado AJURO como "type=submit" y ese mismo no puede llevar NINNGUN onClick o alguna otra FUNCION porque va a dar un ERROR MALDITO */}
+                                    {/* ademas ese debe ir encima de cualquier otro */}
+                                <button className="button" type="button" onClick={() => closeUp(false)}>Cancel</button>
+                                    {/* el segundo boton preferible solo 2, debe ir despues Y DEBE TENER AJURO "type=button" PARA QUE NO DE ERROR MALDITO */}
+                            </div>
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -99,15 +83,10 @@ const EditProfile = ({ getProfile, updateProfile, profile, Open, onClose }) => {
 }
 
 EditProfile.propTypes = {
-    getProfile: PropTypes.func.isRequired,
-    updateProfile: PropTypes.func,
+    updateProfile: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired
-    // ProfileUser: PropTypes.object
+    // se coloca "profile" porque es el objeto como prop que nos esta trayendo la data y es Isrequired porque es IMPORTANTE
 };
 
-
-const mapStateToProps = state => ({
-    // profile: state.profile.ProfileUser
-});
-
-export default connect(mapStateToProps, { getProfile, updateProfile })(EditProfile);
+export default connect(null, { updateProfile })(EditProfile);
+// se coloca "null" porque no hace falta mapStateToProps aca

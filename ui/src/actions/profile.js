@@ -18,19 +18,21 @@ export const getProfile = () => async dispatch => {
     }
 };
 
-export const updateProfile = (formData) => async dispatch =>{
-                // el formdata es el que nos va a traer los datos a cambiar
-    // console.log('ESTO ES FORMDATA EN EL ACTIONS UPDATE', formData);
+export const updateProfile = (infoEdit) => async dispatch =>{
+                // el infoEdit es el que nos va a traer los datos a cambiar
     try {
 
-        const KeyValue = { headers: { 'Content-Type': 'application/json' } };
+        const keyValue = { headers: { 'Content-Type': 'application/json' } };
     // cada endpoint con post debe llevar un header, en este caso el type es 'application/json' porque es data de un form
+        // "'Content-Type'" OJO DEBE IR EN MINUSCULA
 
-        const res = await axios.put('http://localhost:3001/api/profile/edit', formData, KeyValue);
+        const res = await axios.put('http://localhost:3001/api/profile/edit', infoEdit, keyValue);
 
         dispatch({
             type: UPDATE_PROFILE,
-            payload: res.data
+            payload: res.data.userUpdate
+            // OJO aca debe ir "userUpdate" ya que asi esta puesto en el router del back, ademas de eso es que el trae la data con los 
+            // datos actualizados. ESTO SE PUDO VER ATRAVES DE UN CONSOLE.LOG de res.data
         });
         
     } catch (error) {
