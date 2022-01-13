@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import DatePicker from '../../../../api/node_modules/react-datepicker';
+// <-- esto es un package para poder colocar un calendario de escoger fechas
+import moment from 'moment';
 import { signUp } from '../../actions/index';
 import Alert from '../extras/Alert';
 
 
 const SignUp = ({ signUp, isSignedIn }) => {
 
-  const [formData, SetFormData] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     lastname: '',
-    age: '',
+    birth: '',
     sex: '',
     weight: '',
     height: '',
@@ -19,14 +22,27 @@ const SignUp = ({ signUp, isSignedIn }) => {
     password: ''
   });
 
-  const { name, lastname, age, sex, weight, height, email, password } = formData;
+  const [calendarDates, setcalendarDates] = useState(null);
 
-  const onChange = e => SetFormData({ ...formData, [e.target.name]: e.target.value });
+  const formatedDate = (date) => {
+
+    setcalendarDates(date)
+    console.log('esto es birthday',date)
+    const formated = moment(date).format('YYYY-MM-DD');
+    // moment aca nos ayuda a formatear la fecha que viene de un formato distinto al ISO y lo convierte en formato que se le indique en este caso a 'YYYY/MM/DD'
+    setFormData({...formData, birth: formated});
+    console.log('esto es age', formated);
+  }
+
+  const { name, lastname,  sex, birth, weight, height, email, password } = formData;
+
+  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
     e.preventDefault();
-    signUp(formData);
+    // signUp(formData);
     // aqui se coloca "formData" ya que el contiene los state de los datos del usuario, si no se coloca dara un error 422
+    console.log('ESTO ES FORMDATA-->', formData)
   }
 
   if (isSignedIn) {
@@ -70,7 +86,7 @@ const SignUp = ({ signUp, isSignedIn }) => {
               <div className="form-input-data">
                 <label>Edad</label>
                 {/* el "min = 0" hace que solo sean numeros positivos en el input, y "step" es para que el numero aumente 1 a 1*/}
-                <input type="number" min="0" max="99" step="1" name="age" autoComplete="none" placeholder="Años" title="Coloque su edad" value={age} onChange={e => onChange(e)} required />
+                <DatePicker dateFormat='yyyy/MM/dd' selected={calendarDates} placeholderText="YYYY/MM/DD"   onChange={formatedDate} required/>
               </div>
 
               <div className="form-input-data">

@@ -3,6 +3,8 @@
 @import './form.scss';
 @import './cardProfile.scss';
 @import'./modal.scss';
+@import'../../../../api/node_modules/react-datepicker/dist/react-datepicker.css';
+@import'../../../../api/node_modules/react-datepicker/dist/react-datepicker-cssmodules.css';
 
 *{
     font-family: 'Lato', sans-serif;
