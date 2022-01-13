@@ -4,27 +4,91 @@
     top: 0;
     right: 0;
     bottom: 0;
+    color: $oscuro-color;
     background-color: rgba(0,0,0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.modal-container{
+
+    &-button{
+        display: flex;
+        padding: 15px;
+        margin: 0px 15px 0px;
+        justify-content: flex-end;
+    }
+}
+
 .modal-content{
     width: 500px;
-    background-color: white;
+    padding: 10px 10px 0px;
+    background-color: $claro-color;
+    border-radius: 3px;
+	overflow: hidden;
+	box-shadow: 10px 12px 10px 0 rgba(0,0,0,0.3);
+
 }
 
-.modal-header, .modal-footer{
+.modal-header{
     padding: 10px;
-}
-
-.modal-title{
-    margin: 0
 }
 
 .modal-body{
-    padding: 10px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    padding: 10px 10px 0px;
+    margin: 0px;
+}
+
+.inputModal{
+    border: 0;
+    border-bottom: 1px solid $oscuro-color;
+    outline: 0;
+    color: $oscuro-color;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &:hover{
+        border-bottom: 2px solid $primary-color;
+        color: $primary-color;
+    }
+}
+
+.labelModal{
+    display: block;
+    color: $oscuro-color;
+    padding: 0px;
+    margin: 0px;
+}
+
+.botonModal{
+    display: flex;
+    padding: 0rem 0rem 0rem 1rem;
+    margin: 0px;
+    background: transparent;
+    color: $oscuro-color;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+    &:hover{
+        color: $primary-color;
+    }
+}
+
+
+// Actions dinamyc de inputs y label
+.inputModal:hover + .labelModal{
+    // este + indica que el estilo a indicar va a ir al class que va despues de un input:hover
+    color: $primary-color;
+}
+
+.inputModal:focus + .labelModal{
+    color: $positive-color;
+}
+
+.inputModal:focus{
+    // con el focus le damos estilo al input cuando halla dado click en el y este por escribir
+    border-bottom: 2px solid $positive-color;
+    color: $positive-color;
 }

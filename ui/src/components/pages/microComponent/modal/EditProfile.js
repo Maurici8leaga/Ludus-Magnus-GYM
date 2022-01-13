@@ -33,47 +33,54 @@ const EditProfile = ({ updateProfile, profile, closeUp }) => {
 
     return (
 
-        <div className="modal">
-            <div className="modal-content">
-                <div className="modal-header">
-                    <h4 className="modal-title">Edita tu informacion</h4>
-                </div>
-                <div className="modal-body">
-                    <form className="form" onSubmit={onSubmit}>
-                        <div>
+        <div className="modal" onClick={() => closeUp(false)}>
+            {/* colocamos este onClick para cuando el usuario de click afuera del modal este se cierre */}
+            <div className="container-signin">
+                <div className="modal-content" onClick={e => e.stopPropagation()}>
+                    {/* aca el "e.stopPropagation" lo que hace es que detenga la accion anterior (onClick de CloseUp) si es que es ejecutado, entonces cuando el user haga click dentro del modal no cierre por el "onClick de CloseUp" */}
+                    <div className="modal-header">
+                        <h2>Edita tu informacion</h2>
+                    </div>
+                    <div className="modal-body">
+                        <form className="form" onSubmit={onSubmit}>
+                            <div>
 
-                            <div className="form-input-individual">
-                                <label>Nombre</label>
-                                <input className="form-input-individual" type="text" name="name" placeholder="Nombre" value={infoEdit.name} title="Nombre" onChange={e => onChange(e)} />
-                            </div>
+                                <div className="form-input-individual-small">
+                                    <input className="inputModal" type="text" name="name" placeholder="Nombre" value={infoEdit.name} title="Nombre" onChange={e => onChange(e)} />
+                                    <label className="labelModal">Nombre</label>
+                                </div>
 
-                            <div className="form-input-individual">
-                                <label>Apellido</label>
-                                <input className="form-input-individual" type="text" name="lastname" placeholder="Apellido" value={infoEdit.lastname} onChange={e => onChange(e)} />
-                            </div>
+                                <div className="form-input-individual-small">
+                                    <input className="inputModal" type="text" name="lastname" placeholder="Apellido" value={infoEdit.lastname} onChange={e => onChange(e)} />
+                                    <label className="labelModal">Apellido</label>
+                                </div>
 
-                            <div className="form-input-individual">
-                                <label>Peso</label>
-                                <input className="form-input-individual" type="number" name="weight" placeholder="Kg" value={infoEdit.weight} onChange={e => onChange(e)} />
-                            </div>
+                                <div className="form-group-2">
+                                    <div className="form-input-doble-small">
+                                        <input className="inputModal" type="number" name="weight" placeholder="Kg" value={infoEdit.weight} onChange={e => onChange(e)} />
+                                        <label className="labelModal">Kg</label>
+                                    </div>
 
-                            <div className="form-input-individual">
-                                <label>Altura</label>
-                                <input className="form-input-individual" type="number" name="height" placeholder="Metros" value={infoEdit.height} onChange={e => onChange(e)} />
-                            </div>
+                                    <div className="form-input-doble-small">
+                                        <input className="inputModal" type="number" name="height" placeholder="Metros" value={infoEdit.height} onChange={e => onChange(e)} />
+                                        <label className="labelModal">Metros</label>
+                                    </div>
+                                </div>
 
 
-                            <div className="modal-footer">
-                                {/* IMPORTANTE PARA LOS BOTONES DENTRO DE UN FORM */}
-                                <button className="button" type="submit"  > Save </button>
+
+                                <div className="modal-container-button">
+                                    {/* IMPORTANTE PARA LOS BOTONES DENTRO DE UN FORM */}
+                                    <button className="botonModal" type="submit"  > Save </button>
                                     {/* debe haber un boton designado AJURO como "type=submit" y ese mismo no puede llevar NINNGUN onClick o alguna otra FUNCION porque va a dar un ERROR MALDITO */}
                                     {/* ademas ese debe ir encima de cualquier otro */}
-                                <button className="button" type="button" onClick={() => closeUp(false)}>Cancel</button>
+                                    <button className="botonModal" type="button" onClick={() => closeUp(false)}>Cancel</button>
                                     {/* el segundo boton preferible solo 2, debe ir despues Y DEBE TENER AJURO "type=button" PARA QUE NO DE ERROR MALDITO */}
-                            </div>
+                                </div>
 
-                        </div>
-                    </form>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

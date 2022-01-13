@@ -97,9 +97,9 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
                                     <i className="fas fa-camera"></i>
                                 </label>
                                 {/* <Link to="/profile/edit" className="btn"> Editar Perfil</Link> */}
-                                <div className="btn">
+                                <div > 
 
-                                    <button onClick={() => setOpen(true)}> Editar Profile</button>
+                                    <button className="btn" onClick={() => setOpen(true)}> Editar Profile</button>
                                     {open ? (
                                         <EditProfile closeUp={() => setOpen(false)} profile={profile} />
                                         // se le pasa como prop esta funcion "closeUp" y "profile" como prop tambien para que pueda tener acceso a los datos del user en el child component y la funcion para que pueda cerrar el modal

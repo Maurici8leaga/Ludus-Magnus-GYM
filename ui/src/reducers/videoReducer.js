@@ -25,7 +25,9 @@ export default (state = INITIAL_STATE, action) => {
         case ADD_COMMENT:
                 return{
                     ...state,
+                    // ESTO --> ES IMPORTANTE PARA ACTUALIZAR EL OBJETO DEL STATE U/O SOBREESCRIBIR LAS PROPIEDADES QUE YA EXISTIAN CON LAS NUEVAS -->
                     videoId: {...state.videoId, comment: payload},
+                    // <--- de esta forma se crea un objeto nuevo con las propiedades que tenia el video en este caso y sobre escribira para actualizar las propiedades con los nuevos cambios
                     // aqui se manipula los comments de manera que devuelva los comments que se encuentren en el payload
                 }
         case DELETE_COMMENT:

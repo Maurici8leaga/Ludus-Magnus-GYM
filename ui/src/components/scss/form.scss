@@ -4,6 +4,13 @@
       width: 50%;
     //   se le coloca 50% de manera que entre los 2 inputs sumen 100% 
       padding-right: 1rem;
+
+      &-small{
+        display: flex;
+        margin: 1rem 20px;
+        width: 50%;
+        padding-right: 1rem;
+      }
   }
 
   &-group-2{
@@ -48,6 +55,13 @@
       margin-bottom: 2rem;
       width: 100%;
       padding-right: 1rem;
+
+      &-small{
+        margin: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+        padding-right: 1rem;
+        }
   }
 
   &-comment{
@@ -67,7 +81,7 @@
       width: 100%;
       padding: 0.4rem;
       font-size: 1.2rem;
-      border: 1px solid #ccc;
+      // border: 1px solid #ccc;
       height: 38px;
     //   ESTE HEIGHT TIENE QUE  IR, sin el los inputs number son mucho mas pequeños que el resto
   }
