@@ -19,14 +19,14 @@ exports.signin = function (req, res, next) {
 
 exports.signup = function (req, res, next) {
 
-    const { email, password, name, lastname, age, height, sex, weight } = req.body;
+    const { email, password, name, lastname, birth, height, sex, weight } = req.body;
 
     if (!sex) {
         return res.status(422).send({ error: { msg: 'Debes colocar tu sexo' } })
     }
 
-    if (!age) {
-        return res.status(422).send({ error: { msg: 'Debes colocar tu edad' } })
+    if (!birth) {
+        return res.status(422).send({ error: { msg: 'Debes colocar tu fecha de nacimiento' } })
     }
 
     if (!height || !weight) {
@@ -56,7 +56,7 @@ exports.signup = function (req, res, next) {
             password,
             name,
             lastname,
-            age,
+            birth,
             height,
             weight,
             sex
@@ -73,7 +73,6 @@ exports.signup = function (req, res, next) {
                                             //Se debe colocar "msg" dentro de este "res.json" ya que en express solo se puede enviar un "res.send o un res.json" .
                                             // si se intenta enviar enviar por fuera de este json ocurre un crach en el server .
             }
-
         });
     });
 }

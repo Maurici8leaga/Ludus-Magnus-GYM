@@ -23,15 +23,15 @@ const SignUp = ({ signUp, isSignedIn }) => {
   });
 
   const [calendarDates, setcalendarDates] = useState(null);
+  // creamos este otro state solo para el calendar
 
   const formatedDate = (date) => {
-
+        // date es llamado asi por defecto del DatePicker, este es la fecha que el user selecciona se pasa aca para que luego podamos usarla para formatearla
     setcalendarDates(date)
-    console.log('esto es birthday',date)
     const formated = moment(date).format('YYYY-MM-DD');
     // moment aca nos ayuda a formatear la fecha que viene de un formato distinto al ISO y lo convierte en formato que se le indique en este caso a 'YYYY/MM/DD'
     setFormData({...formData, birth: formated});
-    console.log('esto es age', formated);
+    // de esta forma actualizamos el state de birth con la fecha formateada, ya que el resto del los object del state se actualizan de otra forma
   }
 
   const { name, lastname,  sex, birth, weight, height, email, password } = formData;
@@ -40,9 +40,8 @@ const SignUp = ({ signUp, isSignedIn }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    // signUp(formData);
+    signUp(formData);
     // aqui se coloca "formData" ya que el contiene los state de los datos del usuario, si no se coloca dara un error 422
-    console.log('ESTO ES FORMDATA-->', formData)
   }
 
   if (isSignedIn) {
@@ -87,6 +86,7 @@ const SignUp = ({ signUp, isSignedIn }) => {
                 <label>Edad</label>
                 {/* el "min = 0" hace que solo sean numeros positivos en el input, y "step" es para que el numero aumente 1 a 1*/}
                 <DatePicker dateFormat='yyyy/MM/dd' selected={calendarDates} placeholderText="YYYY/MM/DD"   onChange={formatedDate} required/>
+                {/* dateFormat es un prop para indicar el formato que queremos de la fecha, selected es un prop que sera la fecha seleccionada por el user */}
               </div>
 
               <div className="form-input-data">

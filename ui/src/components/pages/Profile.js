@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfile } from '../../actions/profile';
 import { uploadAvatar } from '../../actions/avatar';
-import { Link } from 'react-router-dom';
+import moment from 'moment';
 import Alert from '../extras/Alert';
 import EditProfile from './microComponent/modal/EditProfile';
 import { loadToTop } from '../extras/helpers';
@@ -19,6 +19,7 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
     useEffect(() => {
         getProfile();
         loadToTop();
+        console.log('ESTE ES USUARIO EN PROFILE', profile);
     }, [getProfile]);
     // hay que agregar este "getProfiles" ya que "useEffect" pide que se agregue esta dependencia o que se quite la matriz de la dependencia.
 
@@ -45,7 +46,7 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
     // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" para evitar que me muestre un profile vacio
     if (!profile || !profile._id) return null;
 
-    const { _id, name, lastname, age, height, weight, avatar } = profile;
+    const { _id, name, lastname, birth, height, weight, avatar } = profile;
 
     const avatarImage = () => {
         // esta funcion que es condicional tiene que ir afuera del component ya que cuando los usuarios no tiene avatar y entran al profile
@@ -69,6 +70,14 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
         );
 
     }
+
+    // operacion para hacer el calculo de la edad del user antes de ser colocada en el form
+    const dateToDay = moment();
+    // moment nos da la fecha actual llamandola
+    const userBirth = moment(birth);
+    // pasamos birth dentro de moment para poderlo meter en el formato de moment y en la operacion ser llamada
+    const yearsToDay = dateToDay.diff(userBirth, 'years');
+    // de esta forma moment hace la operacion de resta del año actual en que este con los que tiene el user
 
     return (
         <div className="container-Profile-background">
@@ -111,8 +120,8 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
 
                         <div className="stats">
                             <div className="box">
-                                <span className="value">{age} Años</span>
-                                <span className="value"> <i className="fas fa-clock"></i> Edad </span>
+                                <span className="value">{yearsToDay} Años</span>
+                                <span className="value"> <i className="fas fa-clock">Edad</i> </span>
                             </div>
 
                             <div className="box">
