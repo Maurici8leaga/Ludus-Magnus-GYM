@@ -13,12 +13,14 @@ import Pierna from '../img/pierna.png';
 import Tricep from '../img/tricep.jpeg';
 import Yoga from '../img/Yoga.jpg';
 import {loadToTop} from '../extras/helpers';
+import {getProfile} from '../../actions/profile';
 
-const RoutinesType = ({ history }) => {
+const RoutinesType = ({ history, getProfile }) => {
     // se debe colocar "history" aqui como props para poder tener acceso a el y hacer el redireccionamiento 
 
     useEffect(() => {
         loadToTop();
+        getProfile();
     }, []);
 
     const [, setMuscle] = useState('');
@@ -103,5 +105,5 @@ const RoutinesType = ({ history }) => {
 
 };
 
-export default connect(null)(RoutinesType);
+export default connect(null, {getProfile})(RoutinesType);
 

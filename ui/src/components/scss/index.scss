@@ -102,3 +102,27 @@ img{
         text-align: center;
     }
 }
+
+.image-container-navbar{
+    display: flex;
+    align-items: flex-start;
+    align-items: center !important;
+}
+
+.span-image{
+    font-size: 1rem;
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    .-sm{
+        font-size: .875rem;
+        width: 36px;
+        height: 36px;
+    }
+
+    .-circle{
+        border-radius: 50%;
+    }
+}

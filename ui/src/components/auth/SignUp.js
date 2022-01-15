@@ -83,7 +83,7 @@ const SignUp = ({ signUp, isSignedIn }) => {
               </div>
 
               <div className="form-input-data">
-                <label>Edad</label>
+                <label>Fecha de nacimiento</label>
                 {/* el "min = 0" hace que solo sean numeros positivos en el input, y "step" es para que el numero aumente 1 a 1*/}
                 <DatePicker dateFormat='yyyy/MM/dd' selected={calendarDates} placeholderText="YYYY/MM/DD"   onChange={formatedDate} required/>
                 {/* dateFormat es un prop para indicar el formato que queremos de la fecha, selected es un prop que sera la fecha seleccionada por el user */}
