@@ -14,7 +14,6 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
   useEffect(() => {
     if (isSignedIn) {
       getProfile();
-      console.log('GETPROFILE LLAMANDO EN EL NAVBAR', profile);
     }
   }, [getProfile])
 
@@ -26,47 +25,44 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
 
       avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
       return (
-        <img className="" alt="avatar" src={avatarUrl} />
+        <img className="avatar-mini" alt="avatar" src={avatarUrl} />
       );
     }
     return (
-      <img className="image" alt="avatar" src={avatarUrl} />
+      <img className="avatar-mini" alt="avatar" src={avatarUrl} />
     );
   }
 
 
   const renderAuth = () => {
 
-    if (isSignedIn && typeof profile === 'object') {
-      // let hola = hola();
-      console.log('ESTE ES PROFILE CUANDO LOGIN', profile)
-      // console.log('ESTE ES USER CUANDO LOGIN', user.user);
+    if (isSignedIn && typeof profile === 'object' && profile !== null) {
+      // se coloca este conditional para que no de error al entrar en caso de que profile sea o null y el user no este isSignedIn
       return (
-        <div className="image">
+        <div className="headerContent">
+          <div>
+            {profile.name} {profile.lastname}
+          </div>
           <Link to="/profile" className="links-scss">
-            {/* <i className="fas fa-user-circle"></i> */}
-            <div className="image-container-navbar">
-              <div className="span-image">
-                <div className="-sm">
-                  <div className="-circle">
-                    {avatarImage()}
-                  </div>
-                </div>
+            <div className="avatar-container">
+              <div className="avatar-mini">
+                {avatarImage()}
               </div>
             </div>
           </Link>
           <Link to='/signin' onClick={() => signOut()} className="links-scss">
-            <i className="fas fa-times"></i>
+            Log Out
           </Link>
         </div>
       );
     } else {
-      // console.log('ESTE ES PROFILE CUANDO ESTA LOGOUT', profile);
       return (
-        <div>
+        <div className="headerContent">
           <ul>
             <li >
-              <Link to="/signup" className="links-scss">Registrarme</Link>
+              <Link to="/signup" className="links-scss">
+                Registrarme
+              </Link>
             </li>
 
             <li >
@@ -81,7 +77,7 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
   const renderEjercicios = () => {
     if (isSignedIn) {
       return (
-        <div>
+        <div className="headerContent">
           <Link to="/routinesType" className="links-scss">
             <i className="fas fa-dumbbell"></i> Ludus Magnus
           </Link>
@@ -89,9 +85,12 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
       );
     } else {
       return (
-        <div className="button-icon-disable">
-          <i className="fas fa-dumbbell"></i> Ludus Magnus
-          {/* el texto debe ir fuera el "icon" de manera que el css que tenga el icon no se mescle con el del texto */}
+        <div>
+          <div className="links-scss">
+            {/* <--- hay que crear un clas para un desabled button */}
+            <i className="fas fa-dumbbell"></i> Ludus Magnus
+            {/* el texto debe ir fuera el "icon" de manera que el css que tenga el icon no se mescle con el del texto */}
+          </div>
         </div>
       );
     }

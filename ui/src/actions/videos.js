@@ -33,6 +33,7 @@ export const getVideoById = id => async dispatch => {
             type: GET_VIDEOBYID,
             payload: res.data
         })
+        console.log('OBTENIENDO LA DATA DEL VIDEO BY ID', res.data)
 
     } catch (error) {
         if (error) {
@@ -60,6 +61,8 @@ export const addComment = (idVideo, formData) => async dispatch => {
             type: ADD_COMMENT,
             payload: res.data
         })
+
+        console.log('ESTO ES LA DATA DEL COMMENT MANDANDO AL BACK', res.data)
 
         dispatch(messageAlert('Comentario creado', 'message-positive'));
 

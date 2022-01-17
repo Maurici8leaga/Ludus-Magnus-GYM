@@ -19,6 +19,8 @@ routerComment.post('/comment/:id', async (req, res) => {
             // en alumno se va a guardar en el ID del usuario de esta forma conectamos las 2 Schema
         }
 
+        console.log('ESTO ES HACIENDO EL POST EN EL BACK', newComment)
+
         videoId.comment.unshift(newComment);
         // se coloca "videoId.comment" ya que dentro del videoId es que se crea un comentario no en "videos"
         //  el "unshift" permite añadir nuevos elementos a un array en este caso a la lista de comments

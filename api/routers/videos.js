@@ -28,7 +28,8 @@ routerVideo.get('/:id', async function(req, res){
         if(!videoId){
             return res.status(400).json({ error: {msg: 'No existe este video'}});
         }
-        res.json(videoId); 
+        res.json(videoId);
+        console.log('ESTO ES VIDEOID EN EL ACTIONS',videoId ) 
     }catch(error){
         console.error(error.msg);
         res.status(500).send({error: {msg : 'Video no encontrado, verifique de nuevo'}});
