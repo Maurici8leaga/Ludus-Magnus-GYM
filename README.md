@@ -6,21 +6,20 @@ In the muscles section you can choose between the following; Biceps, Triceps, Ab
 
 ![Screen Shot 2021-10-06 at 16 42 25](https://user-images.githubusercontent.com/47537254/136277315-76ba2ddf-68ae-4316-aae8-23faa1858a02.png)
 
-![Screen Shot 2021-10-06 at 16 42 44](https://user-images.githubusercontent.com/47537254/136277453-b7046eb5-636c-4ef5-bac4-6f182cca6530.png)
+![SignUp-page](https://user-images.githubusercontent.com/47537254/149844241-8c83baea-4c99-40ed-8860-bc3bc608729f.png)
 
-![Screen Shot 2021-10-06 at 16 42 54](https://user-images.githubusercontent.com/47537254/136277462-6d00db6a-541c-42c0-bfff-636eb1a612cc.png)
+![Muscle-list-page](https://user-images.githubusercontent.com/47537254/149844255-3576c5e6-1895-416c-95c2-183aa4df52cb.png)
 
-![Screen Shot 2021-10-06 at 16 43 13](https://user-images.githubusercontent.com/47537254/136277518-39cc49bd-82e2-4b5d-81e9-55499a0a5ba6.png)
+![Muscle-list-2-page](https://user-images.githubusercontent.com/47537254/149844272-86feda29-1e57-41b8-953e-4f1e92a8d953.png)
 
-![Screen Shot 2021-10-06 at 16 43 23](https://user-images.githubusercontent.com/47537254/136277531-ca046e2f-e73e-40d2-af45-c0c0021443ab.png)
+![Video-list-page](https://user-images.githubusercontent.com/47537254/149844291-6d3129e4-d3d2-4a98-b2e6-72778341f6e6.png)
 
-![Screen Shot 2021-10-06 at 16 43 31](https://user-images.githubusercontent.com/47537254/136277539-5c0b0256-7f00-4837-9830-7f3eb53e6648.png)
+![Video-list-2-page](https://user-images.githubusercontent.com/47537254/149844300-bb5cef29-c40b-4f9a-ba51-8b5aad6fe0b5.png)
 
-![Screen Shot 2021-10-06 at 16 43 48](https://user-images.githubusercontent.com/47537254/136277550-3057987e-d355-4673-beab-9ff4c56c91da.png)
+![Video-comment-page](https://user-images.githubusercontent.com/47537254/149844318-3db22f09-402b-44d5-8849-15d9123b6dbe.png)
 
-![Screen Shot 2021-10-06 at 16 43 59](https://user-images.githubusercontent.com/47537254/136277559-c612eb05-fc0b-4dae-9664-8fb2bf7c0c12.png)
+![Profile-page](https://user-images.githubusercontent.com/47537254/149844323-2091266d-317b-4fb3-9982-0957b8007950.png)
 
-![Screen Shot 2021-10-06 at 16 44 08](https://user-images.githubusercontent.com/47537254/136277564-9b511847-e285-4978-9b56-4ce395cf9ac0.png)
 
 ##Get Started
 
