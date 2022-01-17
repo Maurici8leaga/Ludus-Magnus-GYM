@@ -16,7 +16,8 @@ In the muscles section you can choose between the following; Biceps, Triceps, Ab
 
 ![Video-list-2-page](https://user-images.githubusercontent.com/47537254/149844300-bb5cef29-c40b-4f9a-ba51-8b5aad6fe0b5.png)
 
-![Video-comment-page](https://user-images.githubusercontent.com/47537254/149844318-3db22f09-402b-44d5-8849-15d9123b6dbe.png)
+![Screen Shot 2022-01-17 at 19 40 10](https://user-images.githubusercontent.com/47537254/149844499-55d79ab1-19dd-462c-9e1a-27352cb89c7e.png)
+
 
 ![Profile-page](https://user-images.githubusercontent.com/47537254/149844323-2091266d-317b-4fb3-9982-0957b8007950.png)
 
