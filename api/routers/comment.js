@@ -2,35 +2,56 @@ const express = require('express');
 const routerComment = express.Router();
 const User = require('../models/user');
 const Videos = require('../models/Videos');
+const Comment = require('../models/Comment');
 
 // Crear un nuevo commentario
 routerComment.post('/comment/:id', async (req, res) => {
     // PARA QUE SE PUEDA MANDAR EL REQUEST AL BACK DEBE TENER authorization-token-user Y Content-Type 
     try {
         const user = await User.findById(req.user.id).select('-password');
+        // const coment = await Comment.findById({_id: req.params.id});
         const videoId = await Videos.findById({ _id: req.params.id });
         // coloco videoId ya que en el es donde se va a mostrar el commnetario, se debe colocar IGUAL como lo tienes en el ROUTERS
+        // console.log('ESTO ES videoID->>>', videoId);
+        // console.log('ESTO ES USER', user);
+        // console.log('ESTO ES COMENT', coment);
 
         const newComment = {
-            text: req.body.text,
-            name: user.name,
-            lastname: user.lastname,
-            alumno: req.user.id
+            idVideo: videoId._id,
+            alumno: user,
+            text: req.body.text
             // en alumno se va a guardar en el ID del usuario de esta forma conectamos las 2 Schema
         }
 
-        console.log('ESTO ES HACIENDO EL POST EN EL BACK', newComment)
+        // console.log('ESTO ES HACIENDO EL POST EN EL BACK', newComment)
 
-        videoId.comment.unshift(newComment);
+        const coment = await Comment.create(newComment);
+        // coment.unshift(newComment);
         // se coloca "videoId.comment" ya que dentro del videoId es que se crea un comentario no en "videos"
         //  el "unshift" permite añadir nuevos elementos a un array en este caso a la lista de comments
-        await videoId.save();
+        await coment.save();
         // se debe aplicar "save" solo al video no al comentario porque en el video es que se guardara los comentarios
-        res.json(videoId.comment);
+        res.json(coment);
         // se pasa "videoId.comment" para que pueda actualizar el videoId con su nuevo comment
 
     } catch (error) {
-        console.log(error.msg);
+        console.log('ESTO ES EL ERROR EN POST COMMENT->',error.msg);
+        res.status(500).send({ error: { msg: 'Server Error' } });
+    }
+});
+
+// Get all comments by idvideo
+routerComment.get('/comment/:id', async (req, res) => {
+    try {
+        const coment = await Comment.findById({_id: req.params.id});
+        const videoId = await Videos.findById({ _id: req.params.id });
+
+        // console.log('ESTO ES GET DEL COMMENT BY ID', coment);
+        console.log('ESTO ES GET DEL VIDEO BY ID', videoId);
+
+
+    } catch (error) {
+        console.log('ESTE ES EL ERROR EN GET COMMENT->', error.msg);
         res.status(500).send({ error: { msg: 'Server Error' } });
     }
 });
