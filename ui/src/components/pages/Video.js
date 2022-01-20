@@ -9,7 +9,7 @@ import { like, dislike, deleteComment } from '../../actions/videos';
 import { loadToTop } from '../extras/helpers';
 import Alert from '../extras/Alert';
 
-const Video = ({ getVideoById, match, video, like, dislike, deleteComment }) => {
+const Video = ({ getVideoById, match, video, like, dislike, deleteComment, alumno }) => {
 
     useEffect(() => {
         getVideoById(match.params.id);
@@ -67,16 +67,16 @@ const Video = ({ getVideoById, match, video, like, dislike, deleteComment }) => 
                 <div className="container-description">
                     <hr className="rayita1" />
                     <div className="container-Ncomments">
-                        <p>{comment.length}   comentarios </p>
+                        {/* <p>{comment.length}   comentarios </p> */}
                     </div>
                     {/* se debe colocar este siguiente dentro de un div porque si no da error */}
-                    {comment.map((comments, index) => (
+                    {/* {comment.map((comments, index) => (
                         <CommentItem key={index} comments={comments} idVideo={_id} removeComment={removeComment} />
                         // se pasa "comments" como props AJURO para que pueda tener acceso a la data del comment en el otro component
                         // "removeComment" debe pasarse asi de manera de que este functions pueda ser llamada cuando sea ejecutada en el component Child
-                    ))}
+                    ))} */}
                     {/* se debe colocar este conditional ya que sin el el "map" da error por ende este permite que si en tal caso llega a existir un commentario, lo muestre si no, no muestre nada */}
-                    <CommentBox idVideo={_id} />
+                    <CommentBox idVideo={_id} alumno={alumno.user._id}/>
                     <hr className="rayita2" />
                 </div>
             </div>
@@ -88,12 +88,14 @@ Video.propTypes = {
     getVideoById: PropTypes.func.isRequired,
     like: PropTypes.func.isRequired,
     dislike: PropTypes.func.isRequired,
-    videoId: PropTypes.object,
-    video: PropTypes.object
+    // videoId: PropTypes.object,
+    video: PropTypes.object,
+    alumno: PropTypes.object
 }
 
 const mapStateToProps = state => ({
-    video: state.video.videoId
+    video: state.video.videoId,
+    alumno: state.auth.user
 });
 
 export default connect(mapStateToProps, { getVideoById, like, dislike, deleteComment })(Video);
