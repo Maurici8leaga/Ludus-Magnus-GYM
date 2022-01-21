@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { deleteComment } from '../../../actions/videos';
 
-const CommentItem = ({ idVideo, comments, removeComment, auth }) => {
+const CommentItem = ({ idVideo, comment, removeComment, auth }) => {
 
-    const { text, name, lastname, date, alumno, _id, comment } = comments;
+    const { text, date, alumno, _id } = comment;
+    const {name, lastname, avatar} = alumno
     return (
         <div className="container-commentBox">
             <div className="Header-ProfilePicture-Name">
@@ -28,8 +29,8 @@ const CommentItem = ({ idVideo, comments, removeComment, auth }) => {
                     <div className="dates">
                         <Moment format="DD/MM/YYYY">{date}</Moment>
                     </div>
-                    {alumno === auth.user._id ? (
-                        <button onClick={e => removeComment(idVideo, _id)} type='button' className="boton -negative-delete">
+                    {alumno._id === auth.user._id ? (
+                        <button onClick={e => removeComment(_id)} type='button' className="boton -negative-delete">
                             {/* colocamos dentro del "refresh" el "idVideo" para eliminarlo del video y "_id" para eliminarlo del usuario */}
                             <i className="far fa-trash-alt"></i>
                         </button>
@@ -42,7 +43,7 @@ const CommentItem = ({ idVideo, comments, removeComment, auth }) => {
 
 CommentItem.proptype = {
     idVideo: PropTypes.string.isRequired,
-    comments: PropTypes.object.isRequired,
+    comment: PropTypes.object.isRequired,
     removeComment: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired
 }

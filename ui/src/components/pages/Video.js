@@ -14,17 +14,22 @@ const Video = ({ getVideoById, match, video, like, dislike, deleteComment, alumn
     useEffect(() => {
         getVideoById(match.params.id);
         loadToTop();
-    }, [getVideoById, match.params.id]);
+        // console.log('ESTO ES COMMENTS', comments)
+        // console.log('ESTO ES likes', likes)
+    }, [ match.params.id]);
 
-    const removeComment = (idVideo, commentId) => deleteComment(idVideo, commentId);
     // este arrow funtions se va a ejecutar si es llamado en un component Child, de esta manera conectamos entre component parent y child functions que puedan ser ejecutadas desde el child
+    const removeComment = (commentId) => deleteComment({commentId, idVideo : match.params.id});
+                                //aca dentro de la funcion enviamos como object "{}" los parametros commentId y idVideo para que en el actions pueda eliminar el comment del video
+                                // importante es que son enviados dentro de {} si son enviados asi tienen que ser llamados exactamente igual en el actions, si no llevaran {}
+                                // entonces el nombre que se le de aca y en el actions no es relevante pero si el orden en como son colocados, ya que eso influira en el actions y deberan ser colocados exactamente igual que aqui
 
-    const { title, description, youtubeID, category, modo, _id, comment, likes } = video;
+    const { title, description, youtubeID, category, modo, _id, comments, likes } = video;
 
     const search = `https://www.youtube.com/embed/${youtubeID}`;
     // esta variable hara el request al link de youtube y podras acceder al video OJO se debe colocar "/embed" AJURO si no no agarra el video
 
-    return comment !== undefined && likes !== undefined && (
+    return (
         <div className="container-video">
             <Alert/>
 
@@ -51,7 +56,7 @@ const Video = ({ getVideoById, match, video, like, dislike, deleteComment, alumn
                                 <button className="like-dislike-button" type="button" onClick={e => like(_id)}>
                                     <i className="fas fa-thumbs-up"></i>
                                     <span>
-                                        {likes.length > 0 && (<span>  {likes.length}</span>)}
+                                        {likes && likes.length  ? (<span>  {likes.length}</span>) : null }
                                     </span>
                                 </button>
 
@@ -67,14 +72,15 @@ const Video = ({ getVideoById, match, video, like, dislike, deleteComment, alumn
                 <div className="container-description">
                     <hr className="rayita1" />
                     <div className="container-Ncomments">
-                        {/* <p>{comment.length}   comentarios </p> */}
+                        <p>{comments ? comments.length : 0 }   comentarios </p>
                     </div>
                     {/* se debe colocar este siguiente dentro de un div porque si no da error */}
-                    {/* {comment.map((comments, index) => (
-                        <CommentItem key={index} comments={comments} idVideo={_id} removeComment={removeComment} />
+                    
+                    {comments && comments.map((comment, index) => (
+                        <CommentItem key={index} comment={comment} idVideo={_id} removeComment={removeComment} />
                         // se pasa "comments" como props AJURO para que pueda tener acceso a la data del comment en el otro component
                         // "removeComment" debe pasarse asi de manera de que este functions pueda ser llamada cuando sea ejecutada en el component Child
-                    ))} */}
+                    ))}
                     {/* se debe colocar este conditional ya que sin el el "map" da error por ende este permite que si en tal caso llega a existir un commentario, lo muestre si no, no muestre nada */}
                     <CommentBox idVideo={_id} alumno={alumno.user._id}/>
                     <hr className="rayita2" />
@@ -94,7 +100,7 @@ Video.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    video: state.video.videoId,
+    video: state.video.video,
     alumno: state.auth.user
 });
 

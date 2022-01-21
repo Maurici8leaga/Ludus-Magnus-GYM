@@ -7,16 +7,13 @@ const CommentBox = ({ idVideo, alumno, addComment }) => {
 
     const onSubmit = async e => {
         e.preventDefault();
-        // addComment({ text });
-        // se agrega "idVideo" de manera que se pueda hacer el comentario en el comentario que queremos, y como 2do elemento
-        // se pasa el "text" que sera lo escrito
+        addComment({ text, idVideo, alumno });
+        // se envia al actions el text para enviar lo que escribio, el idVideo para saber en que video comento y el alumno que es el id del user para saber quien lo escribio
         setText('');
         // se coloca "setText" en blanco para que despues del comment se vuelva a vaciar el textarea
         CloseUp();
         // llamamos aca para cuando se de comentar este se reinicie y se cierre
-        setText({...text, idVideo, alumno})
-        console.log('esto es text', text)
-    }
+    } 
 
     const [open, setOpen] = React.useState(false);
     // este state es para y solo para que el div y el textarea se intercambien
@@ -56,7 +53,6 @@ const CommentBox = ({ idVideo, alumno, addComment }) => {
         }
 
         setText(e.target.value);
-        // setText({...text, [e.target.name]: e.target.value});
         setRow(currentRows < maxRows ? currentRows : maxRows);
     }
 
