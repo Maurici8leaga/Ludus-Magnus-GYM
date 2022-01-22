@@ -21,7 +21,7 @@ const RoutinesType = ({ history, getProfile }) => {
     useEffect(() => {
         loadToTop();
         getProfile();
-    }, []);
+    }, [getProfile]);
 
     const [, setMuscle] = useState('');
 
@@ -46,10 +46,9 @@ const RoutinesType = ({ history, getProfile }) => {
     const muscleList = () => (
         // el JSX siempre debe ir en parentesis!
         <div className="container-muscle">
-
-            <Alert />
-
             <div className="Image-container-muscleTipe">
+
+                <Alert />
 
                 <div className="Title-container">
                     <h1 className="highlight-title texto-secundary">Tipo de musculo </h1>

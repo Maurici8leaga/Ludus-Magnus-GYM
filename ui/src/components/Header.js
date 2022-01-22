@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -15,7 +15,8 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
     if (isSignedIn) {
       getProfile();
     }
-  }, [getProfile])
+  }, [getProfile, isSignedIn])
+    // coloco isSignedIn dentro porque si no sale un warning indicando que isSignedIn tiene un missing dependency
 
   const avatarImage = () => {
     let avatarUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
@@ -35,6 +36,8 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
 
 
   const renderAuth = () => {
+
+    let avatarUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
     if (isSignedIn && typeof profile === 'object' && profile !== null) {
       // se coloca este conditional para que no de error al entrar en caso de que profile sea o null y el user no este isSignedIn
@@ -58,17 +61,20 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
     } else {
       return (
         <div className="headerContent">
-          <ul>
-            <li >
-              <Link to="/signup" className="links-scss">
-                Registrarme
-              </Link>
-            </li>
+          <div className="headerContent -before-login">
 
-            <li >
-              <Link to="/signin" className="links-scss" >Socios</Link>
-            </li>
-          </ul>
+            <div className="avatar-container">
+              <div className="avatar-mini">
+                <img className="avatar-mini" alt="avatar" src={avatarUrl} />
+              </div>
+            </div>
+
+            <Link to="/signup" className="links-scss">
+              Registrarme
+            </Link>
+
+            <Link to="/signin" className="links-scss" >Socios</Link>
+          </div>
         </div>
       );
     }

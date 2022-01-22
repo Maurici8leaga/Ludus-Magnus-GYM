@@ -68,7 +68,7 @@ exports.signup = function (req, res, next) {
             }else {                
                 // se responde que el usuario fue creado
                                     // en este caso no se coloca "req.user" porque esta definiendose anteriormente que sera "user" por eso se coloca "user"
-                res.json({ token: tokenForUser(user), user: user , msg: 'Usuario creado exitosamente!' });
+                res.json({ token: tokenForUser(user), user: user , msg: 'Usuario creado, Bienvenido al club' });
                             // en este "res.json" hay que mandar el TOKEN y el USER si no se podra tener los datos del user en el front
                                             //Se debe colocar "msg" dentro de este "res.json" ya que en express solo se puede enviar un "res.send o un res.json" .
                                             // si se intenta enviar enviar por fuera de este json ocurre un crach en el server .

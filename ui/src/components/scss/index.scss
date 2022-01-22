@@ -110,6 +110,12 @@ img{
     display: flex;
     align-items: center;
     align-content: center;
+    
+    .-before-login{
+        display: flex;
+        align-items: center;
+        padding: 3.5px;
+    }
 }
 
 .avatar-container{

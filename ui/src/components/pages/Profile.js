@@ -19,7 +19,6 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
     useEffect(() => {
         getProfile();
         loadToTop();
-        console.log('ESTE ES USUARIO EN PROFILE', profile);
     }, [getProfile]);
     // hay que agregar este "getProfiles" ya que "useEffect" pide que se agregue esta dependencia o que se quite la matriz de la dependencia.
 
@@ -46,7 +45,7 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
     // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" para evitar que me muestre un profile vacio
     if (!profile || !profile._id) return null;
 
-    const { _id, name, lastname, birth, height, weight, avatar } = profile;
+    const {  name, lastname, birth, height, weight } = profile;
 
     const avatarImage = () => {
         // esta funcion que es condicional tiene que ir afuera del component ya que cuando los usuarios no tiene avatar y entran al profile
@@ -82,7 +81,6 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
     return (
         <div className="container-Profile-background">
             <div className="container-Profile-background-blur">
-                <Alert/>
 
                 <div className="Title-container-Profile">
                     <h1 className="highlight-title texto-secundary">Perfil</h1>
@@ -90,6 +88,7 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
                 </div>
 
                 <div className="frame">
+                <Alert/>
                     <div className="center">
 
                         <div className="profile">
@@ -105,7 +104,6 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
                                     <input type="file" name='fileButton' onChange={onChange} required></input>
                                     <i className="fas fa-camera"></i>
                                 </label>
-                                {/* <Link to="/profile/edit" className="btn"> Editar Perfil</Link> */}
                                 <div > 
 
                                     <button className="btn" onClick={() => setOpen(true)}> Editar Profile</button>

@@ -34,7 +34,7 @@ const SignUp = ({ signUp, isSignedIn }) => {
     // de esta forma actualizamos el state de birth con la fecha formateada, ya que el resto del los object del state se actualizan de otra forma
   }
 
-  const { name, lastname,  sex, birth, weight, height, email, password } = formData;
+  const { name, lastname,  sex, weight, height, email, password } = formData;
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 

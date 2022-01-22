@@ -25,10 +25,11 @@ routerEditProfile.put('/edit', async function (req, res, next){
         // volvemos a poner lo mismo en el profile routers porque necesitamos que los datos del user esten populate con el avatar para que actualice el user en su totalidad
                                                                             // IMPORTANTE EXCLUIR EL PASSWORD A LA HORA DE ENVIAR LOS DATOS
         
-        res.json({message: 'User profile have been update successfully', userUpdate: ProfileUser});
+        res.json({msg: 'User profile have been update successfully', userUpdate: ProfileUser});
                                     // aca ponemos "userUpdate: Profiler" para que solo se envie los datos que cambiaron el resto quede intacto
     } catch (error) {
-        console.log('este es el error ->', error);
+        console.error(error);
+        res.status(500).send({error: {msg : 'Problema al actualizar la informacion personal. Server Error '}});
     }
 });
 

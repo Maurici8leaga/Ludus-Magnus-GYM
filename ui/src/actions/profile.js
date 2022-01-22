@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE} from './types';
+import { messageAlert } from './messageAlert';
 
 export const getProfile = () => async dispatch => {
     try {
@@ -34,8 +35,14 @@ export const updateProfile = (infoEdit) => async dispatch =>{
             // OJO aca debe ir "userUpdate" ya que asi esta puesto en el router del back, ademas de eso es que el trae la data con los 
             // datos actualizados. ESTO SE PUDO VER ATRAVES DE UN CONSOLE.LOG de res.data
         });
+
+        dispatch(messageAlert(res.data.msg, 'message-positive'));
         
     } catch (error) {
+        const msg = error.response.data.error.msg;
+        // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
+        dispatch(messageAlert(msg, 'message-negative'))
+
         dispatch({
             type: PROFILE_ERROR,
             payload: {msg: error.response.statusText, status: error.response.status}

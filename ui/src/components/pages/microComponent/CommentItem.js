@@ -7,7 +7,7 @@ import { deleteComment } from '../../../actions/videos';
 const CommentItem = ({ comment, removeComment, auth }) => {
 
     const { text, date, alumno, _id } = comment;
-    const { name, lastname, avatar } = alumno
+    const { name, lastname } = alumno
 
     const avatarImage = () => {
 

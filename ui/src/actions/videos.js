@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_LISTVIDEOS, GET_VIDEOBYID, ADD_COMMENT, DELETE_COMMENT, VIDEO_ERROR, UPDATE_LIKES } from './types';
+import { GET_LISTVIDEOS, GET_VIDEOBYID, VIDEO_ERROR, UPDATE_LIKES } from './types';
 import { messageAlert } from './messageAlert';
 
 // Get video by muscle
@@ -13,10 +13,6 @@ export const getListVideos = (muscle) => async dispatch => {
             payload: res.data
         })
     } catch (error) {
-        if (error) {
-            dispatch(messageAlert(error.msg, 'message-negative'))
-        }
-
         dispatch({
             type: VIDEO_ERROR,
             payload: { msg: error.response.statusText, status: error.response.status }
@@ -33,13 +29,11 @@ export const getVideoById = id => async dispatch => {
             type: GET_VIDEOBYID,
             payload: res.data
         })
-        // console.log('OBTENIENDO LA DATA DEL VIDEO BY ID', res.data)
 
     } catch (error) {
-        if (error) {
-            // dispatch(messageAlert(error.msg, 'message-negative'))
-            console.log('esto es el error', error)
-        }
+        const msg = error.response.data.error.msg;
+        // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
+        dispatch(messageAlert(msg, 'message-negative'))
 
         dispatch({
             type: VIDEO_ERROR,
@@ -49,14 +43,14 @@ export const getVideoById = id => async dispatch => {
 }
 
 // Add comment
-export const addComment = ({idVideo, text, alumno}) => async dispatch => {
-        // se recibe del component el idvideo que es el id del video, alumno que es el id del user que hizo el comment y text que es lo que escribio
+export const addComment = ({ idVideo, text, alumno }) => async dispatch => {
+    // se recibe del component el idvideo que es el id del video, alumno que es el id del user que hizo el comment y text que es lo que escribio
 
-    const keyValue = { headers: { 'Content-Type': 'application/json' } }; 
+    const keyValue = { headers: { 'Content-Type': 'application/json' } };
     // "'keyValue'" OJO DEBE IR EN MINUSCULA
-    const formData = JSON.stringify({text, idVideo, alumno});
+    const formData = JSON.stringify({ text, idVideo, alumno });
     // pasamos estos props dentro de este stringify para que convierta estos objetos en string y asi poder meterlos dentro de una variable y enviarlos al backend
-    
+
     try {
 
         const res = await axios.post(`http://localhost:3001/api/video/comment`, formData, keyValue);
@@ -70,13 +64,13 @@ export const addComment = ({idVideo, text, alumno}) => async dispatch => {
         // endpoint donde se hace el getVideoById, y es viable esta forma solo por eso, si los comments se crearan de distinta forma
         // posiblemente esto no pudiese hacerse
 
-        dispatch(messageAlert('Comentario creado', 'message-positive'));
+        dispatch(messageAlert(res.data.msg, 'message-positive'));
+        // res.data.msg es el mensaje que se coloco en el back
 
     } catch (error) {
-        if (error) {
-            // dispatch(messageAlert(error.msg, 'message-negative'))
-            console.log('esto es el error', error)
-        }
+        const msg = error.response.data.error.msg;
+        // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
+        dispatch(messageAlert(msg, 'message-negative'))
 
         dispatch({
             type: VIDEO_ERROR,
@@ -86,8 +80,8 @@ export const addComment = ({idVideo, text, alumno}) => async dispatch => {
 };
 
 // Delete comment
-export const deleteComment = ({commentId, idVideo }) => async dispatch => {
-        // IMPORTANTE, en la action en el component se envia como propiedad "commentId" y "idVideo" para poder eliminar el comentario y para poder hacer el get de video nuevamente
+export const deleteComment = ({ commentId, idVideo }) => async dispatch => {
+    // IMPORTANTE, en la action en el component se envia como propiedad "commentId" y "idVideo" para poder eliminar el comentario y para poder hacer el get de video nuevamente
     try {
 
         const res = await axios.delete(`http://localhost:3001/api/video/deleteComment/${commentId}`);
@@ -99,13 +93,13 @@ export const deleteComment = ({commentId, idVideo }) => async dispatch => {
         // <-- OJO esta forma es posible 1ro por la forma en como son almacenados los comments 2do es que lo que se tiene en el endpoint
         // en el backend, si no fueran por esas condiciones esta forma no es viable
 
-        dispatch(messageAlert('Comentario eliminado', 'message-positive'));
+        dispatch(messageAlert(res.data.msg, 'message-positive'));
+        // res.data.msg es el mensaje que se coloco en el back
 
     } catch (error) {
-        if (error) {
-            dispatch(messageAlert(error.msg, 'message-negative'))
-        }
-
+        const msg = error.response.data.error.msg;
+        // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
+        dispatch(messageAlert(msg, 'message-negative'))
         dispatch({
             type: VIDEO_ERROR,
             payload: { msg: error.response.statusText, status: error.response.status }
@@ -133,10 +127,9 @@ export const like = (idVideo) => async dispatch => {
         // se usa este 2do dispatch de manera de cuando se ejecute el accionts este refresque la pag y pueda actualizar el numero de likes
 
     } catch (error) {
-        if (error) {
-            dispatch(messageAlert(error.msg, 'message-negative'))
-        }
-
+        const msg = error.response.data.msg;
+        // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
+        dispatch(messageAlert(msg, 'message-negative'))
         dispatch({
             type: VIDEO_ERROR,
             payload: { msg: error.response.statusText, status: error.response.status }
@@ -163,10 +156,10 @@ export const dislike = (idVideo) => async dispatch => {
 
 
     } catch (error) {
-        if (error) {
-            dispatch(messageAlert(error.msg, 'message-negative'))
-        }
-
+        const msg = error.response.data.msg;
+        // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
+        dispatch(messageAlert(msg, 'message-negative'))
+        
         dispatch({
             type: VIDEO_ERROR,
             payload: { msg: error.response.statusText, status: error.response.status }

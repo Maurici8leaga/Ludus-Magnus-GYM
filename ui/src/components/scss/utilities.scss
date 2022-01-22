@@ -678,16 +678,22 @@
 
 // Alerts
 .alert{
-    position: absolute;
+    position: fixed; 
     //  es importante para los ALERT que vayan en el position "fixed" o "absolute" , ademas debe colocarse ajuro los siguientes tambien, left o right, bottom o top
     top: 5rem;
-    left: 31rem;
+    // top: 0px;
+    // left: 31rem;
+    left: 31%;
     padding: 0.8rem;
-    margin: 1rem;
-    width: 37.8rem;
+    // margin: 1rem;
+    margin: 2rem;
+    // width: 37.8rem;
+    width: 30rem;
     opacity: 0.9;
-    background: $claro-color;
-    color: #333;
+    // background: $claro-color;
+    // color: #333;
+    align-items: center;
+    align-content: center;
 
     &.message-positive {
         @include set-background($positive-color);

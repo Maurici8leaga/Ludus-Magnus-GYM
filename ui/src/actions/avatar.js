@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {  UPDATE_PROFILE } from './types';
+import {  UPDATE_PROFILE, PROFILE_ERROR } from './types';
 import { messageAlert } from './messageAlert';
 
 // add a picture profile
@@ -11,7 +11,7 @@ export const uploadAvatar = (formData) => async dispatch => {
         // keyValue OJO DEBE IR EN MINUSCULA
     try {
         
-        const res = await axios.post('http://localhost:3001/api/profile/upload',formData , keyValue );
+        const res = await axios.post('http://localhost:3001/api/profile/upload', formData, keyValue );
         
         const response = await axios.get('http://localhost:3001/api/profile/me');
         // con este request despues de enviar la picture este actualizara el user 
@@ -22,11 +22,17 @@ export const uploadAvatar = (formData) => async dispatch => {
                 payload: response.data
             })
 
-        dispatch(messageAlert('Picture profile added successfully', 'message-positive'));
-
+        dispatch(messageAlert( res.data.msg, 'message-positive'));
+        // res.data.msg es el mensaje que se coloco en el back
      } catch (error) {
-        if (error) {
-            dispatch(messageAlert(error.msg, 'message-negative'));
-        }
+         const msg = error.response.data.error;
+        // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
+        dispatch(messageAlert(msg, 'message-negative'));
+        
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: error.response.statusText, status: error.response.status}
+            // en este payload se va a pasar un mensaje al usuario "msg" y aparte el "status" con el "e.response.status" va a mandar un 400 o algo parecido indicando el error
+        })
      }
 };

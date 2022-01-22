@@ -14,11 +14,11 @@ routerComment.post('/comment', async (req, res) => {
          comment = await comment.populate(['idVideo', 'alumno']).execPopulate();
         // aca hacemos populate de idVideo y alumno, PERO SE NECESITA DE execPopulate para poder tambien hacer este populate ya que gracias a el
         // se puede hacer populate de documents ya existentes, en este caso comment ya que primero fue creado y luego se hace populate
-        res.json({message: 'Comentario creado', comment});
+        res.json({msg: 'Comentario creado', comment});
 
     } catch (error) {
-        console.log('ESTO ES EL ERROR EN POST COMMENT->',error.msg);
-        res.status(500).send({ error: { msg: 'Server Error' } });
+        console.log(error);
+        res.status(500).send({ error: { msg: 'There was a problem posting the comment. Server Error' } });
     }
 });
 
@@ -46,11 +46,11 @@ routerComment.delete('/deleteComment/:commentId', async (req, res) => {
         await commentToDelete.delete();
                     // esta funcion de "delete" es una funcion de mongoose, esta borrara en este caso todo lo que se almacene en commentToDelete, otra opcion es usar "deleteOne" y pasando el id del comment
 
-        res.json({message: 'Comentario borrado'});
+        res.json({msg: 'Comentario borrado'});
 
     } catch (error) {
-        console.log('ESTE ES EL ERROR->',error);
-        res.status(500).send({ error });
+        console.log(error);
+        res.status(500).send({ error : { msg: 'Problema al eliminar comentario. Server Error'} });
     }
 });
 
@@ -77,7 +77,7 @@ routerComment.put('/like/:id', async (req, res) => {
         // se coloca solo "video" ya que el es un objecto, y en el front necesitamos este objecto para refrescar los likes
 
     } catch (error) {
-        console.log(error.msg);
+        console.log(error);
         res.status(500).send({ error: { msg: 'Server Error' } });
     }
 });
@@ -92,7 +92,7 @@ routerComment.put('/dislike/:id', async (req, res) => {
         // a diferencia del anterior, en este si el lenght del "toString" con el "req.user.id" es igual a 0
         // entonces es porque no le ha dado like aun al video
         if (video.likes.filter(like => like.alumno.toString() === req.user.id).length === 0) {
-            return res.status(400).json({ msg: 'No le haz dado like aun' });
+            return res.status(400).json({ msg: 'Ya le haz dado dislike' });
         }
 
         const removeLike = video.likes.map(like => like.alumno.toString()).indexOf(req.user.id);
@@ -107,7 +107,7 @@ routerComment.put('/dislike/:id', async (req, res) => {
         // se coloca solo "video" ya que el es un objecto, y en el front necesitamos este objecto para refrescar los dislikes
 
     } catch (error) {
-        console.log(error.msg);
+        console.log(error);
         res.status(500).send({ error: { msg: 'Server Error' } });
     }
 });

@@ -10,9 +10,6 @@ routerVideo.get('/', async function(req, res){
         // RECUERDA EL NOMBRE QUE LE DES A ESTA VARIABLE SERA EL OBJETO QUE USARAS EN TUS REDUCER Y COMPONENT
         const videoList = await Videos.find({category: req.query.category});
                                                     // el "query" en dentro de "req.query.category" podemos obtener todos los parametros que vienen dentro del URL en este caso sera el de la category
-        if(!videoList){
-            return res.status(400).json({ error: {msg: 'No hay videos'}});
-        }
         res.json(videoList); 
     }catch(error){
         console.error(error.msg);
@@ -40,10 +37,8 @@ routerVideo.get('/:id', async function(req, res){
        
         // añadimos la propiedad comments en el object video
         video.comments = comments;
-        // console.log('ESTOS SON LOS COMMENTATIOS', comments);
 
         res.json(video);
-        // console.log('ESTO ES VIDEO',video ) 
     }catch(error){
         console.error(error.msg);
         res.status(500).send({error: {msg : 'Video no encontrado, verifique de nuevo'}});

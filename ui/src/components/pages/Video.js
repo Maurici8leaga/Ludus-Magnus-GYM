@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
-import PropTypes, { array } from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getVideoById } from '../../actions/videos';
 import CommentBox from '../pages/microComponent/CommentBox';
@@ -14,7 +14,8 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
     useEffect(() => {
         getVideoById(match.params.id);
         loadToTop();
-    }, [match.params.id]);
+    }, [match.params.id, getVideoById]);
+            // coloco getVideoById aqui adentro porque si no da un warning indicando que getVideoById tiene un missing dependency
 
     // este arrow funtions se va a ejecutar si es llamado en un component Child, de esta manera conectamos entre component parent y child functions que puedan ser ejecutadas desde el child
     const removeComment = (commentId) => deleteComment({ commentId, idVideo: match.params.id });
@@ -29,7 +30,6 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
 
     return (
         <div className="container-video">
-            <Alert />
             <div>
                 <div className="screen1">
                     <div className="screen2">
@@ -64,6 +64,7 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
                 </div>
 
                 <div className="container-description">
+                    <Alert />
                     <hr className="rayita1" />
                     {/* se necesita este condicional para que no de error al carga la pag */}
                     {comments && Array.isArray(comments) ? (

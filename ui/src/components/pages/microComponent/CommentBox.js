@@ -30,8 +30,9 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
 
     const [text, setText] = useState('');
     const [row, setRow] = useState(1);
-    const [minRows, setMinRow] = useState(1);
-    const [maxRows, setMaxRows] = useState(10);
+    const [minRows] = useState(1);
+    // no se coloca setMinRow ni setMaxRows ya que en este caso no los estamos necesitando
+    const [maxRows] = useState(10);
 
     const handleChange = e => {
         // con este handle vamos hacer que el textarea sea dinamico en tamaño, los valores que tienen son de una FORMULA asi que lo que unico que va a variar son

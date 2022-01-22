@@ -41,7 +41,7 @@ routerPicture.post("/upload", upload.single(`picture-profile`), async function (
 
         if (!req.file) {
             // se crea este conditional para que cuando un file no sea aceptado por el filter de multer este devuelva un msj diciendo que solo se admite el indicado y no colapse la pag
-            return res.status(400).send('Invalid file type, only upload .jpg or .jpeg files');
+            return res.status(400).send({error : 'There was an error uploading the image, please make sure the file type is jpeg'});
           }
 
         const objImg = {
@@ -63,11 +63,12 @@ routerPicture.post("/upload", upload.single(`picture-profile`), async function (
         // se coloca avatar porque es el elemento que se va agregar al objt user
         // de esta forma se relaciona el user que esta siendo logiando con el picture que esta siendo subida
         
-        res.json({ message: 'A new picture had been add to db', picture });
+        res.json({ msg: 'Picture profile added successfully', picture });
         // en este caso solo pasamos "picture" y 'refreshUser 'porque es lo que necesitamos para este endpoint        
 
     } catch (error) {
         console.log('This is the error->', error);
+        res.status(500).send({error: {msg : 'Server Error '}});
     }
 });
 

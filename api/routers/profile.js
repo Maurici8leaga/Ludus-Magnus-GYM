@@ -17,7 +17,7 @@ routerProfile.get('/me', async function(req, res){
         }
         res.json(ProfileUser); 
     }catch(error){
-        console.error(error.msg);
+        console.error(error);
         res.status(500).send({error: {msg : 'Server Error '}});
     }
 });
