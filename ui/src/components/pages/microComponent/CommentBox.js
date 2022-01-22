@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addComment } from '../../../actions/videos';
 
-const CommentBox = ({ idVideo, alumno, addComment }) => {
+const CommentBox = ({ idVideo, addComment, profile }) => {
+
 
     const onSubmit = async e => {
         e.preventDefault();
-        addComment({ text, idVideo, alumno });
         // se envia al actions el text para enviar lo que escribio, el idVideo para saber en que video comento y el alumno que es el id del user para saber quien lo escribio
+        addComment({ text, idVideo, alumno: profile._id });
+                        // le asignamos a "alumno" el valor de "profile._id" de esta manera, asi se le puede asignar a una variable el valor de una propiedad de un objeto 
         setText('');
         // se coloca "setText" en blanco para que despues del comment se vuelva a vaciar el textarea
         CloseUp();
@@ -82,7 +84,8 @@ const CommentBox = ({ idVideo, alumno, addComment }) => {
         // ESTO ES UN FUNCTION QUE DEVUELVE UN JSX
         return (
             <>
-                <div className="LookeLikeTextArea" placeholder="Agrega un comentario..." onClick={() => setOpen(!open)}></div>
+                <div className="LookeLikeTextArea" placeholder="Agrega un comentario..." onClick={() => setOpen(!open)}>
+                </div>
 
             </>
         )
@@ -104,6 +107,28 @@ const CommentBox = ({ idVideo, alumno, addComment }) => {
         )
     }
 
+    const avatarImage = () => {
+
+        const { avatar } = profile;
+
+        // Avatar default
+        let avatarUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
+        // colocamos let en vez de const ya que let tiene mayor scope que const este puede ser llamado mas adentro de otros elementos
+
+        // Avatar picture custom
+        if (typeof avatar === 'object') {
+            // typeof es un operator que indica dentro de un string lo que es el operador en este caso 'avatar' = 'object'. Entonces el condicional se indica si es exactamente eso retorna lo siguiente
+            avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
+            return (
+                <img className="profilePicture" alt="avatar" src={avatarUrl} />
+            );
+        }
+        return (
+            <img className="profilePicture" alt="avatar" src={avatarUrl} />
+        );
+
+    }
+
 
     return (
         <div >
@@ -112,14 +137,14 @@ const CommentBox = ({ idVideo, alumno, addComment }) => {
                 <div className="Header-ProfilePicture-CommentForm">
 
                     <div className="container-profilePicture">
-                        <span>
+                        <span className="profilePicture">
                             {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
-                            <img className="profilePicture" alt='avatar' src="https://www.vippng.com/png/detail/416-4161690_empty-profile-picture-blank-avatar-image-circle.png" />
+                            {avatarImage()}
                             {/* los tag img deben tener un "alt" prop ya que sin el dara problemas con los browser*/}
                         </span>
                     </div>
 
-                    <div className="sera">
+                    <div className="">
                         <form className="form-comment" onSubmit={e => onSubmit(e)}>
                             {open ? TextAreaFunction() : DivFunction()}
                             {/* se crea este operator conditional de manera que antes de hacer click el vea un div como textArea y luego de que haga click sea un textAreale for */}
@@ -145,6 +170,11 @@ const CommentBox = ({ idVideo, alumno, addComment }) => {
 
 CommentBox.propTypes = {
     addComment: PropTypes.func.isRequired,
+    profile: PropTypes.object
 }
 
-export default connect(null, { addComment })(CommentBox);
+const mapStatetoProps = state => ({
+    profile: state.profile.ProfileUser
+})
+
+export default connect(mapStatetoProps, { addComment })(CommentBox);

@@ -72,12 +72,16 @@
 
     &-commentBox{
         margin: 10px;
-        padding: 0px;
+        padding: 10px;
         text-align: justify;
     }
 
     &-profilePicture{
-        max-width: 85px;
+        width: 80px;
+        height: 80px;
+        max-width: 80px;
+        // se les pone el mismo que max para que no se modifique nunca su tamaño apesar de que algun elemento alrededor lo obligue a cambiar su tamaño
+        min-height: 80px;
         margin: 0;
         padding: 0px;
     }
@@ -154,6 +158,10 @@
 
 .profilePicture{
     border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-right: 40px;
 }
 
 
@@ -243,8 +251,8 @@
     &-Comment{
         font-size: 1.2rem;
         font-weight: bolder;    
-        margin: 15px;
-        padding: 10px;
+        // margin: 15px;
+        // padding: 10px;
     }
 
     &-Description{
@@ -296,6 +304,7 @@
 
     &-ProfilePicture-Name{
         display: flex;
+        flex-direction: row;
         padding: 0px;
         width: 100%;
         align-items: center;
@@ -310,7 +319,8 @@
     }
 
     &-ProfilePicture-CommentForm{
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 11fr 1fr;
         padding: 0px;
         width: 100%;
         align-items: center;
@@ -734,8 +744,10 @@
 }
 
 .data-Comment{
+    display: flex;
+    flex-direction: column;
     margin-right: 20px;
-    margin-left: 110px;
+    margin-left: 30px;
 }
 
 .dates{
@@ -825,4 +837,8 @@ iframe{
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.prueba12{
+    min-height: 10px;
 }

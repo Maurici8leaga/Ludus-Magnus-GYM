@@ -33,11 +33,12 @@ export const getVideoById = id => async dispatch => {
             type: GET_VIDEOBYID,
             payload: res.data
         })
-        console.log('OBTENIENDO LA DATA DEL VIDEO BY ID', res.data)
+        // console.log('OBTENIENDO LA DATA DEL VIDEO BY ID', res.data)
 
     } catch (error) {
         if (error) {
-            dispatch(messageAlert(error.msg, 'message-negative'))
+            // dispatch(messageAlert(error.msg, 'message-negative'))
+            console.log('esto es el error', error)
         }
 
         dispatch({
@@ -52,7 +53,7 @@ export const addComment = ({idVideo, text, alumno}) => async dispatch => {
         // se recibe del component el idvideo que es el id del video, alumno que es el id del user que hizo el comment y text que es lo que escribio
 
     const keyValue = { headers: { 'Content-Type': 'application/json' } }; 
-    // "'Content-Type'" OJO DEBE IR EN MINUSCULA
+    // "'keyValue'" OJO DEBE IR EN MINUSCULA
     const formData = JSON.stringify({text, idVideo, alumno});
     // pasamos estos props dentro de este stringify para que convierta estos objetos en string y asi poder meterlos dentro de una variable y enviarlos al backend
     
@@ -73,7 +74,8 @@ export const addComment = ({idVideo, text, alumno}) => async dispatch => {
 
     } catch (error) {
         if (error) {
-            dispatch(messageAlert(error.msg, 'message-negative'))
+            // dispatch(messageAlert(error.msg, 'message-negative'))
+            console.log('esto es el error', error)
         }
 
         dispatch({
