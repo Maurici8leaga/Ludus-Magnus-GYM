@@ -6,6 +6,7 @@ import { getListVideos } from '../../actions/videos';
 import { Link } from 'react-scroll';
 import Alert from '../extras/Alert';
 import { loadToTop } from '../extras/helpers';
+import Spinner from '../extras/Spinner';
 
 // hay que colocar "match" para que pueda llamarse dentro de la funcion
 const VideoListByMuscle = ({ getListVideos, match, muscleList, history }) => {
@@ -20,8 +21,9 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history }) => {
     }, [getListVideos, match.params.muscle]);
     // debe colocarse dentro del [] el "getListVideos" y el "match.params.muscle" para que no de muestre el alerta de error constantemente
 
-
-    return (
+                // para poder acceder a las propiedades de un array debe hacerse asi -> "muscleList[0]" ya que el value de los array son numericos
+    return !muscleList || !muscleList[0].video.length > 0 ? <Spinner/> : (
+        // colocamos este condicional para que muestre el component cuando exista muscleList y adicional a eso cuando los videos del muscleList sean mayor a 0. Si no mostrara el spinner
         <div className="container-muscle">
 
             <Alert />
@@ -108,7 +110,6 @@ function mapStateToProps(state) {
         // entonces lo ordenara y lo almacenara ordenadamente
         return { modo: m, video: subVideos };
     });
-    // console.log(muscleList ,'ESTO ES MUSCLELIST ANTES DE RETORNAR');
     return { muscleList };
     // en este muscleList se almacena ahora los videos ORDENADAMENTE, retorna 6 objetos de los cuales tiene 3 videos c/u
 };

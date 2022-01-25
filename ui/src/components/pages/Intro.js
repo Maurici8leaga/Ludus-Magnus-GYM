@@ -1,8 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import '../scss/index.scss';
 
-const Intro = () => {
+const Intro = ({ isSignedIn }) => {
+
+    if (isSignedIn) {
+        // colocamos esto para que el usuario cuando ya este logeado o isSignedIn sea true, no pueda acceder a este component y si lo hace lo redireccione
+        return <Redirect to='/routinesType' />;
+    }
+
     return (
         <div className="pantalla">
             <div className="wrap-page">
@@ -21,5 +29,12 @@ const Intro = () => {
     );
 }
 
+Intro.propTypes = {
+    isSignedIn: PropTypes.bool
+}
 
-export default Intro;
+const mapStatetoProps = state => ({
+    isSignedIn: state.auth.isSignedIn,
+});
+
+export default connect(mapStatetoProps, {})(Intro);

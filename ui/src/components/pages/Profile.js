@@ -7,6 +7,7 @@ import moment from 'moment';
 import Alert from '../extras/Alert';
 import EditProfile from './microComponent/modal/EditProfile';
 import { loadToTop } from '../extras/helpers';
+import  Spinner  from '../extras/Spinner';
 
 const Profile = ({ getProfile, uploadAvatar, profile }) => {
     // getProfile y uploadAvatar son actions que estan siendo pasados como props aqui porque estan siendo conectados por conect!!
@@ -41,10 +42,6 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
         uploadAvatar(formData);
     }
 
-
-    // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" para evitar que me muestre un profile vacio
-    if (!profile || !profile._id) return null;
-
     const {  name, lastname, birth, height, weight } = profile;
 
     const avatarImage = () => {
@@ -78,7 +75,8 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
     const yearsToDay = dateToDay.diff(userBirth, 'years');
     // de esta forma moment hace la operacion de resta del año actual en que este con los que tiene el user
 
-    return (
+    return !profile || !profile._id ? <Spinner/> : (
+    // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" o si no mostrara el spinner mientras se carga
         <div className="container-Profile-background">
             <div className="container-Profile-background-blur">
 

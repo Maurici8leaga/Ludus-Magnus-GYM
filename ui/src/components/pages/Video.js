@@ -5,17 +5,24 @@ import { connect } from 'react-redux';
 import { getVideoById } from '../../actions/videos';
 import CommentBox from '../pages/microComponent/CommentBox';
 import CommentItem from '../pages/microComponent/CommentItem';
-import { like, dislike, deleteComment } from '../../actions/videos';
+import { like, dislike, deleteComment, clearVideo } from '../../actions/videos';
 import { loadToTop } from '../extras/helpers';
 import Alert from '../extras/Alert';
+import Spinner from '../extras/Spinner';
 
-const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment, alumno }) => {
+const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment, clearVideo }) => {
 
     useEffect(() => {
-        getVideoById(match.params.id);
+        if(match.params.id){
+            getVideoById(match.params.id);
+        }
         loadToTop();
-    }, [match.params.id, getVideoById]);
-            // coloco getVideoById aqui adentro porque si no da un warning indicando que getVideoById tiene un missing dependency
+
+        return () => clearVideo();
+        // esta funcion dentro del return es para limpiar el state de videoObject, de manera que cuando salgas y entres a otro video no se cargue imagenes o video del anterior video
+        // clearVideo es un actions que se creo solo para vaciar el state despues de salir del component, esto es lo que viene haciendo un componentWillUnmount!! OJO
+    }, [match.params.id, getVideoById, clearVideo ]);
+            // se debe colocar aqui dentro del array lo que venga del mapstate; actions, object en este caso, porque si no lanzara un warning
 
     // este arrow funtions se va a ejecutar si es llamado en un component Child, de esta manera conectamos entre component parent y child functions que puedan ser ejecutadas desde el child
     const removeComment = (commentId) => deleteComment({ commentId, idVideo: match.params.id });
@@ -28,7 +35,8 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
     const search = `https://www.youtube.com/embed/${youtubeID}`;
     // esta variable hara el request al link de youtube y podras acceder al video OJO se debe colocar "/embed" AJURO si no no agarra el video
 
-    return (
+    return !videoObject|| !videoObject._id  ? <Spinner/> : (
+        // usamos este condicional para que cuando profile exista y su id tambien muestre el component si no muestre el spinner
         <div className="container-video">
             <div>
                 <div className="screen1">
@@ -99,12 +107,10 @@ Video.propTypes = {
     like: PropTypes.func.isRequired,
     dislike: PropTypes.func.isRequired,
     videoObject: PropTypes.object,
-    alumno: PropTypes.object
 }
 
 const mapStateToProps = state => ({
     videoObject: state.video.video,
-    alumno: state.auth.user
 });
 
-export default connect(mapStateToProps, { getVideoById, like, dislike, deleteComment })(Video);
+export default connect(mapStateToProps, { getVideoById, like, dislike, deleteComment, clearVideo })(Video);

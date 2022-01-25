@@ -10,6 +10,7 @@ import SignIn from './auth/SignIn';
 import SignUp from './auth/SignUp';
 import Profile from './pages/Profile';
 import VideoListByMuscle from './pages/VideoListByMuscle';
+import NotFoundPage from './extras/NotFoundPage';
 import store from './store';
 import { SIGN_IN } from '../actions/types';
 
@@ -42,6 +43,7 @@ class App extends Component {
                                 <RequireAuth path="/routinesType" exact component={RoutinesType} />
                                 <RequireAuth path="/exercises/:muscle" exact component={VideoListByMuscle} />
                                 <RequireAuth path="/video/execise/:id" exact component={Video} />
+                                <Route exact component={NotFoundPage}/>
                             </Switch>
                         </div>
                     </BrowserRouter>

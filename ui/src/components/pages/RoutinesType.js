@@ -14,8 +14,9 @@ import Tricep from '../img/tricep.jpeg';
 import Yoga from '../img/Yoga.jpg';
 import {loadToTop} from '../extras/helpers';
 import {getProfile} from '../../actions/profile';
+import Spinner from '../extras/Spinner';
 
-const RoutinesType = ({ history, getProfile }) => {
+const RoutinesType = ({ history, getProfile, profile }) => {
     // se debe colocar "history" aqui como props para poder tener acceso a el y hacer el redireccionamiento 
 
     useEffect(() => {
@@ -99,10 +100,17 @@ const RoutinesType = ({ history, getProfile }) => {
         </div>
     );
 
-    return muscleList();
+    return !profile || !profile._id ? <Spinner/> : muscleList();
+        // colocamos este condicional para que cuando no este cargado profile, muestre el spinner mientras 
     // solo llamamos la funcion "muscleList" ya que todo esta dentro de ella.. no se puede colocar la funcion dentro de return de esa forma, habria que hacerlo de otra manera
 
 };
 
-export default connect(null, {getProfile})(RoutinesType);
+const mapStateToProps = state => ({
+    profile: state.profile.ProfileUser
+    // llamamos profile en este component para solo usarlo en el condicional ya que el se ejecuta por el getProfile y si el object esta vacio puede dar problemas
+});
+
+
+export default connect(mapStateToProps, {getProfile})(RoutinesType);
 

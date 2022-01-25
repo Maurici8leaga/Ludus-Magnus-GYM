@@ -45,6 +45,7 @@ const SignUp = ({ signUp, isSignedIn }) => {
   }
 
   if (isSignedIn) {
+     // colocamos esto para que el usuario cuando ya este logeado o isSignedIn sea true, no pueda acceder a este component y si lo hace lo redireccione
     return <Redirect to='/routinesType' />;
   }
 

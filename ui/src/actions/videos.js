@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_LISTVIDEOS, GET_VIDEOBYID, VIDEO_ERROR, UPDATE_LIKES } from './types';
+import { GET_LISTVIDEOS, GET_VIDEOBYID, VIDEO_ERROR, UPDATE_LIKES, CLEAR_VIDEO } from './types';
 import { messageAlert } from './messageAlert';
 
 // Get video by muscle
@@ -40,6 +40,11 @@ export const getVideoById = id => async dispatch => {
             payload: { msg: error.response.statusText, status: error.response.status }
         })
     };
+}
+
+export const clearVideo = () => async dispatch => {
+    // este actions lo que hara es cuando sea llamado limpiara el state de videoObject para que no quede imagenes o videos de otros videos 
+    dispatch({ type: CLEAR_VIDEO})
 }
 
 // Add comment
