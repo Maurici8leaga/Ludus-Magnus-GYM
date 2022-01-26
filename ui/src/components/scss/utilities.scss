@@ -698,10 +698,13 @@
     &.message-positive {
         @include set-background($positive-color);
         color: white;
+        text-align: center;
+        // para centrar el texto del alert dentro del los alerts
     }
 
     &.message-negative {
         @include set-background($negative-color);
+        text-align: center;
     }
 }
 
