@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import '../scss/index.scss';
 
 const Intro = ({ isSignedIn }) => {
 
@@ -14,14 +13,22 @@ const Intro = ({ isSignedIn }) => {
     return (
         <div className="pantalla">
             <div className="wrap-page">
-                <div className="pantalla-interna">
-                    <h1 className="title-big">Ludus Magnus</h1>
-                    <p className="title-small">
-                        Comienza tu rutina ya mismo y transforma tu cuerpo como siempre lo soñaste
-                    </p>
-                    <div className="buttons">
-                        <Link to="/signin" className="boton -primary">Comenzar</Link>
-                        <Link to="/signup" className="boton -positive">Registrarme</Link>
+                <div className="container" >
+                    <div className="row" >
+                        <div className="col">
+                            <div className="px-4 py-5 my-5 text-center white-letter">
+                                <h1 className="display-2 fw-bold">Ludus Magnus</h1>
+                                <div className="col-lg-12 mx-auto">
+                                    <p className="h4 mb-3">
+                                        Comienza tu rutina ya mismo y transforma tu cuerpo como siempre lo soñaste
+                                    </p>
+                                    <div className="d-grid gap-1 d-sm-flex justify-content-sm-center">
+                                        <Link to="/signin" className="btn boton -primary btn-lg px-4" role="button">Comenzar</Link>
+                                        <Link to="/signup" className="btn boton -positive btn-lg px-4" role="button">Registrarme</Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

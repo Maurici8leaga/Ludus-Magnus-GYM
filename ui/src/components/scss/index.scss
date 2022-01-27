@@ -84,8 +84,9 @@ img{
     position: relative;
     background: url('../img/thumb-1920-692043.jpg') no-repeat center center/cover;
         // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
-    height: 100vh;
+    min-height: 100vh;
     // para que cubra el tamaño completo de la pantalla
+    padding: 1px;
 
     &-interna{
         color: #fff;
@@ -135,4 +136,13 @@ img{
 .notfound{
     margin: 121px 121px 0px;
     color: black;
+}
+
+//color for letters
+.white-letter{
+    color: $claro-color;
+}
+
+.black-letter{
+    color: $oscuro-color;
 }
