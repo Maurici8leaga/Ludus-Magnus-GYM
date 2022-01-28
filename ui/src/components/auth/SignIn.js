@@ -27,41 +27,46 @@ const SignIn = ({ signIn, isSignedIn }) => {
   }
 
   if (isSignedIn) {
-        // colocamos esto para que el usuario cuando ya este logeado o isSignedIn sea true, no pueda acceder a este component y si lo hace lo redireccione
+    // colocamos esto para que el usuario cuando ya este logeado o isSignedIn sea true, no pueda acceder a este component y si lo hace lo redireccione
     return <Redirect to='/routinesType' />;
   }
 
   return (
 
     <div className="pantalla">
-
       <div className="wrap-page">
 
         <Alert />
 
-        <div className="container-signin">
+        <div className="container">
+          <div className="text-center white-letter my-5">
+            {/* usamos text-center que sirve para que todo el contenido vaya centrado, my es para los margin verticales */}
 
-          <h1 className="grande texto-secundary"> Iniciar Sesion</h1>
+            <h1 className="h1 fw-bold mb-3">Log In</h1>
 
-          <form className="form" onSubmit={e => onSubmit(e)}>
-            {/* cuando el usuario realice el "onSubmit" este ejecutara la llamada de 'e' que es el evento que se encuentra dentro del "onSubmit"*/}
+            <form className="form-signIn" onSubmit={e => onSubmit(e)}>
+              {/* cuando el usuario realice el "onSubmit" este ejecutara la llamada de 'e' que es el evento que se encuentra dentro del "onSubmit"*/}
 
-            <div className="form-input-individual">
-              <input type="text" component="input" name="email" placeholder="Email"  title=" Coloque su email" value={email} onChange={e => onChange(e)} required autoComplete="none" />
-              {/* este "pattern" nos permite estipular el patron del correo, de manera que solo se admita el que se solicita */}
-            </div>
+              <label for="emailAddress" className="sr-only">Email</label>
+              {/* el sr-only es para hacer invisible en este caso el contenido del label, se usa para ocultar en este caso tag que no se quiere que se vean, pero deben ir por normas */}
+              <input className="form-control my-3" type="text" id="emailAddress" name="email" placeholder="Email" title=" Coloque su email" value={email} onChange={e => onChange(e)} required autoComplete="none" />
+              {/* el form-control es el class que deben llevar los inputs y los text-areas, ademas se debe colocar como requisito los id a los input */}
 
-            <div className="form-input-individual">
-              <input type="password" component="input" name="password" placeholder="Contraseña" title="Coloque su contraseña" value={password} onChange={e => onChange(e)} required autoComplete="none" />
-            </div>
+              <label for="password" className="sr-only">Password</label>
+              {/* en los label's deben ir los for y estos deben llevar el mismo nombre que se le coloque a los id de los inputs o viceversa */}
+              <input className="form-control my-3" type="password" id="password" name="password" placeholder="Contraseña" title="Coloque su contraseña" value={password} onChange={e => onChange(e)} required autoComplete="none" />
 
-            <button className="boton -primary-long" type="submit" value="Login">COMENZAR ENTRENAMIENTO</button>
+              <div className="d-grid gap-2 my-3">
+                {/* este d-grip y gap-2 hacen que este button tenga el estilo de un boton block, osea ocupe todo el espacio que tenga posible*/}
+                <button className="btn boton -primary btn-lg" type="submit" value="Login">Comenzar Entrenamiento</button>
+              </div>
+            </form>
 
-            <p className="title-p-small">
+            <p className="h6">
               No tienes cuenta, pero quieres ser parte del club? <Link to="/signup" className="links-scss"> Crear usuario</Link>
             </p>
 
-          </form>
+          </div>
         </div>
       </div>
     </div>

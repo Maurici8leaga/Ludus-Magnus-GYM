@@ -423,20 +423,20 @@
 
 // buttons
 .boton{
-    display: inline-block;
-    // esto es para que esten alineados uno al lado del otro ambos botones
-    background-color: $claro-color;
-    color: #333;
-    padding: 0.5rem 1.8rem;
-    // la separacion que tendra por fuera del elemento, en este caso el boton
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    margin-right: 1rem;
-    // este sera la distancia que tendra un boton con el otro lateralmente
-    outline: none;
-    transition: all 0.2s ease-in;
-    // esto hara que el efecto de light dure 0.2s cuando el pointer este encima del botom y desaparezca dandole un estilo slow
+    // display: inline-block;
+    // // esto es para que esten alineados uno al lado del otro ambos botones
+    // background-color: $claro-color;
+    // color: #333;
+    // padding: 0.5rem 1.8rem;
+    // // la separacion que tendra por fuera del elemento, en este caso el boton
+    // border: none;
+    // cursor: pointer;
+    // font-size: 1.2rem;
+    // margin-right: 1rem;
+    // // este sera la distancia que tendra un boton con el otro lateralmente
+    // outline: none;
+    // transition: all 0.2s ease-in;
+    // // esto hara que el efecto de light dure 0.2s cuando el pointer este encima del botom y desaparezca dandole un estilo slow
 
     &.-primary{
         @include  set-background($primary-color);

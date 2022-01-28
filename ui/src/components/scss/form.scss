@@ -1,4 +1,15 @@
 .form{
+
+  &-signIn{
+    max-width: 350px;
+    margin: auto;
+  }
+
+  &-signUp{
+    max-width: 650px;
+    margin: auto;
+  }
+
   &-input-doble {
       margin: 1.2rem 0;
       width: 50%;
