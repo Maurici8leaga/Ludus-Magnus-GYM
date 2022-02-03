@@ -56,26 +56,28 @@ const SignUp = ({ signUp, isSignedIn }) => {
 
         <Alert />
 
-        <div className="container">
-          <div className="text-center white-letter my-5">
+        <div className="container ">
+          <div className="text-center white-letter extra-mt-x10">
 
-            <h1 className="h1 fw-bold mb-3"> Register</h1>
+            <h1 className="h1 fw-bold mb-3"> Create an account</h1>
 
             <form className="form-signUp" onSubmit={e => onSubmit(e)}>
               <div className="row g-3">
 
-                <div className="col-sm-6">
+                <div className="col-sm-6 my-0">
                   <label for="name" className="form-label">Name</label>
+                  {/* form-label es el class para los label dentro de los forms */}
                   <input type="text" id="name" className="form-control" name="name" maxLength="12" autoComplete="none" placeholder="Name" title="Coloque su primer nombre" value={name} onChange={e => onChange(e)} required />
                 </div>
 
-                <div className="col-sm-6">
+                <div className="col-sm-6 my-0">
                   <label for="lastname" className="form-label">Lastname</label>
                   <input type="text" id="lastname" className="form-control" name="lastname" maxLength="12" autoComplete="none" placeholder="Lastname" title="Coloque su primer apellido" value={lastname} onChange={e => onChange(e)} required />
                 </div>
 
 
-                <div className="col-md-3">
+                <div className="col-sm-6 col-md-3 my-0">
+                  {/* aqui se le pone 2 tipos de col, es para cuando el breakpoint width cambie estos elementos tengan un tamaño y orden segun el tamaño de la pantalla */}
                   <label for="sex" className="form-label">Gender</label>
                   <select className="form-control" id="sex" name="sex" title="Escoja un genero" value={sex} onChange={e => onChange(e)} required>
                     <option value="" >Select a gender</option>
@@ -84,41 +86,41 @@ const SignUp = ({ signUp, isSignedIn }) => {
                   </select>
                 </div>
 
-                <div className="col-md-3">
+                <div className="col-sm-6 col-md-3 my-0">
                   <label className="form-label">Date of birth</label>
                   <DatePicker className="form-control" dateFormat='yyyy/MM/dd' selected={calendarDates} placeholderText="YYYY/MM/DD" onChange={formatedDate} required />
                   {/* dateFormat es un prop para indicar el formato que queremos de la fecha, selected es un prop que sera la fecha seleccionada por el user */}
                 </div>
 
-                <div className="col-md-3">
+                <div className="col-sm-6 col-md-3 my-0">
                   <label for="weight" className="form-label">Weight</label>
                   <input id="weight" className="form-control" type="number" min="0" max="250" step="0.1" name="weight" autoComplete="none" placeholder="Kg" title="Coloque su peso" value={weight} onChange={e => onChange(e)} required />
                 </div>
 
-                <div className="col-md-3">
+                <div className="col-sm-6 col-md-3 my-0">
                   <label for="height" className="form-label">Height</label>
                   <input id="height" className="form-control" type="number" min="0" max="3" step="0.01" name="height" autoComplete="none" placeholder="Meters" title="Coloque su altura" value={height} onChange={e => onChange(e)} required />
                 </div>
 
 
-                <div className="col-12">
-                  <label for="email" className="form-label"></label>
+                <div className="col-12 mt-1">
+                  <label for="email" className="form-label">Email</label>
                   <input id="email" className="form-control" type="email" name="email" autoComplete="none" placeholder="Email" title=" Coloque un email " value={email} onChange={e => onChange(e)} required />
                 </div>
 
-                <div className="col-12">
-                  <label for="password" className="form-label"></label>
+                <div className="col-12 mt-1">
+                  <label for="password" className="form-label">Password</label>
                   <input id="password" className="form-control" type="password" name="password" maxLength="15" autoComplete="none" placeholder="Password" title="Coloque una contraseña" value={password} onChange={e => onChange(e)} required />
                 </div>
 
-                <div className="d-grid">
-                  <button className="btn boton -primary btn-lg" type="submit" value="Register">REGISTRARME Y COMENZAR</button>
+                <div className="d-grid my-3">
+                  <button className="btn boton -primary btn-lg" type="submit" value="Register">Register me</button>
                 </div>
               </div>
             </form>
 
             <p className="h6">
-              Ya eres socio de nuestro club ? <Link to="/signin" className="links-scss"> Comenzar Entrenamiento</Link>
+              ¿ Are you already part of our team? <Link to="/signin" className="links-scss"> Let get start training</Link>
             </p>
 
           </div>

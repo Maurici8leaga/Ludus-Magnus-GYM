@@ -39,7 +39,7 @@ const SignIn = ({ signIn, isSignedIn }) => {
         <Alert />
 
         <div className="container">
-          <div className="text-center white-letter my-5">
+          <div className="text-center white-letter extra-mt-x10">
             {/* usamos text-center que sirve para que todo el contenido vaya centrado, my es para los margin verticales */}
 
             <h1 className="h1 fw-bold mb-3">Log In</h1>
@@ -58,12 +58,12 @@ const SignIn = ({ signIn, isSignedIn }) => {
 
               <div className="d-grid gap-2 my-3">
                 {/* este d-grip y gap-2 hacen que este button tenga el estilo de un boton block, osea ocupe todo el espacio que tenga posible*/}
-                <button className="btn boton -primary btn-lg" type="submit" value="Login">Comenzar Entrenamiento</button>
+                <button className="btn boton -primary btn-lg" type="submit" value="Login"> Let get start training</button>
               </div>
             </form>
 
             <p className="h6">
-              No tienes cuenta, pero quieres ser parte del club? <Link to="/signup" className="links-scss"> Crear usuario</Link>
+              ¿ You don't have account but you want to join us? <Link to="/signup" className="links-scss"> Sign Up</Link>
             </p>
 
           </div>

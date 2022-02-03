@@ -1,14 +1,14 @@
 // Container
 .container{
-    max-width: $max-width;
-    // este  max-width viene de config.scss
-    margin: auto;
-    // de manera que todo quede en el medio de a pag
-    overflow: hidden;
-    // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
-    padding: 0 2rem;
-    margin-top: 10rem;
-    margin-bottom: 3rem;
+    // max-width: $max-width;
+    // // este  max-width viene de config.scss
+    // margin: auto;
+    // // de manera que todo quede en el medio de a pag
+    // overflow: hidden;
+    // // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
+    // padding: 0 2rem;
+    // margin-top: 10rem;
+    // margin-bottom: 3rem;
 
     &-signup{
         max-width: 900px;
@@ -848,6 +848,42 @@ iframe{
     height: 100%;
 }
 
-.prueba12{
+.commentBox{
     min-height: 10px;
+}
+
+//color for letters
+.white-letter{
+    color: $claro-color;
+}
+
+.black-letter{
+    color: $oscuro-color;
+    font-weight: bold;
+}
+
+.links-scss{
+    //  al Link hay quedarle un class porque solo no lo toma
+        text-decoration: none;
+        color: $primary-color;
+}
+    
+.link-header-scss{
+        text-decoration: none;
+        color: #333;
+        &:hover{
+            color: $primary-color;
+        }
+}
+    
+.color-bottom{
+    border-bottom: solid 2px $primary-color;
+}
+
+//class para propiedades extras
+.extra{
+
+    &-mt-x10{
+        margin-top: 10rem !important;
+    }
 }

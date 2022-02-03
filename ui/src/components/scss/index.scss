@@ -28,12 +28,6 @@ ul{
     list-style: none;
 }
 
-.links-scss{
-//  al Link hay quedarle un class porque solo no lo toma
-    text-decoration: none;
-    color: $primary-color;
-}
-
 a{
     text-decoration: none;
     // a pesar de que no sea un class hay que hacer especificar aqui de manera que no sobre escriba algun elemento sobre los links
@@ -136,13 +130,4 @@ img{
 .notfound{
     margin: 121px 121px 0px;
     color: black;
-}
-
-//color for letters
-.white-letter{
-    color: $claro-color;
-}
-
-.black-letter{
-    color: $oscuro-color;
 }

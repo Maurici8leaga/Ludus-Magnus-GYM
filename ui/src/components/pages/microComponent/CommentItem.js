@@ -43,7 +43,7 @@ const CommentItem = ({ comment, removeComment, auth }) => {
 
                 <div className="data-Comment">
                     <p className="title-Comment">{name} {' '}{lastname}</p>
-                    <div className="prueba12">
+                    <div className="commentBox">
                         {text}
                     </div>
                     <div className="Header-dates-deleteButton">
