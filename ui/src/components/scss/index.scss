@@ -97,6 +97,16 @@ img{
         // este tambien ayuda a centrar las lentras en el medio de la pagina
         text-align: center;
     }
+
+    &-muscleTipe{
+        position: relative;
+        background: url('../img/lockerRoom.png') no-repeat center center/cover;
+            // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
+        min-height: 100vh;
+        // para que cubra el tamaño completo de la pantalla
+        padding: 1px;
+        filter: brightness(90%);
+    }
 }
 
 

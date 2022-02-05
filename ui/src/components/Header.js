@@ -6,6 +6,7 @@ import { signOut } from '../actions';
 import { getProfile } from '../actions/profile';
 import { compose } from 'redux';
 import '../components/scss/index.scss';
+import logo from '../components/img/dumbbell-logo.svg';
 
 const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
 
@@ -99,11 +100,17 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
   };
 
   const renderEjercicios = () => {
+
     if (isSignedIn) {
       return (
         <div className="navbar-brand">
           <Link to="/routinesType" className="link-header-scss">
-            <i className="fas fa-dumbbell"></i> Ludus Magnus
+            {/* <i className="fas fa-dumbbell"></i> Ludus Magnus */}
+            <div className="avatar-container">
+              <img src={logo} alt="logo" className="mx-2" />
+              Ludus Magnus
+              {/* el texto debe ir fuera el "icon" de manera que el css que tenga el icon no se mescle con el del texto */}
+            </div>
           </Link>
         </div>
       );
@@ -112,9 +119,11 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
         <div className="navbar-brand d-flex align-items-center">
           {/* navbar-brand es un class para los logos o titulos del home de la pag, align-item-center es para centrar todo el contenido de la barra */}
           <div className="link-header-scss">
-            {/* <--- hay que crear un clas para un desabled button */}
-            <i className="fas fa-dumbbell"></i> Ludus Magnus
-            {/* el texto debe ir fuera el "icon" de manera que el css que tenga el icon no se mescle con el del texto */}
+            <div className="avatar-container">
+              <img src={logo} alt="logo" className="mx-2" />
+              Ludus Magnus
+              {/* el texto debe ir fuera el "icon" de manera que el css que tenga el icon no se mescle con el del texto */}
+            </div>
           </div>
         </div>
       );

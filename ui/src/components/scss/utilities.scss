@@ -125,16 +125,16 @@
 // Image's & pictures profile
 
 .Image-container{
-    position: relative;
-    display: flex;
-    padding: 0;
-    margin-bottom: 0rem;
-    color: white;
-    margin: 0;
-    border-style: none;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
+    // position: relative;
+    // display: flex;
+    // padding: 0;
+    // margin-bottom: 0rem;
+    // color: white;
+    // margin: 0;
+    // border-style: none;
+    // overflow: hidden;
+    // width: 100%;
+    // height: 100%;
 
     &-muscleTipe{
         filter: brightness(90%);
@@ -197,19 +197,19 @@
 
 .highlight-title{
     filter: brightness(100%); 
-    font-size: 5rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    // font-size: 5rem;
+    // line-height: 1.2;
+    // margin-bottom: 1rem;
     font-family: 'Prata', serif;
 }
 
 .highlight-title2{
     filter: brightness(100%); 
-    font-size: 1.5rem;
-    // tamaño de las letras
-    margin-bottom: 1rem;
-    // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
-    margin-left: 4rem;
+    // font-size: 1.5rem;
+    // // tamaño de las letras
+    // margin-bottom: 1rem;
+    // // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
+    // margin-left: 4rem;
     font-family: 'Prata', serif;
     color: $positive-color;
     
@@ -272,18 +272,18 @@
 }
 
 .Title-menu{
-    font-size: 70px;
-    padding-left: 5%;
+    // font-size: 70px;
+    // padding-left: 5%;
     color: $claro-color;
-    position: absolute;
+    // position: absolute;
     // sin este position, las letras no pudieran estar encima de la imagen
-    z-index: 999;
+    // z-index: 999;
     top: 50%;
-    text-align: center;
-    align-content: center;
-    width: 25%;
-    margin: 0;
-    transition: padding-left .6s ease-out;   
+    // text-align: center;
+    // align-content: center;
+    // width: 25%;
+    // margin: 0;
+    // transition: padding-left .6s ease-out;   
     &:hover{
         padding-left: 10%;
         color: $positive-color;
@@ -770,16 +770,16 @@
     font-size: 35px;
     // IMPORTANTE, si se quiere agrandar un icon, usar esto
     height: 120px;
-    width: 10px;
+    // width: 10px;
     bottom: 90px;
-    left: 50%;
+    // left: 50%;
     padding: 0rem;
-    position: absolute;
-    transition: height .5s ease-out;
-    &:hover{
-        height: 100px;
-        cursor: pointer;
-    }
+    // position: absolute;
+    // transition: height .5s ease-out;
+    // &:hover{
+    //     height: 100px;
+    //     // cursor: pointer;
+    // }
     .links-scss{
         color: $positive-color;
         cursor: pointer;
@@ -885,5 +885,9 @@ iframe{
 
     &-mt-x10{
         margin-top: 10rem !important;
+    }
+
+    &-mt-x20{
+        margin-top: 20rem !important;
     }
 }
