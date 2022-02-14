@@ -6,6 +6,8 @@
 @import'../../../../api/node_modules/react-datepicker/dist/react-datepicker.css';
 @import'../../../../api/node_modules/react-datepicker/dist/react-datepicker-cssmodules.css';
 
+ 
+
 *{
     font-family: 'Lato', sans-serif;
     // "sans-serif" es para colocar un estilo de letra por defecto en tal caso de que no exista una
@@ -107,6 +109,16 @@ img{
         padding: 1px;
         filter: brightness(90%);
     }
+
+    &-videoList{
+        position: relative;
+        height: 100vh;
+        background: url('../img/salon\ exercise.jpg') no-repeat center center/cover;
+            // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
+        padding: 1px;
+        filter: brightness(90%);
+    }
+
 }
 
 

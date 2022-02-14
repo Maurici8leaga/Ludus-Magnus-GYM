@@ -283,7 +283,7 @@
     // align-content: center;
     // width: 25%;
     // margin: 0;
-    // transition: padding-left .6s ease-out;   
+    transition: padding-left .6s ease-out;   
     &:hover{
         padding-left: 10%;
         color: $positive-color;
@@ -404,21 +404,25 @@
     width: 100%;
     padding: 0%;
     margin: 0rem;
-    position: relative;
-    display: initial;
+    // position: relative;
+    // display: initial;
     border-radius: 50px;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     // coloca SIEMPRE este MARGIN BOTTOM despues del margin general para no tener problemas;
-    box-shadow: 10px 5px 8px rgba(0, 0, 0, 0.2);
+    // box-shadow: 10px 5px 8px rgba(0, 0, 0, 0.2);
             // 1er) para el horizontal 2do) para vertical 3ro) para el difuminado (mientras mayor sea el numero mas claro o transparente sera el efecto) 
     // este box le da la sombra con stylo al div de la img
+    // @media (min-width: 320px) and (max-width: 575px){
+    //     width: 270px;
+    //     height: 140px;
+    // }
 }
 
 .wrap-img{
     // este wrap se necesita para poder hacer el efecto de hover sobre la img
     position: relative;
-    height: auto;
-    width: auto;
+    height: 234px;
+    width: 400px;
 }
 
 // buttons
@@ -730,15 +734,16 @@
     bottom: 0;
     left: 0;
     right: 0;
-    margin-bottom: 25px;
+    // margin-bottom: 25px;
+    // margin-bottom: 11px;
     // se le agrega este margin menos del anterior div de manera que tenga las mismas dimensiones de sombra que la img
-    background: rgba(2, 2, 2, 0.44);
+    background: rgba(2, 2, 2, 0.74);
     color: #fff;
     opacity: 0;
     transition: opacity .2s, visibility .2s;
     border-radius: 50px;
     // se le coloca el mismo que el div anterior para que sea igual que la img
-    font-size: 1.2rem;
+    // font-size: 1.2rem;
 
     &:hover{
         visibility: visible;
@@ -748,8 +753,23 @@
 }
 
 .info-align{
-    margin-top: 50px;
+    margin-top: 15%;
     // solo se le coloca este de manera que la info quede centrada en la img
+
+    @media (min-width: 320px) and (max-width: 480px){
+    //esto es un media query al colocar  min-width y max-width estamos especificando que los efectos van a tener efecto durante ese rango
+        margin-top: 10%;
+        // en este caso el margin-top se va a sobre escribir y cambiara a este valor
+    }
+
+    @media (min-width: 481px) and (max-width: 769px){
+        margin-top: 20%;
+    }
+
+    @media (min-width: 770px){
+        margin-top: 15%;
+    }
+
 }
 
 .data-Comment{

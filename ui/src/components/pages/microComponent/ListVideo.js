@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import '../../videoTools/VideoItem.css';
 
-const ListVideo = ({ history, video:{ modo, profesor, duracion, imagen, idioma, _id} }) => {
-                    // "video" viene como props del otro component VideoList.. gracias a el podemos tener acceso a las propiedades y lo mismo con "history"
+const ListVideo = ({ history, video: { modo, profesor, duracion, imagen, idioma, _id } }) => {
+    // "video" viene como props del otro component VideoList.. gracias a el podemos tener acceso a las propiedades y lo mismo con "history"
 
     const [, setVideo] = useState('');
     // se deja en blaco el primer state ya que no es usado
@@ -13,19 +13,21 @@ const ListVideo = ({ history, video:{ modo, profesor, duracion, imagen, idioma, 
         setVideo({ ...video });
         history.push(`/video/execise/${video}`);
     }
-    
+
     return (
-        <div>
-            <div className="wrap-img" onClick={() => buttonMuscle(_id)}>
-                                                {/* colocamos dentro del "button" el "_id" que al pasarlo con la funcion toma el ID del video clickeado */}
-                
+        <div className="container">
+                {/* colocamos dentro del "button" el "_id" que al pasarlo con la funcion toma el ID del video clickeado */}
+            <div className="img-fluid position-relative" onClick={() => buttonMuscle(_id)}>
+                {/* img-fluid es un class para hacer responsive las imagenes de los videos */}
+                        {/* el  position-relative para que cuando el user este encima de la img se opaque y muestre la info del video*/}
+
                 <>
-                    <img  className="img-exercise" alt="portada" src={imagen} />
+                    <img className="img-exercise" alt="portada" src={imagen} />
                 </>
 
                 <div className="info-muscle">
-                    <ul className="info-align">
-                        <li >Profesor: {profesor}</li>
+                    <ul className="h6 info-align text-center">
+                        <li>Profesor: {profesor}</li>
                         <li>Idioma: {idioma}</li>
                         <li>Duracion: {duracion} min</li>
                         <li>Tipo de ejercicio: {modo}</li>
