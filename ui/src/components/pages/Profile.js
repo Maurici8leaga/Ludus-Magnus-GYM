@@ -7,7 +7,7 @@ import moment from 'moment';
 import Alert from '../extras/Alert';
 import EditProfile from './microComponent/modal/EditProfile';
 import { loadToTop } from '../extras/helpers';
-import  Spinner  from '../extras/Spinner';
+import Spinner from '../extras/Spinner';
 
 const Profile = ({ getProfile, uploadAvatar, profile }) => {
     // getProfile y uploadAvatar son actions que estan siendo pasados como props aqui porque estan siendo conectados por conect!!
@@ -42,7 +42,7 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
         uploadAvatar(formData);
     }
 
-    const {  name, lastname, birth, height, weight } = profile;
+    const { name, lastname, birth, height, weight } = profile;
 
     const avatarImage = () => {
         // esta funcion que es condicional tiene que ir afuera del component ya que cuando los usuarios no tiene avatar y entran al profile
@@ -58,11 +58,12 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
             // typeof es un operator que indica dentro de un string lo que es el operador en este caso 'avatar' = 'object'. Entonces el condicional se indica si es exactamente eso retorna lo siguiente
             avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
             return (
-                <img className="image" alt="avatar" src={avatarUrl} />
+                <img className="img-thumbnail avatar-mini" alt="avatar" src={avatarUrl} />
+                // img-thumbnail nos ayuda a colocar la img mas pequeña, y avatar-mini es un class creado propio
             );
         }
         return (
-            <img className="image" alt="avatar" src={avatarUrl} />
+            <img className="img-thumbnail avatar-mini" alt="avatar" src={avatarUrl} />
         );
 
     }
@@ -75,65 +76,84 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
     const yearsToDay = dateToDay.diff(userBirth, 'years');
     // de esta forma moment hace la operacion de resta del año actual en que este con los que tiene el user
 
-    return !profile || !profile._id ? <Spinner/> : (
-    // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" o si no mostrara el spinner mientras se carga
-        <div className="container-Profile-background">
-            <div className="container-Profile-background-blur">
+    return !profile || !profile._id ? <Spinner /> : (
+        // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" o si no mostrara el spinner mientras se carga
+        <div className="pantalla-Profile">
+            <div className="pantalla-Profile-blur overflow-scroll">
+                {/* colocamos el overflow aca para que cuando la pagina sea cargada en un mobile el contenido se pueda ver completo */}
+                <div className="container">
+                    <Alert />
 
-                <div className="Title-container-Profile">
-                    <h1 className="highlight-title texto-secundary">Perfil</h1>
-                    <h3 className="highlight-title2-ultraCenter">Esta es tu informacion actual</h3>
-                </div>
+                    <div className="text-center extra-pt-x10">
+                        <h1 className="highlight-title white-letter">Profile</h1>
+                        <h3 className="highlight-title2 ">This is your current information</h3>
+                    </div>
 
-                <div className="frame">
-                <Alert/>
-                    <div className="center">
+                    <div className="card mb-3 extra-max-w mx-auto pantalla-card-profile">
+                        {/* card es el class ideal para lo que queremos en este component, usamos mx-auto para que nos centre en el medio el card en la pag */}
+                        <div className="row g-0 text-center ">
+                            {/* como queremos un card horizontal debemos usar row y mas abajo col  */}
 
-                        <div className="profile">
-                            <div className="image">
-                                {avatarImage()}
+                            <div className="col-md-4 extra-ptYpb-of0-to1">
+                                {/* creamos un class extra para que cuando cambie el width este pueda colocar un padding en el elemento */}
+                                <div className="avatar-container-profile">
+                                    <div className="avatar-mini">
+                                        {avatarImage()}
+                                    </div>
+                                </div>
+
+                                <>
+                                    <label className="boton-border-line-positive-small">
+                                        {/* metemos el input dentro de un label para atraves del label el input pueda tomar el stye que queremos */}
+                                        <input type="file" name='fileButton' onChange={onChange} required></input>
+                                        <i className="fas fa-camera"></i>
+                                    </label>
+
+                                    <>
+                                        <button className="boton-border-line-positive" onClick={() => setOpen(true)}> Edit profile</button>
+                                        {open ? (
+                                            <EditProfile closeUp={() => setOpen(false)} profile={profile} />
+                                            // se le pasa como prop esta funcion "closeUp" y "profile" como prop tambien para que pueda tener acceso a los datos del user en el child component y la funcion para que pueda cerrar el modal
+                                        ) : null}
+                                        {/* se le pone esta conditional para que solo se abra el modal cuando se desee y NO DE ERROR  */}
+                                    </>
+                                </>
                             </div>
 
-                            <div className="name">{name}  {lastname}</div>
-
-                            <div className="actions">
-                                <label className="btn-small">
-                                    {/* metemos el input dentro de un label para atraves del label el input pueda tomar el stye que queremos */}
-                                    <input type="file" name='fileButton' onChange={onChange} required></input>
-                                    <i className="fas fa-camera"></i>
-                                </label>
-                                <div > 
-
-                                    <button className="btn" onClick={() => setOpen(true)}> Editar Profile</button>
-                                    {open ? (
-                                        <EditProfile closeUp={() => setOpen(false)} profile={profile} />
-                                        // se le pasa como prop esta funcion "closeUp" y "profile" como prop tambien para que pueda tener acceso a los datos del user en el child component y la funcion para que pueda cerrar el modal
-                                    ) : null}
-                                    {/* se le pone esta conditional para que solo se abra el modal cuando se desee y NO DE ERROR  */}
+                            <div className="col-md-4 mt-4">
+                                {/* colocamos col-md-4 porque diviremos el card en 3 partes de tamaño 4 sumando 12 en total */}
+                                <div className="card-body">
+                                    {/* card-body es un class para los titulos en los card */}
+                                    <h5 className="card-title extra-ptYpb-of3-to1  positive-letter">{name}  {lastname} </h5>
+                                    {/* card-title es el class para los titulos, extra es para cuando cambie el width este cambie el padding top y bottom */}
                                 </div>
                             </div>
+
+                            <div className="col-md-4">
+                                <ul className="list-group list-group-flush">
+                                    {/* list-group y list-group-flush es un class de bootstrap para lista de info o etc */}
+                                    <li className="list-group-item box-data-info positive-letter">
+                                        {/* list-group-item es un class de boostrap para los items que vaya a llevar la lista en el card */}
+                                        <span className="card-text">{yearsToDay} Years old</span>
+                                        {/* card-text es el class para los textos en las listas segun bootstrap */}
+                                        <span className="card-text"> <i className="fas fa-clock">Age</i> </span>
+                                    </li>
+                                    <li className="list-group-item box-data-info positive-letter">
+                                        {/* box-data-info es un class creado propio */}
+                                        <span className="card-text">{height} m</span>
+                                        <span className="card-text"> <i className="fas fa-ruler-vertical"> Height</i> </span>
+                                    </li>
+                                    <li className="list-group-item box-data-info positive-letter">
+                                        <span className="card-text">{weight} Kg</span>
+                                        <span className="card-text"> <i className="fas fa-balance-scale"> Weight </i> </span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-
-                        <div className="stats">
-                            <div className="box">
-                                <span className="value">{yearsToDay} Años</span>
-                                <span className="value"> <i className="fas fa-clock">Edad</i> </span>
-                            </div>
-
-                            <div className="box">
-                                <span className="value">{height} m</span>
-                                <span className="value"> <i className="fas fa-ruler-vertical"> Altura</i> </span>
-                            </div>
-
-                            <div className="box">
-                                <span className="value">{weight} Kg</span>
-                                <span className="value"> <i className="fas fa-balance-scale"> Peso </i> </span>
-                            </div>
-
-                        </div>
-
                     </div>
+
                 </div>
+
             </div>
         </div>
     );

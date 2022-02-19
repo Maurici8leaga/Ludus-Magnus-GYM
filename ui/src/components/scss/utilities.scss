@@ -94,32 +94,32 @@
         text-align: justify;
     }
 
-    &-Profile{
-        max-width: 1000px;
-        margin: auto;
-        // de manera que todo quede en el medio de a pag
-        overflow: hidden;
-        // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
-        margin-top: 5rem;
+    // &-Profile{
+    //     // max-width: 1000px;
+    //     // margin: auto;
+    //     // // de manera que todo quede en el medio de a pag
+    //     // overflow: hidden;
+    //     // // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
+    //     // margin-top: 5rem;
 
-        &-background{
-            position: relative;
-            height: 100vh;
-            background-image: url('../img/people_workingOut.jpeg');
-            color: #fff;
-            background-repeat: no-repeat;
-            background-position: center;  
-            background-size: cover;     
+    //     &-background{
+    //         position: relative;
+    //         height: 100vh;
+    //         background-image: url('../img/people_workingOut.jpeg');
+    //         color: #fff;
+    //         background-repeat: no-repeat;
+    //         background-position: center;  
+    //         background-size: cover;     
             
-            &-blur{
-                // de esta forma se hace para que la img quede opaca
-                height: 100vh;
-                background: rgba(255, 255, 255, 0.2);
-                backdrop-filter: blur(8px);
-                width: 100%;
-            }
-        }
-    }
+    //         &-blur{
+    //             // de esta forma se hace para que la img quede opaca
+    //             height: 100vh;
+    //             background: rgba(255, 255, 255, 0.2);
+    //             backdrop-filter: blur(8px);
+    //             width: 100%;
+    //         }
+    //     }
+    // }
 }
 
 // Image's & pictures profile
@@ -213,16 +213,16 @@
     font-family: 'Prata', serif;
     color: $positive-color;
     
-    &-ultraCenter{
-        filter: brightness(100%); 
-        font-size: 1.5rem;
-        // tamaño de las letras
-        margin-bottom: 1rem;
-        // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
-        margin-left: 9rem;
-        font-family: 'Prata', serif;
-        color: $positive-color;
-        }
+    // &-ultraCenter{
+    //     filter: brightness(100%); 
+    //     font-size: 1.5rem;
+    //     // tamaño de las letras
+    //     margin-bottom: 1rem;
+    //     // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
+    //     margin-left: 9rem;
+    //     font-family: 'Prata', serif;
+    //     color: $positive-color;
+    //     }
 }
 
 .grande{
@@ -508,6 +508,46 @@
         }
 
     }
+
+    &-border-line-positive{
+        display: block;
+        width: 120px;
+        height: 30px;
+        margin: 0 auto 10px auto;
+        background: none;
+        border: 1px solid $positive-color;
+        border-radius: 15px;
+        font-size: 15px;
+        font-weight: 600;
+        box-sizing: border-box;
+        transition: all .3s ease-in-out;
+        color: $positive-color;
+        cursor: default;
+        &:hover {
+            background: $positive-color;
+            color: $claro-color;
+        }
+
+        &-small{
+            display: block;
+            width: 60px;
+            height: 30px;
+            margin: 0 auto 10px auto;
+            background: none;
+            border: 1px solid $positive-color;
+            border-radius: 15px;
+            font-size: 15px;
+            font-weight: 600;
+            box-sizing: border-box;
+            transition: all .3s ease-in-out;
+            color: $positive-color;
+
+            &:hover {
+                background: $positive-color;
+                color: $claro-color;
+            }
+        }
+    }
 }
 
 .like-dislike-button{
@@ -784,6 +824,25 @@
     color: grey
 }
 
+.box-data-info{
+    box-sizing: border-box;
+    width: 100%;
+    height: 74px;
+    background: #F5E8DF;
+    text-align: center;
+    padding-top: 20px;
+    transition: all .4s ease-in-out;
+    
+    &:hover {
+        background: $positive-color;
+        color: $claro-color;
+    }
+    
+    &:nth-child(2) {
+        margin: 1px 0;
+    }
+}
+
 
 // Animations
 .arrow{
@@ -882,6 +941,10 @@ iframe{
     font-weight: bold;
 }
 
+.positive-letter{
+    color: $positive-color;
+}
+
 .links-scss{
     //  al Link hay quedarle un class porque solo no lo toma
         text-decoration: none;
@@ -910,4 +973,41 @@ iframe{
     &-mt-x20{
         margin-top: 20rem !important;
     }
+
+    &-pt-x10{
+        padding-top: 10rem !important;
+    }
+
+    &-ptYpb-of0-to1{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+    }
+
+    &-ptYpb-of3-to1{
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+    }
+
+    &-max-w{
+        max-width: 500px;
+
+        @media (min-width: 320px) and (max-width: 767px){
+            max-width: 300px;
+        }
+    }
 }
+
+// Input para cam en card
+input[type="file"] {
+    display: none;
+  }
