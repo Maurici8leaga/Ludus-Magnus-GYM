@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfile } from '../../actions/profile';
 import { uploadAvatar } from '../../actions/avatar';
+import { showModal } from '../../actions/modal';
 import moment from 'moment';
 import Alert from '../extras/Alert';
 import EditProfile from './microComponent/modal/EditProfile';
 import { loadToTop } from '../extras/helpers';
 import Spinner from '../extras/Spinner';
+import Portal from '../pages/microComponent/modal/Portal';
 
-const Profile = ({ getProfile, uploadAvatar, profile }) => {
+const Profile = ({ getProfile, uploadAvatar, profile, showModal }) => {
     // getProfile y uploadAvatar son actions que estan siendo pasados como props aqui porque estan siendo conectados por conect!!
 
-
-    const [open, setOpen] = useState(false);
-    // este state es solo para abrir y cerrar el modal
-    // los state deben estar en minuscula
+    const { name, lastname, birth, height, weight } = profile;
 
     useEffect(() => {
         getProfile();
@@ -42,7 +41,6 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
         uploadAvatar(formData);
     }
 
-    const { name, lastname, birth, height, weight } = profile;
 
     const avatarImage = () => {
         // esta funcion que es condicional tiene que ir afuera del component ya que cuando los usuarios no tiene avatar y entran al profile
@@ -110,12 +108,14 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
                                     </label>
 
                                     <>
-                                        <button className="boton-border-line-positive" onClick={() => setOpen(true)}> Edit profile</button>
-                                        {open ? (
-                                            <EditProfile closeUp={() => setOpen(false)} profile={profile} />
-                                            // se le pasa como prop esta funcion "closeUp" y "profile" como prop tambien para que pueda tener acceso a los datos del user en el child component y la funcion para que pueda cerrar el modal
-                                        ) : null}
-                                        {/* se le pone esta conditional para que solo se abra el modal cuando se desee y NO DE ERROR  */}
+                                        <button className="boton-border-line-positive" onClick={e => showModal()}> Edit profile</button>
+                                            <Portal title={"Edit your personal information"}>
+                                                {/* "Portal" va ser nuestro modal generic y de esta forma se implementa */}
+                                                        {/* el prop "title" es el titulo que va a llevar el modal, este debe colocar aqui y no dentro del portal modal */}
+                                                <EditProfile  profile={profile}/>
+                                                {/* "EditProfile" va a ser el contenido del modal y  por ende sera el children a colocar en el component de portal */}
+                                            </Portal>
+                                            {/* // se le pasa como prop esta funcion "closeUp" y "profile" como prop tambien para que pueda tener acceso a los datos del user en el child component y la funcion para que pueda cerrar el modal */}
                                     </>
                                 </>
                             </div>
@@ -162,6 +162,7 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
 Profile.propTypes = {
     getProfile: PropTypes.func.isRequired,
     uploadAvatar: PropTypes.func,
+    showModal: PropTypes.func,
     ProfileUser: PropTypes.object
     // ProfileUser es mi objeto en donde tengo contenido la info del user, IMPORTANTE!!! COMPRENDER ESTO!!!
     // NO se le coloca "isRequired" ya que la data no se obtine en el primer momento, tiene que buscarse en el servidor y luego traerla, se le quita el "isRequired" para no causar problemas
@@ -172,4 +173,4 @@ const mapStateToProps = state => ({
     // se coloca "profile" para el nombre del prop de manera de no tener REDUDANCIA con el OBJETO que esta anidado dentro de mi reducer, para diferenciarlo se llaman distinto
 });
 
-export default connect(mapStateToProps, { getProfile, uploadAvatar })(Profile);
+export default connect(mapStateToProps, { getProfile, uploadAvatar, showModal })(Profile);

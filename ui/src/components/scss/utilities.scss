@@ -988,6 +988,16 @@ iframe{
         }
     }
 
+    &-ptYpb-of0-to3{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+    }
+
     &-ptYpb-of3-to1{
         padding-top: 3rem !important;
         padding-bottom: 3rem !important;
