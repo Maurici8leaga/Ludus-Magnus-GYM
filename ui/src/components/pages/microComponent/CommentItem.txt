@@ -22,42 +22,38 @@ const CommentItem = ({ comment, removeComment, auth }) => {
             // typeof es un operator que indica dentro de un string lo que es el operador en este caso 'avatar' = 'object'. Entonces el condicional se indica si es exactamente eso retorna lo siguiente
             avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
             return (
-                <img className="avatar-mini me-5" alt="avatar" src={avatarUrl} />
-                // me es el class de bootstrap para empujar los elementos hacia la izquierda en este caso
+                <img className="profilePicture" alt="avatar" src={avatarUrl} />
             );
         }
         return (
-            <img className="avatar-mini me-5" alt="avatar" src={avatarUrl} />
+            <img className="profilePicture" alt="avatar" src={avatarUrl} />
         );
 
     }
 
     return (
-        <div className="container-commentBox"> 
-            <div className="d-flex flex-row">
-                {/* usamos d-flex flex-row porque queremos que la foto y el contenido esten horizontalmente paralelos */}
-                <div className="avatar-container-profile-commentBox">
-                    <span className="avatar-mini me-5">
+        <div className="container-commentBox">
+            <div className="Header-ProfilePicture-Name">
+                <div className="container-profilePicture">
+                    <span className="profilePicture">
                         {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
                         {avatarImage()}
                     </span>
                 </div>
 
-                <div className="d-flex flex-column mx-4">
-                    {/* usamos flex-column porque queremos que el contenido este encima del uno con el otro*/}
-                    <p className="fs-6 fw-bold">{name} {' '}{lastname}</p>
-                    <div className="fs-6">
+                <div className="data-Comment">
+                    <p className="title-Comment">{name} {' '}{lastname}</p>
+                    <div className="commentBox">
                         {text}
                     </div>
-                    <div className="d-flex justify-content-between">
-                        <div className="fs-6 gray-letter">
-                            {/* fs-6 es el tamañod el font que le estamos dando al las letras */}
+                    <div className="Header-dates-deleteButton">
+                        <div className="dates">
                             <Moment format="DD/MM/YYYY">{date}</Moment>
                         </div>
                         {alumno && alumno._id === auth.user._id ? (
                             <button onClick={e => removeComment(_id)} type='button' className="boton -negative-delete">
                                 {/* colocamos dentro del "refresh" el "idVideo" para eliminarlo del video y "_id" para eliminarlo del usuario */}
-                                <i className="far fa-trash-alt fs-6"></i>
+                                <i className="far fa-trash-alt"></i>
                             </button>
                         ) : null}
                     </div>

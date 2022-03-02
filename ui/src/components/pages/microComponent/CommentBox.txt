@@ -10,12 +10,12 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
         e.preventDefault();
         // se envia al actions el text para enviar lo que escribio, el idVideo para saber en que video comento y el alumno que es el id del user para saber quien lo escribio
         addComment({ text, idVideo, alumno: profile._id });
-        // le asignamos a "alumno" el valor de "profile._id" de esta manera, asi se le puede asignar a una variable el valor de una propiedad de un objeto 
+                        // le asignamos a "alumno" el valor de "profile._id" de esta manera, asi se le puede asignar a una variable el valor de una propiedad de un objeto 
         setText('');
         // se coloca "setText" en blanco para que despues del comment se vuelva a vaciar el textarea
         CloseUp();
         // llamamos aca para cuando se de comentar este se reinicie y se cierre
-    }
+    } 
 
     const [open, setOpen] = React.useState(false);
     // este state es para y solo para que el div y el textarea se intercambien
@@ -75,7 +75,7 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
                 >
                 </textarea>
 
-                <hr className="rayita-textarea" />
+                <hr className="rayita" />
 
             </>
         )
@@ -94,16 +94,17 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
 
     const buttonCommentCancel = () => {
         return (
-            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                {/* usamos d-grid para que los botones esten encima del otro cuando esta tamaños mobile, de resto el d-md-flex hace que los botones esten linealmente uno al lado del otro */}
-                        {/* justify-content-md-end es para empujar el contenido al otro extremo del elemento, en este caso a la derecha*/}
-                <input type="submit" className="btn boton -claro btn-sm" value="Comentar" />
-                {/* debe colocarse un INPUT no DIV porque si no, nunca se hara el request en el comentario */}
+            <>
+                <div className="Header-Comment-Cancel-button">
+                    <input type="submit" className="boton -claro" value="Comentar" />
+                    {/* debe colocarse un INPUT no DIV porque si no, nunca se hara el request en el comentario */}
 
-                <button className="btn boton -oscuro btn-sm" onClick={() => CloseUp()}>
-                    Cancel
-                </button>
-            </div>
+                    <button className="boton -oscuro" onClick={() => CloseUp()}>
+                        Cancel
+                    </button>
+                </div>
+
+            </>
         )
     }
 
@@ -120,36 +121,49 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
             // typeof es un operator que indica dentro de un string lo que es el operador en este caso 'avatar' = 'object'. Entonces el condicional se indica si es exactamente eso retorna lo siguiente
             avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
             return (
-                <img className="avatar-mini" alt="avatar" src={avatarUrl} />
+                <img className="profilePicture" alt="avatar" src={avatarUrl} />
             );
         }
         return (
-            <img className="avatar-mini" alt="avatar" src={avatarUrl} />
+            <img className="profilePicture" alt="avatar" src={avatarUrl} />
         );
 
     }
 
 
     return (
-        <div className="container-commentBox">
-            <div className="Header-ProfilePicture-CommentForm">
-                <div className="avatar-container-profile-commentBox">
-                    <span className="avatar-mini">
-                        {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
-                        {avatarImage()}
-                    </span>
+        <div >
+            <div className="container-commentBox" >
+
+                <div className="Header-ProfilePicture-CommentForm">
+
+                    <div className="container-profilePicture">
+                        <span className="profilePicture">
+                            {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
+                            {avatarImage()}
+                            {/* los tag img deben tener un "alt" prop ya que sin el dara problemas con los browser*/}
+                        </span>
+                    </div>
+
+                    <div className="">
+                        <form className="form-comment" onSubmit={e => onSubmit(e)}>
+                            {open ? TextAreaFunction() : DivFunction()}
+                            {/* se crea este operator conditional de manera que antes de hacer click el vea un div como textArea y luego de que haga click sea un textAreale for */}
+                        </form>
+                    </div>
+
+
                 </div>
 
-                <form className="form-comment" onSubmit={e => onSubmit(e)}>
-                    {open ? TextAreaFunction() : DivFunction()}
-                    {/* se crea este operator conditional de manera que antes de hacer click el vea un div como textArea y luego de que haga click sea un textAreale for */}
-                </form>
             </div>
 
-            <div>
-                <form onSubmit={e => onSubmit(e)}>
-                    {open ? buttonCommentCancel() : null}
-                </form>
+            <div className="container-commentBox">
+                {/* se coloca los buttons en otro container de manera que los botones no causen una diferencia de tamaño entre el div y el textarea del form */}
+                <div >
+                    <form className="form-comment" onSubmit={e => onSubmit(e)}>
+                        {open ? buttonCommentCancel() : null}
+                    </form>
+                </div>
             </div>
         </div >
     );

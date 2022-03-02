@@ -54,20 +54,20 @@
         margin-top: 5rem;
         // se deja en 0 para header no haga distancia con la img de los titulo
         margin-bottom: 0rem;
-        background-color: rgb(34, 33, 32);
-        color: #fff;
+        // background-color: rgb(34, 33, 32);
+        // color: #fff;
     
     }
 
     &-description{
-        margin: 10px;
-        padding: 5px 200px 5px 200px;
-        text-align: justify;
+        // margin: 10px;
+        // padding: 5px 200px 5px 200px;
+        // text-align: justify;
     }
 
     &-description-texto{
-        margin: 0px;
-        padding: 0px 30px 0px 30px;
+        // margin: 0px;
+        // padding: 0px 30px 0px 30px;
     }
 
     &-commentBox{
@@ -77,21 +77,21 @@
     }
 
     &-profilePicture{
-        width: 80px;
-        height: 80px;
-        max-width: 80px;
-        // se les pone el mismo que max para que no se modifique nunca su tamaño apesar de que algun elemento alrededor lo obligue a cambiar su tamaño
-        min-height: 80px;
-        margin: 0;
-        padding: 0px;
+        // width: 80px;
+        // height: 80px;
+        // max-width: 80px;
+        // // se les pone el mismo que max para que no se modifique nunca su tamaño apesar de que algun elemento alrededor lo obligue a cambiar su tamaño
+        // min-height: 80px;
+        // margin: 0;
+        // padding: 0px;
     }
 
     &-Ncomments{
-        margin: 0px;
-        margin-left: 45px;
-        margin-bottom: 10px;
-        padding: 0px;
-        text-align: justify;
+        // margin: 0px;
+        // margin-left: 45px;
+        // margin-bottom: 10px;
+        // padding: 0px;
+        // text-align: justify;
     }
 
     // &-Profile{
@@ -157,11 +157,11 @@
 }
 
 .profilePicture{
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    margin-right: 40px;
+    // border-radius: 50%;
+    // width: 100%;
+    // height: 100%;
+    // object-fit: cover;
+    // margin-right: 40px;
 }
 
 
@@ -256,10 +256,10 @@
     }
 
     &-Description{
-        font-size: 1.2rem;
-        font-weight: bolder;    
-        margin: 0px;
-        padding: 0px;
+        // font-size: 1.2rem;
+        // font-weight: bolder;    
+        // margin: 0px;
+        // padding: 0px;
     }
 }
 
@@ -295,27 +295,27 @@
 .Header{
 
     &-Title-Video{
-        display: flex;
-        padding: 0px;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
+        // display: flex;
+        // padding: 0px;
+        // width: 100%;
+        // align-items: center;
+        // justify-content: space-between;
     }
 
     &-ProfilePicture-Name{
-        display: flex;
-        flex-direction: row;
-        padding: 0px;
-        width: 100%;
-        align-items: center;
+        // display: flex;
+        // flex-direction: row;
+        // padding: 0px;
+        // width: 100%;
+        // align-items: center;
     }
 
     &-dates-deleteButton{
-        display: flex;
-        padding: 0px;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
+        // display: flex;
+        // padding: 0px;
+        // width: 100%;
+        // align-items: center;
+        // justify-content: space-between;
     }
 
     &-ProfilePicture-CommentForm{
@@ -328,14 +328,14 @@
     }
 
     &-Comment-Cancel-button{
-        width: 100%;
-        display: flex;
-        padding: 0px;
-        padding-right: 35px;
-        margin: 0px;
-        margin-top: -40px;
-        margin-bottom: -35px;
-        justify-content: flex-end;
+        // width: 100%;
+        // display: flex;
+        // padding: 0px;
+        // padding-right: 35px;
+        // margin: 0px;
+        // margin-top: -40px;
+        // margin-bottom: -35px;
+        // justify-content: flex-end;
     }
 }
 
@@ -494,6 +494,7 @@
         &-delete{
             background-color: transparent;
             color: $negative-color;
+            border: none;
 
             &:hover{
                 color: lighten($negative-color, 5)
@@ -555,8 +556,8 @@
     color: white;
     background: none;
     border-style: none;
-    padding: 10px;
-    font-size: 1.2rem;
+    // padding: 10px;
+    // font-size: 1.2rem;
     outline: 0;
     // este outline sirve para quitarle el color de borde cuando se preciona el boton 
     // NO  ESTA BIEN USARLO YA QUE EL NO ES APTO PARA LAS PERSONAS QUE TIENEN PROBLEMA DE VISIBILIDAD
@@ -796,16 +797,19 @@
     margin-top: 15%;
     // solo se le coloca este de manera que la info quede centrada en la img
 
+    // mobile size
     @media (min-width: 320px) and (max-width: 480px){
     //esto es un media query al colocar  min-width y max-width estamos especificando que los efectos van a tener efecto durante ese rango
         margin-top: 10%;
         // en este caso el margin-top se va a sobre escribir y cambiara a este valor
     }
 
+    // tablet size
     @media (min-width: 481px) and (max-width: 769px){
         margin-top: 20%;
     }
 
+    // laptos, pc, big screen size
     @media (min-width: 770px){
         margin-top: 15%;
     }
@@ -813,15 +817,15 @@
 }
 
 .data-Comment{
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px;
-    margin-left: 30px;
+    // display: flex;
+    // flex-direction: column;
+    // margin-right: 20px;
+    // margin-left: 30px;
 }
 
 .dates{
-    font-size: 1rem;
-    color: grey
+    // font-size: 1rem;
+    // color: grey
 }
 
 .box-data-info{
@@ -866,7 +870,7 @@
 }
 
 
-.rayita{
+.rayita-textarea{
     height: 1px;
     background-color: $positive-color;
     border: none;
@@ -880,22 +884,22 @@
     }
 }
 
-.rayita1{
-    height: 30px;
+.rayita{
+    // height: 30px;
     border-style: solid;
     border-color: $positive-color;
     border-width: 1px 0 0 0 ;
-    border-radius: 20px;
+    // border-radius: 20px;
 }
 
 .rayita2{
-    display: block;
-    height: 30px;
-    margin-top: -10px;
-    border-style: solid;
-    border-color: $positive-color;
-    border-width: 0 0 1px 0;
-    border-radius: 20px;
+    // display: block;
+    // height: 30px;
+    // margin-top: -10px;
+    // border-style: solid;
+    // border-color: $positive-color;
+    // border-width: 0 0 1px 0;
+    // border-radius: 20px;
 }
 
 // Videos, iframes, media player
@@ -906,16 +910,16 @@ iframe{
 }
 
 .screen1{
-    height: 60vh;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0;
+    // height: 60vh;
+    // max-width: 1500px;
+    // margin: 0 auto;
+    // padding: 0;
 }
 
 .screen2{
-    position: relative;
-    padding-bottom: 20%;
-    height: 60vh; //este height tiene que ir si o si porque si no queda muy chiquito el video
+    // position: relative;
+    // padding-bottom: 20%;
+    // height: 60vh; //este height tiene que ir si o si porque si no queda muy chiquito el video
 }
 
 
@@ -943,6 +947,10 @@ iframe{
 
 .positive-letter{
     color: $positive-color;
+}
+
+.gray-letter{
+    color: gray;
 }
 
 .links-scss{
@@ -1014,6 +1022,22 @@ iframe{
         @media (min-width: 320px) and (max-width: 767px){
             max-width: 300px;
         }
+    }
+}
+
+
+.ratio-4x3{
+    // este es un class de bootstrap, lo estamos sobre escribiendo para adaptar la medida del tamaño del video segun el tamaño de la pantalla del divice
+    
+    // large screen, laptop, 
+    @media (min-width: 770px){
+        --bs-aspect-ratio: 40%; 
+        // este viene de los class de bootstrap
+    }
+    
+    // tablet size
+    @media (min-width: 481px) and (max-width: 769px){
+        --bs-aspect-ratio: 50%;
     }
 }
 
