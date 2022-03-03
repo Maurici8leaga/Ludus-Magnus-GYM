@@ -6,7 +6,10 @@ import spinner from '../img/spinner.gif';
 
 export default () => (
 
-    <div className="ring">
-        <img className="ring" src={spinner} alt='loading'/>
+    <div className="extra-mt-responsive d-flex justify-content-center">
+        {/* usamos el d-flex para colocar justify-content-center y el elemento este en el medio de la pag, el extra es para controlar la posicion verticalmente */}
+        <div className="ring">
+            <img className="ring" src={spinner} alt='loading' />
+        </div>
     </div>
 );

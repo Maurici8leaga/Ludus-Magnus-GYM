@@ -17,7 +17,7 @@ const Intro = ({ isSignedIn }) => {
                     <div className="row" >
                         {/* la combinacion entre el class row y col, permiten que las cosas queden una de bajo de otra */}
                         <div className="col">
-                            <div className="px-4 py-5 my-5 text-center white-letter">
+                            <div className="px-4 extra-mt-responsive my-5 text-center white-letter">
                                 {/* px es para padding horizontal, py es para los verticales, my para el margin vertical */}
                                 <h1 className="display-2 fw-bold">Ludus Magnus</h1>
                                 {/* display + numero es para hacer un gran titulo mayor que los mismos h1, fw-bold es para hacer las letras bold */}

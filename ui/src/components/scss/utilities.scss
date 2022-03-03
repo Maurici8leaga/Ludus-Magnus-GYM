@@ -978,8 +978,11 @@ iframe{
         margin-top: 10rem !important;
     }
 
-    &-mt-x20{
-        margin-top: 20rem !important;
+
+    &-mt-responsive{
+        // esto hara que el elemento que lleve esto, tenga un margin top responsive segun el hight del screen del divicee
+        margin-top: 45vh !important;
+        // cabe destacar que se debe usar para que sea responsive o % o vh ya que esta unidad ayuda a calcular que quede en la mitad de la pag o en el nivel que se coloque
     }
 
     &-pt-x10{

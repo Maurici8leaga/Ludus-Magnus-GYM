@@ -28,7 +28,7 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history }) => {
             <div className="pantalla-videoList">
                 <Alert />
 
-                <div className="text-center extra-mt-x20 white-letter">
+                <div className="text-center extra-mt-responsive white-letter">
                     <h1 className="display-2 highlight-title">Video List</h1>
 
                     <p className="h3 highlight-title2 mt-5">Choose the video you want to watch</p>

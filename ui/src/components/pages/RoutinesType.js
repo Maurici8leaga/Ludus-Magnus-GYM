@@ -50,7 +50,7 @@ const RoutinesType = ({ history, getProfile, profile }) => {
             <div className="pantalla-muscleTipe"> 
                 <Alert />
 
-                <div className="text-center extra-mt-x20 white-letter">
+                <div className="text-center extra-mt-responsive white-letter">
                     <h1 className="display-2 highlight-title ">Muscle Type </h1>
                     {/* display-2 es mayor que el class h1 por eso lo usamos aca, highlight sera un class creado para darle stilo a las letras */}
 
