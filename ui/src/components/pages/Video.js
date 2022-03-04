@@ -54,6 +54,7 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
                     {/* colocamos este pantalla para que cubra todo el contenido de bajo del video y sea responsive para todos los divices */}
                     <div className="container-fluid py-3">
                         <div className="container ">
+                            <Alert />
                             <div className="row">
                                 {/* usamos row para colocar los elementos siguiente en la misma forma horizontal y en la misma linea */}
                                 <div className="col-12 col-sm-9">
@@ -82,7 +83,6 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
                     </div>
 
                     <div className="container-sm">
-                        <Alert />
                         <hr className="rayita" />
                         {/* se necesita este condicional para que no de error al carga la pag */}
                         {comments && Array.isArray(comments) ? (

@@ -24,7 +24,7 @@ routerVideo.get('/:id', async function(req, res){
         const video = await Videos.findById({_id: req.params.id}).lean();
                                             // aqui el video va a ser encontrado por el "_id" este ser el id que le dio mongo a cada video almacenado pero tambien se podria colocar un id manual a cada video y llamarlo en vez del id por default
         if(!video){
-            return res.status(400).json({ error: {msg: 'No existe este video'}});
+            return res.status(400).json({ error: {msg: 'The video does not exist'}});
         }
 
         // se busca los comentarios que esten relacionados con este video
@@ -41,7 +41,7 @@ routerVideo.get('/:id', async function(req, res){
         res.json(video);
     }catch(error){
         console.error(error.msg);
-        res.status(500).send({error: {msg : 'Video no encontrado, verifique de nuevo'}});
+        res.status(500).send({error: {msg : 'Video not found, the video was deleted or does not exist'}});
     }
 });
 

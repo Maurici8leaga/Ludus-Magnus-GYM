@@ -36,12 +36,12 @@ export const updateProfile = (infoEdit) => async dispatch =>{
             // datos actualizados. ESTO SE PUDO VER ATRAVES DE UN CONSOLE.LOG de res.data
         });
 
-        dispatch(messageAlert(res.data.msg, 'message-positive'));
+        dispatch(messageAlert(res.data.msg, 'alert-warning'));
         
     } catch (error) {
         const msg = error.response.data.error.msg;
         // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
-        dispatch(messageAlert(msg, 'message-negative'))
+        dispatch(messageAlert(msg, 'alert-danger'))
 
         dispatch({
             type: PROFILE_ERROR,

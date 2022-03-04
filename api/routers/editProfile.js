@@ -29,7 +29,7 @@ routerEditProfile.put('/edit', async function (req, res, next){
                                     // aca ponemos "userUpdate: Profiler" para que solo se envie los datos que cambiaron el resto quede intacto
     } catch (error) {
         console.error(error);
-        res.status(500).send({error: {msg : 'Problema al actualizar la informacion personal. Server Error '}});
+        res.status(500).send({error: {msg : 'An error has occurred. Server Error '}});
     }
 });
 

@@ -722,36 +722,36 @@
 
 
 // Alerts
-.alert{
-    position: fixed; 
+// .alert{
+    // position: fixed; 
     //  es importante para los ALERT que vayan en el position "fixed" o "absolute" , ademas debe colocarse ajuro los siguientes tambien, left o right, bottom o top
-    top: 5rem;
+    // top: 4rem;
     // top: 0px;
     // left: 31rem;
-    left: 31%;
-    padding: 0.8rem;
+    // left: 31%;
+    // padding: 0.8rem;
     // margin: 1rem;
-    margin: 2rem;
+    // margin: 2rem;
     // width: 37.8rem;
-    width: 30rem;
-    opacity: 0.9;
+    // width: 30rem;
+    // opacity: 0.9;
     // background: $claro-color;
     // color: #333;
-    align-items: center;
-    align-content: center;
+    // align-items: center;
+    // align-content: center;
 
-    &.message-positive {
-        @include set-background($positive-color);
-        color: white;
-        text-align: center;
-        // para centrar el texto del alert dentro del los alerts
-    }
+    // &.message-positive {
+    //     @include set-background($positive-color);
+    //     color: white;
+    //     text-align: center;
+    //     // para centrar el texto del alert dentro del los alerts
+    // }
 
-    &.message-negative {
-        @include set-background($negative-color);
-        text-align: center;
-    }
-}
+    // &.message-negative {
+    //     @include set-background($negative-color);
+    //     text-align: center;
+    // }
+// }
 
 .wrap-page{
 // este wrap es necesario porque involucra todo el fondo de la pag, sobre todo con la img
@@ -973,17 +973,20 @@ iframe{
 
 //class para propiedades extras
 .extra{
-
-    &-mt-x10{
-        margin-top: 10rem !important;
+    &-mt-x5{
+        margin-top: 5.5rem !important;
     }
-
+    
+    &-mt-30vh{
+        margin-top: 30vh !important;
+    }
 
     &-mt-responsive{
         // esto hara que el elemento que lleve esto, tenga un margin top responsive segun el hight del screen del divicee
         margin-top: 45vh !important;
         // cabe destacar que se debe usar para que sea responsive o % o vh ya que esta unidad ayuda a calcular que quede en la mitad de la pag o en el nivel que se coloque
     }
+
 
     &-pt-x10{
         padding-top: 10rem !important;

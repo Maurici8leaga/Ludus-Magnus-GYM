@@ -39,7 +39,7 @@ const SignIn = ({ signIn, isSignedIn }) => {
         <Alert />
 
         <div className="container">
-          <div className="text-center white-letter extra-mt-x10">
+          <div className="text-center white-letter extra-mt-30vh">
             {/* usamos text-center que sirve para que todo el contenido vaya centrado, my es para los margin verticales */}
 
             <h1 className="h1 fw-bold mb-3">Log In</h1>

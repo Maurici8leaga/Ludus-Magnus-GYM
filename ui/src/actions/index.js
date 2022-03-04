@@ -26,11 +26,11 @@ export const signUp = ({ email, password, name, lastname, birth, height, sex, we
         // el JSON.stringify debe ir ya que localStorage no almacena un objeto, el stringify lo convierte en string para que pueda ser almacenado
 
         dispatch({ type: SIGN_UP, payload: response.data });
-        dispatch(messageAlert( response.data.msg, 'message-positive'));
+        dispatch(messageAlert( response.data.msg, 'alert-primary'));
         dispatch({ type: GET_PROFILE });
     } catch (err) {
         const error = err.response.data.error;
-        dispatch(messageAlert(error.msg, 'message-negative'))
+        dispatch(messageAlert(error.msg, 'alert-danger'))
 
         dispatch({ type: SIGN_UP_ERROR });
     }
@@ -53,10 +53,10 @@ export const signIn = ({ email, password }) => async dispatch => {
 
         dispatch({ type: SIGN_IN, payload: response.data });
         dispatch({ type: GET_PROFILE });
-        dispatch(messageAlert(`Bienvenido ${email}`, 'message-positive'))
-                                            // este ultimo "message-positive" es para indicar la propiedad que esta en el Alert que el tipo de mesaje sera esa clase
+        dispatch(messageAlert(`Welcome to Ludus Magnus ${email}`, 'alert-primary'))
+                                            // este ultimo "alert-primary" es para indicar la propiedad que esta en el Alert que el tipo de mesaje sera esa clase
     } catch (err) {
-        dispatch(messageAlert('Email o Password incorrecto. Verifique intentelo de nuevo', 'message-negative'))
+        dispatch(messageAlert('Email or Password incorrect. Please review it and try again.', 'alert-danger'))
 
         dispatch({ type: SIGN_IN_ERROR });
     }
@@ -66,5 +66,5 @@ export const signIn = ({ email, password }) => async dispatch => {
 export const signOut = () => dispatch => {
     dispatch({ type: CLEAR_PROFILE });
     dispatch({ type: LOGOUT });
-    dispatch(messageAlert('Adios!, cerrando sesion', 'message-positive'));
+    dispatch(messageAlert('Bye! closing session', 'alert-primary'));
 };

@@ -22,12 +22,12 @@ export const uploadAvatar = (formData) => async dispatch => {
                 payload: response.data
             })
 
-        dispatch(messageAlert( res.data.msg, 'message-positive'));
+        dispatch(messageAlert( res.data.msg, 'alert-warning'));
         // res.data.msg es el mensaje que se coloco en el back
      } catch (error) {
          const msg = error.response.data.error;
         // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
-        dispatch(messageAlert(msg, 'message-negative'));
+        dispatch(messageAlert(msg, 'alert-danger'));
         
         dispatch({
             type: PROFILE_ERROR,

@@ -57,7 +57,7 @@ const SignUp = ({ signUp, isSignedIn }) => {
         <Alert />
 
         <div className="container ">
-          <div className="text-center white-letter extra-mt-x10">
+          <div className="text-center white-letter extra-mt-30vh">
 
             <h1 className="h1 fw-bold mb-3"> Create an account</h1>
 

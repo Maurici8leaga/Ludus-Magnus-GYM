@@ -33,7 +33,7 @@ export const getVideoById = id => async dispatch => {
     } catch (error) {
         const msg = error.response.data.error.msg;
         // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
-        dispatch(messageAlert(msg, 'message-negative'))
+        dispatch(messageAlert(msg, 'alert-danger'))
 
         dispatch({
             type: VIDEO_ERROR,
@@ -69,13 +69,13 @@ export const addComment = ({ idVideo, text, alumno }) => async dispatch => {
         // endpoint donde se hace el getVideoById, y es viable esta forma solo por eso, si los comments se crearan de distinta forma
         // posiblemente esto no pudiese hacerse
 
-        dispatch(messageAlert(res.data.msg, 'message-positive'));
+        dispatch(messageAlert(res.data.msg, 'alert-warning'));
         // res.data.msg es el mensaje que se coloco en el back
 
     } catch (error) {
         const msg = error.response.data.error.msg;
         // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
-        dispatch(messageAlert(msg, 'message-negative'))
+        dispatch(messageAlert(msg, 'alert-danger'))
 
         dispatch({
             type: VIDEO_ERROR,
@@ -98,13 +98,13 @@ export const deleteComment = ({ commentId, idVideo }) => async dispatch => {
         // <-- OJO esta forma es posible 1ro por la forma en como son almacenados los comments 2do es que lo que se tiene en el endpoint
         // en el backend, si no fueran por esas condiciones esta forma no es viable
 
-        dispatch(messageAlert(res.data.msg, 'message-positive'));
+        dispatch(messageAlert(res.data.msg, 'alert-warning'));
         // res.data.msg es el mensaje que se coloco en el back
 
     } catch (error) {
         const msg = error.response.data.error.msg;
         // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
-        dispatch(messageAlert(msg, 'message-negative'))
+        dispatch(messageAlert(msg, 'alert-danger'))
         dispatch({
             type: VIDEO_ERROR,
             payload: { msg: error.response.statusText, status: error.response.status }
@@ -134,7 +134,7 @@ export const like = (idVideo) => async dispatch => {
     } catch (error) {
         const msg = error.response.data.msg;
         // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
-        dispatch(messageAlert(msg, 'message-negative'))
+        dispatch(messageAlert(msg, 'alert-danger'))
         dispatch({
             type: VIDEO_ERROR,
             payload: { msg: error.response.statusText, status: error.response.status }
@@ -163,7 +163,7 @@ export const dislike = (idVideo) => async dispatch => {
     } catch (error) {
         const msg = error.response.data.msg;
         // dentro de msg esta contenido la frase que se quiere mostrar, y este viene del backend
-        dispatch(messageAlert(msg, 'message-negative'))
+        dispatch(messageAlert(msg, 'alert-danger'))
         
         dispatch({
             type: VIDEO_ERROR,
