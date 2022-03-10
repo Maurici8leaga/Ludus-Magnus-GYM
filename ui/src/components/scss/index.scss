@@ -107,7 +107,16 @@ img{
         min-height: 100vh;
         // para que cubra el tamaño completo de la pantalla
         padding: 1px;
-        filter: brightness(90%);
+        // filter: brightness(90%);
+
+        &-darkBlur{
+            // de esta forma se hace para que la img quede opaca
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(0px);
+        }
     }
 
     &-videoList{
@@ -117,6 +126,15 @@ img{
             // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
         padding: 1px;
         filter: brightness(90%);
+
+        &-darkBlur{
+            // de esta forma se hace para que la img quede opaca
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(0px);
+        }
     }
 
     &-Profile{

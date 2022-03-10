@@ -52,7 +52,8 @@ const SignUp = ({ signUp, isSignedIn }) => {
   return (
 
     <div className="pantalla">
-      <div className="wrap-page">
+      <div className="wrap-page overflow-scroll">
+         {/* este overflow-scroll ayuda que cuando la imagen sea mas larga que ancha al desplazarse en la pag la img de background cubra completo el screen  */}
 
         <Alert />
 
