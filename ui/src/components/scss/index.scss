@@ -41,26 +41,26 @@ img{
 }
 
 .header{
-    display: flex;
-    // este "flex" hace que el component navbar se comporte como bloque
-    align-items: center !important;
-    // este centra los items 
-    justify-content: space-between;
-    // permite separar los elementos en este caso ponerlos en los extremos del navbar
-    padding: 1.3rem 2rem;
-    font-size: 1.1rem;
-    position: fixed;
-    // permite que el navbar se mantenga arriba de la pag
-    z-index: 1;
-    // permite que el navbar siempre se mantenga arriba del todo el contenido del pag
-    width: 100%;
-    top: 0;
-    border-bottom: solid 1.5px $primary-color;
-    // le da un color de bajo del header
-    // opacity: 100;
+    // display: flex;
+    // // este "flex" hace que el component navbar se comporte como bloque
+    // align-items: center !important;
+    // // este centra los items 
+    // justify-content: space-between;
+    // // permite separar los elementos en este caso ponerlos en los extremos del navbar
+    // padding: 1.3rem 2rem;
+    // font-size: 1.1rem;
+    // position: fixed;
+    // // permite que el navbar se mantenga arriba de la pag
+    // z-index: 1;
+    // // permite que el navbar siempre se mantenga arriba del todo el contenido del pag
+    // width: 100%;
+    // top: 0;
+    // border-bottom: solid 1.5px $primary-color;
+    // // le da un color de bajo del header
+    // // opacity: 100;
 
     ul{
-        display: flex;
+        // display: flex;
          // al colocar esto hacemos que los "ul" dejen de estar encima del otro y se coloquen horizontalmente
     }
 

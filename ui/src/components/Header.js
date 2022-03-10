@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -9,7 +9,6 @@ import '../components/scss/index.scss';
 import logo from '../components/img/dumbbell-logo.svg';
 
 const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
-
 
   useEffect(() => {
     if (isSignedIn) {
@@ -42,12 +41,12 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
     if (isSignedIn && typeof profile === 'object' && profile !== null) {
       // se coloca este conditional para que no de error al entrar en caso de que profile sea o null y el user no este isSignedIn
       return (
-        <div className="collapse navbar-collapse">
-          {/* el class collapse sirve para que cuando la pagina se achique esta pase a meterse dentro de un hamburger menu, en este caso no aplica */}
+        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+          {/* el class collapse sirve para que cuando la pagina se achique esta pase a meterse dentro de un hamburger menu, el justify-content-end es para colocar el contenido de esta seccion de la barra de lado derecho de la pantalla */}
           <ul className="navbar-nav d-flex align-items-center">
             {/* se usa ul y li para colocar los elementos del nav y el clas navbar-nav es para darle el estilo al contenido */}
-            <li className="nav-item mx-2">
-              {/* el nav-item es para darle un estilo a cada contenido que tenga la barra */}
+            <li className="nav-item mx-2 d-none d-md-block">
+              {/* el nav-item es para darle un estilo a cada contenido que tenga la barra, el d-none d-md-block es para ocultar este li o la img cuando el size del screen sea mobile */}
               <Link to="/profile" className="link-header-scss">
                 <div className="avatar-container">
                   <div className="avatar-mini">
@@ -57,12 +56,13 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
               </Link>
             </li>
             <li className="nav-item mx-2">
-              <p className="h6 my-0">
+              <Link to="/profile" className="h6 my-0 nav-link">
+                  {/* nav-link es un class de bootstrap que le da un padding y un margin a los items */}
                 {profile.name} {profile.lastname}
-              </p>
+              </Link>
             </li>
             <li className="nav-item mx-2">
-              <Link to='/signin' onClick={() => signOut()} className="link-header-scss">
+              <Link to='/signin' onClick={() => signOut()} className="link-header-scss nav-link">
                 Log Out
               </Link>
             </li>
@@ -71,13 +71,12 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
       );
     } else {
       return (
-        <div className="collapse navbar-collapse">
-          {/* el class collapse sirve para que cuando la pagina se achique esta pase a meterse dentro de un hamburger menu, en este caso no aplica */}
+        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+          {/* el class collapse sirve para que cuando la pagina se achique esta pase a meterse dentro de un hamburger menu, el justify-content-end es para colocar el contenido de esta seccion de la barra de lado derecho de la pantalla*/}
           <ul className="navbar-nav d-flex align-items-center">
             {/* se usa ul y li para colocar los elementos del nav y el clas navbar-nav es para darle el estilo al contenido */}
-            <li className="nav-item  mx-2">
-              {/* el nav-item es para darle un estilo a cada contenido que tenga la barra */}
-
+            <li className="nav-item  mx-2 d-none d-md-block">
+              {/* el nav-item es para darle un estilo a cada contenido que tenga la barra, el d-none d-md-block es para ocultar este li o la img cuando el size del screen sea mobile */}
               <div className="avatar-container">
                 <div className="avatar-mini">
                   <img className="avatar-mini" alt="avatar" src={avatarUrl} />
@@ -86,12 +85,13 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
             </li>
             <li className="nav-item  mx-2">
               {/* mx 2 es para darle un margin horizontalmente */}
-              <Link to="/signup" className="link-header-scss">
+              <Link to="/signup" className="link-header-scss nav-link active">
+                 {/* nav-link es un class de bootstrap que le da un padding y un margin a los items, el active le da un color a la letra mas oscuro sin el se veria muy claro la letra */}
                 Sign Up
               </Link>
             </li>
             <li className="nav-item  mx-2">
-              <Link to="/signin" className="link-header-scss" >Sign In</Link>
+              <Link to="/signin" className="link-header-scss nav-link active">Sign In</Link>
             </li>
           </ul>
         </div>
@@ -116,7 +116,7 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
       );
     } else {
       return (
-        <div className="navbar-brand d-flex align-items-center">
+        <div className="navbar-brand">
           {/* navbar-brand es un class para los logos o titulos del home de la pag, align-item-center es para centrar todo el contenido de la barra */}
           <div className="link-header-scss">
             <div className="avatar-container">
@@ -131,15 +131,25 @@ const Header = ({ signOut, isSignedIn, getProfile, profile }) => {
   }
 
   return (
-    <nav className="navbar navbar-expand-md fondo-claro fixed-top d-flex justify-content-between color-bottom">
-      {/* el class navbar es para las barras, navbar-expand-md es para indicar el tamaño, fixed-top es para que la barra baje en conjunto con la pagina, justify-content-between es para crear espacio entre los elementos y no esten tan pegados*/}
-      <div className=" my-2 mx-5">
-        {renderEjercicios()}
-      </div>
-      {/* <button type="button" data-bs-toogle="collapse" data-bs-target="#navbarNav" className="navbar-toggler"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle Navigation">Menu</button> */}
-      <div className=" my-2 mx-5">
-        {renderAuth()}
+    <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top color-bottom ">
+      {/* el class navbar es para las barras, navbar-expand-md es para indicar el tamaño, fixed-top es para que la barra baje en conjunto con la pagina, navbar-light bg-light es un class que le da el color del background a la barra entre otros*/}
+      <div className="container-fluid ">
+
+        <>
+          {renderEjercicios()}
+        </>
+
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          {/* el class navbar-toggler es para los botones que van a desplegar un elemento, collapse hace la accion de que se abra y cierre, data-bs-target es el id este debe coincidir con el que tiene el elemento a collapsar,aria-expanded debe estar en false para que solo se abra el elemento cuando se solicita,aria-controls debe llevar el mismo nombre que se le coloque al id o targert   */}
+          <span className="navbar-toggler-icon"></span>
+          {/* este es un class para el hamburguer buttom */}
+        </button>
+
+        <>
+        {/* no se le coloca div aca ya que interrumpe el class interno que tiene el elemento renderAuth y no funcionaria como se espera */}
+          {renderAuth()}
+        </>
+
       </div>
     </nav>
   );
