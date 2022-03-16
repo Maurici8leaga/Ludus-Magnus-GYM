@@ -2,14 +2,13 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ListVideo from '../pages/microComponent/ListVideo';
-import { getListVideos } from '../../actions/videos';
+import { getListVideos, clearVideoList } from '../../actions/videos';
 import { Link } from 'react-scroll';
 import Alert from '../extras/Alert';
-import { loadToTop } from '../extras/helpers';
 import Spinner from '../extras/Spinner';
 
 // hay que colocar "match" para que pueda llamarse dentro de la funcion
-const VideoListByMuscle = ({ getListVideos, match, muscleList, history }) => {
+const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVideoList }) => {
     // este "muscleList" es creado en este component viene del mapState el cual se le denomina el nombre ahi
     // en el se va almacenar la data optenida del request al backend, por ende es EL QUE DEBE LLAMARSE PARA OPTENER LA LISTA DE VIDEOS
 
@@ -17,13 +16,15 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history }) => {
         getListVideos(match.params.muscle);
         // dentro de esta funcion hay que colocar "match.params" + "el nombre que del estado o objeto donde este el musculo en este caso"
         // de manera que al hacer el request este agregue los params al URL
-        loadToTop();
-    }, [getListVideos, match.params.muscle]);
-    // debe colocarse dentro del [] el "getListVideos" y el "match.params.muscle" para que no de muestre el alerta de error constantemente
+        return () => clearVideoList();
+        // esta funcion dentro del return es para limpiar el state de videoList, de manera que cuando salgas y entres a otra categoria de musculo no se cargue datos y videos del anterior musculo
+        // clearVideoList es un actions que se creo solo para vaciar el state despues de salir del component, esto es lo que viene haciendo un componentWillUnmount!! OJO
 
-    // para poder acceder a las propiedades de un array debe hacerse asi -> "muscleList[0]" ya que el value de los array son numericos
-    return !muscleList || !muscleList[0].video.length > 0 ? <Spinner /> : (
-        // colocamos este condicional para que muestre el component cuando exista muscleList y adicional a eso cuando los videos del muscleList sean mayor a 0. Si no mostrara el spinner
+    }, [getListVideos, match.params.muscle, clearVideoList]);
+    // debe colocarse dentro del [] el "getListVideos",  "match.params.muscle" y el "clearVideoList" para que no de muestre el alerta de error constantemente
+
+    return !muscleList || !muscleList.length > 0 ? <Spinner /> : (
+        // colocamos este condicional para que muestre el component cuando exista muscleList y adicional a eso cuando el lenght  del muscleList sea mayor a 0. Si no mostrara el spinner
         <div className="container-muscle">
             <div className="pantalla-videoList">
                 <div className="pantalla-videoList-darkBlur">
@@ -121,10 +122,15 @@ function mapStateToProps(state) {
         // si la funcion de adentro retorna "true" entonces mostrara los videos organizados. Dentro de la funcion esta que; si el nombre del modo es igual al modo del video (v.modo === m) 
         // entonces lo ordenara y lo almacenara ordenadamente
         return { modo: m, video: subVideos };
-    });
+    }).filter( ({video}) => video.length);
+    // con este ultimo filter hacemos que los videos que esten dentro de muscleList sean solo los que tienen mayor a 0 de lenght para que no
+    // muestre categorias con videos vacios. Entonces la funcion dentro al retornar true va aplicar los cambios no se coloca el "> 0" ya que
+    // si video.lenght da 0 va a retornar false y por defecto no va a mostrar.
+    // cabe destacar que las operaciones de array se pueden concatenar
+
     return { muscleList };
     // en este muscleList se almacena ahora los videos ORDENADAMENTE, retorna 6 objetos de los cuales tiene 3 videos c/u
 };
 
-export default connect(mapStateToProps, { getListVideos })(VideoListByMuscle);
+export default connect(mapStateToProps, { getListVideos, clearVideoList })(VideoListByMuscle);
 

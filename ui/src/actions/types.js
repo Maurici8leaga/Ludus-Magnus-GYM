@@ -14,5 +14,6 @@ export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 export const UPDATE_LIKES = 'UPDATE_LIKES';
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const CLEAR_VIDEO = 'CLEAR_VIDEO';
+export const CLEAR_VIDEOLIST = 'CLEAR_VIDEOLIST';
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const HIDE_MODAL = 'HIDE_MODAL';

@@ -1,4 +1,4 @@
-import { GET_LISTVIDEOS, GET_VIDEOBYID, VIDEO_ERROR, UPDATE_LIKES, CLEAR_VIDEO } from '../actions/types';
+import { GET_LISTVIDEOS, GET_VIDEOBYID, VIDEO_ERROR, UPDATE_LIKES, CLEAR_VIDEO, CLEAR_VIDEOLIST } from '../actions/types';
 
 const INITIAL_STATE = {
     // LOS NOMBRE QUE LE DARAS DEBE SER LOS MISMOS QUE TIENES COLOCADO CON TU ROUTE DEL BACK DONDE ESTA ALMACENADO LA DATA
@@ -39,6 +39,12 @@ export default (state = INITIAL_STATE, action) => {
                 video:{}
         // de esta forma vaciamos el state de video, en este caso lo usamos para que cuando se salga de un video no quede cargado videos de anteriores videos
             }
+        case CLEAR_VIDEOLIST:
+            return{
+                ...state,
+                videoList:[]
+            }
+        // de esta forma vaciamos el state de videoList, en este caso lo usamos para que cuando se seleccione un musculo al cargar no traiga los datos del anterior musculo en tal caso de existir
         case VIDEO_ERROR:
             return {
                 ...state,

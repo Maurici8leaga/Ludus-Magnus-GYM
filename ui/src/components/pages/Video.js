@@ -6,7 +6,6 @@ import { getVideoById } from '../../actions/videos';
 import CommentBox from '../pages/microComponent/CommentBox';
 import CommentItem from '../pages/microComponent/CommentItem';
 import { like, dislike, deleteComment, clearVideo } from '../../actions/videos';
-import { loadToTop } from '../extras/helpers';
 import Alert from '../extras/Alert';
 import Spinner from '../extras/Spinner';
 
@@ -16,8 +15,6 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
         if (match.params.id) {
             getVideoById(match.params.id);
         }
-        loadToTop();
-
         return () => clearVideo();
         // esta funcion dentro del return es para limpiar el state de videoObject, de manera que cuando salgas y entres a otro video no se cargue imagenes o video del anterior video
         // clearVideo es un actions que se creo solo para vaciar el state despues de salir del component, esto es lo que viene haciendo un componentWillUnmount!! OJO

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_LISTVIDEOS, GET_VIDEOBYID, VIDEO_ERROR, UPDATE_LIKES, CLEAR_VIDEO } from './types';
+import { GET_LISTVIDEOS, GET_VIDEOBYID, VIDEO_ERROR, UPDATE_LIKES, CLEAR_VIDEO, CLEAR_VIDEOLIST } from './types';
 import { messageAlert } from './messageAlert';
 
 // Get video by muscle
@@ -45,6 +45,11 @@ export const getVideoById = id => async dispatch => {
 export const clearVideo = () => async dispatch => {
     // este actions lo que hara es cuando sea llamado limpiara el state de videoObject para que no quede imagenes o videos de otros videos 
     dispatch({ type: CLEAR_VIDEO})
+}
+
+export const clearVideoList = () => async dispatch => {
+        // este actions lo que hara es cuando sea llamado limpiara el state de videoList para que no quede datos o videos de otros musculos 
+    dispatch({ type: CLEAR_VIDEOLIST})
 }
 
 // Add comment

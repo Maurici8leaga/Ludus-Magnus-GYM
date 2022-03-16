@@ -51,12 +51,9 @@
         overflow: hidden;
         // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
         padding: 0;
-        margin-top: 5rem;
+        margin-top: 4rem;
         // se deja en 0 para header no haga distancia con la img de los titulo
-        margin-bottom: 0rem;
-        // background-color: rgb(34, 33, 32);
-        // color: #fff;
-    
+        margin-bottom: 0rem;    
     }
 
     &-description{

@@ -12,7 +12,6 @@ import Pecho from '../img/pecho.jpg';
 import Pierna from '../img/pierna.png';
 import Tricep from '../img/tricep.jpeg';
 import Yoga from '../img/Yoga.jpg';
-import { loadToTop } from '../extras/helpers';
 import { getProfile } from '../../actions/profile';
 import Spinner from '../extras/Spinner';
 
@@ -20,7 +19,6 @@ const RoutinesType = ({ history, getProfile, profile }) => {
     // se debe colocar "history" aqui como props para poder tener acceso a el y hacer el redireccionamiento 
 
     useEffect(() => {
-        loadToTop();
         getProfile();
     }, [getProfile]);
 

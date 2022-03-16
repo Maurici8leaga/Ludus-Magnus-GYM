@@ -7,7 +7,6 @@ import { showModal } from '../../actions/modal';
 import moment from 'moment';
 import Alert from '../extras/Alert';
 import EditProfile from './microComponent/modal/EditProfile';
-import { loadToTop } from '../extras/helpers';
 import Spinner from '../extras/Spinner';
 import PortalModal from '../pages/microComponent/modal/PortalModal';
 
@@ -18,7 +17,6 @@ const Profile = ({ getProfile, uploadAvatar, profile, showModal }) => {
 
     useEffect(() => {
         getProfile();
-        loadToTop();
     }, [getProfile]);
     // hay que agregar este "getProfiles" ya que "useEffect" pide que se agregue esta dependencia o que se quite la matriz de la dependencia.
 
