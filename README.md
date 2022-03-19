@@ -4,23 +4,25 @@ Ludus Magnus is a page designed with the purpose of encouraging and instructing 
 
 In the muscles section you can choose between the following; Biceps, Triceps, Abdominal, Back, Shoulder, Chest, Leg and Yoga. Once you have selected the muscle, you can choose what type of exercises you want to exercise; With machines, dumbbells or freestyle and additional, you will have the freedom to choose the difficulty according to how you feel prepared.
 
-![Screen Shot 2021-10-06 at 16 42 25](https://user-images.githubusercontent.com/47537254/136277315-76ba2ddf-68ae-4316-aae8-23faa1858a02.png)
+![Intro](https://user-images.githubusercontent.com/47537254/159125462-087b5b21-fee5-485f-9fd9-36f105bd8d1c.png)
 
-![Screen Shot 2021-10-06 at 16 42 44](https://user-images.githubusercontent.com/47537254/136277453-b7046eb5-636c-4ef5-bac4-6f182cca6530.png)
+![SignIn](https://user-images.githubusercontent.com/47537254/159125472-e8025da5-4afa-4398-b0df-8b6cd3c850df.png)
 
-![Screen Shot 2021-10-06 at 16 42 54](https://user-images.githubusercontent.com/47537254/136277462-6d00db6a-541c-42c0-bfff-636eb1a612cc.png)
+![SignUp](https://user-images.githubusercontent.com/47537254/159125481-f097d064-0390-4e24-b378-69c12ddf467b.png)
 
-![Screen Shot 2021-10-06 at 16 43 13](https://user-images.githubusercontent.com/47537254/136277518-39cc49bd-82e2-4b5d-81e9-55499a0a5ba6.png)
+![RoutineType](https://user-images.githubusercontent.com/47537254/159125488-f68075b0-3fb1-4aca-8da1-9e820f923600.png)
 
-![Screen Shot 2021-10-06 at 16 43 23](https://user-images.githubusercontent.com/47537254/136277531-ca046e2f-e73e-40d2-af45-c0c0021443ab.png)
+![RoutineType2](https://user-images.githubusercontent.com/47537254/159125497-e1568a7e-ffaf-479a-9062-f4744dd47176.png)
 
-![Screen Shot 2021-10-06 at 16 43 31](https://user-images.githubusercontent.com/47537254/136277539-5c0b0256-7f00-4837-9830-7f3eb53e6648.png)
+![VideoList](https://user-images.githubusercontent.com/47537254/159125506-c68abc2e-0040-42d8-baaf-304c359adcd1.png)
 
-![Screen Shot 2021-10-06 at 16 43 48](https://user-images.githubusercontent.com/47537254/136277550-3057987e-d355-4673-beab-9ff4c56c91da.png)
+![VideoList2](https://user-images.githubusercontent.com/47537254/159125509-c92b6227-81fc-444e-8926-8300a1a11acb.png)
 
-![Screen Shot 2021-10-06 at 16 43 59](https://user-images.githubusercontent.com/47537254/136277559-c612eb05-fc0b-4dae-9664-8fb2bf7c0c12.png)
+![Video](https://user-images.githubusercontent.com/47537254/159125512-8f70c889-918f-461f-a4e9-e04e69265b8f.png)
 
-![Screen Shot 2021-10-06 at 16 44 08](https://user-images.githubusercontent.com/47537254/136277564-9b511847-e285-4978-9b56-4ce395cf9ac0.png)
+![Profile](https://user-images.githubusercontent.com/47537254/159125518-c673df7d-e9d5-4132-be5d-332c4a348dd6.png)
+
+
 
 ##Get Started
 
