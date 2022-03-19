@@ -26,11 +26,11 @@ const ListVideo = ({ history, video: { modo, profesor, duracion, imagen, idioma,
                 </>
 
                 <div className="info-muscle">
-                    <ul className="h6 info-align text-center">
-                        <li>Profesor: {profesor}</li>
-                        <li>Idioma: {idioma}</li>
-                        <li>Duracion: {duracion} min</li>
-                        <li>Tipo de ejercicio: {modo}</li>
+                    <ul className="h6 info-align text-center"> 
+                        <li>Professor: {profesor}</li>
+                        <li>Language: {idioma}</li>
+                        <li>Lenght: {duracion} min</li>
+                        <li>Type of exercise: {modo}</li>
                     </ul>
                 </div>
             </div>

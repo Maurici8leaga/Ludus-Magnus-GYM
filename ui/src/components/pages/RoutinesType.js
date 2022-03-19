@@ -26,11 +26,11 @@ const RoutinesType = ({ history, getProfile, profile }) => {
 
     const lista = [
         { musculo: 'BICEP', picture: Bicep },
-        { musculo: 'ABDOMINAL', picture: Abs },
-        { musculo: 'ESPALDA', picture: Espalda },
-        { musculo: 'HOMBRO', picture: Hombro },
-        { musculo: 'PECHO', picture: Pecho },
-        { musculo: 'PIERNA', picture: Pierna },
+        { musculo: 'ABS', picture: Abs },
+        { musculo: 'BACK', picture: Espalda },
+        { musculo: 'SHOULDER', picture: Hombro },
+        { musculo: 'CHEST', picture: Pecho },
+        { musculo: 'LEG', picture: Pierna },
         { musculo: 'TRICEP', picture: Tricep },
         { musculo: 'YOGA', picture: Yoga }
     ];

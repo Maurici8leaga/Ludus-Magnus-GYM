@@ -114,7 +114,7 @@ function mapStateToProps(state) {
     // esta funcion(new Set) permite que (modos) sea un objeto en el cual se va almacenar cualquier tipo de valor en el
     videoList.forEach(v => modos.add(v.modo));
     // aca para cada video que se encuentra en "videoList" la funcion con (add) va agregar nuevos valores (en este caso un modo a cada video) en el objeto (modos) 
-    const modosArray = ['Mancuerna', 'Maquina', 'Libre - Sin Pesas', 'Principiante', 'Intermedio', 'Avanzado'];
+    const modosArray = ['Dumbbells', 'Machine', 'No Equipment', 'Beginners', 'Intermediate', 'Advanced'];
     // se crea este array de manera que se almancen los distintos NOMBRES de los modos de ejercicio
     const muscleList = modosArray.map(m => {
         const subVideos = videoList.filter(v => v.modo === m);
