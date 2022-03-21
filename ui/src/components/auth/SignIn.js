@@ -47,12 +47,12 @@ const SignIn = ({ signIn, isSignedIn }) => {
             <form className="form-signIn" onSubmit={e => onSubmit(e)}>
               {/* cuando el usuario realice el "onSubmit" este ejecutara la llamada de 'e' que es el evento que se encuentra dentro del "onSubmit"*/}
 
-              <label for="emailAddress" className="sr-only">Email</label>
+              <label  className="sr-only">Email</label>
               {/* el sr-only es para hacer invisible en este caso el contenido del label, se usa para ocultar en este caso tag que no se quiere que se vean, pero deben ir por normas */}
               <input className="form-control my-3" type="text" id="emailAddress" name="email" placeholder="Email" title=" Coloque su email" value={email} onChange={e => onChange(e)} required autoComplete="none" />
               {/* el form-control es el class que deben llevar los inputs y los text-areas, ademas se debe colocar como requisito los id a los input */}
 
-              <label for="password" className="sr-only">Password</label>
+              <label  className="sr-only">Password</label>
               {/* en los label's deben ir los for y estos deben llevar el mismo nombre que se le coloque a los id de los inputs o viceversa */}
               <input className="form-control my-3" type="password" id="password" name="password" placeholder="Contraseña" title="Coloque su contraseña" value={password} onChange={e => onChange(e)} required autoComplete="none" />
 

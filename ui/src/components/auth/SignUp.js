@@ -66,20 +66,20 @@ const SignUp = ({ signUp, isSignedIn }) => {
               <div className="row g-3">
 
                 <div className="col-sm-6 my-0">
-                  <label for="name" className="form-label">Name</label>
+                  <label className="form-label">Name</label>
                   {/* form-label es el class para los label dentro de los forms */}
                   <input type="text" id="name" className="form-control" name="name" maxLength="12" autoComplete="none" placeholder="Name" title="Coloque su primer nombre" value={name} onChange={e => onChange(e)} required />
                 </div>
 
                 <div className="col-sm-6 my-0">
-                  <label for="lastname" className="form-label">Lastname</label>
+                  <label className="form-label">Lastname</label>
                   <input type="text" id="lastname" className="form-control" name="lastname" maxLength="12" autoComplete="none" placeholder="Lastname" title="Coloque su primer apellido" value={lastname} onChange={e => onChange(e)} required />
                 </div>
 
 
                 <div className="col-sm-6 col-md-3 my-0">
                   {/* aqui se le pone 2 tipos de col, es para cuando el breakpoint width cambie estos elementos tengan un tamaño y orden segun el tamaño de la pantalla */}
-                  <label for="sex" className="form-label">Gender</label>
+                  <label className="form-label">Gender</label>
                   <select className="form-control" id="sex" name="sex" title="Escoja un genero" value={sex} onChange={e => onChange(e)} required>
                     <option value="" >Select a gender</option>
                     <option value="Hombre">Man</option>
@@ -94,23 +94,23 @@ const SignUp = ({ signUp, isSignedIn }) => {
                 </div>
 
                 <div className="col-sm-6 col-md-3 my-0">
-                  <label for="weight" className="form-label">Weight</label>
+                  <label className="form-label">Weight</label>
                   <input id="weight" className="form-control" type="number" min="0" max="250" step="0.1" name="weight" autoComplete="none" placeholder="Kg" title="Coloque su peso" value={weight} onChange={e => onChange(e)} required />
                 </div>
 
                 <div className="col-sm-6 col-md-3 my-0">
-                  <label for="height" className="form-label">Height</label>
+                  <label className="form-label">Height</label>
                   <input id="height" className="form-control" type="number" min="0" max="3" step="0.01" name="height" autoComplete="none" placeholder="Meters" title="Coloque su altura" value={height} onChange={e => onChange(e)} required />
                 </div>
 
 
                 <div className="col-12 mt-1">
-                  <label for="email" className="form-label">Email</label>
+                  <label className="form-label">Email</label>
                   <input id="email" className="form-control" type="email" name="email" autoComplete="none" placeholder="Email" title=" Coloque un email " value={email} onChange={e => onChange(e)} required />
                 </div>
 
                 <div className="col-12 mt-1">
-                  <label for="password" className="form-label">Password</label>
+                  <label className="form-label">Password</label>
                   <input id="password" className="form-control" type="password" name="password" maxLength="15" autoComplete="none" placeholder="Password" title="Coloque una contraseña" value={password} onChange={e => onChange(e)} required />
                 </div>
 
