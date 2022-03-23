@@ -1,53 +1,52 @@
-import {GET_LISTVIDEOS, GET_VIDEOBYID, ADD_COMMENT, DELETE_COMMENT, VIDEO_ERROR, UPDATE_LIKES} from '../actions/types';
+import { GET_LISTVIDEOS, GET_VIDEOBYID, VIDEO_ERROR, UPDATE_LIKES, CLEAR_VIDEO, CLEAR_VIDEOLIST } from '../actions/types';
 
 const INITIAL_STATE = {
     // LOS NOMBRE QUE LE DARAS DEBE SER LOS MISMOS QUE TIENES COLOCADO CON TU ROUTE DEL BACK DONDE ESTA ALMACENADO LA DATA
-    videoId: {},
-    // "videoId" es 1 solo elemento, al colocar null trae problemas pero al colocarlo con {} o [] se soluciona los problemas
+    video: {},
+    // "video" es 1 solo elemento, al colocar null trae problemas pero al colocarlo con {} o [] se soluciona los problemas
     videoList: [],
     error: {}
 };
 
 export default (state = INITIAL_STATE, action) => {
-    const {type, payload} = action;
-    
-    switch(type){
+    const { type, payload } = action;
+
+    const{video} = state;
+
+    switch (type) {
         case GET_LISTVIDEOS:
-            return{
+            return {
                 ...state,
                 videoList: payload,
             }
         case GET_VIDEOBYID:
-                return{
-                    ...state,
-                    videoId: payload,
-                }
-        case ADD_COMMENT:
-                return{
-                    ...state,
-                    // ESTO --> ES IMPORTANTE PARA ACTUALIZAR EL OBJETO DEL STATE U/O SOBREESCRIBIR LAS PROPIEDADES QUE YA EXISTIAN CON LAS NUEVAS -->
-                    videoId: {...state.videoId, comment: payload},
-                    // <--- de esta forma se crea un objeto nuevo con las propiedades que tenia el video en este caso y sobre escribira para actualizar las propiedades con los nuevos cambios
-                    // aqui se manipula los comments de manera que devuelva los comments que se encuentren en el payload
-                }
-        case DELETE_COMMENT:
-                return{
-                    ...state,
-                    comment: state.videoId.comment.filter(comment => comment._id !== payload),
-                                // aqui con el "filter" se filtrara los comment de manera que devuelva todos los comment menos el que comment que coincida con el payload que ese sera el que sera removido
-
-                }
+            return {
+                ...state,
+                video: {...video, ...payload}
+            }
         case UPDATE_LIKES:
-                return{
-                    ...state,
-                    // para poder add o remove los likes necesitamos manipular el state de los post entonces hacemos esto->
-                    videoList: state.videoList.map(videoId => videoId._id === payload.id ? {...videoId, likes: payload.likes} : videoId),
-                                // para cada video en su like, si el id del video hace match con el el id del payload entonces agregan o remomevos el like del video
-                                 // esto es de manera de asegurarnos que estemos haciendo like al video que queremos
+            return {
+                ...state,
+                // para poder add o remove los likes necesitamos manipular el state de los post entonces hacemos esto->
+                videoList: state.videoList.map(video => video._id === payload.id ? { ...video, likes: payload.likes } : video),
+                // para cada video en su like, si el id del video hace match con el el id del payload entonces agregan o remomevos el like del video
+                // esto es de manera de asegurarnos que estemos haciendo like al video que queremos
 
-                }
-        case VIDEO_ERROR:
+            }
+        case CLEAR_VIDEO:
             return{
+                ...state,
+                video:{}
+        // de esta forma vaciamos el state de video, en este caso lo usamos para que cuando se salga de un video no quede cargado videos de anteriores videos
+            }
+        case CLEAR_VIDEOLIST:
+            return{
+                ...state,
+                videoList:[]
+            }
+        // de esta forma vaciamos el state de videoList, en este caso lo usamos para que cuando se seleccione un musculo al cargar no traiga los datos del anterior musculo en tal caso de existir
+        case VIDEO_ERROR:
+            return {
                 ...state,
                 error: payload,
             }

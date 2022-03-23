@@ -21,26 +21,10 @@
     }
 }
 
-.modal-content{
-    width: 500px;
-    padding: 10px 10px 0px;
-    background-color: $claro-color;
-    border-radius: 3px;
-	overflow: hidden;
-	box-shadow: 10px 12px 10px 0 rgba(0,0,0,0.3);
 
-}
-
-.modal-header{
-    padding: 10px;
-}
-
-.modal-body{
-    padding: 10px 10px 0px;
-    margin: 0px;
-}
 
 .inputModal{
+    width: 90%;
     border: 0;
     border-bottom: 1px solid $oscuro-color;
     outline: 0;
@@ -51,6 +35,27 @@
     &:hover{
         border-bottom: 2px solid $primary-color;
         color: $primary-color;
+    }
+
+    @media (min-width: 320px) and (max-width: 767px) {
+        width: 100%;
+    }
+
+    &-small{
+        width: 50%;
+        margin: 16px 20px;
+        padding-right: 1rem;
+        border: 0;
+        border-bottom: 1px solid $oscuro-color;
+        outline: 0;
+        color: $oscuro-color;
+        background: transparent;
+        transition: border-color 0.2s;
+    
+        &:hover{
+            border-bottom: 2px solid $primary-color;
+            color: $primary-color;
+        }    
     }
 }
 
@@ -88,6 +93,11 @@
 }
 
 .inputModal:focus{
+    // con el focus le damos estilo al input cuando halla dado click en el y este por escribir
+    border-bottom: 2px solid $positive-color;
+    color: $positive-color;
+}
+.inputModal-small:focus{
     // con el focus le damos estilo al input cuando halla dado click en el y este por escribir
     border-bottom: 2px solid $positive-color;
     color: $positive-color;

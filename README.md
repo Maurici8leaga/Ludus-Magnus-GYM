@@ -4,22 +4,24 @@ Ludus Magnus is a page designed with the purpose of encouraging and instructing 
 
 In the muscles section you can choose between the following; Biceps, Triceps, Abdominal, Back, Shoulder, Chest, Leg and Yoga. Once you have selected the muscle, you can choose what type of exercises you want to exercise; With machines, dumbbells or freestyle and additional, you will have the freedom to choose the difficulty according to how you feel prepared.
 
-![Screen Shot 2021-10-06 at 16 42 25](https://user-images.githubusercontent.com/47537254/136277315-76ba2ddf-68ae-4316-aae8-23faa1858a02.png)
+![Intro](https://user-images.githubusercontent.com/47537254/159125462-087b5b21-fee5-485f-9fd9-36f105bd8d1c.png)
 
-![SignUp-page](https://user-images.githubusercontent.com/47537254/149844241-8c83baea-4c99-40ed-8860-bc3bc608729f.png)
+![SignIn](https://user-images.githubusercontent.com/47537254/159125472-e8025da5-4afa-4398-b0df-8b6cd3c850df.png)
 
-![Muscle-list-page](https://user-images.githubusercontent.com/47537254/149844255-3576c5e6-1895-416c-95c2-183aa4df52cb.png)
+![SignUp](https://user-images.githubusercontent.com/47537254/159125481-f097d064-0390-4e24-b378-69c12ddf467b.png)
 
-![Muscle-list-2-page](https://user-images.githubusercontent.com/47537254/149844272-86feda29-1e57-41b8-953e-4f1e92a8d953.png)
+![RoutineType](https://user-images.githubusercontent.com/47537254/159125488-f68075b0-3fb1-4aca-8da1-9e820f923600.png)
 
-![Video-list-page](https://user-images.githubusercontent.com/47537254/149844291-6d3129e4-d3d2-4a98-b2e6-72778341f6e6.png)
+![RoutineType2](https://user-images.githubusercontent.com/47537254/159125497-e1568a7e-ffaf-479a-9062-f4744dd47176.png)
 
-![Video-list-2-page](https://user-images.githubusercontent.com/47537254/149844300-bb5cef29-c40b-4f9a-ba51-8b5aad6fe0b5.png)
+![VideoList](https://user-images.githubusercontent.com/47537254/159125506-c68abc2e-0040-42d8-baaf-304c359adcd1.png)
 
-![Screen Shot 2022-01-17 at 19 40 10](https://user-images.githubusercontent.com/47537254/149844499-55d79ab1-19dd-462c-9e1a-27352cb89c7e.png)
+![VideoList2](https://user-images.githubusercontent.com/47537254/159125509-c92b6227-81fc-444e-8926-8300a1a11acb.png)
 
+![Video](https://user-images.githubusercontent.com/47537254/159125512-8f70c889-918f-461f-a4e9-e04e69265b8f.png)
 
-![Profile-page](https://user-images.githubusercontent.com/47537254/149844323-2091266d-317b-4fb3-9982-0957b8007950.png)
+![Profile](https://user-images.githubusercontent.com/47537254/159125518-c673df7d-e9d5-4132-be5d-332c4a348dd6.png)
+
 
 
 ##Get Started

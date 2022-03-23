@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addComment } from '../../../actions/videos';
 
-const CommentBox = ({ idVideo, addComment }) => {
+const CommentBox = ({ idVideo, addComment, profile }) => {
+
 
     const onSubmit = async e => {
         e.preventDefault();
-        addComment(idVideo, { text });
-        // se agrega "idVideo" de manera que se pueda hacer el comentario en el comentario que queremos, y como 2do elemento
-        // se pasa el "text" que sera lo escrito
+        // se envia al actions el text para enviar lo que escribio, el idVideo para saber en que video comento y el alumno que es el id del user para saber quien lo escribio
+        addComment({ text, idVideo, alumno: profile._id });
+        // le asignamos a "alumno" el valor de "profile._id" de esta manera, asi se le puede asignar a una variable el valor de una propiedad de un objeto 
         setText('');
         // se coloca "setText" en blanco para que despues del comment se vuelva a vaciar el textarea
         CloseUp();
@@ -29,8 +30,9 @@ const CommentBox = ({ idVideo, addComment }) => {
 
     const [text, setText] = useState('');
     const [row, setRow] = useState(1);
-    const [minRows, setMinRow] = useState(1);
-    const [maxRows, setMaxRows] = useState(10);
+    const [minRows] = useState(1);
+    // no se coloca setMinRow ni setMaxRows ya que en este caso no los estamos necesitando
+    const [maxRows] = useState(10);
 
     const handleChange = e => {
         // con este handle vamos hacer que el textarea sea dinamico en tamaño, los valores que tienen son de una FORMULA asi que lo que unico que va a variar son
@@ -73,7 +75,7 @@ const CommentBox = ({ idVideo, addComment }) => {
                 >
                 </textarea>
 
-                <hr className="rayita" />
+                <hr className="rayita-textarea" />
 
             </>
         )
@@ -83,7 +85,8 @@ const CommentBox = ({ idVideo, addComment }) => {
         // ESTO ES UN FUNCTION QUE DEVUELVE UN JSX
         return (
             <>
-                <div className="LookeLikeTextArea" placeholder="Agrega un comentario..." onClick={() => setOpen(!open)}></div>
+                <div className="LookeLikeTextArea" placeholder="Agrega un comentario..." onClick={() => setOpen(!open)}>
+                </div>
 
             </>
         )
@@ -91,54 +94,62 @@ const CommentBox = ({ idVideo, addComment }) => {
 
     const buttonCommentCancel = () => {
         return (
-            <>
-                <div className="Header-Comment-Cancel-button">
-                    <input type="submit" className="boton -claro" value="Comentar" />
-                    {/* debe colocarse un INPUT no DIV porque si no, nunca se hara el request en el comentario */}
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                {/* usamos d-grid para que los botones esten encima del otro cuando esta tamaños mobile, de resto el d-md-flex hace que los botones esten linealmente uno al lado del otro */}
+                        {/* justify-content-md-end es para empujar el contenido al otro extremo del elemento, en este caso a la derecha*/}
+                <input type="submit" className="btn boton -claro btn-sm" value="Comentar" />
+                {/* debe colocarse un INPUT no DIV porque si no, nunca se hara el request en el comentario */}
 
-                    <button className="boton -oscuro" onClick={() => CloseUp()}>
-                        Cancel
-                    </button>
-                </div>
-
-            </>
+                <button className="btn boton -oscuro btn-sm" onClick={() => CloseUp()}>
+                    Cancel
+                </button>
+            </div>
         )
+    }
+
+    const avatarImage = () => {
+
+        const { avatar } = profile;
+
+        // Avatar default
+        let avatarUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
+        // colocamos let en vez de const ya que let tiene mayor scope que const este puede ser llamado mas adentro de otros elementos
+
+        // Avatar picture custom
+        if (typeof avatar === 'object') {
+            // typeof es un operator que indica dentro de un string lo que es el operador en este caso 'avatar' = 'object'. Entonces el condicional se indica si es exactamente eso retorna lo siguiente
+            avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
+            return (
+                <img className="avatar-mini" alt="avatar" src={avatarUrl} />
+            );
+        }
+        return (
+            <img className="avatar-mini" alt="avatar" src={avatarUrl} />
+        );
+
     }
 
 
     return (
-        <div >
-            <div className="container-commentBox" >
-
-                <div className="Header-ProfilePicture-CommentForm">
-
-                    <div className="container-profilePicture">
-                        <span>
-                            {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
-                            <img className="profilePicture" alt='avatar' src="https://www.vippng.com/png/detail/416-4161690_empty-profile-picture-blank-avatar-image-circle.png" />
-                            {/* los tag img deben tener un "alt" prop ya que sin el dara problemas con los browser*/}
-                        </span>
-                    </div>
-
-                    <div className="sera">
-                        <form className="form-comment" onSubmit={e => onSubmit(e)}>
-                            {open ? TextAreaFunction() : DivFunction()}
-                            {/* se crea este operator conditional de manera que antes de hacer click el vea un div como textArea y luego de que haga click sea un textAreale for */}
-                        </form>
-                    </div>
-
-
+        <div className="container-commentBox">
+            <div className="Header-ProfilePicture-CommentForm">
+                <div className="avatar-container-profile-commentBox">
+                    <span className="avatar-mini">
+                        {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
+                        {avatarImage()}
+                    </span>
                 </div>
 
+                <form className="form-comment" onSubmit={e => onSubmit(e)}>
+                    {open ? TextAreaFunction() : DivFunction()}
+                    {/* se crea este operator conditional de manera que antes de hacer click el vea un div como textArea y luego de que haga click sea un textAreale for */}
+                </form>
             </div>
 
-            <div className="container-commentBox">
-                {/* se coloca los buttons en otro container de manera que los botones no causen una diferencia de tamaño entre el div y el textarea del form */}
-                <div >
-                    <form className="form-comment" onSubmit={e => onSubmit(e)}>
-                        {open ? buttonCommentCancel() : null}
-                    </form>
-                </div>
+            <div>
+                <form onSubmit={e => onSubmit(e)}>
+                    {open ? buttonCommentCancel() : null}
+                </form>
             </div>
         </div >
     );
@@ -146,6 +157,11 @@ const CommentBox = ({ idVideo, addComment }) => {
 
 CommentBox.propTypes = {
     addComment: PropTypes.func.isRequired,
+    profile: PropTypes.object
 }
 
-export default connect(null, { addComment })(CommentBox);
+const mapStatetoProps = state => ({
+    profile: state.profile.ProfileUser
+})
+
+export default connect(mapStatetoProps, { addComment })(CommentBox);

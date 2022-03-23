@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const VideosSchema = new Schema({
+    idVideo:{
+        type: mongoose.Schema.Types.ObjectId
+    },
     title:{
         type: String,
         required: true
@@ -38,30 +41,6 @@ const VideosSchema = new Schema({
         type: String,
         require: true
     },
-    comment: [
-        // se coloca dentro de [] ya que van haber varios commentarios, entonces sera un array de varios objetos que seran comentarios
-        {
-            alumno:{
-                type: mongoose.Schema.Types.ObjectId,
-                // colocamos este "mongoose.SchemaTypes.ObjectId" para poder conectar esta Schema con el Schema del user
-                ref: 'user'
-            },
-            text:{
-                type: String,
-                required: true
-            },
-            name:{
-                type: String,
-            },
-            lastname:{
-                type: String,
-            },
-            date:{
-                type: Date,
-                default: Date.now
-            }
-        }
-    ],
     likes: [
         {
             alumno: {

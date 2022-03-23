@@ -1,14 +1,14 @@
 // Container
 .container{
-    max-width: $max-width;
-    // este  max-width viene de config.scss
-    margin: auto;
-    // de manera que todo quede en el medio de a pag
-    overflow: hidden;
-    // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
-    padding: 0 2rem;
-    margin-top: 10rem;
-    margin-bottom: 3rem;
+    // max-width: $max-width;
+    // // este  max-width viene de config.scss
+    // margin: auto;
+    // // de manera que todo quede en el medio de a pag
+    // overflow: hidden;
+    // // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
+    // padding: 0 2rem;
+    // margin-top: 10rem;
+    // margin-bottom: 3rem;
 
     &-signup{
         max-width: 900px;
@@ -51,86 +51,87 @@
         overflow: hidden;
         // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
         padding: 0;
-        margin-top: 5rem;
+        margin-top: 4rem;
         // se deja en 0 para header no haga distancia con la img de los titulo
-        margin-bottom: 0rem;
-        background-color: rgb(34, 33, 32);
-        color: #fff;
-    
+        margin-bottom: 0rem;    
     }
 
     &-description{
-        margin: 10px;
-        padding: 5px 200px 5px 200px;
-        text-align: justify;
+        // margin: 10px;
+        // padding: 5px 200px 5px 200px;
+        // text-align: justify;
     }
 
     &-description-texto{
-        margin: 0px;
-        padding: 0px 30px 0px 30px;
+        // margin: 0px;
+        // padding: 0px 30px 0px 30px;
     }
 
     &-commentBox{
         margin: 10px;
-        padding: 0px;
+        padding: 10px;
         text-align: justify;
     }
 
     &-profilePicture{
-        max-width: 85px;
-        margin: 0;
-        padding: 0px;
+        // width: 80px;
+        // height: 80px;
+        // max-width: 80px;
+        // // se les pone el mismo que max para que no se modifique nunca su tamaño apesar de que algun elemento alrededor lo obligue a cambiar su tamaño
+        // min-height: 80px;
+        // margin: 0;
+        // padding: 0px;
     }
 
     &-Ncomments{
-        margin: 0px;
-        margin-left: 45px;
-        margin-bottom: 10px;
-        padding: 0px;
-        text-align: justify;
+        // margin: 0px;
+        // margin-left: 45px;
+        // margin-bottom: 10px;
+        // padding: 0px;
+        // text-align: justify;
     }
 
-    &-Profile{
-        max-width: 1000px;
-        margin: auto;
-        // de manera que todo quede en el medio de a pag
-        overflow: hidden;
-        // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
-        margin-top: 5rem;
+    // &-Profile{
+    //     // max-width: 1000px;
+    //     // margin: auto;
+    //     // // de manera que todo quede en el medio de a pag
+    //     // overflow: hidden;
+    //     // // esto es hara que si el contenido de la pag es mas grande de los permitido, la parte que exceda sera "hidden"
+    //     // margin-top: 5rem;
 
-        &-background{
-            position: relative;
-            height: 100vh;
-            background-image: url('../img/people_workingOut.jpeg');
-            color: #fff;
-            background-repeat: no-repeat;
-            background-position: center;  
-            background-size: cover;     
+    //     &-background{
+    //         position: relative;
+    //         height: 100vh;
+    //         background-image: url('../img/people_workingOut.jpeg');
+    //         color: #fff;
+    //         background-repeat: no-repeat;
+    //         background-position: center;  
+    //         background-size: cover;     
             
-            &-blur{
-                // de esta forma se hace para que la img quede opaca
-                height: 100vh;
-                background: rgba(255, 255, 255, 0.2);
-                backdrop-filter: blur(8px);
-                width: 100%;
-            }
-        }
-    }
+    //         &-blur{
+    //             // de esta forma se hace para que la img quede opaca
+    //             height: 100vh;
+    //             background: rgba(255, 255, 255, 0.2);
+    //             backdrop-filter: blur(8px);
+    //             width: 100%;
+    //         }
+    //     }
+    // }
 }
 
 // Image's & pictures profile
 
 .Image-container{
-    position: relative;
-    display: flex;
-    padding: 0;
-    margin-bottom: 0rem;
-    color: white;
-    margin: 0;
-    border-style: none;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
+    // position: relative;
+    // display: flex;
+    // padding: 0;
+    // margin-bottom: 0rem;
+    // color: white;
+    // margin: 0;
+    // border-style: none;
+    // overflow: hidden;
+    // width: 100%;
+    // height: 100%;
 
     &-muscleTipe{
         filter: brightness(90%);
@@ -153,7 +154,11 @@
 }
 
 .profilePicture{
-    border-radius: 50%;
+    // border-radius: 50%;
+    // width: 100%;
+    // height: 100%;
+    // object-fit: cover;
+    // margin-right: 40px;
 }
 
 
@@ -189,32 +194,32 @@
 
 .highlight-title{
     filter: brightness(100%); 
-    font-size: 5rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    // font-size: 5rem;
+    // line-height: 1.2;
+    // margin-bottom: 1rem;
     font-family: 'Prata', serif;
 }
 
 .highlight-title2{
     filter: brightness(100%); 
-    font-size: 1.5rem;
-    // tamaño de las letras
-    margin-bottom: 1rem;
-    // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
-    margin-left: 4rem;
+    // font-size: 1.5rem;
+    // // tamaño de las letras
+    // margin-bottom: 1rem;
+    // // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
+    // margin-left: 4rem;
     font-family: 'Prata', serif;
     color: $positive-color;
     
-    &-ultraCenter{
-        filter: brightness(100%); 
-        font-size: 1.5rem;
-        // tamaño de las letras
-        margin-bottom: 1rem;
-        // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
-        margin-left: 9rem;
-        font-family: 'Prata', serif;
-        color: $positive-color;
-        }
+    // &-ultraCenter{
+    //     filter: brightness(100%); 
+    //     font-size: 1.5rem;
+    //     // tamaño de las letras
+    //     margin-bottom: 1rem;
+    //     // esta sera la distancia de separacion que tendra con los elementos que esten abajo de este class
+    //     margin-left: 9rem;
+    //     font-family: 'Prata', serif;
+    //     color: $positive-color;
+    //     }
 }
 
 .grande{
@@ -243,15 +248,15 @@
     &-Comment{
         font-size: 1.2rem;
         font-weight: bolder;    
-        margin: 15px;
-        padding: 10px;
+        // margin: 15px;
+        // padding: 10px;
     }
 
     &-Description{
-        font-size: 1.2rem;
-        font-weight: bolder;    
-        margin: 0px;
-        padding: 0px;
+        // font-size: 1.2rem;
+        // font-weight: bolder;    
+        // margin: 0px;
+        // padding: 0px;
     }
 }
 
@@ -264,17 +269,17 @@
 }
 
 .Title-menu{
-    font-size: 70px;
-    padding-left: 5%;
+    // font-size: 70px;
+    // padding-left: 5%;
     color: $claro-color;
-    position: absolute;
+    // position: absolute;
     // sin este position, las letras no pudieran estar encima de la imagen
-    z-index: 999;
+    // z-index: 999;
     top: 50%;
-    text-align: center;
-    align-content: center;
-    width: 25%;
-    margin: 0;
+    // text-align: center;
+    // align-content: center;
+    // width: 25%;
+    // margin: 0;
     transition: padding-left .6s ease-out;   
     &:hover{
         padding-left: 10%;
@@ -287,30 +292,32 @@
 .Header{
 
     &-Title-Video{
-        display: flex;
-        padding: 0px;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
+        // display: flex;
+        // padding: 0px;
+        // width: 100%;
+        // align-items: center;
+        // justify-content: space-between;
     }
 
     &-ProfilePicture-Name{
-        display: flex;
-        padding: 0px;
-        width: 100%;
-        align-items: center;
+        // display: flex;
+        // flex-direction: row;
+        // padding: 0px;
+        // width: 100%;
+        // align-items: center;
     }
 
     &-dates-deleteButton{
-        display: flex;
-        padding: 0px;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
+        // display: flex;
+        // padding: 0px;
+        // width: 100%;
+        // align-items: center;
+        // justify-content: space-between;
     }
 
     &-ProfilePicture-CommentForm{
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 11fr 1fr;
         padding: 0px;
         width: 100%;
         align-items: center;
@@ -318,14 +325,14 @@
     }
 
     &-Comment-Cancel-button{
-        width: 100%;
-        display: flex;
-        padding: 0px;
-        padding-right: 35px;
-        margin: 0px;
-        margin-top: -40px;
-        margin-bottom: -35px;
-        justify-content: flex-end;
+        // width: 100%;
+        // display: flex;
+        // padding: 0px;
+        // padding-right: 35px;
+        // margin: 0px;
+        // margin-top: -40px;
+        // margin-bottom: -35px;
+        // justify-content: flex-end;
     }
 }
 
@@ -394,39 +401,43 @@
     width: 100%;
     padding: 0%;
     margin: 0rem;
-    position: relative;
-    display: initial;
+    // position: relative;
+    // display: initial;
     border-radius: 50px;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     // coloca SIEMPRE este MARGIN BOTTOM despues del margin general para no tener problemas;
-    box-shadow: 10px 5px 8px rgba(0, 0, 0, 0.2);
+    // box-shadow: 10px 5px 8px rgba(0, 0, 0, 0.2);
             // 1er) para el horizontal 2do) para vertical 3ro) para el difuminado (mientras mayor sea el numero mas claro o transparente sera el efecto) 
     // este box le da la sombra con stylo al div de la img
+    // @media (min-width: 320px) and (max-width: 575px){
+    //     width: 270px;
+    //     height: 140px;
+    // }
 }
 
 .wrap-img{
     // este wrap se necesita para poder hacer el efecto de hover sobre la img
     position: relative;
-    height: auto;
-    width: auto;
+    height: 234px;
+    width: 400px;
 }
 
 // buttons
 .boton{
-    display: inline-block;
-    // esto es para que esten alineados uno al lado del otro ambos botones
-    background-color: $claro-color;
-    color: #333;
-    padding: 0.5rem 1.8rem;
-    // la separacion que tendra por fuera del elemento, en este caso el boton
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    margin-right: 1rem;
-    // este sera la distancia que tendra un boton con el otro lateralmente
-    outline: none;
-    transition: all 0.2s ease-in;
-    // esto hara que el efecto de light dure 0.2s cuando el pointer este encima del botom y desaparezca dandole un estilo slow
+    // display: inline-block;
+    // // esto es para que esten alineados uno al lado del otro ambos botones
+    // background-color: $claro-color;
+    // color: #333;
+    // padding: 0.5rem 1.8rem;
+    // // la separacion que tendra por fuera del elemento, en este caso el boton
+    // border: none;
+    // cursor: pointer;
+    // font-size: 1.2rem;
+    // margin-right: 1rem;
+    // // este sera la distancia que tendra un boton con el otro lateralmente
+    // outline: none;
+    // transition: all 0.2s ease-in;
+    // // esto hara que el efecto de light dure 0.2s cuando el pointer este encima del botom y desaparezca dandole un estilo slow
 
     &.-primary{
         @include  set-background($primary-color);
@@ -480,6 +491,7 @@
         &-delete{
             background-color: transparent;
             color: $negative-color;
+            border: none;
 
             &:hover{
                 color: lighten($negative-color, 5)
@@ -494,6 +506,46 @@
         }
 
     }
+
+    &-border-line-positive{
+        display: block;
+        width: 120px;
+        height: 30px;
+        margin: 0 auto 10px auto;
+        background: none;
+        border: 1px solid $positive-color;
+        border-radius: 15px;
+        font-size: 15px;
+        font-weight: 600;
+        box-sizing: border-box;
+        transition: all .3s ease-in-out;
+        color: $positive-color;
+        cursor: default;
+        &:hover {
+            background: $positive-color;
+            color: $claro-color;
+        }
+
+        &-small{
+            display: block;
+            width: 60px;
+            height: 30px;
+            margin: 0 auto 10px auto;
+            background: none;
+            border: 1px solid $positive-color;
+            border-radius: 15px;
+            font-size: 15px;
+            font-weight: 600;
+            box-sizing: border-box;
+            transition: all .3s ease-in-out;
+            color: $positive-color;
+
+            &:hover {
+                background: $positive-color;
+                color: $claro-color;
+            }
+        }
+    }
 }
 
 .like-dislike-button{
@@ -501,8 +553,8 @@
     color: white;
     background: none;
     border-style: none;
-    padding: 10px;
-    font-size: 1.2rem;
+    // padding: 10px;
+    // font-size: 1.2rem;
     outline: 0;
     // este outline sirve para quitarle el color de borde cuando se preciona el boton 
     // NO  ESTA BIEN USARLO YA QUE EL NO ES APTO PARA LAS PERSONAS QUE TIENEN PROBLEMA DE VISIBILIDAD
@@ -667,27 +719,36 @@
 
 
 // Alerts
-.alert{
-    position: absolute;
+// .alert{
+    // position: fixed; 
     //  es importante para los ALERT que vayan en el position "fixed" o "absolute" , ademas debe colocarse ajuro los siguientes tambien, left o right, bottom o top
-    top: 5rem;
-    left: 31rem;
-    padding: 0.8rem;
-    margin: 1rem;
-    width: 37.8rem;
-    opacity: 0.9;
-    background: $claro-color;
-    color: #333;
+    // top: 4rem;
+    // top: 0px;
+    // left: 31rem;
+    // left: 31%;
+    // padding: 0.8rem;
+    // margin: 1rem;
+    // margin: 2rem;
+    // width: 37.8rem;
+    // width: 30rem;
+    // opacity: 0.9;
+    // background: $claro-color;
+    // color: #333;
+    // align-items: center;
+    // align-content: center;
 
-    &.message-positive {
-        @include set-background($positive-color);
-        color: white;
-    }
+    // &.message-positive {
+    //     @include set-background($positive-color);
+    //     color: white;
+    //     text-align: center;
+    //     // para centrar el texto del alert dentro del los alerts
+    // }
 
-    &.message-negative {
-        @include set-background($negative-color);
-    }
-}
+    // &.message-negative {
+    //     @include set-background($negative-color);
+    //     text-align: center;
+    // }
+// }
 
 .wrap-page{
 // este wrap es necesario porque involucra todo el fondo de la pag, sobre todo con la img
@@ -711,15 +772,16 @@
     bottom: 0;
     left: 0;
     right: 0;
-    margin-bottom: 25px;
+    // margin-bottom: 25px;
+    // margin-bottom: 11px;
     // se le agrega este margin menos del anterior div de manera que tenga las mismas dimensiones de sombra que la img
-    background: rgba(2, 2, 2, 0.44);
+    background: rgba(2, 2, 2, 0.74);
     color: #fff;
     opacity: 0;
     transition: opacity .2s, visibility .2s;
     border-radius: 50px;
     // se le coloca el mismo que el div anterior para que sea igual que la img
-    font-size: 1.2rem;
+    // font-size: 1.2rem;
 
     &:hover{
         visibility: visible;
@@ -729,18 +791,57 @@
 }
 
 .info-align{
-    margin-top: 50px;
+    margin-top: 15%;
     // solo se le coloca este de manera que la info quede centrada en la img
+
+    // mobile size
+    @media (min-width: 320px) and (max-width: 480px){
+    //esto es un media query al colocar  min-width y max-width estamos especificando que los efectos van a tener efecto durante ese rango
+        margin-top: 10%;
+        // en este caso el margin-top se va a sobre escribir y cambiara a este valor
+    }
+
+    // tablet size
+    @media (min-width: 481px) and (max-width: 769px){
+        margin-top: 20%;
+    }
+
+    // laptos, pc, big screen size
+    @media (min-width: 770px){
+        margin-top: 15%;
+    }
+
 }
 
 .data-Comment{
-    margin-right: 20px;
-    margin-left: 110px;
+    // display: flex;
+    // flex-direction: column;
+    // margin-right: 20px;
+    // margin-left: 30px;
 }
 
 .dates{
-    font-size: 1rem;
-    color: grey
+    // font-size: 1rem;
+    // color: grey
+}
+
+.box-data-info{
+    box-sizing: border-box;
+    width: 100%;
+    height: 74px;
+    background: #F5E8DF;
+    text-align: center;
+    padding-top: 20px;
+    transition: all .4s ease-in-out;
+    
+    &:hover {
+        background: $positive-color;
+        color: $claro-color;
+    }
+    
+    &:nth-child(2) {
+        margin: 1px 0;
+    }
 }
 
 
@@ -749,16 +850,16 @@
     font-size: 35px;
     // IMPORTANTE, si se quiere agrandar un icon, usar esto
     height: 120px;
-    width: 10px;
+    // width: 10px;
     bottom: 90px;
-    left: 50%;
+    // left: 50%;
     padding: 0rem;
-    position: absolute;
-    transition: height .5s ease-out;
-    &:hover{
-        height: 100px;
-        cursor: pointer;
-    }
+    // position: absolute;
+    // transition: height .5s ease-out;
+    // &:hover{
+    //     height: 100px;
+    //     // cursor: pointer;
+    // }
     .links-scss{
         color: $positive-color;
         cursor: pointer;
@@ -766,7 +867,7 @@
 }
 
 
-.rayita{
+.rayita-textarea{
     height: 1px;
     background-color: $positive-color;
     border: none;
@@ -780,22 +881,22 @@
     }
 }
 
-.rayita1{
-    height: 30px;
+.rayita{
+    // height: 30px;
     border-style: solid;
     border-color: $positive-color;
     border-width: 1px 0 0 0 ;
-    border-radius: 20px;
+    // border-radius: 20px;
 }
 
 .rayita2{
-    display: block;
-    height: 30px;
-    margin-top: -10px;
-    border-style: solid;
-    border-color: $positive-color;
-    border-width: 0 0 1px 0;
-    border-radius: 20px;
+    // display: block;
+    // height: 30px;
+    // margin-top: -10px;
+    // border-style: solid;
+    // border-color: $positive-color;
+    // border-width: 0 0 1px 0;
+    // border-radius: 20px;
 }
 
 // Videos, iframes, media player
@@ -806,16 +907,16 @@ iframe{
 }
 
 .screen1{
-    height: 60vh;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0;
+    // height: 60vh;
+    // max-width: 1500px;
+    // margin: 0 auto;
+    // padding: 0;
 }
 
 .screen2{
-    position: relative;
-    padding-bottom: 20%;
-    height: 60vh; //este height tiene que ir si o si porque si no queda muy chiquito el video
+    // position: relative;
+    // padding-bottom: 20%;
+    // height: 60vh; //este height tiene que ir si o si porque si no queda muy chiquito el video
 }
 
 
@@ -826,3 +927,124 @@ iframe{
     width: 100%;
     height: 100%;
 }
+
+.commentBox{
+    min-height: 10px;
+}
+
+//color for letters
+.white-letter{
+    color: $claro-color;
+}
+
+.black-letter{
+    color: $oscuro-color;
+    font-weight: bold;
+}
+
+.positive-letter{
+    color: $positive-color;
+}
+
+.gray-letter{
+    color: gray;
+}
+
+.links-scss{
+    //  al Link hay quedarle un class porque solo no lo toma
+        text-decoration: none;
+        color: $primary-color;
+}
+    
+.link-header-scss{
+        text-decoration: none;
+        color: #333;
+        &:hover{
+            color: $primary-color;
+        }
+}
+    
+.color-bottom{
+    border-bottom: solid 2px $primary-color;
+}
+
+//class para propiedades extras
+.extra{
+    &-mt-x5{
+        margin-top: 5.5rem !important;
+    }
+    
+    &-mt-30vh{
+        margin-top: 30vh !important;
+    }
+
+    &-mt-responsive{
+        // esto hara que el elemento que lleve esto, tenga un margin top responsive segun el hight del screen del divicee
+        margin-top: 45vh !important;
+        // cabe destacar que se debe usar para que sea responsive o % o vh ya que esta unidad ayuda a calcular que quede en la mitad de la pag o en el nivel que se coloque
+    }
+
+
+    &-pt-x10{
+        padding-top: 10rem !important;
+    }
+
+    &-ptYpb-of0-to1{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+    }
+
+    &-ptYpb-of0-to3{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+    }
+
+    &-ptYpb-of3-to1{
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+    }
+
+    &-max-w{
+        max-width: 500px;
+
+        @media (min-width: 320px) and (max-width: 767px){
+            max-width: 300px;
+        }
+    }
+}
+
+
+.ratio-4x3{
+    // este es un class de bootstrap, lo estamos sobre escribiendo para adaptar la medida del tamaño del video segun el tamaño de la pantalla del divice
+    
+    // large screen, laptop, 
+    @media (min-width: 770px){
+        --bs-aspect-ratio: 40%; 
+        // este viene de los class de bootstrap
+    }
+    
+    // tablet size
+    @media (min-width: 481px) and (max-width: 769px){
+        --bs-aspect-ratio: 50%;
+    }
+}
+
+// Input para cam en card
+input[type="file"] {
+    display: none;
+  }

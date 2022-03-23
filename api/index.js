@@ -13,8 +13,6 @@ const {routerComment} = require('./routers/comment');
 const {routerPicture} = require('../api/routers/picture');
 const {routerPictureStatic} = require('../api/routers/pictureStatic');
 const {routerEditProfile} = require('../api/routers/editProfile');
-// const Authentication = require('../api/controllers/authentication');
-// const requireSignin = passport.authenticate('local', {session: false});
 const requireAuth = passport.authenticate('jwt', {session: false});
 
 

@@ -22,23 +22,23 @@ exports.signup = function (req, res, next) {
     const { email, password, name, lastname, birth, height, sex, weight } = req.body;
 
     if (!sex) {
-        return res.status(422).send({ error: { msg: 'Debes colocar tu sexo' } })
+        return res.status(422).send({ error: { msg: 'You have to specify your gender' } })
     }
 
     if (!birth) {
-        return res.status(422).send({ error: { msg: 'Debes colocar tu fecha de nacimiento' } })
+        return res.status(422).send({ error: { msg: 'You have to put your date of birth' } })
     }
 
     if (!height || !weight) {
-        return res.status(422).send({ error: { msg: 'Debes colocar Peso y Altura' } })
+        return res.status(422).send({ error: { msg: 'You have to put your weight and height.' } })
     }
 
     if (!name || !lastname) {
-        return res.status(422).send({ error: { msg: 'Debes colocar Nombre y Apellido' } })
+        return res.status(422).send({ error: { msg: 'You have to put your first and last name' } })
     }
 
     if (!email || !password) {
-        return res.status(422).send({ error: { msg: 'Debes colocar email y password' } });
+        return res.status(422).send({ error: { msg: 'You have to put your email and password' } });
     }
 
     // veremos si un usario tiene un email existente
@@ -47,7 +47,7 @@ exports.signup = function (req, res, next) {
 
         // si  el email del usuario existe, regresa un error
         if (existingUser) {
-            return res.status(422).send({ error: { msg: 'Este email ya existe' } });
+            return res.status(422).send({ error: { msg: 'This email already exists' } });
             // se envia el mensaje del error con un status 422 en el cual no ejecuta la solicitud
         }
         // si el email del usuario no existe, se crea y se guarda en la "data-base"
@@ -68,7 +68,7 @@ exports.signup = function (req, res, next) {
             }else {                
                 // se responde que el usuario fue creado
                                     // en este caso no se coloca "req.user" porque esta definiendose anteriormente que sera "user" por eso se coloca "user"
-                res.json({ token: tokenForUser(user), user: user , msg: 'Usuario creado exitosamente!' });
+                res.json({ token: tokenForUser(user), user: user , msg: 'User created, Welcome to the club' });
                             // en este "res.json" hay que mandar el TOKEN y el USER si no se podra tener los datos del user en el front
                                             //Se debe colocar "msg" dentro de este "res.json" ya que en express solo se puede enviar un "res.send o un res.json" .
                                             // si se intenta enviar enviar por fuera de este json ocurre un crach en el server .

@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfile } from '../../actions/profile';
 import { uploadAvatar } from '../../actions/avatar';
+import { showModal } from '../../actions/modal';
 import moment from 'moment';
 import Alert from '../extras/Alert';
 import EditProfile from './microComponent/modal/EditProfile';
-import { loadToTop } from '../extras/helpers';
+import Spinner from '../extras/Spinner';
+import PortalModal from '../pages/microComponent/modal/PortalModal';
 
-const Profile = ({ getProfile, uploadAvatar, profile }) => {
+const Profile = ({ getProfile, uploadAvatar, profile, showModal }) => {
     // getProfile y uploadAvatar son actions que estan siendo pasados como props aqui porque estan siendo conectados por conect!!
 
-
-    const [open, setOpen] = useState(false);
-    // este state es solo para abrir y cerrar el modal
-    // los state deben estar en minuscula
+    const { name, lastname, birth, height, weight } = profile;
 
     useEffect(() => {
         getProfile();
-        loadToTop();
-        console.log('ESTE ES USUARIO EN PROFILE', profile);
     }, [getProfile]);
     // hay que agregar este "getProfiles" ya que "useEffect" pide que se agregue esta dependencia o que se quite la matriz de la dependencia.
 
@@ -43,11 +40,6 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
     }
 
 
-    // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" para evitar que me muestre un profile vacio
-    if (!profile || !profile._id) return null;
-
-    const { _id, name, lastname, birth, height, weight, avatar } = profile;
-
     const avatarImage = () => {
         // esta funcion que es condicional tiene que ir afuera del component ya que cuando los usuarios no tiene avatar y entran al profile
         // ocurre un error ya que retorna undefined, entonce se crea este condicional para que cuando no tenga avatar no colpase pag y pueda carga subir su picture
@@ -62,11 +54,12 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
             // typeof es un operator que indica dentro de un string lo que es el operador en este caso 'avatar' = 'object'. Entonces el condicional se indica si es exactamente eso retorna lo siguiente
             avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
             return (
-                <img className="image" alt="avatar" src={avatarUrl} />
+                <img className="img-thumbnail avatar-mini" alt="avatar" src={avatarUrl} />
+                // img-thumbnail nos ayuda a colocar la img mas pequeña, y avatar-mini es un class creado propio
             );
         }
         return (
-            <img className="image" alt="avatar" src={avatarUrl} />
+            <img className="img-thumbnail avatar-mini" alt="avatar" src={avatarUrl} />
         );
 
     }
@@ -79,65 +72,86 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
     const yearsToDay = dateToDay.diff(userBirth, 'years');
     // de esta forma moment hace la operacion de resta del año actual en que este con los que tiene el user
 
-    return (
-        <div className="container-Profile-background">
-            <div className="container-Profile-background-blur">
-                <Alert/>
+    return !profile || !profile._id ? <Spinner /> : (
+        // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" o si no mostrara el spinner mientras se carga
+        <div className="pantalla-Profile">
+            <div className="pantalla-Profile-blur overflow-scroll">
+                {/* colocamos el overflow aca para que cuando la pagina sea cargada en un mobile el contenido se pueda ver completo */}
+                <div className="container">
+                    <Alert />
 
-                <div className="Title-container-Profile">
-                    <h1 className="highlight-title texto-secundary">Perfil</h1>
-                    <h3 className="highlight-title2-ultraCenter">Esta es tu informacion actual</h3>
-                </div>
+                    <div className="text-center extra-pt-x10">
+                        <h1 className="highlight-title white-letter">Profile</h1>
+                        <h3 className="highlight-title2 ">This is your current information</h3>
+                    </div>
 
-                <div className="frame">
-                    <div className="center">
+                    <div className="card mb-3 extra-max-w mx-auto pantalla-card-profile">
+                        {/* card es el class ideal para lo que queremos en este component, usamos mx-auto para que nos centre en el medio el card en la pag */}
+                        <div className="row g-0 text-center ">
+                            {/* como queremos un card horizontal debemos usar row y mas abajo col  */}
 
-                        <div className="profile">
-                            <div className="image">
-                                {avatarImage()}
+                            <div className="col-md-4 extra-ptYpb-of0-to1">
+                                {/* creamos un class extra para que cuando cambie el width este pueda colocar un padding en el elemento */}
+                                <div className="avatar-container-profile">
+                                    <div className="avatar-mini">
+                                        {avatarImage()}
+                                    </div>
+                                </div>
+
+                                <>
+                                    <label className="boton-border-line-positive-small">
+                                        {/* metemos el input dentro de un label para atraves del label el input pueda tomar el stye que queremos */}
+                                        <input type="file" name='fileButton' onChange={onChange} required></input>
+                                        <i className="fas fa-camera"></i>
+                                    </label>
+
+                                    <>
+                                        <button className="boton-border-line-positive" onClick={e => showModal()}> Edit profile</button>
+                                            <PortalModal title={"Edit your personal information"}>
+                                                {/* "Portal" va ser nuestro modal generic y de esta forma se implementa */}
+                                                        {/* el prop "title" es el titulo que va a llevar el modal, este debe colocar aqui y no dentro del portal modal */}
+                                                <EditProfile  profile={profile}/>
+                                                {/* "EditProfile" va a ser el contenido del modal y  por ende sera el children a colocar en el component de portal */}
+                                            </PortalModal>
+                                            {/* // se le pasa como prop esta funcion "closeUp" y "profile" como prop tambien para que pueda tener acceso a los datos del user en el child component y la funcion para que pueda cerrar el modal */}
+                                    </>
+                                </>
                             </div>
 
-                            <div className="name">{name}  {lastname}</div>
-
-                            <div className="actions">
-                                <label className="btn-small">
-                                    {/* metemos el input dentro de un label para atraves del label el input pueda tomar el stye que queremos */}
-                                    <input type="file" name='fileButton' onChange={onChange} required></input>
-                                    <i className="fas fa-camera"></i>
-                                </label>
-                                {/* <Link to="/profile/edit" className="btn"> Editar Perfil</Link> */}
-                                <div > 
-
-                                    <button className="btn" onClick={() => setOpen(true)}> Editar Profile</button>
-                                    {open ? (
-                                        <EditProfile closeUp={() => setOpen(false)} profile={profile} />
-                                        // se le pasa como prop esta funcion "closeUp" y "profile" como prop tambien para que pueda tener acceso a los datos del user en el child component y la funcion para que pueda cerrar el modal
-                                    ) : null}
-                                    {/* se le pone esta conditional para que solo se abra el modal cuando se desee y NO DE ERROR  */}
+                            <div className="col-md-4 mt-4">
+                                {/* colocamos col-md-4 porque diviremos el card en 3 partes de tamaño 4 sumando 12 en total */}
+                                <div className="card-body">
+                                    {/* card-body es un class para los titulos en los card */}
+                                    <h5 className="card-title extra-ptYpb-of3-to1  positive-letter">{name}  {lastname} </h5>
+                                    {/* card-title es el class para los titulos, extra es para cuando cambie el width este cambie el padding top y bottom */}
                                 </div>
                             </div>
+
+                            <div className="col-md-4">
+                                <ul className="list-group list-group-flush">
+                                    {/* list-group y list-group-flush es un class de bootstrap para lista de info o etc */}
+                                    <li className="list-group-item box-data-info positive-letter">
+                                        {/* list-group-item es un class de boostrap para los items que vaya a llevar la lista en el card */}
+                                        <span className="card-text">{yearsToDay} Years old</span>
+                                        {/* card-text es el class para los textos en las listas segun bootstrap */}
+                                        <span className="card-text"> <i className="fas fa-clock">Age</i> </span>
+                                    </li>
+                                    <li className="list-group-item box-data-info positive-letter">
+                                        {/* box-data-info es un class creado propio */}
+                                        <span className="card-text">{height} m</span>
+                                        <span className="card-text"> <i className="fas fa-ruler-vertical"> Height</i> </span>
+                                    </li>
+                                    <li className="list-group-item box-data-info positive-letter">
+                                        <span className="card-text">{weight} Kg</span>
+                                        <span className="card-text"> <i className="fas fa-balance-scale"> Weight </i> </span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-
-                        <div className="stats">
-                            <div className="box">
-                                <span className="value">{yearsToDay} Años</span>
-                                <span className="value"> <i className="fas fa-clock">Edad</i> </span>
-                            </div>
-
-                            <div className="box">
-                                <span className="value">{height} m</span>
-                                <span className="value"> <i className="fas fa-ruler-vertical"> Altura</i> </span>
-                            </div>
-
-                            <div className="box">
-                                <span className="value">{weight} Kg</span>
-                                <span className="value"> <i className="fas fa-balance-scale"> Peso </i> </span>
-                            </div>
-
-                        </div>
-
                     </div>
+
                 </div>
+
             </div>
         </div>
     );
@@ -146,6 +160,7 @@ const Profile = ({ getProfile, uploadAvatar, profile }) => {
 Profile.propTypes = {
     getProfile: PropTypes.func.isRequired,
     uploadAvatar: PropTypes.func,
+    showModal: PropTypes.func,
     ProfileUser: PropTypes.object
     // ProfileUser es mi objeto en donde tengo contenido la info del user, IMPORTANTE!!! COMPRENDER ESTO!!!
     // NO se le coloca "isRequired" ya que la data no se obtine en el primer momento, tiene que buscarse en el servidor y luego traerla, se le quita el "isRequired" para no causar problemas
@@ -156,4 +171,4 @@ const mapStateToProps = state => ({
     // se coloca "profile" para el nombre del prop de manera de no tener REDUDANCIA con el OBJETO que esta anidado dentro de mi reducer, para diferenciarlo se llaman distinto
 });
 
-export default connect(mapStateToProps, { getProfile, uploadAvatar })(Profile);
+export default connect(mapStateToProps, { getProfile, uploadAvatar, showModal })(Profile);

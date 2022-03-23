@@ -6,6 +6,8 @@
 @import'../../../../api/node_modules/react-datepicker/dist/react-datepicker.css';
 @import'../../../../api/node_modules/react-datepicker/dist/react-datepicker-cssmodules.css';
 
+ 
+
 *{
     font-family: 'Lato', sans-serif;
     // "sans-serif" es para colocar un estilo de letra por defecto en tal caso de que no exista una
@@ -28,12 +30,6 @@ ul{
     list-style: none;
 }
 
-.links-scss{
-//  al Link hay quedarle un class porque solo no lo toma
-    text-decoration: none;
-    color: $primary-color;
-}
-
 a{
     text-decoration: none;
     // a pesar de que no sea un class hay que hacer especificar aqui de manera que no sobre escriba algun elemento sobre los links
@@ -45,26 +41,26 @@ img{
 }
 
 .header{
-    display: flex;
-    // este "flex" hace que el component navbar se comporte como bloque
-    align-items: center !important;
-    // este centra los items 
-    justify-content: space-between;
-    // permite separar los elementos en este caso ponerlos en los extremos del navbar
-    padding: 1.3rem 2rem;
-    font-size: 1.1rem;
-    position: fixed;
-    // permite que el navbar se mantenga arriba de la pag
-    z-index: 1;
-    // permite que el navbar siempre se mantenga arriba del todo el contenido del pag
-    width: 100%;
-    top: 0;
-    border-bottom: solid 1.5px $primary-color;
-    // le da un color de bajo del header
-    // opacity: 100;
+    // display: flex;
+    // // este "flex" hace que el component navbar se comporte como bloque
+    // align-items: center !important;
+    // // este centra los items 
+    // justify-content: space-between;
+    // // permite separar los elementos en este caso ponerlos en los extremos del navbar
+    // padding: 1.3rem 2rem;
+    // font-size: 1.1rem;
+    // position: fixed;
+    // // permite que el navbar se mantenga arriba de la pag
+    // z-index: 1;
+    // // permite que el navbar siempre se mantenga arriba del todo el contenido del pag
+    // width: 100%;
+    // top: 0;
+    // border-bottom: solid 1.5px $primary-color;
+    // // le da un color de bajo del header
+    // // opacity: 100;
 
     ul{
-        display: flex;
+        // display: flex;
          // al colocar esto hacemos que los "ul" dejen de estar encima del otro y se coloquen horizontalmente
     }
 
@@ -84,8 +80,9 @@ img{
     position: relative;
     background: url('../img/thumb-1920-692043.jpg') no-repeat center center/cover;
         // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
-    height: 100vh;
+    min-height: 100vh;
     // para que cubra el tamaño completo de la pantalla
+    padding: 1px;
 
     &-interna{
         color: #fff;
@@ -102,6 +99,80 @@ img{
         // este tambien ayuda a centrar las lentras en el medio de la pagina
         text-align: center;
     }
+
+    &-muscleTipe{
+        position: relative;
+        background: url('../img/lockerRoom.png') no-repeat center center/cover;
+            // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
+        min-height: 100vh;
+        // para que cubra el tamaño completo de la pantalla
+        padding: 1px;
+        // filter: brightness(90%);
+
+        &-darkBlur{
+            // de esta forma se hace para que la img quede opaca
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(0px);
+        }
+    }
+
+    &-videoList{
+        position: relative;
+        height: 100vh;
+        background: url('../img/salon\ exercise.jpg') no-repeat center center/cover;
+            // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
+        padding: 1px;
+        filter: brightness(90%);
+
+        &-darkBlur{
+            // de esta forma se hace para que la img quede opaca
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(0px);
+        }
+    }
+
+    &-Profile{
+        position: relative;
+        // width: 100%;
+        min-height: 100vh;
+        background: url('../img/people_workingOut.jpeg') no-repeat center center/cover;
+        
+        &-blur{
+            // de esta forma se hace para que la img quede opaca
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+        }
+    }
+
+    &-card-profile{
+        position: relative;
+        // top: 50px;
+        // left: 35px;
+          height: auto;
+          width: 100%;
+          background-image: url('../img/texture.jpg');
+          border-radius: 30px;
+          overflow: hidden;
+          box-shadow: 10px 12px 10px 0 rgba(0,0,0,0.3);
+    }
+
+    &-dark-mate{
+        position: relative;
+        background-color: rgb(34, 33, 32);
+        color: white;
+        min-height: 100vh;
+        padding: 1px;
+    }
+
+
 }
 
 
@@ -110,11 +181,34 @@ img{
     display: flex;
     align-items: center;
     align-content: center;
+    
+    .-before-login{
+        display: flex;
+        align-items: center;
+        padding: 3.5px;
+    }
 }
 
 .avatar-container{
     width: 36px;
     height: 36px;
+
+    &-profile{
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        width: 100px;
+        height: 110px;
+    
+    }
+
+    &-profile-commentBox{
+        width: 50px;
+        height: 50px;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 
@@ -123,4 +217,10 @@ img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+// page no found
+.notfound{
+    margin: 121px 121px 0px;
+    color: black;
 }

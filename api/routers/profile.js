@@ -13,11 +13,11 @@ routerProfile.get('/me', async function(req, res){
                 // para que la apropiedad del user llamada avatar en vez de que aparezca el objectId aparezca la documentacion completa
 
         if(!ProfileUser){
-            return res.status(400).json({ error: {msg: 'No hay profile para este usuario'}});
+            return res.status(400).json({ error: {msg: 'There is no profile for this user'}});
         }
         res.json(ProfileUser); 
     }catch(error){
-        console.error(error.msg);
+        console.error(error);
         res.status(500).send({error: {msg : 'Server Error '}});
     }
 });
