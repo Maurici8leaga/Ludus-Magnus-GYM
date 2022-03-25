@@ -1,4 +1,3 @@
-// establecemos los colores que vamos a usar en la pagina
 $primary-color: #0687F9;
 $claro-color: #ECECEA;
 $oscuro-color: #343a40;
@@ -9,7 +8,6 @@ $max-width: 1100px;
 //  set text color based on background
 @function set-text-color($color) {
     @if (lightness($color) > 60) {
-    //esta function va a hacer que si el "lightness" es mayor de 60 cambie a un color si no se quede de color claro 
         @return #333;
     } @else {
         @return #fff;
@@ -17,42 +15,34 @@ $max-width: 1100px;
  }
  
  // set background & text color
- // "mixin es como un functions pero no retorna nada
  @mixin set-background($color){
- // este va permitir que se establescan los colores de los background con sus colores
     background-color: $color;
-    // este establece el background
     color: set-text-color($color);
-    // y este el color del background
  }
 
-//  Margin y Padding
+//  Margin & Padding
 $spaceamounts: (1,2,3,4,5);
-// este sera una variable la cual tendra 5 tipos de spaces
 
 @each $space in $spaceamounts {
-    // Margin completo
+
+    // Full margin
     .m-#{$space} {
-    // este syntax quiere decir que el numero que le siga a "m-" sera el numero o cantidad del margin que sera colocado como margin
         margin: #{$space}rem;
-        // el numero escogido anterior sera el mismo aca establecido, osea si es (m-1 entonces el margin sera 1rem)
     }
 
-    // Margin vertical
+    // Vertical margin
     .mvertical-#{$space} {
         margin: #{$space}rem 0;
-        // aca solo sera establecido el margin vertical por eso el 0 va al final para que ni el left ni right tenga
     }
 
-    // Padding completo
+    // Full padding
     .p-#{$space} {
         padding: #{$space}rem;
     }
 
-    // Padding vertical
+    // Vertical padding
     .pvertical-#{$space} {
         padding: #{$space}rem 0;
     }
-    
 
 }

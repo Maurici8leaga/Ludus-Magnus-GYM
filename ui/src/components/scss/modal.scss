@@ -21,8 +21,6 @@
     }
 }
 
-
-
 .inputModal{
     width: 90%;
     border: 0;
@@ -82,9 +80,8 @@
 }
 
 
-// Actions dinamyc de inputs y label
+// Actions dinamyc of inputs and label
 .inputModal:hover + .labelModal{
-    // este + indica que el estilo a indicar va a ir al class que va despues de un input:hover
     color: $primary-color;
 }
 
@@ -93,12 +90,10 @@
 }
 
 .inputModal:focus{
-    // con el focus le damos estilo al input cuando halla dado click en el y este por escribir
     border-bottom: 2px solid $positive-color;
     color: $positive-color;
 }
 .inputModal-small:focus{
-    // con el focus le damos estilo al input cuando halla dado click en el y este por escribir
     border-bottom: 2px solid $positive-color;
     color: $positive-color;
 }
