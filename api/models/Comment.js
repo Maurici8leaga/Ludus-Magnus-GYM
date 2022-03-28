@@ -7,9 +7,8 @@ const CommentSchema = new Schema([{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'videos'
     },
-    alumno:{
+    student:{
         type: mongoose.Schema.Types.ObjectId,
-        // colocamos este "mongoose.SchemaTypes.ObjectId" para poder conectar esta Schema con el Schema del user
         ref: 'user'
     },
     text:{

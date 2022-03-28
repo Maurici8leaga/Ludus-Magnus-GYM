@@ -43,7 +43,7 @@ const VideosSchema = new Schema({
     },
     likes: [
         {
-            alumno: {
+            student: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'user'
             }
