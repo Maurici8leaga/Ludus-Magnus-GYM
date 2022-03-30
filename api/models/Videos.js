@@ -21,23 +21,23 @@ const VideosSchema = new Schema({
         type: String,
         required: true,
     },
-    imagen:{
+    image:{
         type: String,
         require: true
     },
-    modo:{
+    mode:{
         type: String,
         require: true
     },
-    profesor:{
+    trainer:{
         type: String,
         require: true
     },
-    duracion:{
+    length:{
         type: String,
         require: true
     },
-    idioma:{
+    language:{
         type: String,
         require: true
     },
