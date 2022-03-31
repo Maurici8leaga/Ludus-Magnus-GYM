@@ -5,23 +5,23 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require ('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local');
 
-// se crea un startegy local
+// we create a local strategy but will find it with it's email
 const localOptions = { usernameField: 'email' };
-                // se le especifica que el field es "email", ya que por defecto busca siempre un name
-                                    // el "password" lo optiene una vez que el "LocalStrategy" consigue el email
+
+// verify the provided email and password
 const localLogin = new LocalStrategy(localOptions, function(email, password, done){
-// el objetivo de este es verificar el email y password ingresado, si esta lo deja entrar 
 
     User.findOne({ email: email}, function(err, user){
         if(err) {return done(err);}
 
+        // If the user does not exist.
         if(!user) {return done(null, false);}
 
-        // comparacion de password con el password encryptado
+        // comparing the password with the encrypted password
         user.comparePassword(password, function(err, isMatch){
-            // el "comparePassword" va a comparar el "password" con el resultado que de en la function
             if(err) {return done(err);}
 
+            // if the match does not exist
             if(!isMatch) {return done(null, false);}
 
             return done(null, user);
@@ -29,31 +29,29 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
     });
 });
 
-// opciones de configuracion para el Jwt Strategy
+// settings for Jwt Strategy
 const jwtOptions = {
-                                    // este "authorization-token-user" es el token que va ir en el header IMPORTANTE OJO
+
     jwtFromRequest: ExtractJwt.fromHeader('authorization-token-user'),
-        // lo que hace este "jwtFromRequest" es que cada vez que se solicite y se quiera el passport cuando se entre este debe fijarse en el encabezado de autorizacion del token
+
+    // extracting the security phrase
     secretOrKey: config.secret 
-    // esto extraera nuestra string de seguridad
 };
 
-// Se crea el JWT strategy
+// creating the JWT strategy
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
 
     User.findById(payload.sub, function(err, user){
         if(err) {return done(err, false);}
 
+        // if the user doesn't exist yet, save it; otherwise it doesn't save it and doesn't send an error
         if(user) {
             done(null, user);
-        // si el usario existe no envia error y indica el usuario creado
         }else{
             done(null, false);
-        // si no se encuentra el usuario no muestra el usuario y tampoco envia error
         }  
     });
 });
 
-// Hay que indicarle al passport que use la strategy
 passport.use(jwtLogin);
 passport.use(localLogin);
