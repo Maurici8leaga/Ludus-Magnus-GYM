@@ -17,7 +17,6 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVid
 
     }, [getListVideos, match.params.muscle, clearVideoList]);
 
-    console.log(muscleList, 'ESTO ES MUSCLELIST EN VIDEOLISTBYMUSCLE')
     return !muscleList || !muscleList.length > 0 ? <Spinner /> : (
         <div className="container-muscle">
             <div className="pantalla-videoList">
