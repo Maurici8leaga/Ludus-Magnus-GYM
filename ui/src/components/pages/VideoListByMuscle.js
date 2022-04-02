@@ -19,8 +19,8 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVid
 
     return !muscleList || !muscleList.length > 0 ? <Spinner /> : (
         <div className="container-muscle">
-            <div className="pantalla-videoList">
-                <div className="pantalla-videoList-darkBlur">
+            <div className="screen-videoList">
+                <div className="screen-videoList-darkBlur">
                     <Alert />
 
                     <div className="text-center extra-mt-responsive white-letter">
@@ -44,7 +44,7 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVid
                 </div>
             </div>
 
-            <div className="pantalla-videoList">
+            <div className="screen-videoList">
                 <div className="wrap-page overflow-scroll">
                     <div className="container ">
                         <div className="row" id="exerciseList" >
@@ -52,7 +52,7 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVid
                                 <div className="col-12 " key={index}>
                                     {muscle.video.length === 0 ? null : (
                                         <div>
-                                            <div className="h1 texto-positive my-3">
+                                            <div className="h1 text-positive my-3">
                                                 {muscle.mode}
                                                 <hr />
                                             </div>

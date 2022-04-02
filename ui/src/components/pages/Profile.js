@@ -74,8 +74,8 @@ const Profile = ({ getProfile, uploadAvatar, profile, showModal }) => {
 
     return !profile || !profile._id ? <Spinner /> : (
         // <-- esto permitira que muestre el profile del usuario si solo si hay un "profile o _id de un profile" o si no mostrara el spinner mientras se carga
-        <div className="pantalla-Profile">
-            <div className="pantalla-Profile-blur overflow-scroll">
+        <div className="screen-Profile">
+            <div className="screen-Profile-blur overflow-scroll">
                 {/* colocamos el overflow aca para que cuando la pagina sea cargada en un mobile el contenido se pueda ver completo */}
                 <div className="container">
                     <Alert />
@@ -85,7 +85,7 @@ const Profile = ({ getProfile, uploadAvatar, profile, showModal }) => {
                         <h3 className="highlight-title2 ">This is your current information</h3>
                     </div>
 
-                    <div className="card mb-3 extra-max-w mx-auto pantalla-card-profile">
+                    <div className="card mb-3 extra-max-w mx-auto screen-card-profile">
                         {/* card es el class ideal para lo que queremos en este component, usamos mx-auto para que nos centre en el medio el card en la pag */}
                         <div className="row g-0 text-center ">
                             {/* como queremos un card horizontal debemos usar row y mas abajo col  */}
@@ -99,14 +99,14 @@ const Profile = ({ getProfile, uploadAvatar, profile, showModal }) => {
                                 </div>
 
                                 <>
-                                    <label className="boton-border-line-positive-small">
+                                    <label className="button-border-line-positive-small">
                                         {/* metemos el input dentro de un label para atraves del label el input pueda tomar el stye que queremos */}
                                         <input type="file" name='fileButton' onChange={onChange} required></input>
                                         <i className="fas fa-camera"></i>
                                     </label>
 
                                     <>
-                                        <button className="boton-border-line-positive" onClick={e => showModal()}> Edit profile</button>
+                                        <button className="button-border-line-positive" onClick={e => showModal()}> Edit profile</button>
                                             <PortalModal title={"Edit your personal information"}>
                                                 {/* "Portal" va ser nuestro modal generic y de esta forma se implementa */}
                                                         {/* el prop "title" es el titulo que va a llevar el modal, este debe colocar aqui y no dentro del portal modal */}

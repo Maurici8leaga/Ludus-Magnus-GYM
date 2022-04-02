@@ -39,7 +39,7 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
                     />
                 </div>
 
-                <div className="pantalla-dark-mate">
+                <div className="screen-dark-matte">
                     <div className="container-fluid py-3">
                         <div className="container ">
                             <Alert />
@@ -59,7 +59,7 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
                                         <i className="far fa-thumbs-down h6"></i>
                                     </button>
                                 </div>
-                                <hr className="rayita" />
+                                <hr className="decoLine" />
                             </div>
                             <div className="container-md">
                                 <p className="fs-6 text">{description}</p>
@@ -68,7 +68,7 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
                     </div>
 
                     <div className="container-sm">
-                        <hr className="rayita" />
+                        <hr className="decoLine" />
 
                         {comments && Array.isArray(comments) ? (
                             <div className="ms-5 pb-1 ">
@@ -87,7 +87,7 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
                         ) : null}
 
                         <CommentBox idVideo={_id} />
-                        <hr className="rayita" />
+                        <hr className="decoLine" />
                     </div>
                 </div>
             </div>

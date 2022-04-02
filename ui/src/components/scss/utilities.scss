@@ -104,12 +104,6 @@
     color: $positive-color;
 }
 
-.grande{
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-}
-
 .title-small{
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -131,16 +125,16 @@
     }
 }
 
-.texto-secundary{
+.text-secondary{
     color: #fff;
 }
 
-.texto-positive{
+.text-positive{
     color: $positive-color;
 }
 
 .Title-menu{
-    color: $claro-color;
+    color: $bright-color;
     top: 50%;
     transition: padding-left .6s ease-out;   
     &:hover{
@@ -198,28 +192,6 @@
     padding-right: 1.5rem;
 }
 
-.fondo{
-    &-primary{
-      @include set-background($primary-color)
-    }
-
-    &-claro{
-        @include set-background($claro-color)
-    }
-
-    &-oscuro{
-        @include set-background($oscuro-color)
-    }
-
-    &-positive{
-        @include set-background($positive-color)
-    }
-
-    &-negative{
-        @include set-background($negative-color)
-    }
-}
-
 .img-exercise{
     width: 100%;
     padding: 0%;
@@ -234,7 +206,7 @@
 }
 
 // buttons
-.boton{
+.button{
 
     &.-primary{
         @include  set-background($primary-color);
@@ -252,10 +224,10 @@
         }
     }
 
-    &.-oscuro{
-        @include set-background($oscuro-color);
+    &.-dark{
+        @include set-background($dark-color);
         &:hover{
-            background: lighten($oscuro-color, 5%);
+            background: lighten($dark-color, 5%);
         }
     }
 
@@ -294,10 +266,10 @@
         }
     }
 
-    &.-claro{
-        @include set-background($claro-color);
+    &.-bright{
+        @include set-background($bright-color);
         &:hover{
-            background: lighten($claro-color, 5%);
+            background: lighten($bright-color, 5%);
         }
 
     }
@@ -318,7 +290,7 @@
         cursor: default;
         &:hover {
             background: $positive-color;
-            color: $claro-color;
+            color: $bright-color;
         }
 
         &-small{
@@ -337,7 +309,7 @@
 
             &:hover {
                 background: $positive-color;
-                color: $claro-color;
+                color: $bright-color;
             }
         }
     }
@@ -359,40 +331,6 @@
         color: $positive-color;
     }
     
-}
-
-// Dynamic list
-.lista-ul{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 29.1% 29.1% 29.1%;
-    grid-gap: 20px;
-    padding: 10px 0px;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: stretch;
-    align-content: stretch;
-    text-align: center;
-    overflow-y: auto;
-    background-color: rgb(34, 33, 32);
-}
-
-.lista{
-    padding: 50px 50px;
-    max-width: 300px;
-}
-
-.lista-menu-muscle{
-    max-width: 1450px;
-    max-height: 500px;
-    width: 100%;
-    padding: 0;
-    margin: 0rem;
-    display: flex;
-    position: relative;
-    margin-right: 0rem;
-    padding-bottom: -10px;
-    line-height: 1px;
 }
 
 // Menus
@@ -491,7 +429,7 @@
     
     &:hover {
         background: $positive-color;
-        color: $claro-color;
+        color: $bright-color;
     }
     
     &:nth-child(2) {
@@ -514,7 +452,7 @@
 }
 
 
-.rayita-textarea{
+.decoLine-textarea{
     height: 1px;
     background-color: $positive-color;
     border: none;
@@ -528,7 +466,7 @@
     }
 }
 
-.rayita{
+.decoLine{
     border-style: solid;
     border-color: $positive-color;
     border-width: 1px 0 0 0 ;
@@ -551,11 +489,11 @@
 
 //color for letters
 .white-letter{
-    color: $claro-color;
+    color: $bright-color;
 }
 
 .black-letter{
-    color: $oscuro-color;
+    color: $dark-color;
     font-weight: bold;
 }
 

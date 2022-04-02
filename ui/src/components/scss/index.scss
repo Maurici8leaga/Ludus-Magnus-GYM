@@ -46,13 +46,13 @@ img{
     }
 }
 
-.pantalla{
+.screen{
     position: relative;
     background: url('../img/thumb-1920-692043.jpg') no-repeat center center/cover;
     min-height: 100vh;
     padding: 1px;
 
-    &-interna{
+    &-internal{
         color: #fff;
         height: 100%;
         display: flex;
@@ -118,7 +118,7 @@ img{
           box-shadow: 10px 12px 10px 0 rgba(0,0,0,0.3);
     }
 
-    &-dark-mate{
+    &-dark-matte{
         position: relative;
         background-color: rgb(34, 33, 32);
         color: white;

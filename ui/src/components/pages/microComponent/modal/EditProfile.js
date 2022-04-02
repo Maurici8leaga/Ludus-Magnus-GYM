@@ -56,10 +56,10 @@ const EditProfile = ({ updateProfile, profile, hideModal }) => {
             </div>
             <div className="modal-footer ">
                 {/* IMPORTANTE PARA LOS BOTONES DENTRO DE UN FORM */}
-                <button className="botonModal" type="submit">Save</button>
+                <button className="buttonModal" type="submit">Save</button>
                 {/* debe haber un boton designado AJURO como "type=submit" y ese mismo no puede llevar NINNGUN onClick o alguna otra FUNCION porque va a dar un ERROR MALDITO */}
                 {/* ademas ese debe ir encima de cualquier otro */}
-                <button className="botonModal" type="button" onClick={e => hideModal()}>Cancel</button>
+                <button className="buttonModal" type="button" onClick={e => hideModal()}>Cancel</button>
                 {/* el segundo boton preferible solo 2, debe ir despues Y DEBE TENER AJURO "type=button" PARA QUE NO DE ERROR MALDITO */}
             </div>
         </form>

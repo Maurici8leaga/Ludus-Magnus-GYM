@@ -64,7 +64,7 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
                 >
                 </textarea>
 
-                <hr className="rayita-textarea" />
+                <hr className="decoLine-textarea" />
 
             </>
         )
@@ -84,9 +84,9 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
     const buttonCommentCancel = () => {
         return (
             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                <input type="submit" className="btn boton -claro btn-sm" value="Comment" />
+                <input type="submit" className="btn button -bright btn-sm" value="Comment" />
 
-                <button className="btn boton -oscuro btn-sm" onClick={() => CloseUp()}>
+                <button className="btn button -dark btn-sm" onClick={() => CloseUp()}>
                     Cancel
                 </button>
             </div>

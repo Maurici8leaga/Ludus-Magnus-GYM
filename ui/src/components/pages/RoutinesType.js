@@ -45,8 +45,8 @@ const RoutinesType = ({ history, getProfile, profile }) => {
     const muscleList = () => (
         // el JSX siempre debe ir en parentesis!
         <div className="container-muscle">
-            <div className="pantalla-muscleTipe"> 
-                <div className="pantalla-muscleTipe-darkBlur">
+            <div className="screen-muscleTipe"> 
+                <div className="screen-muscleTipe-darkBlur">
                     <Alert />
 
                     <div className="text-center extra-mt-responsive white-letter">

@@ -51,7 +51,7 @@ const SignUp = ({ signUp, isSignedIn }) => {
 
   return (
 
-    <div className="pantalla">
+    <div className="screen">
       <div className="wrap-page overflow-scroll">
          {/* este overflow-scroll ayuda que cuando la imagen sea mas larga que ancha al desplazarse en la pag la img de background cubra completo el screen  */}
 
@@ -115,7 +115,7 @@ const SignUp = ({ signUp, isSignedIn }) => {
                 </div>
 
                 <div className="d-grid my-3">
-                  <button className="btn boton -primary btn-lg" type="submit" value="Register">Register me</button>
+                  <button className="btn button -primary btn-lg" type="submit" value="Register">Register me</button>
                 </div>
               </div>
             </form>

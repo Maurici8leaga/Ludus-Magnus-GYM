@@ -33,7 +33,7 @@ const SignIn = ({ signIn, isSignedIn }) => {
 
   return (
 
-    <div className="pantalla">
+    <div className="screen">
       <div className="wrap-page">
 
         <Alert />
@@ -58,7 +58,7 @@ const SignIn = ({ signIn, isSignedIn }) => {
 
               <div className="d-grid gap-2 my-3">
                 {/* este d-grip y gap-2 hacen que este button tenga el estilo de un boton block, osea ocupe todo el espacio que tenga posible*/}
-                <button className="btn boton -primary btn-lg" type="submit" value="Login"> Let get start training</button>
+                <button className="btn button -primary btn-lg" type="submit" value="Login"> Let get start training</button>
               </div>
             </form>
 

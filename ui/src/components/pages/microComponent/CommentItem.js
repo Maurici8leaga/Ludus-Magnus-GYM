@@ -48,7 +48,7 @@ const CommentItem = ({ comment, removeComment, auth }) => {
                             <Moment format="DD/MM/YYYY">{date}</Moment>
                         </div>
                         {student && student._id === auth.user._id ? (
-                            <button onClick={e => removeComment(_id)} type='button' className="boton -negative-delete">
+                            <button onClick={e => removeComment(_id)} type='button' className="button -negative-delete">
                                 <i className="far fa-trash-alt fs-6"></i>
                             </button>
                         ) : null}

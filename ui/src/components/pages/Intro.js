@@ -11,7 +11,7 @@ const Intro = ({ isSignedIn }) => {
     }
 
     return (
-        <div className="pantalla">
+        <div className="screen">
             <div className="wrap-page">
                 <div className="container" >
                     <div className="row" >
@@ -29,9 +29,9 @@ const Intro = ({ isSignedIn }) => {
                                     </p>
                                     <div className="d-grid gap-3 d-sm-flex justify-content-sm-center">
                                         {/* d-grid es para los display, gap + num es para la separacion entre botones */}
-                                        <Link to="/signin" className="btn boton -primary btn-lg px-4" role="button">Comenzar</Link>
+                                        <Link to="/signin" className="btn button -primary btn-lg px-4" role="button">Comenzar</Link>
                                         {/* btn es el class general para los botones, btn-lg es el tamaño del boton */}
-                                        <Link to="/signup" className="btn boton -positive btn-lg px-4" role="button">Registrarme</Link>
+                                        <Link to="/signup" className="btn button -positive btn-lg px-4" role="button">Registrarme</Link>
                                     </div>
                                 </div>
                             </div>
