@@ -15,6 +15,7 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
         if (match.params.id) {
             getVideoById(match.params.id);
         }
+        // this is like a component Willumount, its for clean the state of video
         return () => clearVideo();
 
     }, [match.params.id, getVideoById, clearVideo]);
@@ -42,11 +43,14 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
                 <div className="screen-dark-matte">
                     <div className="container-fluid py-3">
                         <div className="container ">
+
                             <Alert />
+
                             <div className="row">
                                 <div className="col-12 col-sm-9">
                                     <h4 className="h5 fw-bold">{title}</h4>
                                 </div>
+
                                 <div className=" col-12 col-sm-3 ">
                                     <button className="like-dislike-button px-2" type="button" onClick={e => like(_id)}>
                                         <i className="fas fa-thumbs-up h6"></i>
@@ -59,8 +63,10 @@ const Video = ({ getVideoById, match, videoObject, like, dislike, deleteComment,
                                         <i className="far fa-thumbs-down h6"></i>
                                     </button>
                                 </div>
+
                                 <hr className="decoLine" />
                             </div>
+                            
                             <div className="container-md">
                                 <p className="fs-6 text">{description}</p>
                             </div>

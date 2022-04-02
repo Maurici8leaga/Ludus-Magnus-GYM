@@ -12,7 +12,7 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVid
     useEffect(() => {
         getListVideos(match.params.muscle);
 
-        // this is like a "component WillUnmount"
+        // this is like a component Willumount, its for clean the state of video list
         return () => clearVideoList();
 
     }, [getListVideos, match.params.muscle, clearVideoList]);
@@ -21,11 +21,11 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVid
         <div className="container-muscle">
             <div className="screen-videoList">
                 <div className="screen-videoList-darkBlur">
+
                     <Alert />
 
                     <div className="text-center extra-mt-responsive white-letter">
                         <h1 className="display-2 highlight-title">Video List</h1>
-
                         <p className="h3 highlight-title2 mt-5">Choose the video you want to watch</p>
                     </div>
 
@@ -33,6 +33,7 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVid
                         <Link className="links-scss"
                             activeClass="active"
                             to="exerciseList"
+                            // this "to" is once we clicked on the arrow, it will take us to where the id is
                             spy={true}
                             smooth={true}
                             offset={-70}
@@ -48,6 +49,7 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVid
                 <div className="wrap-page overflow-scroll">
                     <div className="container ">
                         <div className="row" id="exerciseList" >
+
                             {muscleList.map((muscle, index) => (
                                 <div className="col-12 " key={index}>
                                     {muscle.video.length === 0 ? null : (
@@ -56,6 +58,7 @@ const VideoListByMuscle = ({ getListVideos, match, muscleList, history, clearVid
                                                 {muscle.mode}
                                                 <hr />
                                             </div>
+                                            
                                             <div className="d-flex flex-row  row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1  overflow-scroll">
                                                 {muscle.video.map((info, youtubeID) => (
                                                     <div className="d-flex mb-4" key={youtubeID}>
