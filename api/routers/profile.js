@@ -5,16 +5,18 @@ const passport = require('passport');
 const routerProfile = express.Router();
 const User = require('../models/user');
 
+// Getting the profile user
 routerProfile.get('/me', async function(req, res){
+    
     try{
-            // Hacemos request de la info del usuario y ademas hacemos un refresh al user de esta forma si tiene un cambio se habra act 
+
+        // finding the user and "populate" the avatar because we need all the info about the user as possible as we can
         const ProfileUser = await User.findOne({_id: req.user.id}).populate('avatar').select('-password');
-                //lo que hace populate aqui es remplazar la ruta que se le especifique que es en este caso user y picture 
-                // para que la apropiedad del user llamada avatar en vez de que aparezca el objectId aparezca la documentacion completa
 
         if(!ProfileUser){
             return res.status(400).json({ error: {msg: 'There is no profile for this user'}});
         }
+
         res.json(ProfileUser); 
     }catch(error){
         console.error(error);

@@ -8,43 +8,34 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
 
     const onSubmit = async e => {
         e.preventDefault();
-        // se envia al actions el text para enviar lo que escribio, el idVideo para saber en que video comento y el alumno que es el id del user para saber quien lo escribio
-        addComment({ text, idVideo, alumno: profile._id });
-        // le asignamos a "alumno" el valor de "profile._id" de esta manera, asi se le puede asignar a una variable el valor de una propiedad de un objeto 
+        addComment({ text, idVideo, student: profile._id });
         setText('');
-        // se coloca "setText" en blanco para que despues del comment se vuelva a vaciar el textarea
         CloseUp();
-        // llamamos aca para cuando se de comentar este se reinicie y se cierre
     }
 
-    const [open, setOpen] = React.useState(false);
-    // este state es para y solo para que el div y el textarea se intercambien
+    const [open, setOpen] = useState(false);
 
     const CloseUp = () => {
-        // creamos este functions de manera de poder ejecutar otras 2 funciones a la misma vez cuando sea llamada
         setOpen(!open);
         setText('');
         setRow(1);
-        // se coloca aqui esto de manera que despues o antes de escribir el row por defecto sea 1, si no se pondra muy grande
     }
 
     const [text, setText] = useState('');
     const [row, setRow] = useState(1);
     const [minRows] = useState(1);
-    // no se coloca setMinRow ni setMaxRows ya que en este caso no los estamos necesitando
     const [maxRows] = useState(10);
 
     const handleChange = e => {
-        // con este handle vamos hacer que el textarea sea dinamico en tamaño, los valores que tienen son de una FORMULA asi que lo que unico que va a variar son
-        // el numero de row, minRow y maxRow el resto debe quedar asi
+
         const textareaLineHeight = 24;
 
         const previousRows = e.target.rows;
         e.target.rows = minRows; // reset number of rows in textarea
 
         const currentRows = ~~(e.target.scrollHeight / textareaLineHeight);
-        // aqui el simbolo ~~ es un dobdle tilde operator sirve para convertir el resultado en un numero entero para que de un numero de lineas enteras
 
+        // setting the value of rows
         if (currentRows === previousRows) {
             e.target.rows = currentRows;
         }
@@ -52,7 +43,6 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
         if (currentRows >= maxRows) {
             e.target.rows = maxRows;
             e.target.scrollTop = e.target.scrollHeight;
-            // de esta forma cuando se tenga que expandir este aumente segun la cantidad de texto 
         }
 
         setText(e.target.value);
@@ -60,7 +50,6 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
     }
 
     const TextAreaFunction = () => {
-        // ESTO ES UN FUNCTION QUE DEVUELVE UN JSX
         return (
             <>
                 <textarea
@@ -68,24 +57,24 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
                     name="text"
                     cols="130"
                     rows={row}
-                    placeholder=" Agrega un comentario ..."
+                    placeholder=" Make a comment ..."
                     value={text}
                     onChange={handleChange}
                     required
                 >
                 </textarea>
 
-                <hr className="rayita-textarea" />
+                <hr className="decoLine-textarea" />
 
             </>
         )
     }
 
     const DivFunction = () => {
-        // ESTO ES UN FUNCTION QUE DEVUELVE UN JSX
+        // this a div to looks like a textarea
         return (
             <>
-                <div className="LookeLikeTextArea" placeholder="Agrega un comentario..." onClick={() => setOpen(!open)}>
+                <div className="LookeLikeTextArea" placeholder="Make a comment..." onClick={() => setOpen(!open)}>
                 </div>
 
             </>
@@ -95,12 +84,9 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
     const buttonCommentCancel = () => {
         return (
             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                {/* usamos d-grid para que los botones esten encima del otro cuando esta tamaños mobile, de resto el d-md-flex hace que los botones esten linealmente uno al lado del otro */}
-                        {/* justify-content-md-end es para empujar el contenido al otro extremo del elemento, en este caso a la derecha*/}
-                <input type="submit" className="btn boton -claro btn-sm" value="Comentar" />
-                {/* debe colocarse un INPUT no DIV porque si no, nunca se hara el request en el comentario */}
+                <input type="submit" className="btn button -bright btn-sm" value="Comment" />
 
-                <button className="btn boton -oscuro btn-sm" onClick={() => CloseUp()}>
+                <button className="btn button -dark btn-sm" onClick={() => CloseUp()}>
                     Cancel
                 </button>
             </div>
@@ -111,13 +97,12 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
 
         const { avatar } = profile;
 
-        // Avatar default
+        // Default avatar
         let avatarUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
-        // colocamos let en vez de const ya que let tiene mayor scope que const este puede ser llamado mas adentro de otros elementos
 
-        // Avatar picture custom
+        // Custom avatar picture
         if (typeof avatar === 'object') {
-            // typeof es un operator que indica dentro de un string lo que es el operador en este caso 'avatar' = 'object'. Entonces el condicional se indica si es exactamente eso retorna lo siguiente
+
             avatarUrl = `http://localhost:3001/api/avatar${avatar.url}`
             return (
                 <img className="avatar-mini" alt="avatar" src={avatarUrl} />
@@ -135,14 +120,12 @@ const CommentBox = ({ idVideo, addComment, profile }) => {
             <div className="Header-ProfilePicture-CommentForm">
                 <div className="avatar-container-profile-commentBox">
                     <span className="avatar-mini">
-                        {/* se usa "span" ya que este no requiere un "hrf" para lo que necesitamos que haga */}
                         {avatarImage()}
                     </span>
                 </div>
 
                 <form className="form-comment" onSubmit={e => onSubmit(e)}>
                     {open ? TextAreaFunction() : DivFunction()}
-                    {/* se crea este operator conditional de manera que antes de hacer click el vea un div como textArea y luego de que haga click sea un textAreale for */}
                 </form>
             </div>
 

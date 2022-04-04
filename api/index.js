@@ -16,9 +16,8 @@ const {routerEditProfile} = require('../api/routers/editProfile');
 const requireAuth = passport.authenticate('jwt', {session: false});
 
 
-// configuracion MGDB
+// MGDB configuration
 mongoose.connect('mongodb://localhost:27017/gymAuth', { useNewUrlParser: true } );
-                            // se coloca el port "27017" que es por el cual el mongoose escucha
 
 // middleware
 app.use(morgan('combined'));
@@ -26,18 +25,15 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', authRouter);
 app.use('/api/profile', requireAuth, routerProfile, routerEditProfile);
-// <- si quito este no me da el get de profile
+// <- both of these routes have different purpose ->
 app.use('/api/profile', requireAuth, routerPicture);
-// si quito este no me deja subir la foto del profile
 app.use('/api/avatar',  routerPictureStatic);
-// esta ruta no debe llevar "requireAuth" ya que se necesita acceder a las img que se contiene
+// <- this route does not need "requireAuth" because it need to have access to the images that it has
 app.use('/api/videoList', requireAuth, routerVideo);
 app.use('/api/video', requireAuth, routerComment);
-// aqui debe ir el app.use con su require de manera que el endpoint pueda llamarse
 
 
 const port = process.env.PORT || 3001;
 const server = http.createServer(app);
-                        //este "app" podria cambiar OJO 
 server.listen(port);
 console.log('server listen on:', port);

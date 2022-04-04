@@ -4,23 +4,23 @@ Ludus Magnus is a page designed with the purpose of encouraging and instructing 
 
 In the muscles section you can choose between the following; Biceps, Triceps, Abdominal, Back, Shoulder, Chest, Leg and Yoga. Once you have selected the muscle, you can choose what type of exercises you want to exercise; With machines, dumbbells or freestyle and additional, you will have the freedom to choose the difficulty according to how you feel prepared.
 
-![Intro](https://user-images.githubusercontent.com/47537254/159125462-087b5b21-fee5-485f-9fd9-36f105bd8d1c.png)
+![Intro](ui/src/components/img/presentation/Intro.png)
 
-![SignIn](https://user-images.githubusercontent.com/47537254/159125472-e8025da5-4afa-4398-b0df-8b6cd3c850df.png)
+![SignIn](ui/src/components/img/presentation/SignIn.png)
 
-![SignUp](https://user-images.githubusercontent.com/47537254/159125481-f097d064-0390-4e24-b378-69c12ddf467b.png)
+![SignUp](ui/src/components/img/presentation/SignUp.png)
 
-![RoutineType](https://user-images.githubusercontent.com/47537254/159125488-f68075b0-3fb1-4aca-8da1-9e820f923600.png)
+![RoutineType](ui/src/components/img/presentation/RoutineType.png)
 
-![RoutineType2](https://user-images.githubusercontent.com/47537254/159125497-e1568a7e-ffaf-479a-9062-f4744dd47176.png)
+![RoutineType2](ui/src/components/img/presentation/RoutineType2.png)
 
-![VideoList](https://user-images.githubusercontent.com/47537254/159125506-c68abc2e-0040-42d8-baaf-304c359adcd1.png)
+![VideoList](ui/src/components/img/presentation/VideoList.png)
 
-![VideoList2](https://user-images.githubusercontent.com/47537254/159125509-c92b6227-81fc-444e-8926-8300a1a11acb.png)
+![VideoList2](ui/src/components/img/presentation/VideoList2.png)
 
-![Video](https://user-images.githubusercontent.com/47537254/159125512-8f70c889-918f-461f-a4e9-e04e69265b8f.png)
+![Video](ui/src/components/img/presentation/Video.png)
 
-![Profile](https://user-images.githubusercontent.com/47537254/159125518-c673df7d-e9d5-4132-be5d-332c4a348dd6.png)
+![Profile](ui/src/components/img/presentation/Profile.png)
 
 
 

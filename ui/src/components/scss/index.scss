@@ -1,7 +1,6 @@
 @import './config.scss';
 @import './utilities.scss';
 @import './form.scss';
-@import './cardProfile.scss';
 @import'./modal.scss';
 @import'../../../../api/node_modules/react-datepicker/dist/react-datepicker.css';
 @import'../../../../api/node_modules/react-datepicker/dist/react-datepicker-cssmodules.css';
@@ -10,18 +9,14 @@
 
 *{
     font-family: 'Lato', sans-serif;
-    // "sans-serif" es para colocar un estilo de letra por defecto en tal caso de que no exista una
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-// estos son para basic resets and course tiles
 
 body{
     font-size: 1rem;
-    // 1rem es equivalente a 6px, rem viene siendo el mismo tamaño que tenga el html
     line-height: 1.6;
-     // este es como un extra separador con los elementos que esten debajo de este class
     background-color: #fff;
     color: #333;
 }
@@ -32,37 +27,13 @@ ul{
 
 a{
     text-decoration: none;
-    // a pesar de que no sea un class hay que hacer especificar aqui de manera que no sobre escriba algun elemento sobre los links
 }
 
 img{
     width: 100%;
-    // de esta forma cada imagen va a usar el 100% del espacio que tenga su countainer sin salirse
 }
 
 .header{
-    // display: flex;
-    // // este "flex" hace que el component navbar se comporte como bloque
-    // align-items: center !important;
-    // // este centra los items 
-    // justify-content: space-between;
-    // // permite separar los elementos en este caso ponerlos en los extremos del navbar
-    // padding: 1.3rem 2rem;
-    // font-size: 1.1rem;
-    // position: fixed;
-    // // permite que el navbar se mantenga arriba de la pag
-    // z-index: 1;
-    // // permite que el navbar siempre se mantenga arriba del todo el contenido del pag
-    // width: 100%;
-    // top: 0;
-    // border-bottom: solid 1.5px $primary-color;
-    // // le da un color de bajo del header
-    // // opacity: 100;
-
-    ul{
-        // display: flex;
-         // al colocar esto hacemos que los "ul" dejen de estar encima del otro y se coloquen horizontalmente
-    }
 
     .links-scss{
         color: #333;
@@ -70,47 +41,36 @@ img{
         margin: 0 0.25rem;
 
         &:hover{
-            // este & permite referirnos a cuando el elemento llegue a tener un "hover" muestre lo siguiente
             color: $primary-color;
         }
     }
 }
 
-.pantalla{
+.screen{
     position: relative;
     background: url('../img/thumb-1920-692043.jpg') no-repeat center center/cover;
-        // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
     min-height: 100vh;
-    // para que cubra el tamaño completo de la pantalla
     padding: 1px;
 
-    &-interna{
+    &-internal{
         color: #fff;
         height: 100%;
-        // se usa el 100% ya que se va a colorcar un flexboxing
         display: flex;
         flex-direction: column;
-        // sin esto el "flex" solo colocara el contenido de forma vertical, con el se coloca de forma horizontal
         width: 80%;
         margin: auto;
         align-items: center;
-        // este permitita centrar completamente el texto en el medio de toda la pagina
         justify-content: center;
-        // este tambien ayuda a centrar las lentras en el medio de la pagina
         text-align: center;
     }
 
     &-muscleTipe{
         position: relative;
         background: url('../img/lockerRoom.png') no-repeat center center/cover;
-            // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
         min-height: 100vh;
-        // para que cubra el tamaño completo de la pantalla
         padding: 1px;
-        // filter: brightness(90%);
 
         &-darkBlur{
-            // de esta forma se hace para que la img quede opaca
             position: absolute;
             width: 100%;
             height: 100vh;
@@ -123,12 +83,10 @@ img{
         position: relative;
         height: 100vh;
         background: url('../img/salon\ exercise.jpg') no-repeat center center/cover;
-            // de esta forma establecemos el fondo de pantalla de la portada, no repeat la imagen no se repetira, center center/cover es para que quede centrada en su totalidad
         padding: 1px;
         filter: brightness(90%);
 
         &-darkBlur{
-            // de esta forma se hace para que la img quede opaca
             position: absolute;
             width: 100%;
             height: 100vh;
@@ -139,12 +97,10 @@ img{
 
     &-Profile{
         position: relative;
-        // width: 100%;
         min-height: 100vh;
         background: url('../img/people_workingOut.jpeg') no-repeat center center/cover;
         
         &-blur{
-            // de esta forma se hace para que la img quede opaca
             width: 100%;
             height: 100vh;
             background: rgba(255, 255, 255, 0.2);
@@ -154,8 +110,6 @@ img{
 
     &-card-profile{
         position: relative;
-        // top: 50px;
-        // left: 35px;
           height: auto;
           width: 100%;
           background-image: url('../img/texture.jpg');
@@ -164,7 +118,7 @@ img{
           box-shadow: 10px 12px 10px 0 rgba(0,0,0,0.3);
     }
 
-    &-dark-mate{
+    &-dark-matte{
         position: relative;
         background-color: rgb(34, 33, 32);
         color: white;
